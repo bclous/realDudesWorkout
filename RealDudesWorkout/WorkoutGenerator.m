@@ -80,7 +80,7 @@
     excercise2.category = @"rest";
     excercise2.numberOfRepsSuggested = 0;
     excercise2.numberOfRepsActual = 0;
-    excercise2.timeInSecondsSuggested = 45;
+    excercise2.timeInSecondsSuggested = 60;
     excercise2.timeInSecondsActual = 0;
     excercise2.pictureName = @"rest";
     

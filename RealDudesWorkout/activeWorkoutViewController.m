@@ -11,19 +11,20 @@
 @interface activeWorkoutViewController ()
 
 
-@property (weak, nonatomic) IBOutlet UIButton *finishedButton;
+
+
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *endWorkoutButton;
+@property (weak, nonatomic) IBOutlet UILabel *excerciseDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ExcerciseNameAndRepsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *workoutFinishedButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *workoutDurationTimeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *workoutDurationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *excerciseCompleteButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *excerciseImage;
-@property (weak, nonatomic) IBOutlet UILabel *topLabel;
-@property (weak, nonatomic) IBOutlet UIButton *endWorkoutButton;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *thisExcerciseLabel;
-@property (weak, nonatomic) IBOutlet UILabel *excerciseTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalWorkoutLabel;
-@property (weak, nonatomic) IBOutlet UILabel *workoutTimeLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *lastExcerciseLabel;
-
 
 @property (strong, nonatomic) NSArray *excercises;
 @property (strong, nonatomic) NSArray *excercisesInOrder;
@@ -33,6 +34,8 @@
 @property (strong, nonatomic) NSTimer *totalWorkoutTimer;
 @property (nonatomic) NSTimeInterval totalWorkoutCounter;
 @property (nonatomic) NSTimeInterval individualExcerciseCounter;
+
+@property (nonatomic) NSUInteger restCountdown;
 
 
 
@@ -51,7 +54,10 @@
     
     [self orderExcercises];
     
+    
+    // set global counters and index values
     self.currentExcerciseIndexValue = 0;
+    self.restCountdown = 0;
     
     // set up the original screen
     
@@ -68,8 +74,24 @@
 -(void)countdown
 {
     
-    self.workoutTimeLabel.text = [self generateTimeStringGivenTime:self.totalWorkoutCounter];
-    self.excerciseTimeLabel.text = [self generateTimeStringGivenTime:self.individualExcerciseCounter];
+    self.workoutDurationTimeLabel.text = [self generateTimeStringGivenTime:self.totalWorkoutCounter];
+    
+    BOOL isRest = [self.currentExcercise.name isEqualToString:@"Rest"];
+    
+    if (isRest)
+    {
+        self.ExcerciseNameAndRepsLabel.text = [self generateTopLabelText];
+        
+        BOOL isRestCounterAtZero = self.restCountdown == 0;
+        
+        if (!isRestCounterAtZero)
+        {
+            self.restCountdown--;
+        }
+    }
+    
+    // update top label if resting
+    //self.excerciseTimeLabel.text = [self generateTimeStringGivenTime:self.individualExcerciseCounter];
     
     self.totalWorkoutCounter++;
     self.individualExcerciseCounter++;
@@ -110,31 +132,41 @@
     
 }
 
-- (IBAction)excerciseFinishedButtonTapped:(id)sender
+- (IBAction)excerciseCompleteButtonTapped:(id)sender
 {
+    
     BOOL lastExcercise = self.currentExcerciseIndexValue == self.excercisesInOrder.count-1;
-
     
-    if (lastExcercise)
-    {
-        // present modally workout complete and summary
-    }
     
-    else
-    {
-        // update how long it took the do the excercise and assign it to that instance of the excercise;
-        
-        [self updateIndividualWorkoutTimer];
+//    if (lastExcercise)
+//    {
+//        // present modally workout complete and summary
+//    }
+//    
+//    else
+//    {
+    
+        // change the index value and corresponding current excercise
         
         self.currentExcerciseIndexValue++;
+        self.currentExcercise = self.excercisesInOrder[self.currentExcerciseIndexValue];
+       
+        // if is rest,reset the rest timer
+        BOOL isRest = [self.currentExcercise.name isEqualToString:@"Rest"];
         
+        if (isRest)
+        {
+            self.restCountdown = self.currentExcercise.timeInSecondsSuggested;
+        }
+    
+        // update the view components
+    
         [self updateViewComponents];
         
-    }
     
 }
 
-- (IBAction)endWorkoutButtonTapped:(id)sender
+- (IBAction)workoutFinishedButtonTapped:(id)sender
 {
     ((Excercise *)self.excercisesInOrder[self.currentExcerciseIndexValue]).timeInSecondsActual = self.individualExcerciseCounter;
     
@@ -146,28 +178,19 @@
     //do some other stuff
 }
 
--(void)updateIndividualWorkoutTimer
-{
-
-    ((Excercise *)self.excercisesInOrder[self.currentExcerciseIndexValue]).timeInSecondsActual = self.individualExcerciseCounter;
-    
-    self.individualExcerciseCounter = 0;
-    
-}
 
 -(void)generateOriginalViewComponents
 {
+    
     self.currentExcercise = self.excercisesInOrder[self.currentExcerciseIndexValue];
     
-    self.topLabel.text = [self generateTopLabelText];
+    self.ExcerciseNameAndRepsLabel.text = [self generateTopLabelText];
     self.excerciseImage.image = [UIImage imageNamed:self.currentExcercise.pictureName];
     
-    self.thisExcerciseLabel.text = [self generateExcerciseClockLabel];
     
-    self.finishedButton.hidden = NO;
-    self.endWorkoutButton.hidden = YES;
-    self.lastExcerciseLabel.hidden =  YES;
     
+    self.excerciseCompleteButton.hidden = NO;
+    self.workoutFinishedButton.hidden = YES;
     
     
 }
@@ -188,25 +211,18 @@
     
     
     BOOL isLastExcercise = self.currentExcerciseIndexValue == self.excercisesInOrder.count-1;
+    BOOL isRest = [self.currentExcercise.name isEqualToString:@"Rest"];
     
 
     if (isLastExcercise)
     {
-        self.finishedButton.hidden = YES;
-        self.endWorkoutButton.hidden = NO;
-        self.lastExcerciseLabel.hidden = NO;
-        
-        self.lastExcerciseLabel.text = @"Last excercise!";
+        self.excerciseCompleteButton.hidden = YES;
+        self.workoutFinishedButton.hidden = NO;
+       
     }
     
-    
-    
-    
-    self.currentExcercise = self.excercisesInOrder[self.currentExcerciseIndexValue];
-    
-    self.topLabel.text = [self generateTopLabelText];
-    self.thisExcerciseLabel.text = [self generateExcerciseClockLabel];
-    self.totalWorkoutLabel.text = @"Total Workout:";
+    // udpate 
+    self.ExcerciseNameAndRepsLabel.text = [self generateTopLabelText];
    
     self.excerciseImage.image = [UIImage imageNamed:self.currentExcercise.pictureName];
 
@@ -232,7 +248,7 @@
     
     if (isRest)
     {
-        NSString *labelText = [NSString stringWithFormat:@"Rest for %lli seconds", self.currentExcercise.timeInSecondsSuggested];
+        NSString *labelText = [NSString stringWithFormat:@"Rest for %lu seconds", (unsigned long)self.restCountdown];
         
         return labelText;
     }
@@ -245,6 +261,8 @@
     }
     
 }
+
+
 
 -(NSString *)generateExcerciseClockLabel
 {
