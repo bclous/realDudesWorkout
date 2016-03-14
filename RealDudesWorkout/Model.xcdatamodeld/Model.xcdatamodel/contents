@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="Accessory" representedClassName="Accessory" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Excercise" inverseName="accessories" inverseEntity="Excercise" syncable="YES"/>
+    </entity>
+    <entity name="Excercise" representedClassName="Excercise" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excerciseDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indexInWorkoutNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfRepsActual" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfRepsSuggested" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="pictureName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeInSecondsActual" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeInSecondsSuggested" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="accessories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accessory" inverseName="excercises" inverseEntity="Accessory" syncable="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="excercises" inverseEntity="Workout" syncable="YES"/>
+    </entity>
+    <entity name="Workout" representedClassName="Workout" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isFinishedSuccessfully" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Excercise" inverseName="workout" inverseEntity="Excercise" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Excercise" positionX="-63" positionY="2" width="128" height="223"/>
+        <element name="Workout" positionX="-65" positionY="-261" width="128" height="133"/>
+        <element name="Accessory" positionX="-9" positionY="324" width="128" height="88"/>
+    </elements>
+</model>

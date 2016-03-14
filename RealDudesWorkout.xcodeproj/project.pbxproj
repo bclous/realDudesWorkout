@@ -7,25 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1D4D0C1C960BAF00E71342 /* WorkoutGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0B1C960BAF00E71342 /* WorkoutGenerator.m */; };
+		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
+		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
+		AB345D8E1C9260F800604D55 /* activeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */; };
+		AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */; };
 		AB41F2CB1C90FC25009D7E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CA1C90FC25009D7E63 /* main.m */; };
 		AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */; };
-		AB41F2D11C90FC25009D7E63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2D01C90FC25009D7E63 /* ViewController.m */; };
 		AB41F2D41C90FC25009D7E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2D21C90FC25009D7E63 /* Main.storyboard */; };
 		AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2D51C90FC25009D7E63 /* Assets.xcassets */; };
 		AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2D71C90FC25009D7E63 /* LaunchScreen.storyboard */; };
+		AB41F2E21C90FC48009D7E63 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E01C90FC48009D7E63 /* Model.xcdatamodeld */; };
+		AB41F2EB1C90FE33009D7E63 /* Excercise+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E41C90FE33009D7E63 /* Excercise+CoreDataProperties.m */; };
+		AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E61C90FE33009D7E63 /* Excercise.m */; };
+		AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E81C90FE33009D7E63 /* Workout+CoreDataProperties.m */; };
+		AB41F2EE1C90FE33009D7E63 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2EA1C90FE33009D7E63 /* Workout.m */; };
+		AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2F01C90FE4C009D7E63 /* dataStore.m */; };
+		AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2F71C91255D009D7E63 /* addIcon.png */; };
+		AB41F2FE1C912FB3009D7E63 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2FD1C912FB3009D7E63 /* MainViewController.m */; };
+		AB41F3011C9132B4009D7E63 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3001C9132B4009D7E63 /* TableViewController.m */; };
+		AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB1D4D0A1C960BAF00E71342 /* WorkoutGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutGenerator.h; sourceTree = "<group>"; };
+		AB1D4D0B1C960BAF00E71342 /* WorkoutGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutGenerator.m; sourceTree = "<group>"; };
+		AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Accessory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
+		AB1D4D111C9628FD00E71342 /* Accessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accessory.m; sourceTree = "<group>"; };
+		AB345D8C1C9260F800604D55 /* activeWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activeWorkoutViewController.h; sourceTree = "<group>"; };
+		AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activeWorkoutViewController.m; sourceTree = "<group>"; };
+		AB345DA31C9498A100604D55 /* WorkoutDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailTableViewController.h; sourceTree = "<group>"; };
+		AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailTableViewController.m; sourceTree = "<group>"; };
 		AB41F2C61C90FC25009D7E63 /* RealDudesWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealDudesWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB41F2CA1C90FC25009D7E63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AB41F2CF1C90FC25009D7E63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AB41F2D01C90FC25009D7E63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AB41F2D31C90FC25009D7E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB41F2D51C90FC25009D7E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB41F2D81C90FC25009D7E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB41F2DA1C90FC25009D7E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB41F2E11C90FC48009D7E63 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		AB41F2E31C90FE33009D7E63 /* Excercise+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Excercise+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AB41F2E41C90FE33009D7E63 /* Excercise+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Excercise+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AB41F2E51C90FE33009D7E63 /* Excercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Excercise.h; sourceTree = "<group>"; };
+		AB41F2E61C90FE33009D7E63 /* Excercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Excercise.m; sourceTree = "<group>"; };
+		AB41F2E71C90FE33009D7E63 /* Workout+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Workout+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AB41F2E81C90FE33009D7E63 /* Workout+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Workout+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AB41F2E91C90FE33009D7E63 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		AB41F2EA1C90FE33009D7E63 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		AB41F2EF1C90FE4C009D7E63 /* dataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataStore.h; sourceTree = "<group>"; };
+		AB41F2F01C90FE4C009D7E63 /* dataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataStore.m; sourceTree = "<group>"; };
+		AB41F2F71C91255D009D7E63 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIcon.png; sourceTree = "<group>"; };
+		AB41F2FC1C912FB3009D7E63 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		AB41F2FD1C912FB3009D7E63 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		AB41F2FF1C9132B4009D7E63 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		AB41F3001C9132B4009D7E63 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWorkoutViewController.h; sourceTree = "<group>"; };
+		AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWorkoutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1D4D0D1C960BC400E71342 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB41F2FC1C912FB3009D7E63 /* MainViewController.h */,
+				AB41F2FD1C912FB3009D7E63 /* MainViewController.m */,
+				AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */,
+				AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */,
+				AB345D8C1C9260F800604D55 /* activeWorkoutViewController.h */,
+				AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */,
+				AB345DA31C9498A100604D55 /* WorkoutDetailTableViewController.h */,
+				AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */,
+				AB41F2FF1C9132B4009D7E63 /* TableViewController.h */,
+				AB41F3001C9132B4009D7E63 /* TableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		AB41F2BD1C90FC25009D7E63 = {
 			isa = PBXGroup;
 			children = (
@@ -60,10 +117,16 @@
 			children = (
 				AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */,
 				AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */,
-				AB41F2CF1C90FC25009D7E63 /* ViewController.h */,
-				AB41F2D01C90FC25009D7E63 /* ViewController.m */,
 				AB41F2D21C90FC25009D7E63 /* Main.storyboard */,
+				AB1D4D0A1C960BAF00E71342 /* WorkoutGenerator.h */,
+				AB1D4D0B1C960BAF00E71342 /* WorkoutGenerator.m */,
+				AB1D4D0D1C960BC400E71342 /* View Controllers */,
+				AB41F2F31C90FF73009D7E63 /* Singleton */,
+				AB41F2EF1C90FE4C009D7E63 /* dataStore.h */,
+				AB41F2F01C90FE4C009D7E63 /* dataStore.m */,
+				AB41F2F21C90FE5D009D7E63 /* Core Data */,
 				AB41F2D51C90FC25009D7E63 /* Assets.xcassets */,
+				AB41F2F71C91255D009D7E63 /* addIcon.png */,
 				AB41F2D71C90FC25009D7E63 /* LaunchScreen.storyboard */,
 				AB41F2DA1C90FC25009D7E63 /* Info.plist */,
 				AB41F2C91C90FC25009D7E63 /* Supporting Files */,
@@ -77,6 +140,33 @@
 				AB41F2CA1C90FC25009D7E63 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB41F2F21C90FE5D009D7E63 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				AB41F2E01C90FC48009D7E63 /* Model.xcdatamodeld */,
+				AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */,
+				AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */,
+				AB1D4D101C9628FD00E71342 /* Accessory.h */,
+				AB1D4D111C9628FD00E71342 /* Accessory.m */,
+				AB41F2E31C90FE33009D7E63 /* Excercise+CoreDataProperties.h */,
+				AB41F2E41C90FE33009D7E63 /* Excercise+CoreDataProperties.m */,
+				AB41F2E51C90FE33009D7E63 /* Excercise.h */,
+				AB41F2E61C90FE33009D7E63 /* Excercise.m */,
+				AB41F2E71C90FE33009D7E63 /* Workout+CoreDataProperties.h */,
+				AB41F2E81C90FE33009D7E63 /* Workout+CoreDataProperties.m */,
+				AB41F2E91C90FE33009D7E63 /* Workout.h */,
+				AB41F2EA1C90FE33009D7E63 /* Workout.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		AB41F2F31C90FF73009D7E63 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Singleton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +200,7 @@
 				TargetAttributes = {
 					AB41F2C51C90FC25009D7E63 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 8NU54DBLJL;
 					};
 				};
 			};
@@ -136,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */,
 				AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */,
 				AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */,
 				AB41F2D41C90FC25009D7E63 /* Main.storyboard in Resources */,
@@ -149,9 +241,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB41F2D11C90FC25009D7E63 /* ViewController.m in Sources */,
+				AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */,
+				AB1D4D0C1C960BAF00E71342 /* WorkoutGenerator.m in Sources */,
+				AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */,
+				AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */,
+				AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */,
+				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
+				AB41F3011C9132B4009D7E63 /* TableViewController.m in Sources */,
+				AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
+				AB41F2FE1C912FB3009D7E63 /* MainViewController.m in Sources */,
+				AB41F2EB1C90FE33009D7E63 /* Excercise+CoreDataProperties.m in Sources */,
+				AB41F2E21C90FC48009D7E63 /* Model.xcdatamodeld in Sources */,
+				AB41F2EE1C90FE33009D7E63 /* Workout.m in Sources */,
+				AB345D8E1C9260F800604D55 /* activeWorkoutViewController.m in Sources */,
+				AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RealDudesWorkout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Qwiz.RealDudesWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -272,10 +380,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RealDudesWorkout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Qwiz.RealDudesWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -298,8 +409,22 @@
 				AB41F2DF1C90FC25009D7E63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB41F2E01C90FC48009D7E63 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB41F2E11C90FC48009D7E63 /* Model.xcdatamodel */,
+			);
+			currentVersion = AB41F2E11C90FC48009D7E63 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB41F2BE1C90FC25009D7E63 /* Project object */;
 }

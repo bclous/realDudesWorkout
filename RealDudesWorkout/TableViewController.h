@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TableViewController.h
 //  RealDudesWorkout
 //
 //  Created by Brian Clouser on 3/9/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TableViewController : UITableViewController
 
 @end
-
