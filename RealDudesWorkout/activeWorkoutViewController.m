@@ -70,11 +70,11 @@
     
     [self generateOriginalViewComponents];
     
-    FAKFontAwesome *nextExcercise = [FAKFontAwesome caretRightIconWithSize:50];
-    
-    NSAttributedString *nextExcerciseString = [nextExcercise attributedString];
-    
-    [self.excerciseCompleteButton setAttributedTitle:nextExcerciseString forState:0];
+//    FAKFontAwesome *nextExcercise = [FAKFontAwesome caretRightIconWithSize:50];
+//    
+//    NSAttributedString *nextExcerciseString = [nextExcercise attributedString];
+//    
+//    [self.excerciseCompleteButton setAttributedTitle:nextExcerciseString forState:0];
     
     // set up and fire the timer
     
