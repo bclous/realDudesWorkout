@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/13/16.
+//  Created by Brian Clouser on 3/15/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,10 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Workout (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
 @property (nonatomic) NSTimeInterval date;
 @property (nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL isFinishedSuccessfully;
+@property (nullable, nonatomic, retain) NSString *name;
 @property (nonatomic) int64_t timeInSeconds;
 @property (nullable, nonatomic, retain) NSSet<Excercise *> *excercises;
 

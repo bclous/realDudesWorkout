@@ -8,15 +8,15 @@
 
 #import "MainViewController.h"
 #import "WorkoutDetailTableViewController.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
+#import <CWStatusBarNotification.h>
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *addImage;
-
+@property (weak, nonatomic) IBOutlet UIButton *addWorkoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *workoutTableView;
-@property (weak, nonatomic) IBOutlet UIImageView *emptyWorkoutsImage;
+@property (weak, nonatomic) IBOutlet UIImageView *emilyImage;
 
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 
 @end
@@ -32,37 +32,37 @@
     self.workoutTableView.delegate = self;
     self.workoutTableView.dataSource = self;
     
+    self.emilyImage.image = [UIImage imageNamed:@"emily"];
+    self.emilyImage.alpha = 1;
+    self.workoutTableView.alpha = 0;
+    
+    [UIView animateWithDuration:3.5 animations:^{
+        
+        self.emilyImage.alpha = 0;
+        self.workoutTableView.alpha = 1;
+    }];
+    
     self.dataStore = [dataStore sharedDataStore];
     
     [self.dataStore fetchData];
     
    // NSLog(@"in view controller, %li items in the back array", self.dataStore.backExcercises.count);
     
-    self.addButton.hidden = NO;
+    //self.addButton.hidden = NO;
     
-    self.addImage.image = [UIImage imageNamed:@"addIcon"];
+    FAKFontAwesome *addWorkout = [FAKFontAwesome arrowCircleORightIconWithSize:75];
     
-    if (self.dataStore.workouts.count == 0)
-    {
-        self.workoutTableView.hidden = YES;
-        
-        self.emptyWorkoutsImage.image = [UIImage imageNamed:@"emily"];
-    }
+    NSAttributedString *addWorkoutString = [addWorkout attributedString];
     
-    else
-    {
-        self.emptyWorkoutsImage.hidden = YES;
-    }
+    [self.addWorkoutButton setAttributedTitle:addWorkoutString forState:0];
+    
+    self.workoutTableView.sectionHeaderHeight = 10;
+    
+
     
     //NSLog(@"%li excercises in the back array",self.dataStore.backExcercises.count);
 }
-- (IBAction)logButtonPressed:(id)sender
-{
-    
-    NSLog(@"this is where I was logging stuff");
-    
-    
-}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -72,26 +72,27 @@
     
      // NSLog(@"%li excercises in the back array",self.dataStore.backExcercises.count);
     
-    if (self.dataStore.workouts.count == 0)
-    {
-        self.workoutTableView.hidden = YES;
-        
-        self.emptyWorkoutsImage.image = [UIImage imageNamed:@"emily"];
-    }
-    
-    else
-    {
-        self.workoutTableView.hidden = NO;
-        self.emptyWorkoutsImage.hidden = YES;
-    }
 
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    
-    return self.dataStore.workouts.count;
+    if (section == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return self.dataStore.workouts.count;
+    }
    
 }
 
@@ -99,6 +100,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (indexPath.section == 0)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
+        
+        cell.textLabel.text = @"Lifetime totals";
+        
+        return cell;
+    }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
     
@@ -111,17 +121,7 @@
 }
 
 
-- (IBAction)addWorkoutButtonTapped:(id)sender
-{
-    
-        
-    
-    
-    //nothing here except for it segueing
-    
-    
 
-}
 
 #pragma mark - Navigation
 

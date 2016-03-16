@@ -9,6 +9,7 @@
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excerciseDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indexInWorkoutNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isComplete" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfRepsActual" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="numberOfRepsSuggested" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -28,8 +29,8 @@
         <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Excercise" inverseName="workout" inverseEntity="Excercise" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Excercise" positionX="-63" positionY="2" width="128" height="223"/>
-        <element name="Workout" positionX="-65" positionY="-261" width="128" height="133"/>
         <element name="Accessory" positionX="-9" positionY="324" width="128" height="88"/>
+        <element name="Excercise" positionX="-63" positionY="2" width="128" height="240"/>
+        <element name="Workout" positionX="-65" positionY="-261" width="128" height="133"/>
     </elements>
 </model>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60455D2B2D3CC971690A19C9 /* libPods-RealDudesWorkout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */; };
 		AB1D4D0C1C960BAF00E71342 /* WorkoutGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0B1C960BAF00E71342 /* WorkoutGenerator.m */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
@@ -14,7 +15,6 @@
 		AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */; };
 		AB41F2CB1C90FC25009D7E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CA1C90FC25009D7E63 /* main.m */; };
 		AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */; };
-		AB41F2D41C90FC25009D7E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2D21C90FC25009D7E63 /* Main.storyboard */; };
 		AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2D51C90FC25009D7E63 /* Assets.xcassets */; };
 		AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2D71C90FC25009D7E63 /* LaunchScreen.storyboard */; };
 		AB41F2E21C90FC48009D7E63 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E01C90FC48009D7E63 /* Model.xcdatamodeld */; };
@@ -25,11 +25,14 @@
 		AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2F01C90FE4C009D7E63 /* dataStore.m */; };
 		AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2F71C91255D009D7E63 /* addIcon.png */; };
 		AB41F2FE1C912FB3009D7E63 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2FD1C912FB3009D7E63 /* MainViewController.m */; };
-		AB41F3011C9132B4009D7E63 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3001C9132B4009D7E63 /* TableViewController.m */; };
 		AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */; };
+		ABA977701C99D41A00D04639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA9776F1C99D41A00D04639 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43C50A71DB08BD7B22B20E3C /* Pods-RealDudesWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDudesWorkout.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout.release.xcconfig"; sourceTree = "<group>"; };
+		6AC68073E94711102B10B694 /* Pods-RealDudesWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDudesWorkout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout.debug.xcconfig"; sourceTree = "<group>"; };
+		7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RealDudesWorkout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1D4D0A1C960BAF00E71342 /* WorkoutGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutGenerator.h; sourceTree = "<group>"; };
 		AB1D4D0B1C960BAF00E71342 /* WorkoutGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutGenerator.m; sourceTree = "<group>"; };
 		AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Accessory+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -44,7 +47,6 @@
 		AB41F2CA1C90FC25009D7E63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AB41F2D31C90FC25009D7E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB41F2D51C90FC25009D7E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB41F2D81C90FC25009D7E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB41F2DA1C90FC25009D7E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,10 +64,9 @@
 		AB41F2F71C91255D009D7E63 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIcon.png; sourceTree = "<group>"; };
 		AB41F2FC1C912FB3009D7E63 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		AB41F2FD1C912FB3009D7E63 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		AB41F2FF1C9132B4009D7E63 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		AB41F3001C9132B4009D7E63 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWorkoutViewController.h; sourceTree = "<group>"; };
 		AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWorkoutViewController.m; sourceTree = "<group>"; };
+		ABA9776F1C99D41A00D04639 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60455D2B2D3CC971690A19C9 /* libPods-RealDudesWorkout.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,8 +92,6 @@
 				AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */,
 				AB345DA31C9498A100604D55 /* WorkoutDetailTableViewController.h */,
 				AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */,
-				AB41F2FF1C9132B4009D7E63 /* TableViewController.h */,
-				AB41F3001C9132B4009D7E63 /* TableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -101,6 +101,8 @@
 			children = (
 				AB41F2C81C90FC25009D7E63 /* RealDudesWorkout */,
 				AB41F2C71C90FC25009D7E63 /* Products */,
+				C918D193EE97D04C10F86654 /* Pods */,
+				BF5953C663E9C4E4B04E5544 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,7 +119,7 @@
 			children = (
 				AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */,
 				AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */,
-				AB41F2D21C90FC25009D7E63 /* Main.storyboard */,
+				ABA9776F1C99D41A00D04639 /* Main.storyboard */,
 				AB1D4D0A1C960BAF00E71342 /* WorkoutGenerator.h */,
 				AB1D4D0B1C960BAF00E71342 /* WorkoutGenerator.m */,
 				AB1D4D0D1C960BC400E71342 /* View Controllers */,
@@ -169,6 +171,23 @@
 			name = Singleton;
 			sourceTree = "<group>";
 		};
+		BF5953C663E9C4E4B04E5544 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C918D193EE97D04C10F86654 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6AC68073E94711102B10B694 /* Pods-RealDudesWorkout.debug.xcconfig */,
+				43C50A71DB08BD7B22B20E3C /* Pods-RealDudesWorkout.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB41F2DD1C90FC25009D7E63 /* Build configuration list for PBXNativeTarget "RealDudesWorkout" */;
 			buildPhases = (
+				CA0432A1312A6AAA7CB85DA6 /* Check Pods Manifest.lock */,
 				AB41F2C21C90FC25009D7E63 /* Sources */,
 				AB41F2C31C90FC25009D7E63 /* Frameworks */,
 				AB41F2C41C90FC25009D7E63 /* Resources */,
+				BB2609E51DCFA859C1B425F1 /* Embed Pods Frameworks */,
+				E4C9727CC9732480AC8FE88B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,11 +252,59 @@
 				AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */,
 				AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */,
 				AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */,
-				AB41F2D41C90FC25009D7E63 /* Main.storyboard in Resources */,
+				ABA977701C99D41A00D04639 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB2609E51DCFA859C1B425F1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA0432A1312A6AAA7CB85DA6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4C9727CC9732480AC8FE88B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AB41F2C21C90FC25009D7E63 /* Sources */ = {
@@ -248,7 +318,6 @@
 				AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */,
 				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
-				AB41F3011C9132B4009D7E63 /* TableViewController.m in Sources */,
 				AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
 				AB41F2FE1C912FB3009D7E63 /* MainViewController.m in Sources */,
@@ -263,14 +332,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AB41F2D21C90FC25009D7E63 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB41F2D31C90FC25009D7E63 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AB41F2D71C90FC25009D7E63 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,6 +425,7 @@
 		};
 		AB41F2DE1C90FC25009D7E63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AC68073E94711102B10B694 /* Pods-RealDudesWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -378,6 +440,7 @@
 		};
 		AB41F2DF1C90FC25009D7E63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43C50A71DB08BD7B22B20E3C /* Pods-RealDudesWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
