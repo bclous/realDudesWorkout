@@ -7,6 +7,9 @@ target 'RealDudesWorkout' do
 
 pod “FontAwesomeKit”
 pod “CWStatusBarNotification”
+pod 'APParallaxHeader'
+pod 'SWTableViewCell', '~> 0.3.7'
+
 
 end
 

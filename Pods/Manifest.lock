@@ -1,4 +1,5 @@
 PODS:
+  - APParallaxHeader (0.1.6)
   - CWStatusBarNotification (2.3.4)
   - FontAwesomeKit (2.2.0):
     - FontAwesomeKit/Core (= 2.2.0)
@@ -15,13 +16,18 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.2.0):
     - FontAwesomeKit/Core
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
+  - APParallaxHeader
   - CWStatusBarNotification
   - FontAwesomeKit
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
+  APParallaxHeader: 854bc48a2487ca12c702f8a236fec0d89cdac5c3
   CWStatusBarNotification: 3fec41edcb0ae3677d9febfcb9632d8bdf52294c
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
 COCOAPODS: 0.39.0

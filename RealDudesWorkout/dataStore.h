@@ -9,14 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Excercise.h"
-#import "Workout.h"
+#import "User.h"
 
 @interface dataStore : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSArray *workouts;
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) NSArray *availableExcercises;
+@property (strong, nonatomic) NSArray *availableAccessories;
+
 
 +(instancetype)sharedDataStore;
+
+-(instancetype)init;
 
 -(void)saveContext;
 

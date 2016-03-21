@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/15/16.
+//  Created by Brian Clouser on 3/19/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,8 +10,8 @@
 //
 
 #import "Workout.h"
-#import "Excercise.h"
-
+#import "Circuit.h"
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,16 +22,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL isFinishedSuccessfully;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nonatomic) int64_t timeInSeconds;
-@property (nullable, nonatomic, retain) NSSet<Excercise *> *excercises;
+@property (nullable, nonatomic, retain) NSSet<Circuit *> *circuits;
+@property (nullable, nonatomic, retain) NSManagedObject *user;
 
 @end
 
 @interface Workout (CoreDataGeneratedAccessors)
 
-- (void)addExcercisesObject:(Excercise *)value;
-- (void)removeExcercisesObject:(Excercise *)value;
-- (void)addExcercises:(NSSet<Excercise *> *)values;
-- (void)removeExcercises:(NSSet<Excercise *> *)values;
+- (void)addCircuitsObject:(Circuit *)value;
+- (void)removeCircuitsObject:(Circuit *)value;
+- (void)addCircuits:(NSSet<Circuit *> *)values;
+- (void)removeCircuits:(NSSet<Circuit *> *)values;
 
 @end
 

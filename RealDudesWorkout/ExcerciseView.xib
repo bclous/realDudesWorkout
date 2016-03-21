@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExcerciseView">
+            <connections>
+                <outlet property="ExcerciseView" destination="iN0-l3-epB" id="dmE-Vs-grE"/>
+                <outlet property="excerciseImage" destination="Bpe-V1-4nz" id="CbJ-zk-BCh"/>
+                <outlet property="excerciseNameLabel" destination="WCl-gC-4U5" id="6f9-ve-3eA"/>
+                <outlet property="nextExcerciseButton" destination="pzo-h8-Q8V" id="wAB-lL-lNh"/>
+                <outlet property="numberOfRepsLabel" destination="nhe-WK-dAQ" id="8Em-gh-rid"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhe-WK-dAQ">
+                    <rect key="frame" x="0.0" y="12" width="600" height="115"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="ZGm-QK-s1L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="96"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crawl down pushups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCl-gC-4U5">
+                    <rect key="frame" x="0.0" y="120" width="600" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bpe-V1-4nz">
+                    <rect key="frame" x="30" y="157" width="540" height="373"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzo-h8-Q8V">
+                    <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="PdF-TK-yZY"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="nextExcerciseButtonTapped:" destination="-1" eventType="touchUpInside" id="ZLR-Ly-8kg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="WCl-gC-4U5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5cA-Ln-07c"/>
+                <constraint firstItem="Bpe-V1-4nz" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="HJf-vy-ySB"/>
+                <constraint firstItem="Bpe-V1-4nz" firstAttribute="top" secondItem="nhe-WK-dAQ" secondAttribute="bottom" constant="30" id="L7A-fa-l7s"/>
+                <constraint firstItem="nhe-WK-dAQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="OnA-s3-iTI"/>
+                <constraint firstItem="nhe-WK-dAQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Q7O-Wk-Q4H"/>
+                <constraint firstItem="WCl-gC-4U5" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Ra6-OX-min"/>
+                <constraint firstItem="nhe-WK-dAQ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="VMu-AA-cwg"/>
+                <constraint firstItem="pzo-h8-Q8V" firstAttribute="top" secondItem="Bpe-V1-4nz" secondAttribute="bottom" constant="20" id="Yss-B5-r4g"/>
+                <constraint firstItem="Bpe-V1-4nz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cza-I8-8pX"/>
+                <constraint firstItem="pzo-h8-Q8V" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="m4D-Wn-Prm"/>
+                <constraint firstItem="WCl-gC-4U5" firstAttribute="top" secondItem="nhe-WK-dAQ" secondAttribute="bottom" constant="-7" id="oLw-hH-Yjj"/>
+                <constraint firstItem="pzo-h8-Q8V" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sjd-uV-gq9"/>
+                <constraint firstAttribute="bottom" secondItem="pzo-h8-Q8V" secondAttribute="bottom" id="vcg-0C-BsZ"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.m
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/15/16.
+//  Created by Brian Clouser on 3/19/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,6 +18,7 @@
 @dynamic isFinishedSuccessfully;
 @dynamic name;
 @dynamic timeInSeconds;
-@dynamic excercises;
+@dynamic circuits;
+@dynamic user;
 
 @end

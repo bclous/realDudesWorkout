@@ -2,7 +2,7 @@
 //  Excercise+CoreDataProperties.m
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/15/16.
+//  Created by Brian Clouser on 3/18/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,18 +13,11 @@
 
 @implementation Excercise (CoreDataProperties)
 
-@dynamic category;
-@dynamic excerciseDescription;
-@dynamic indexInWorkoutNumber;
 @dynamic name;
-@dynamic numberOfRepsActual;
-@dynamic numberOfRepsSuggested;
 @dynamic pictureName;
-@dynamic timeInSecondsActual;
-@dynamic timeInSecondsSuggested;
-@dynamic uniqueIdentifier;
-@dynamic isComplete;
+@dynamic excerciseDescription;
+@dynamic category;
+@dynamic excerciseSet;
 @dynamic accessories;
-@dynamic workout;
 
 @end

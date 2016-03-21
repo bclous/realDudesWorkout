@@ -23,7 +23,44 @@
     return _sharedDataStore;
 }
 
+//-(instancetype)init
+//{
+//    self = [super init];
+//    
+//    if (self)
+//    {
+//        NSLog(@"this is getting called and count is: %lu",self.availableExcercises.count);
+//        BOOL firstTime = self.availableExcercises.count == 0;
+//        
+//        if (firstTime)
+//        {
+//            NSLog(@"this is happening");
+//            [self createUser];
+//            [self generateAvailableExcercisesAndAccessoriesArrays];
+//        }
+//    }
+//    
+//    return self;
+//}
 
+
+-(void)createUser
+{
+    User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.managedObjectContext];
+    
+    user.name = @"Workout Bro";
+    user.backLevel = 0;
+    user.chestLevel = 0;
+    user.legsLevel = 0;
+    user.coreLevel = 0;
+    user.flexLevel = 0;
+    
+    self.user = user;
+    
+   // [self saveContext]; do I need this?
+    
+    
+}
 
 -(void)saveContext
 {
@@ -77,12 +114,71 @@
 
 -(void)fetchData
 {
-        
-    NSFetchRequest *workoutsRequeset = [NSFetchRequest fetchRequestWithEntityName:@"Workout"];
+    NSFetchRequest *excercisesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Excercise"];
+    NSFetchRequest *accessoriesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Accessory"];
+    NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     
-    self.workouts = [self.managedObjectContext executeFetchRequest:workoutsRequeset error:nil];
+    self.availableExcercises = [self.managedObjectContext executeFetchRequest:excercisesRequest error:nil];
+    self.availableAccessories = [self.managedObjectContext executeFetchRequest:accessoriesRequest error:nil];
+    
+    NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:nil];
+    
+    
+    if (users.count == 0)
+    {
+        [self createUser];
+        [self generateAvailableExcercisesAndAccessoriesArrays];
+    }
+    else
+    {
+        self.user = users[0];
+    }
     
     [self saveContext];
+    
+}
+
+-(void)generateAvailableExcercisesAndAccessoriesArrays
+{
+    
+    Excercise *pullups = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *crawlDownPushups = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *squats = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *legKicks = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    
+    Accessory *pullupBar = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    
+    pullups.name = @"Pullups";
+    pullups.pictureName = @"pullUp";
+    pullups.category = @"back";
+    pullups.excerciseDescription = @"This is the description for pullups";
+    
+    crawlDownPushups.name = @"Crawl down pushups";
+    crawlDownPushups.pictureName = @"crawlDownPushups";
+    crawlDownPushups.category = @"chest";
+    crawlDownPushups.excerciseDescription = @"this is the description for crawl down pushups";
+    
+    squats.name = @"Squats";
+    squats.pictureName = @"squat";
+    squats.category = @"legs";
+    squats.excerciseDescription = @"This is the description for Squats";
+    
+    legKicks.name = @"Leg kicks";
+    legKicks.pictureName = @"legKicks";
+    legKicks.category = @"core";
+    legKicks.excerciseDescription = @"This is the description for leg kicks";
+    
+    pullupBar.name = @"Pullup bar";
+    pullupBar.pictureName = @"pullUpBar";
+    
+    [pullups addAccessoriesObject:pullupBar];
+    
+    
+    NSFetchRequest *excercisesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Excercise"];
+    NSFetchRequest *accessoriesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Accessory"];
+    
+    self.availableExcercises = [self.managedObjectContext executeFetchRequest:excercisesRequest error:nil];
+    self.availableAccessories = [self.managedObjectContext executeFetchRequest:accessoriesRequest error:nil];
     
 }
 

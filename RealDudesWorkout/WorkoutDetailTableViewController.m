@@ -21,16 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.excercisesOutOfOrder = [self.workout.excercises allObjects];
-    
-    [self orderExcercises];
-    
-    [self generateArrayOfOnlyCompletedExcercises];
-    
-    for (Excercise *excercise in self.excercisesInOrder)
-    {
-        NSLog(@"%@ is complete: %.0lld",excercise.name, excercise.timeInSecondsActual);
-    }
+//    self.excercisesOutOfOrder = [self.workout.excercises allObjects];
+//    
+//    [self orderExcercises];
+//    
+//    [self generateArrayOfOnlyCompletedExcercises];
+//    
+//    for (Excercise *excercise in self.excercisesInOrder)
+//    {
+//        NSLog(@"%@ is complete: %.0lld",excercise.name, excercise.timeInSecondsActual);
+//    }
     
     
     
@@ -88,7 +88,7 @@
         }
         else
         {
-            cell.textLabel.text = [self numberOfExcercisesText];
+            //cell.textLabel.text = [self numberOfExcercisesText];
         }
         
         return cell;
@@ -101,7 +101,7 @@
         
         Excercise *excerciseAtRow = self.excercisesInOrderCompleted[indexPath.row];
         
-        cell.textLabel.text = [self excerciseTextFrom:excerciseAtRow];
+        //cell.textLabel.text = [self excerciseTextFrom:excerciseAtRow];
         
         return cell;
     }
@@ -131,26 +131,26 @@
     
 }
 
--(NSString *)numberOfExcercisesText
-{
-    NSUInteger totalNumberOfExcercises = self.workout.excercises.count;
-    NSUInteger completedExcercises = self.excercisesInOrderCompleted.count;
-    
-    if (self.workout.isFinishedSuccessfully)
-    {
-        NSString *numberOfExcercises = [NSString stringWithFormat:@"%lu/%lu workout completed!",completedExcercises,totalNumberOfExcercises];
-        
-        return numberOfExcercises;
-    }
-    else
-    {
-        NSString *numberOfExcercises = [NSString stringWithFormat:@"%lu/%lu workout incomplete",completedExcercises,totalNumberOfExcercises];
-        
-        return numberOfExcercises;
-
-    }
-    
-}
+//-(NSString *)numberOfExcercisesText
+//{
+//   /NSUInteger totalNumberOfExcercises = [;
+//    NSUInteger completedExcercises = self.excercisesInOrderCompleted.count;
+//    
+//    if (self.workout.isFinishedSuccessfully)
+//    {
+//        NSString *numberOfExcercises = [NSString stringWithFormat:@"%lu/%lu workout completed!",completedExcercises,totalNumberOfExcercises];
+//        
+//        return numberOfExcercises;
+//    }
+//    else
+//    {
+//        NSString *numberOfExcercises = [NSString stringWithFormat:@"%lu/%lu workout incomplete",completedExcercises,totalNumberOfExcercises];
+//        
+//        return numberOfExcercises;
+//
+//    }
+//    
+//}
 
 -(NSString *)totalTimeText
 {
@@ -185,25 +185,25 @@
     
 }
                                
--(NSString *)excerciseTextFrom:(Excercise *)excercise
-{
-    BOOL isRest = [excercise.name isEqualToString:@"Rest"];
-    
-    if (isRest)
-    {
-        NSString *restString = [NSString stringWithFormat:@"Rested for %lld seconds",excercise.timeInSecondsActual];
-        
-        return restString;
-    }
-    else
-    {
-        NSString *excerciseString = [NSString stringWithFormat:@"%lld %@",excercise.numberOfRepsActual, excercise.name];
-        
-        return excerciseString;
-    }
-    
-}
-                               
+//-(NSString *)excerciseTextFrom:(Excercise *)excercise
+//{
+//    BOOL isRest = [excercise.name isEqualToString:@"Rest"];
+//    
+//    if (isRest)
+//    {
+//        NSString *restString = [NSString stringWithFormat:@"Rested for %lld seconds",excercise.timeInSecondsActual];
+//        
+//        return restString;
+//    }
+//    else
+//    {
+//        NSString *excerciseString = [NSString stringWithFormat:@"%lld %@",excercise.numberOfRepsActual, excercise.name];
+//        
+//        return excerciseString;
+//    }
+//    
+//}
+
 
                                
                                

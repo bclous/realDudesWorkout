@@ -8,7 +8,6 @@
 
 #import "NewWorkoutViewController.h"
 #import "activeWorkoutViewController.h"
-#import "WorkoutGenerator.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 
 @interface NewWorkoutViewController ()
@@ -32,6 +31,8 @@
     self.leftImage.image = [UIImage imageNamed:@"dumbbell"];
     self.rightImage.image = [UIImage imageNamed:@"pullUpBar"];
     
+    self.navigationItem.leftBarButtonItem.title = @"asd;lfkjsdaf";
+    
 
     
 }
@@ -47,6 +48,8 @@
 
 
 
+
+
 #pragma mark - Navigation
 
 
@@ -56,11 +59,13 @@
     NSLog(@"PREPARE TO SEGUE CALLED");
  
     
-    WorkoutGenerator *workoutGenerator = [[WorkoutGenerator alloc] init];
+    self.workout = [self.dataStore.user generateNewWorkout];
     
-    self.workout = [workoutGenerator createNewWorkoutStandard];
+    NSArray *circuits = [self.workout.circuits allObjects];
     
-    NSLog(@"sending the new workout to the active view controller.  Workout has %u excercises in it", self.workout.excercises.count);
+    NSLog(@"new workout set up with: %lu circuits, %lu excerciseSets in each circuit",self.workout.circuits.count, ((Circuit *)circuits[0]).excerciseSets.count);
+    
+    NSLog(@"sending the new workout to the active view controller.  Workout has %lu excercises in it", self.workout.circuits.count);
     
     activeWorkoutViewController *destinationVC = segue.destinationViewController;
     
