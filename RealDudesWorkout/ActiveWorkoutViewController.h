@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Workout.h"
 
-@interface activeWorkoutViewController : UIViewController
+@interface ActiveWorkoutViewController : UIViewController
 
 @property (strong, nonatomic) Workout *workout;
 

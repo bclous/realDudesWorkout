@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Workout.h"
 
 @interface RestView : UIVisualEffectView
 
-@property (strong, nonatomic) IBOutlet UIView *restView;
+@property (strong, nonatomic) ExcerciseSet *excerciseSetJustFinished;
+@property (strong, nonatomic) ExcerciseSet *excerciseSetUpNext;
+@property (strong, nonatomic) Workout *currentWorkout;
 
-@property (weak, nonatomic) IBOutlet UILabel *lastExcerciseRepsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeInSecondsLabel;
+
+/// reminder - your button is in excercise view, so to have it do something to rest view, rest view should be a subview of excercise view, not a subview of the main view controller, that way you can basically just bring it up and back down inside of methods in excerciseView
+
 
 @end

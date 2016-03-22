@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExcerciseSet.h"
 
 @interface ExcerciseView : UIView
 
-@property (strong, nonatomic) IBOutlet UIView *ExcerciseView;
+@property (strong, nonatomic) ExcerciseSet *excerciseSet;
 
-@property (weak, nonatomic) IBOutlet UILabel *numberOfRepsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *excerciseNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *excerciseImage;
-@property (weak, nonatomic) IBOutlet UIButton *nextExcerciseButton;
-
-- (IBAction)nextExcerciseButtonTapped:(id)sender;
 
 @end

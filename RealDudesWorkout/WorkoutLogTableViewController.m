@@ -30,6 +30,8 @@
     
     NSLog(@"name of user: %@",self.dataStore.user.name);
     
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:@"GoingBackToRootVC" object:nil];
+    
    
     
     
@@ -40,6 +42,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"view did appear got called");
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,16 @@
 
 #import "ExcerciseView.h"
 
+@interface ExcerciseView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *numberOfRepsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *excerciseNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *excerciseImage;
+@property (strong, nonatomic) IBOutlet UIView *excerciseView;
+
+
+@end
+
 @implementation ExcerciseView
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -41,17 +51,27 @@
     
     [[NSBundle mainBundle] loadNibNamed:@"ExcerciseView" owner:self options:nil];
     
-    [self addSubview:self.ExcerciseView];
+    [self addSubview:self.excerciseView];
     
-    self.ExcerciseView.frame = self.bounds;
+    self.excerciseView.frame = self.bounds;
     
     
 }
 
-
-- (IBAction)nextExcerciseButtonTapped:(id)sender
+-(void)setExcerciseSet:(ExcerciseSet *)excerciseSet
 {
-   
+    _excerciseSet = excerciseSet;
+    
+    [self updateUI];
+}
+
+-(void)updateUI
+{
+    self.numberOfRepsLabel.text = [NSString stringWithFormat:@"%lld",self.excerciseSet.numberOfRepsSuggested];
+    self.excerciseNameLabel.text = self.excerciseSet.excercise.name;
+    self.excerciseImage.image = [UIImage imageNamed:self.excerciseSet.excercise.pictureName];
     
 }
+
+
 @end

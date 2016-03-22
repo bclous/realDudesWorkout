@@ -10,7 +10,7 @@
 		60455D2B2D3CC971690A19C9 /* libPods-RealDudesWorkout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
-		AB345D8E1C9260F800604D55 /* activeWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */; };
+		AB345D8E1C9260F800604D55 /* ActiveWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */; };
 		AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */; };
 		AB41F2CB1C90FC25009D7E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CA1C90FC25009D7E63 /* main.m */; };
 		AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */; };
@@ -24,6 +24,7 @@
 		AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2F01C90FE4C009D7E63 /* dataStore.m */; };
 		AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2F71C91255D009D7E63 /* addIcon.png */; };
 		AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */; };
+		AB6A67001CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6A66FF1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m */; };
 		ABA977701C99D41A00D04639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA9776F1C99D41A00D04639 /* Main.storyboard */; };
 		ABA977731C9A01C000D04639 /* WorkoutSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA977721C9A01C000D04639 /* WorkoutSummaryViewController.m */; };
 		ABA977A51C9B4AFB00D04639 /* WorkoutLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA977A41C9B4AFB00D04639 /* WorkoutLogTableViewController.m */; };
@@ -48,8 +49,8 @@
 		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
 		AB1D4D111C9628FD00E71342 /* Accessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accessory.m; sourceTree = "<group>"; };
-		AB345D8C1C9260F800604D55 /* activeWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activeWorkoutViewController.h; sourceTree = "<group>"; };
-		AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activeWorkoutViewController.m; sourceTree = "<group>"; };
+		AB345D8C1C9260F800604D55 /* ActiveWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveWorkoutViewController.h; sourceTree = "<group>"; };
+		AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveWorkoutViewController.m; sourceTree = "<group>"; };
 		AB345DA31C9498A100604D55 /* WorkoutDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailTableViewController.h; sourceTree = "<group>"; };
 		AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailTableViewController.m; sourceTree = "<group>"; };
 		AB41F2C61C90FC25009D7E63 /* RealDudesWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealDudesWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +74,8 @@
 		AB41F2F71C91255D009D7E63 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIcon.png; sourceTree = "<group>"; };
 		AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWorkoutViewController.h; sourceTree = "<group>"; };
 		AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWorkoutViewController.m; sourceTree = "<group>"; };
+		AB6A66FE1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostWorkoutSummaryViewController.h; sourceTree = "<group>"; };
+		AB6A66FF1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostWorkoutSummaryViewController.m; sourceTree = "<group>"; };
 		ABA9776F1C99D41A00D04639 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ABA977711C9A01C000D04639 /* WorkoutSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSummaryViewController.h; sourceTree = "<group>"; };
 		ABA977721C9A01C000D04639 /* WorkoutSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSummaryViewController.m; sourceTree = "<group>"; };
@@ -121,8 +124,10 @@
 				AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */,
 				ABA977A61C9B7EEC00D04639 /* WorkoutTableViewCell.h */,
 				ABA977A71C9B7EEC00D04639 /* WorkoutTableViewCell.m */,
-				AB345D8C1C9260F800604D55 /* activeWorkoutViewController.h */,
-				AB345D8D1C9260F800604D55 /* activeWorkoutViewController.m */,
+				AB345D8C1C9260F800604D55 /* ActiveWorkoutViewController.h */,
+				AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */,
+				AB6A66FE1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.h */,
+				AB6A66FF1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m */,
 				ABA977BF1C9F602E00D04639 /* RestView.h */,
 				ABA977C01C9F602E00D04639 /* RestView.m */,
 				ABA977C21C9F984A00D04639 /* ExcerciseView.h */,
@@ -364,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB6A67001CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m in Sources */,
 				AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */,
 				ABA977731C9A01C000D04639 /* WorkoutSummaryViewController.m in Sources */,
 				ABA977B31C9CA7BB00D04639 /* ExcerciseSet+CoreDataProperties.m in Sources */,
@@ -384,7 +390,7 @@
 				AB41F2EE1C90FE33009D7E63 /* Workout.m in Sources */,
 				ABA977A51C9B4AFB00D04639 /* WorkoutLogTableViewController.m in Sources */,
 				ABA977B11C9CA7BB00D04639 /* Circuit+CoreDataProperties.m in Sources */,
-				AB345D8E1C9260F800604D55 /* activeWorkoutViewController.m in Sources */,
+				AB345D8E1C9260F800604D55 /* ActiveWorkoutViewController.m in Sources */,
 				AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */,
 				ABA977C11C9F602E00D04639 /* RestView.m in Sources */,
 				ABA977B21C9CA7BB00D04639 /* Circuit.m in Sources */,

@@ -33,6 +33,8 @@
     
     self.navigationItem.leftBarButtonItem.title = @"asd;lfkjsdaf";
     
+    
+    
 
     
 }
@@ -67,7 +69,7 @@
     
     NSLog(@"sending the new workout to the active view controller.  Workout has %lu excercises in it", self.workout.circuits.count);
     
-    activeWorkoutViewController *destinationVC = segue.destinationViewController;
+    ActiveWorkoutViewController *destinationVC = segue.destinationViewController;
     
     destinationVC.workout = self.workout;
 

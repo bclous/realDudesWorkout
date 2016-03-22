@@ -1,18 +1,18 @@
 //
-//  WorkoutSummaryViewController.m
+//  PostWorkoutSummaryViewController.m
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/16/16.
+//  Created by Brian Clouser on 3/21/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 
-#import "WorkoutSummaryViewController.h"
+#import "PostWorkoutSummaryViewController.h"
 
-@interface WorkoutSummaryViewController ()
+@interface PostWorkoutSummaryViewController ()
 
 @end
 
-@implementation WorkoutSummaryViewController
+@implementation PostWorkoutSummaryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,11 +21,16 @@
     self.navigationItem.hidesBackButton = YES;
 }
 
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 - (IBAction)buttonTapped:(id)sender
 {
-    NSLog(@"this is getting called");
-        
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GoingBackToRootVC" object:nil];
+    
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
