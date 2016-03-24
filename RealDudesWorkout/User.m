@@ -45,7 +45,7 @@
 {
     NSLog(@"in the create new workout standard method");
     
-    dataStore *store = [dataStore sharedDataStore];
+    DataStore *store = [DataStore sharedDataStore];
     
     // create workout
     
@@ -82,7 +82,7 @@
     excerciseSet1.isComplete = NO;
     excerciseSet1.name = @"Excercise 1";
     excerciseSet1.numberofRepsActual = 0;
-    excerciseSet1.numberOfRepsSuggested = 8;
+    excerciseSet1.numberOfRepsSuggested = 50;
     excerciseSet1.restTimeAfterInSecondsActual = 0;
     excerciseSet1.restTimeAfterInSecondsSuggested = 59;
     excerciseSet1.timeInSecondsActual = 0;
@@ -104,7 +104,7 @@
     excerciseSet3.isComplete = NO;
     excerciseSet3.name = @"Excercise 3";
     excerciseSet3.numberofRepsActual = 0;
-    excerciseSet3.numberOfRepsSuggested = 8;
+    excerciseSet3.numberOfRepsSuggested = 20;
     excerciseSet3.restTimeAfterInSecondsActual = 0;
     excerciseSet3.restTimeAfterInSecondsSuggested = 59;
     excerciseSet3.timeInSecondsActual = 0;

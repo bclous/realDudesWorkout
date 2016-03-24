@@ -33,6 +33,31 @@
 
 }
 
+-(NSString *)excercisesCompletedString
+{
+    NSArray *excercises = [self excercisesInOrder];
+    
+    NSUInteger totalExcercises = excercises.count;
+    
+    NSUInteger counter = 0;
+    
+    for (ExcerciseSet *excerciseSet in excercises)
+    {
+        if (excerciseSet.isComplete)
+        {
+            counter ++;
+        }
+    }
+    
+    //BOOL workoutCompleted = (counter == totalExcercises);
+    
+    NSString *message = [NSString stringWithFormat:@"Completed %lu/%lu excercises",(unsigned long)counter,(unsigned long)totalExcercises];
+    
+    return message;
+    
+    
+}
+
 -(NSString *)workoutStartDayOfWeek
 {
     
@@ -75,6 +100,23 @@
     
     return dayOfMonth;
 }
+
+-(NSString *)longDateString
+{
+    
+    NSString *dateString = [NSString stringWithFormat:@"%@, %@ %@",[self workoutStartDayOfWeek], [self workoutStartMonth], [self workoutStartDayOfMonth]];
+    
+    return dateString;
+    
+}
+
+-(NSArray *)arrayOfInfo
+{
+    NSArray *arrayOfInfo = @[ self.name, [self longDateString], [self workoutTimeString] ];
+    
+    return arrayOfInfo;
+}
+
 
 -(NSString *)workoutTimeString
 {
@@ -198,66 +240,66 @@
 
 -(Workout *)generateWorkout
 {
-    NSLog(@"in the create new workout standard method");
+//    NSLog(@"in the create new workout standard method");
+//    
+//    dataStore *store = [dataStore sharedDataStore];
+//    
+//    User *user = store.user;
+//    
+//    // create workout
+//    
+//    Workout *workout = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:store.managedObjectContext];
+//    
+//    NSUInteger workoutNumber = store.user.workouts.count +1;
+//    
+//    NSString *workoutName = [NSString stringWithFormat:@"Workout #%li",(unsigned long)workoutNumber];
+//    
+//    workout.date = [[NSDate date] timeIntervalSince1970];
+//    
+//    workout.isFinished = NO;
+//    workout.isFinishedSuccessfully = NO;
+//    workout.timeInSeconds = 0;
+//    
+//    // create circuits
+//    
+//    Circuit *circuit1 = [NSEntityDescription insertNewObjectForEntityForName:@"Cicuit" inManagedObjectContext:store.managedObjectContext];
+//    
+//    circuit1.name = @"Circuit 1";
+//    circuit1.circuitIndexNumberInWorkout = 0;
+//    
+//    // create excercise sets
+//    
+//    ExcerciseSet *excerciseSet1 =  [NSEntityDescription insertNewObjectForEntityForName:@"Excercise Set" inManagedObjectContext:store.managedObjectContext];
+//    
+//    excerciseSet1.excerciseSetIndexNumberInCicuit = 0;
+//    excerciseSet1.isComplete = NO;
+//    excerciseSet1.name = @"Excercise 1";
+//    excerciseSet1.numberofRepsActual = 0;
+//    excerciseSet1.numberOfRepsSuggested = 8;
+//    excerciseSet1.restTimeAfterInSecondsActual = 0;
+//    excerciseSet1.restTimeAfterInSecondsSuggested = 59;
+//    excerciseSet1.timeInSecondsActual = 0;
+//    excerciseSet1.timeInSecondsSuggested = 60;
+//    excerciseSet1.excerciseSetDescription = @"This is your first excercise, let's get after it";
+//    
+//    // add excercise to excercise set
+//    excerciseSet1.excercise = store.availableExcercises[0];
+//    
+//    // add excercise set to circuit
+//    [circuit1 addExcerciseSetsObject:excerciseSet1];
+//    
+//    // add circuit to workout
+//    [workout addCircuitsObject:circuit1];
+//    
+//    // add workout to user
+//    [user addWorkoutsObject:workout];
+//    
+//    [store fetchData];
+//    
+//    return workout;
     
-    dataStore *store = [dataStore sharedDataStore];
     
-    User *user = store.user;
-    
-    // create workout
-    
-    Workout *workout = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:store.managedObjectContext];
-    
-    NSUInteger workoutNumber = store.user.workouts.count +1;
-    
-    NSString *workoutName = [NSString stringWithFormat:@"Workout #%li",(unsigned long)workoutNumber];
-    
-    workout.date = [[NSDate date] timeIntervalSince1970];
-    
-    workout.isFinished = NO;
-    workout.isFinishedSuccessfully = NO;
-    workout.timeInSeconds = 0;
-    
-    // create circuits
-    
-    Circuit *circuit1 = [NSEntityDescription insertNewObjectForEntityForName:@"Cicuit" inManagedObjectContext:store.managedObjectContext];
-    
-    circuit1.name = @"Circuit 1";
-    circuit1.circuitIndexNumberInWorkout = 0;
-    
-    // create excercise sets
-    
-    ExcerciseSet *excerciseSet1 =  [NSEntityDescription insertNewObjectForEntityForName:@"Excercise Set" inManagedObjectContext:store.managedObjectContext];
-    
-    excerciseSet1.excerciseSetIndexNumberInCicuit = 0;
-    excerciseSet1.isComplete = NO;
-    excerciseSet1.name = @"Excercise 1";
-    excerciseSet1.numberofRepsActual = 0;
-    excerciseSet1.numberOfRepsSuggested = 8;
-    excerciseSet1.restTimeAfterInSecondsActual = 0;
-    excerciseSet1.restTimeAfterInSecondsSuggested = 59;
-    excerciseSet1.timeInSecondsActual = 0;
-    excerciseSet1.timeInSecondsSuggested = 60;
-    excerciseSet1.excerciseSetDescription = @"This is your first excercise, let's get after it";
-    
-    // add excercise to excercise set
-    excerciseSet1.excercise = store.availableExcercises[0];
-    
-    // add excercise set to circuit
-    [circuit1 addExcerciseSetsObject:excerciseSet1];
-    
-    // add circuit to workout
-    [workout addCircuitsObject:circuit1];
-    
-    // add workout to user
-    [user addWorkoutsObject:workout];
-    
-    [store fetchData];
-    
-    return workout;
-    
-    
-    
+    return nil;
 
 }
 

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "dataStore.h"
+#import "DataStore.h"
 
 @interface WorkoutLogTableViewController : UITableViewController
 
-@property (strong, nonatomic) dataStore *dataStore;
+@property (strong, nonatomic) DataStore *dataStore;
 
 @end

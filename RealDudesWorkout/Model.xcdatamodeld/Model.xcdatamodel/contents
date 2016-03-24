@@ -17,7 +17,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="accessories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accessory" inverseName="excercises" inverseEntity="Accessory" syncable="YES"/>
-        <relationship name="excerciseSet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExcerciseSet" inverseName="excercise" inverseEntity="ExcerciseSet" syncable="YES"/>
+        <relationship name="excerciseSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExcerciseSet" inverseName="excercise" inverseEntity="ExcerciseSet" syncable="YES"/>
     </entity>
     <entity name="ExcerciseSet" representedClassName="ExcerciseSet" syncable="YES">
         <attribute name="excerciseSetDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,10 +53,10 @@
     </entity>
     <elements>
         <element name="Accessory" positionX="7" positionY="92" width="128" height="88"/>
-        <element name="Workout" positionX="-335" positionY="-349" width="128" height="148"/>
         <element name="Circuit" positionX="-171" positionY="-324" width="128" height="103"/>
-        <element name="ExcerciseSet" positionX="-2" positionY="-333" width="128" height="223"/>
         <element name="Excercise" positionX="-2" positionY="-72" width="128" height="133"/>
+        <element name="ExcerciseSet" positionX="-2" positionY="-333" width="128" height="223"/>
         <element name="User" positionX="-533" positionY="-342" width="128" height="148"/>
+        <element name="Workout" positionX="-335" positionY="-349" width="128" height="148"/>
     </elements>
 </model>

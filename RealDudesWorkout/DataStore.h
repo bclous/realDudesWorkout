@@ -11,7 +11,7 @@
 #import "Excercise.h"
 #import "User.h"
 
-@interface dataStore : NSObject
+@interface DataStore : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) User *user;

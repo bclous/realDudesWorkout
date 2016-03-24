@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		60455D2B2D3CC971690A19C9 /* libPods-RealDudesWorkout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */; };
+		AB1220BA1CA300A40067467C /* ExcerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1220B91CA300A40067467C /* ExcerciseTableViewCell.m */; };
+		AB1220BD1CA300ED0067467C /* RestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1220BC1CA300ED0067467C /* RestTableViewCell.m */; };
+		AB1220C01CA306060067467C /* WorkoutSummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1220BF1CA306060067467C /* WorkoutSummaryTableViewController.m */; };
+		AB1220CC1CA316CA0067467C /* TimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1220CB1CA316CA0067467C /* TimeIntervalFormatter.m */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
 		AB345D8E1C9260F800604D55 /* ActiveWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */; };
@@ -21,7 +25,7 @@
 		AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E61C90FE33009D7E63 /* Excercise.m */; };
 		AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2E81C90FE33009D7E63 /* Workout+CoreDataProperties.m */; };
 		AB41F2EE1C90FE33009D7E63 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2EA1C90FE33009D7E63 /* Workout.m */; };
-		AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2F01C90FE4C009D7E63 /* dataStore.m */; };
+		AB41F2F11C90FE4C009D7E63 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2F01C90FE4C009D7E63 /* DataStore.m */; };
 		AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2F71C91255D009D7E63 /* addIcon.png */; };
 		AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */; };
 		AB6A67001CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6A66FF1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m */; };
@@ -45,6 +49,14 @@
 		43C50A71DB08BD7B22B20E3C /* Pods-RealDudesWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDudesWorkout.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout.release.xcconfig"; sourceTree = "<group>"; };
 		6AC68073E94711102B10B694 /* Pods-RealDudesWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDudesWorkout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout.debug.xcconfig"; sourceTree = "<group>"; };
 		7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RealDudesWorkout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1220B81CA300A40067467C /* ExcerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcerciseTableViewCell.h; sourceTree = "<group>"; };
+		AB1220B91CA300A40067467C /* ExcerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcerciseTableViewCell.m; sourceTree = "<group>"; };
+		AB1220BB1CA300ED0067467C /* RestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestTableViewCell.h; sourceTree = "<group>"; };
+		AB1220BC1CA300ED0067467C /* RestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestTableViewCell.m; sourceTree = "<group>"; };
+		AB1220BE1CA306060067467C /* WorkoutSummaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSummaryTableViewController.h; sourceTree = "<group>"; };
+		AB1220BF1CA306060067467C /* WorkoutSummaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSummaryTableViewController.m; sourceTree = "<group>"; };
+		AB1220CA1CA316CA0067467C /* TimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalFormatter.h; sourceTree = "<group>"; };
+		AB1220CB1CA316CA0067467C /* TimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalFormatter.m; sourceTree = "<group>"; };
 		AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Accessory+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
@@ -69,8 +81,8 @@
 		AB41F2E81C90FE33009D7E63 /* Workout+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Workout+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB41F2E91C90FE33009D7E63 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		AB41F2EA1C90FE33009D7E63 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
-		AB41F2EF1C90FE4C009D7E63 /* dataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataStore.h; sourceTree = "<group>"; };
-		AB41F2F01C90FE4C009D7E63 /* dataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataStore.m; sourceTree = "<group>"; };
+		AB41F2EF1C90FE4C009D7E63 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		AB41F2F01C90FE4C009D7E63 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		AB41F2F71C91255D009D7E63 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIcon.png; sourceTree = "<group>"; };
 		AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWorkoutViewController.h; sourceTree = "<group>"; };
 		AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWorkoutViewController.m; sourceTree = "<group>"; };
@@ -115,6 +127,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1220B61CA2ED060067467C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABA977BF1C9F602E00D04639 /* RestView.h */,
+				ABA977C01C9F602E00D04639 /* RestView.m */,
+				ABA977C21C9F984A00D04639 /* ExcerciseView.h */,
+				ABA977C31C9F984A00D04639 /* ExcerciseView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AB1220B71CA2ED390067467C /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ABA977A61C9B7EEC00D04639 /* WorkoutTableViewCell.h */,
+				ABA977A71C9B7EEC00D04639 /* WorkoutTableViewCell.m */,
+				AB1220BB1CA300ED0067467C /* RestTableViewCell.h */,
+				AB1220BC1CA300ED0067467C /* RestTableViewCell.m */,
+				AB1220B81CA300A40067467C /* ExcerciseTableViewCell.h */,
+				AB1220B91CA300A40067467C /* ExcerciseTableViewCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		AB1D4D0D1C960BC400E71342 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,18 +158,16 @@
 				ABA977A41C9B4AFB00D04639 /* WorkoutLogTableViewController.m */,
 				AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */,
 				AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */,
-				ABA977A61C9B7EEC00D04639 /* WorkoutTableViewCell.h */,
-				ABA977A71C9B7EEC00D04639 /* WorkoutTableViewCell.m */,
 				AB345D8C1C9260F800604D55 /* ActiveWorkoutViewController.h */,
 				AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */,
 				AB6A66FE1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.h */,
 				AB6A66FF1CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m */,
-				ABA977BF1C9F602E00D04639 /* RestView.h */,
-				ABA977C01C9F602E00D04639 /* RestView.m */,
-				ABA977C21C9F984A00D04639 /* ExcerciseView.h */,
-				ABA977C31C9F984A00D04639 /* ExcerciseView.m */,
 				ABA977711C9A01C000D04639 /* WorkoutSummaryViewController.h */,
+				AB1220BE1CA306060067467C /* WorkoutSummaryTableViewController.h */,
+				AB1220BF1CA306060067467C /* WorkoutSummaryTableViewController.m */,
 				ABA977721C9A01C000D04639 /* WorkoutSummaryViewController.m */,
+				AB1220CA1CA316CA0067467C /* TimeIntervalFormatter.h */,
+				AB1220CB1CA316CA0067467C /* TimeIntervalFormatter.m */,
 				AB345DA31C9498A100604D55 /* WorkoutDetailTableViewController.h */,
 				AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */,
 			);
@@ -167,9 +201,11 @@
 				ABA977C51C9F9FD000D04639 /* RestView.xib */,
 				ABA977BD1C9F5E2F00D04639 /* ExcerciseView.xib */,
 				AB1D4D0D1C960BC400E71342 /* View Controllers */,
+				AB1220B71CA2ED390067467C /* Table View Cells */,
+				AB1220B61CA2ED060067467C /* Views */,
 				AB41F2F31C90FF73009D7E63 /* Singleton */,
-				AB41F2EF1C90FE4C009D7E63 /* dataStore.h */,
-				AB41F2F01C90FE4C009D7E63 /* dataStore.m */,
+				AB41F2EF1C90FE4C009D7E63 /* DataStore.h */,
+				AB41F2F01C90FE4C009D7E63 /* DataStore.m */,
 				AB41F2F21C90FE5D009D7E63 /* Core Data */,
 				AB41F2D51C90FC25009D7E63 /* Assets.xcassets */,
 				AB41F2F71C91255D009D7E63 /* addIcon.png */,
@@ -370,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB6A67001CA0F44200D73ED8 /* PostWorkoutSummaryViewController.m in Sources */,
+				AB1220BA1CA300A40067467C /* ExcerciseTableViewCell.m in Sources */,
 				AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */,
 				ABA977731C9A01C000D04639 /* WorkoutSummaryViewController.m in Sources */,
 				ABA977B31C9CA7BB00D04639 /* ExcerciseSet+CoreDataProperties.m in Sources */,
@@ -378,9 +415,12 @@
 				ABA977B41C9CA7BB00D04639 /* ExcerciseSet.m in Sources */,
 				AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */,
 				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
+				AB1220CC1CA316CA0067467C /* TimeIntervalFormatter.m in Sources */,
+				AB1220BD1CA300ED0067467C /* RestTableViewCell.m in Sources */,
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
 				ABA977B91C9D9FD900D04639 /* User+CoreDataProperties.m in Sources */,
 				AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */,
+				AB1220C01CA306060067467C /* WorkoutSummaryTableViewController.m in Sources */,
 				ABA977BA1C9D9FD900D04639 /* User.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
 				ABA977A81C9B7EEC00D04639 /* WorkoutTableViewCell.m in Sources */,
@@ -391,7 +431,7 @@
 				ABA977A51C9B4AFB00D04639 /* WorkoutLogTableViewController.m in Sources */,
 				ABA977B11C9CA7BB00D04639 /* Circuit+CoreDataProperties.m in Sources */,
 				AB345D8E1C9260F800604D55 /* ActiveWorkoutViewController.m in Sources */,
-				AB41F2F11C90FE4C009D7E63 /* dataStore.m in Sources */,
+				AB41F2F11C90FE4C009D7E63 /* DataStore.m in Sources */,
 				ABA977C11C9F602E00D04639 /* RestView.m in Sources */,
 				ABA977B21C9CA7BB00D04639 /* Circuit.m in Sources */,
 			);

@@ -2,7 +2,7 @@
 //  Circuit+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/18/16.
+//  Created by Brian Clouser on 3/23/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,10 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Circuit (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
 @property (nonatomic) int64_t circuitIndexNumberInWorkout;
-@property (nullable, nonatomic, retain) Workout *workout;
+@property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSSet<ExcerciseSet *> *excerciseSets;
+@property (nullable, nonatomic, retain) Workout *workout;
 
 @end
 

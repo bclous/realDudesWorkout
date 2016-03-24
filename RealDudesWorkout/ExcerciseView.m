@@ -58,6 +58,11 @@
     
 }
 
+-(void)changeBackgroundColor
+{
+    self.excerciseView.backgroundColor = [UIColor blueColor];
+}
+
 -(void)setExcerciseSet:(ExcerciseSet *)excerciseSet
 {
     _excerciseSet = excerciseSet;
@@ -70,6 +75,9 @@
     self.numberOfRepsLabel.text = [NSString stringWithFormat:@"%lld",self.excerciseSet.numberOfRepsSuggested];
     self.excerciseNameLabel.text = self.excerciseSet.excercise.name;
     self.excerciseImage.image = [UIImage imageNamed:self.excerciseSet.excercise.pictureName];
+    
+   
+    
     
 }
 

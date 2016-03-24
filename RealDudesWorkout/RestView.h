@@ -16,6 +16,8 @@
 @property (strong, nonatomic) Workout *currentWorkout;
 
 
+
+
 /// reminder - your button is in excercise view, so to have it do something to rest view, rest view should be a subview of excercise view, not a subview of the main view controller, that way you can basically just bring it up and back down inside of methods in excerciseView
 
 

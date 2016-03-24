@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/19/16.
+//  Created by Brian Clouser on 3/23/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface User (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
 @property (nonatomic) int64_t backLevel;
 @property (nonatomic) int64_t chestLevel;
 @property (nonatomic) int64_t coreLevel;
-@property (nonatomic) int64_t legsLevel;
 @property (nonatomic) int64_t flexLevel;
+@property (nonatomic) int64_t legsLevel;
+@property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSSet<Workout *> *workouts;
 
 @end

@@ -2,7 +2,7 @@
 //  Excercise+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/18/16.
+//  Created by Brian Clouser on 3/23/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,12 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Excercise (CoreDataProperties)
 
+@property (nullable, nonatomic, retain) NSString *category;
+@property (nullable, nonatomic, retain) NSString *excerciseDescription;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *pictureName;
-@property (nullable, nonatomic, retain) NSString *excerciseDescription;
-@property (nullable, nonatomic, retain) NSString *category;
-@property (nullable, nonatomic, retain) ExcerciseSet *excerciseSet;
 @property (nullable, nonatomic, retain) NSSet<Accessory *> *accessories;
+@property (nullable, nonatomic, retain) NSSet<ExcerciseSet *> *excerciseSet;
 
 @end
 
@@ -32,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeAccessoriesObject:(Accessory *)value;
 - (void)addAccessories:(NSSet<Accessory *> *)values;
 - (void)removeAccessories:(NSSet<Accessory *> *)values;
+
+- (void)addExcerciseSetObject:(ExcerciseSet *)value;
+- (void)removeExcerciseSetObject:(ExcerciseSet *)value;
+- (void)addExcerciseSet:(NSSet<ExcerciseSet *> *)values;
+- (void)removeExcerciseSet:(NSSet<ExcerciseSet *> *)values;
 
 @end
 

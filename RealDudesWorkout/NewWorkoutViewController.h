@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "dataStore.h"
+#import "DataStore.h"
 
 @interface NewWorkoutViewController : UIViewController
 
-@property (strong, nonatomic) dataStore *dataStore;
-@property (strong, nonatomic) Workout *workout;
+@property (strong, nonatomic) DataStore *dataStore;
 
 @end

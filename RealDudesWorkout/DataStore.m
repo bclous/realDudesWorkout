@@ -8,16 +8,16 @@
 
 #import "dataStore.h"
 
-@implementation dataStore
+@implementation DataStore
 
 @synthesize managedObjectContext = _managedObjectContext;
 
 + (instancetype)sharedDataStore;
 {
-    static dataStore *_sharedDataStore = nil;
+    static DataStore *_sharedDataStore = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedDataStore = [[dataStore alloc] init];
+        _sharedDataStore = [[DataStore alloc] init];
     });
     
     return _sharedDataStore;

@@ -7,6 +7,7 @@
 //
 
 #import "RestView.h"
+#import <Math.h>
 
 @interface RestView ()
 
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSTimer *restTimer;
 @property (nonatomic) NSTimeInterval timer;
 @property (nonatomic) NSUInteger restCountdown;
+
 
 @end
 
@@ -70,6 +72,7 @@
     _excerciseSetJustFinished = excerciseSetJustFinished;
     
     [self updateExcerciseJustFinishedUI];
+    
 }
 
 -(void)setExcerciseSetUpNext:(ExcerciseSet *)excerciseSetUpNext
@@ -81,7 +84,7 @@
 
 -(void)updateExcerciseJustFinishedUI
 {
-    self.restCountdownLabel.text = [NSString stringWithFormat:@"%lld",self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested];
+    self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested];
     
     self.excerciseRepsLabel.text = [NSString stringWithFormat:@"I did %lld %@",self.excerciseSetJustFinished.numberOfRepsSuggested, self.excerciseSetJustFinished.excercise.name];
     
@@ -89,11 +92,33 @@
     
     self.restCountdown = self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested;
     
+    self.slider.continuous = YES;
+    self.slider.minimumValue = 0;
+    self.slider.maximumValue = 2 * self.excerciseSetJustFinished.numberOfRepsSuggested;
+    self.slider.value = self.excerciseSetJustFinished.numberOfRepsSuggested;
+    
+    
+
     self.timer = 0;
     
     
     
 }
+
+- (IBAction)sliderMoved:(id)sender
+{
+    
+    NSUInteger truncatedValue =  roundf(self.slider.value);
+    
+    NSString *label = [NSString stringWithFormat:@"I did %lu %@",truncatedValue, self.excerciseSetJustFinished.excercise.name];
+    
+    self.excerciseRepsLabel.text = label;
+    
+    self.excerciseSetJustFinished.numberofRepsActual = truncatedValue;
+    
+    
+}
+
 
 
 - (IBAction)addThirtySecondsTapped:(id)sender
@@ -102,15 +127,18 @@
     {
     
         self.restCountdown = self.restCountdown + 30;
+        self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
     }
     
 }
+
 
 - (IBAction)subtractThirtySecondsTapped:(id)sender
 {
     if (self.restCountdown > 30)
     {
         self.restCountdown = self.restCountdown - 30;
+        self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
     }
 }
 
@@ -125,20 +153,22 @@
 
 -(void)countdown
 {
-    self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
     
     if (self.restCountdown > 0)
     {
         self.restCountdown--;
     }
     
-    self.timer ++;
+    self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
+
     
-    self.excerciseSetJustFinished.restTimeAfterInSecondsActual = self.timer;
+    self.timer++;
     
-    
+  
     
 }
+
+
 
 -(NSString *)restCountDisplayFromSeconds:(NSTimeInterval)seconds
 {
@@ -151,13 +181,13 @@
     
     if (noMinutes && singleDigitSeconds)
     {
-        NSString *timeString = [NSString stringWithFormat:@"%lu",remainingSeconds];
+        NSString *timeString = [NSString stringWithFormat:@"0:0%lu",remainingSeconds];
         
         return timeString;
     }
     else if (noMinutes && !singleDigitSeconds)
     {
-        NSString *timeString = [NSString stringWithFormat:@"%lu",remainingSeconds];
+        NSString *timeString = [NSString stringWithFormat:@"0:%lu",remainingSeconds];
         
         return timeString;
 

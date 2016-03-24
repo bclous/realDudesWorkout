@@ -10,8 +10,11 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "RestView.h"
 #import "ExcerciseView.h"
+#import "WorkoutSummaryTableViewController.h"
 
 @interface ActiveWorkoutViewController ()
+
+@property (strong, nonatomic) Workout *workout;
 
 @property (weak, nonatomic) IBOutlet UIButton *finishButton;
 
@@ -30,8 +33,7 @@
 @property (strong, nonatomic) NSTimer *totalWorkoutTimer;
 @property (nonatomic) NSTimeInterval totalWorkoutCounter;
 @property (nonatomic) NSTimeInterval individualExcerciseCounter;
-
-@property (nonatomic) NSUInteger restCountdown;
+@property (nonatomic) NSTimeInterval restCounter;
 
 @property (nonatomic) BOOL restViewIsDisplayed;
 @property (nonatomic) BOOL isLastExcercise;
@@ -47,7 +49,12 @@
 {
     [super viewDidLoad];
     
-   
+    self.dataStore = [DataStore sharedDataStore];
+    
+    NSArray *workoutsInOrder = [self.dataStore.user orderedWorkoutsLIFO];
+    
+    self.workout = workoutsInOrder[0];
+    
     // set up the excercise array in order
     
     self.excerciseSets = [self.workout excercisesInOrder];
@@ -59,75 +66,106 @@
 }
 
 
-
-
-
-    
-
-
 - (IBAction)finishedButtonTapped:(id)sender
 {
     
-    if (self.restViewIsDisplayed)
+    NSLog(@"%d rest view is displayed and %d is last excercise",self.restViewIsDisplayed, self.isLastExcercise);
+    
+    if (self.restViewIsDisplayed && !self.isLastExcercise)
     {
-        self.finishButton.enabled = NO;
         
-        [self updateExcercise];
-        [self generateExcerciseComponents];
-        [self changeButtonTitle];
+        NSLog(@"move back to excercise called");
         
-        
-        [UIView animateWithDuration:.5 animations:^{
-            self.restView.alpha = 0;
-        } completion:^(BOOL finished) {
-            
-            self.finishButton.enabled = YES;
-            
-        }];
-        
-        self.restViewIsDisplayed = NO;
+        [self moveBackToExcerciseScreen];
         
     }
-    else if (!self.restViewIsDisplayed && self.isLastExcercise)
+    else if (self.restViewIsDisplayed && self.isLastExcercise)
     {
         
+        NSLog(@"the rest view knows this is the last excercise");
         // modually show the workout summary page
         
         [self workoutFinished];
         
         [self performSegueWithIdentifier:@"segueToWorkoutSummary" sender:nil];
-        
       
+        [self.dataStore saveContext];
         
+        NSLog(@"end workout called");
         
     }
     else
     {
+        NSLog(@"move back to rest screen called");
       
+        [self moveToRestScreen];
         
-        self.finishButton.enabled = NO;
         
-        [self excerciseComplete];
-        
-        [self generateRestComponents];
-        [self changeButtonTitle];
-        
-        [UIView animateWithDuration:.5 animations:^{
-            
-            self.restView.alpha = 1;
-            
-        } completion:^(BOOL finished) {
-            
-            self.finishButton.enabled = YES;
-       
-        }];
-
-        
-        self.restViewIsDisplayed = YES;
-    }
-
-  
     
+    }
+    
+}
+
+-(void)moveToRestScreen
+{
+    
+    self.finishButton.enabled = NO;
+    
+    [self excerciseComplete];
+    [self resetRestAndExcerciseCounters];
+    
+    [self generateRestComponents];
+    [self changeButtonTitle];
+    
+    [UIView animateWithDuration:.5 animations:^{
+        
+        self.restView.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+        self.finishButton.enabled = YES;
+        
+        
+    }];
+    
+    
+    self.restViewIsDisplayed = YES;
+    
+    [self resetRestAndExcerciseCounters];
+    
+    [self.dataStore saveContext];
+
+}
+
+-(void)moveBackToExcerciseScreen
+{
+    
+    
+    self.finishButton.enabled = NO;
+    
+    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.restCounter;
+    
+    [self resetRestAndExcerciseCounters];
+    
+    [self updateExcercise];
+    [self generateExcerciseComponents];
+    [self changeButtonTitle];
+    
+    
+    [UIView animateWithDuration:.5 animations:^{
+        self.restView.alpha = 0;
+    } completion:^(BOOL finished) {
+        
+        self.finishButton.enabled = YES;
+        
+    }];
+    
+    self.restViewIsDisplayed = NO;
+    
+    [self.dataStore saveContext];
+    
+    [self resetRestAndExcerciseCounters];
+
 }
 
 -(void)excerciseComplete
@@ -136,7 +174,6 @@
     self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
     self.currentExcerciseSet.isComplete = YES;
     
-    self.individualExcerciseCounter = 0;
     
 }
 
@@ -197,6 +234,7 @@
         self.nextExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue + 1];
     }
     
+    NSLog(@"%d is what update excercise says about last excercise", self.isLastExcercise);
 }
 
 
@@ -214,9 +252,13 @@
     {
         [self.finishButton setTitle:@"Done" forState:UIControlStateNormal];
     }
+    else if (self.isLastExcercise)
+    {
+        [self.finishButton setTitle:@"Workout summary" forState:UIControlStateNormal];
+    }
     else
     {
-        [self.finishButton setTitle:@"Next excercise" forState:UIControlStateNormal];
+         [self.finishButton setTitle:@"Let's go" forState:UIControlStateNormal];
     }
         
 }
@@ -250,7 +292,7 @@
     
     // set global counters and index values and set restViewDisplayedBool
     self.currentExcerciseSetIndexValue = 0;
-    self.restCountdown = 0;
+    //self.restCountdown = 0;
     
     // set up views to show excercise to start
     
@@ -301,6 +343,7 @@
 {
     self.totalWorkoutCounter = 0;
     self.individualExcerciseCounter = 0;
+    self.restCounter = 0;
     
     self.totalWorkoutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
     
@@ -314,7 +357,16 @@
     
     self.totalWorkoutCounter++;
     self.individualExcerciseCounter++;
+    self.restCounter++;
     
+    self.workout.timeInSeconds = self.totalWorkoutCounter;
+    [self.dataStore saveContext];
+    
+}
+-(void)resetRestAndExcerciseCounters
+{
+    self.individualExcerciseCounter = 0;
+    self.restCounter = 0;
 }
 
 -(NSString *)generateTimeStringGivenTime:(NSTimeInterval)time
@@ -378,17 +430,18 @@
 
 
 
-
-
-
-/*
-#pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    WorkoutSummaryTableViewController *destinationVC = segue.destinationViewController;
+    
+    destinationVC.workout = self.workout;
+    
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

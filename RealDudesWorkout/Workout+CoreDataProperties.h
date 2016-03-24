@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/19/16.
+//  Created by Brian Clouser on 3/23/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nonatomic) int64_t timeInSeconds;
 @property (nullable, nonatomic, retain) NSSet<Circuit *> *circuits;
-@property (nullable, nonatomic, retain) NSManagedObject *user;
+@property (nullable, nonatomic, retain) User *user;
 
 @end
 

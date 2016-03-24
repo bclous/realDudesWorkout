@@ -29,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSArray *)excercisesInOrder;
 
+-(NSString *)excercisesCompletedString;
+
+-(NSArray *)arrayOfInfo;
+
 
 
 

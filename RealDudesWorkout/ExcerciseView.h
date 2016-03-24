@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
 
+-(void)changeBackgroundColor;
+
 
 @end
