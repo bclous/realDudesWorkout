@@ -10,6 +10,7 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "WorkoutTableViewCell.h"
 #import "SWTableViewCell.h"
+#import "WorkoutDetailTableViewController.h"
 
 @interface WorkoutLogTableViewController () <SWTableViewCellDelegate>
 
@@ -79,6 +80,11 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self performSegueWithIdentifier:@"segueToWorkoutDetail" sender:self];
+}
 
 
 // helper method for SWCell delegate
@@ -134,14 +140,29 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    NSLog(@"this is getting called");
+    
+    if ([segue.identifier isEqualToString:@"segueToWorkoutDetail"])
+    {
+    
+        WorkoutDetailTableViewController *destinationVC = segue.destinationViewController;
+        
+        NSIndexPath *selectedPath = self.tableView.indexPathForSelectedRow;
+        
+        NSArray *workoutsInOrderLIFO = [self.dataStore.user orderedWorkoutsLIFO];
+        
+        Workout *selectedWorkout = workoutsInOrderLIFO[selectedPath.row];
+        
+        destinationVC.workout = selectedWorkout;
+    }
+    
+    
 }
-*/
+
 
 @end

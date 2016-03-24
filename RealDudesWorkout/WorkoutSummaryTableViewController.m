@@ -30,6 +30,11 @@
 
     self.navigationItem.hidesBackButton = YES;
     
+    for (ExcerciseSet *excerciseSet in [self.workout excercisesInOrder])
+    {
+        NSLog(@"I did %lld %@",excerciseSet.numberofRepsActual, excerciseSet.excercise.name);
+    }
+    
     
     
     

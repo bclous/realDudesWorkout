@@ -85,11 +85,19 @@
         NSLog(@"the rest view knows this is the last excercise");
         // modually show the workout summary page
         
+        [self.dataStore saveContext];
+        
         [self workoutFinished];
+        
+         NSLog(@"about to save context");
+        
+        
+        
+        NSLog(@"just saved context");
         
         [self performSegueWithIdentifier:@"segueToWorkoutSummary" sender:nil];
       
-        [self.dataStore saveContext];
+        
         
         NSLog(@"end workout called");
         
@@ -162,6 +170,8 @@
     
     self.restViewIsDisplayed = NO;
     
+    NSLog(@"about to save context");
+    
     [self.dataStore saveContext];
     
     [self resetRestAndExcerciseCounters];
@@ -170,7 +180,8 @@
 
 -(void)excerciseComplete
 {
-    self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
+    //self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
+    
     self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
     self.currentExcerciseSet.isComplete = YES;
     
@@ -189,6 +200,8 @@
     {
         self.workout.isFinishedSuccessfully = YES;
     }
+    
+    [self.dataStore saveContext];
     
 }
 
@@ -433,6 +446,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"prepare for segue getting called");
     
     WorkoutSummaryTableViewController *destinationVC = segue.destinationViewController;
     

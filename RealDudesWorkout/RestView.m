@@ -21,7 +21,11 @@
 @property (strong, nonatomic) NSTimer *restTimer;
 @property (nonatomic) NSTimeInterval timer;
 @property (nonatomic) NSUInteger restCountdown;
+@property (weak, nonatomic) IBOutlet UILabel *workoutCompleteLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *addThirtySecondsButton;
+@property (weak, nonatomic) IBOutlet UILabel *addThirtySecondsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *restForLabel;
 
 @end
 
@@ -71,7 +75,7 @@
 {
     _excerciseSetJustFinished = excerciseSetJustFinished;
     
-    [self updateExcerciseJustFinishedUI];
+    //[self updateExcerciseJustFinishedUI];
     
 }
 
@@ -84,18 +88,60 @@
 
 -(void)updateExcerciseJustFinishedUI
 {
-    self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested];
     
-    self.excerciseRepsLabel.text = [NSString stringWithFormat:@"I did %lld %@",self.excerciseSetJustFinished.numberOfRepsSuggested, self.excerciseSetJustFinished.excercise.name];
+    BOOL isLastExcercise = [self.excerciseSetJustFinished.excercise.name isEqualToString:self.excerciseSetUpNext.excercise.name];
     
-    self.getReadyLabel.text = [NSString stringWithFormat:@"and get ready for %@",self.excerciseSetUpNext.excercise.name];
+    if (isLastExcercise)
+    {
+        
+        NSLog(@"is last excercise, just finished is %@ and next up is %@", self.excerciseSetJustFinished.excercise.name, self.excerciseSetUpNext.excercise.name);
+        
+        self.restCountdownLabel.hidden = YES;
+        self.getReadyLabel.hidden = YES;
+        self.restCountdownLabel.hidden = YES;
+        
+        self.workoutCompleteLabel.hidden = NO;
+        
+        self.addThirtySecondsButton.enabled = NO;
+        self.addThirtySecondsButton.hidden = YES;
+        self.addThirtySecondsLabel.hidden = YES;
+        self.restForLabel.hidden = YES;
+        
+        self.excerciseRepsLabel.text = [NSString stringWithFormat:@"I did %lld %@",self.excerciseSetJustFinished.numberOfRepsSuggested, self.excerciseSetJustFinished.excercise.name];
+        
+        self.slider.continuous = YES;
+        self.slider.minimumValue = 0;
+        self.slider.maximumValue = 2 * self.excerciseSetJustFinished.numberOfRepsSuggested;
+        self.slider.value = self.excerciseSetJustFinished.numberOfRepsSuggested;
+        
+
+        
+        
+        
+    }
+    else
+    {
+        NSLog(@"getting into not last excercise");
+        
+        self.workoutCompleteLabel.hidden = YES;
+        
+        self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested];
+        
+        self.excerciseRepsLabel.text = [NSString stringWithFormat:@"I did %lld %@",self.excerciseSetJustFinished.numberOfRepsSuggested, self.excerciseSetJustFinished.excercise.name];
+        
+        self.getReadyLabel.text = [NSString stringWithFormat:@"and get ready for %@",self.excerciseSetUpNext.excercise.name];
+        
+        self.restCountdown = self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested;
+        
+        self.slider.continuous = YES;
+        self.slider.minimumValue = 0;
+        self.slider.maximumValue = 2 * self.excerciseSetJustFinished.numberOfRepsSuggested;
+        self.slider.value = self.excerciseSetJustFinished.numberOfRepsSuggested;
+    }
     
-    self.restCountdown = self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested;
     
-    self.slider.continuous = YES;
-    self.slider.minimumValue = 0;
-    self.slider.maximumValue = 2 * self.excerciseSetJustFinished.numberOfRepsSuggested;
-    self.slider.value = self.excerciseSetJustFinished.numberOfRepsSuggested;
+    
+  
     
     
 
@@ -115,6 +161,8 @@
     self.excerciseRepsLabel.text = label;
     
     self.excerciseSetJustFinished.numberofRepsActual = truncatedValue;
+    
+    NSLog(@")number of reps for %@ was set to: %lld",self.excerciseSetJustFinished.excercise.name, self.excerciseSetJustFinished.numberofRepsActual);
     
     
 }

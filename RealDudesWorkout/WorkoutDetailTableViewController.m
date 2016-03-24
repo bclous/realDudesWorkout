@@ -7,205 +7,193 @@
 //
 
 #import "WorkoutDetailTableViewController.h"
+#import "ExcerciseTableViewCell.h"
+#import "RestTableViewCell.h"
 
 @interface WorkoutDetailTableViewController ()
 
-@property (strong, nonatomic) NSArray *excercisesOutOfOrder;
-@property (strong, nonatomic) NSArray *excercisesInOrder;
-@property (strong, nonatomic) NSArray *excercisesInOrderCompleted;
+@property (strong, nonatomic) NSArray *excercises;
 
 @end
 
 @implementation WorkoutDetailTableViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-//    self.excercisesOutOfOrder = [self.workout.excercises allObjects];
-//    
-//    [self orderExcercises];
-//    
-//    [self generateArrayOfOnlyCompletedExcercises];
-//    
-//    for (Excercise *excercise in self.excercisesInOrder)
-//    {
-//        NSLog(@"%@ is complete: %.0lld",excercise.name, excercise.timeInSecondsActual);
-//    }
-    
-    
-    
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+[super viewDidLoad];
+
+    self.excercises = [self.workout excercisesInOrder];
+
+    self.tableView.tableFooterView = [UIView new];
+
+    [self.tableView setSeparatorColor:[UIColor groupTableViewBackgroundColor]];
+
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 
-    return 2;
+      return 1;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-    {
-        return 3;
-    }
-    else
-    {
-        
-    }
-    return self.excercisesInOrderCompleted.count;
-
-    }
+  
+        return self.excercises.count;
+    
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.section == 0)
-    {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"excerciseCell" forIndexPath:indexPath];
-        
-        if (indexPath.row == 0)
-        {
-            cell.textLabel.text = @"Date: date here";
-            
-        }
-        else if (indexPath.row == 1)
-        {
-            cell.textLabel.text = [NSString stringWithFormat:@"Workout duration: %@",[self totalTimeText]];
-        }
-        else
-        {
-            //cell.textLabel.text = [self numberOfExcercisesText];
-        }
-        
-        return cell;
 
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testCell"];
     
-    else
-    {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"excerciseCell" forIndexPath:indexPath];
-        
-        Excercise *excerciseAtRow = self.excercisesInOrderCompleted[indexPath.row];
-        
-        //cell.textLabel.text = [self excerciseTextFrom:excerciseAtRow];
-        
-        return cell;
-    }
+    ExcerciseSet *excerciseSet = self.excercises[indexPath.row];
+    
+    cell.textLabel.text = excerciseSet.excercise.name;
+    
+    return cell;
     
     
     
-    
-}
-
--(void)orderExcercises
-{
-    
-    
-    NSSortDescriptor *sortByIndexValueDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"indexInWorkoutNumber" ascending:YES];
-    
-    self.excercisesInOrder = [self.excercisesOutOfOrder sortedArrayUsingDescriptors:@[sortByIndexValueDescriptor]];
-    
-
-    
-}
-
--(void)generateArrayOfOnlyCompletedExcercises
-{
-    NSPredicate *onlyCompletedExcercisesPredicate = [NSPredicate predicateWithFormat:@"isComplete = YES"];
-    
-    self.excercisesInOrderCompleted = [self.excercisesInOrder filteredArrayUsingPredicate:onlyCompletedExcercisesPredicate];
-    
-}
-
-//-(NSString *)numberOfExcercisesText
-//{
-//   /NSUInteger totalNumberOfExcercises = [;
-//    NSUInteger completedExcercises = self.excercisesInOrderCompleted.count;
-//    
-//    if (self.workout.isFinishedSuccessfully)
+//    if (indexPath.section == 0)
 //    {
-//        NSString *numberOfExcercises = [NSString stringWithFormat:@"%lu/%lu workout completed!",completedExcercises,totalNumberOfExcercises];
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell"];
 //        
-//        return numberOfExcercises;
+//        NSArray *info = [self.workout arrayOfInfo];
+//        
+//        cell.textLabel.text = info[indexPath.row];
+//        
+//        return cell;
+//        
 //    }
+//    
 //    else
 //    {
-//        NSString *numberOfExcercises = [NSString stringWithFormat:@"%lu/%lu workout incomplete",completedExcercises,totalNumberOfExcercises];
 //        
-//        return numberOfExcercises;
-//
+//        BOOL isExcerciseCell = indexPath.row%2 == 0;
+//        
+//        ExcerciseSet *excerciseSetAtRow = self.excercises[indexPath.row / 2];
+//        
+//        if (isExcerciseCell)
+//        {
+//            ExcerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"excerciseCell" forIndexPath:indexPath];
+//            
+//            cell.excerciseImage.image = [UIImage imageNamed:excerciseSetAtRow.excercise.pictureName];
+//            cell.repsAndNameLabel.text = [NSString stringWithFormat:@"%lld %@",excerciseSetAtRow.numberofRepsActual,excerciseSetAtRow.excercise.name];
+//            cell.durationLabel.text = [self timeStringWithSecondsFromTimeInteveral:excerciseSetAtRow.timeInSecondsActual];
+//            
+//            [cell setSeparatorInset:UIEdgeInsetsZero];
+//            
+//            
+//            
+//            
+//            return cell;
+//            
+//            
+//            
+//        }
+//        
+//        else
+//        {
+//            RestTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"restCell" forIndexPath:indexPath];
+//            
+//            cell.restLabel.text = @"Rest";
+//            cell.durationLabel.text = [self timeStringWithSecondsFromTimeInteveral:excerciseSetAtRow.restTimeAfterInSecondsActual];;
+//            
+//            [cell setSeparatorInset:UIEdgeInsetsZero];
+//            
+//            
+//            return cell;
+//            
+//        }
+//        
 //    }
-//    
-//}
 
--(NSString *)totalTimeText
+}
+
+
+
+-(NSString *)timeStringWithSecondsFromTimeInteveral:(NSTimeInterval)interval
 {
     
-    NSInteger hours = self.workout.timeInSeconds/3600;
-    NSInteger minutes = (((NSInteger)self.workout.timeInSeconds)%3600)/60;
-    NSInteger seconds = (((NSInteger)self.workout.timeInSeconds)%3600)%60;
+    NSInteger hours = interval/3600;
+    NSInteger minutes = (((NSInteger)interval)%3600)/60;
+    NSInteger seconds = (((NSInteger)interval)%3600)%60;
+    
+    
+    
+    BOOL moreThanDay = hours > 24;
     
     BOOL hasHours = hours > 0;
     BOOL hasMinutes = minutes > 0;
     
-    if (hasHours)
+    BOOL singleDigitSeconds = seconds < 10;
+    BOOL singleDigitMinutes = minutes < 10;
+    
+    if (moreThanDay)
     {
-        NSString *stringWithHours = [NSString stringWithFormat:@"%luh %lum %lus",hours,minutes,seconds];
-        
-        return stringWithHours;
+        return @"> 1 day";
     }
-    else if (hasMinutes)
+    else if (singleDigitSeconds && !hasMinutes && !hasHours)
     {
-        NSString *stringWithMinutes = [NSString stringWithFormat:@"%lum %lus",minutes, seconds];
+        NSString *time = [NSString stringWithFormat:@"0:0%ld",(long)seconds];
         
-        return stringWithMinutes;
+        return time;
+    }
+    else if (!singleDigitSeconds && !hasMinutes && !hasHours)
+    {
+        NSString *time = [NSString stringWithFormat:@"0:%ld",(long)seconds];
+        
+        return time;
+    }
+    else if (singleDigitSeconds && hasMinutes && !hasHours)
+    {
+        NSString *time = [NSString stringWithFormat:@"%ld:0%ld",(long)minutes,(long)seconds];
+        
+        return time;
+    }
+    else if (!singleDigitSeconds && hasMinutes && !hasHours)
+    {
+        NSString *time = [NSString stringWithFormat:@"%ld:%ld",(long)minutes,(long)seconds];
+        
+        return time;
+        
+    }
+    else if (hasHours && singleDigitSeconds && singleDigitMinutes)
+    {
+        NSString *time = [NSString stringWithFormat:@"%ld:%0ld:0%ld",(long)hours,(long)minutes,(long)seconds];
+        
+        return time;
+    }
+    else if(hasHours && singleDigitSeconds && !singleDigitMinutes)
+    {
+        NSString *time = [NSString stringWithFormat:@"%ld:%ld:0%ld",(long)hours,(long)minutes,(long)seconds];
+        
+        return time;
+    }
+    else if(hasHours && !singleDigitSeconds && singleDigitMinutes)
+    {
+        NSString *time = [NSString stringWithFormat:@"%ld:%0ld:%ld",(long)hours,(long)minutes,(long)seconds];
+        
+        return time;
     }
     else
     {
-        NSString *stringWithSeconds = [NSString stringWithFormat:@"%lus",seconds];
+        NSString *time = [NSString stringWithFormat:@"%ld:%ld:%ld",(long)hours,(long)minutes,(long)seconds];
         
-        return stringWithSeconds;
+        return time;
     }
     
-    return @"0s";
     
 }
-                               
-//-(NSString *)excerciseTextFrom:(Excercise *)excercise
-//{
-//    BOOL isRest = [excercise.name isEqualToString:@"Rest"];
-//    
-//    if (isRest)
-//    {
-//        NSString *restString = [NSString stringWithFormat:@"Rested for %lld seconds",excercise.timeInSecondsActual];
-//        
-//        return restString;
-//    }
-//    else
-//    {
-//        NSString *excerciseString = [NSString stringWithFormat:@"%lld %@",excercise.numberOfRepsActual, excercise.name];
-//        
-//        return excerciseString;
-//    }
-//    
-//}
 
 
-                               
                                
 
 
