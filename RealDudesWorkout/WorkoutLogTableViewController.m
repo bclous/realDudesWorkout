@@ -29,6 +29,11 @@
     
     [self.dataStore fetchData];
     
+    UIImage *image = [UIImage imageNamed: @"manUplogo"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+    
+    self.navigationItem.titleView = imageView;
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated

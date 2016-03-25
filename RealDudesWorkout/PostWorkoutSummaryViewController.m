@@ -97,10 +97,10 @@
     if (indexPath.section == 0)
     {
     
-        WorkoutSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutSummaryCell"];
+        WorkoutSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutSummaryCell" forIndexPath:indexPath];
         
-        cell.workoutSummaryCellView.workout = self.workout;
-        
+        [cell.workoutSummaryCellView setWorkout:self.workout];
+                
         NSLog(@"name of working in cell making method: %@", self.workout.name);
         
         return cell;

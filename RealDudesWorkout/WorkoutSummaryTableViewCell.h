@@ -10,6 +10,7 @@
 #import "WorkoutSummaryCellView.h"
 
 @interface WorkoutSummaryTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet WorkoutSummaryCellView *workoutSummaryCellView;
 
 @end
