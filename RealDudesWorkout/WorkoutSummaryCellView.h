@@ -1,16 +1,15 @@
 //
-//  WorkoutSummaryTableViewController.h
+//  WorkoutSummaryCellView.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/23/16.
+//  Created by Brian Clouser on 3/24/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Workout.h"
 
-
-@interface WorkoutSummaryTableViewController : UITableViewController
+@interface WorkoutSummaryCellView : UIView
 
 @property (strong, nonatomic) Workout *workout;
 

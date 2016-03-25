@@ -9,6 +9,8 @@
 #import "WorkoutDetailTableViewController.h"
 #import "ExcerciseTableViewCell.h"
 #import "RestTableViewCell.h"
+#import "WorkoutSummaryTableViewCell.h"
+#import "ExcerciseTableViewCell.h"
 
 @interface WorkoutDetailTableViewController ()
 
@@ -22,11 +24,12 @@
 
 [super viewDidLoad];
 
-    self.excercises = [self.workout excercisesInOrder];
+    self.excercises = [self.workout completedExcercisesInOrder];
 
     self.tableView.tableFooterView = [UIView new];
 
     [self.tableView setSeparatorColor:[UIColor groupTableViewBackgroundColor]];
+    
 
 
 }
@@ -36,28 +39,66 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-      return 1;
+      return 2;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   
-        return self.excercises.count;
+    if (section == 0)
+    {
+        return 1;
+    }
     
+    else
+    {
+        return self.excercises.count;
+    }
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        return 162;
+    }
+    
+    else
+    {
+        return 100;
+    }
+    
+}
+
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testCell"];
-    
-    ExcerciseSet *excerciseSet = self.excercises[indexPath.row];
-    
-    cell.textLabel.text = excerciseSet.excercise.name;
-    
-    return cell;
+    if (indexPath.section == 0)
+    {
+        WorkoutSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutSummaryCell"];
+        
+        cell.workoutSummaryCellView.workout = self.workout;
+        
+        return cell;
+    }
+    else
+    {
+        NSLog(@"getting in the else to make the excercise cell");
+        
+        ExcerciseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"excerciseCell"];
+        
+        cell.excerciseCellView.excerciseSet = self.excercises[indexPath.row];
+        
+        return cell;
+    }
     
     
     

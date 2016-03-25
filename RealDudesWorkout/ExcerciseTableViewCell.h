@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExcerciseCellView.h"
+
 
 @interface ExcerciseTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *excerciseImage;
-@property (weak, nonatomic) IBOutlet UILabel *repsAndNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet ExcerciseCellView *excerciseCellView;
+
 
 @end

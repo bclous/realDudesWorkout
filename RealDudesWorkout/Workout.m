@@ -58,6 +58,52 @@
     
 }
 
+-(NSArray *)completedExcercisesInOrder
+{
+    NSArray *allExcercises = [self excercisesInOrder];
+    
+    NSPredicate *completedPredicate = [NSPredicate predicateWithFormat:@"isComplete = YES"];
+    
+    NSArray *onlyCompletedExcercises = [allExcercises filteredArrayUsingPredicate:completedPredicate];
+    
+    return onlyCompletedExcercises;
+    
+    
+}
+
+-(NSString *)excercisesCompletedStringForSummary
+{
+    NSArray *excercises = [self excercisesInOrder];
+    
+    NSUInteger totalExcercises = excercises.count;
+    
+    NSUInteger counter = 0;
+    
+    for (ExcerciseSet *excerciseSet in excercises)
+    {
+        if (excerciseSet.isComplete)
+        {
+            counter ++;
+        }
+    }
+    
+    BOOL workoutCompleted = (counter == totalExcercises);
+    
+    if (workoutCompleted)
+    {
+        NSString *message = [NSString stringWithFormat:@"Complete! You got through all %lu excercises",(unsigned long)totalExcercises];
+        
+        return message;
+    }
+    else
+    {
+        NSString *message = [NSString stringWithFormat:@"Incomplete - you got through %lu/%lu excercises",counter, totalExcercises];
+        
+        return message;
+    }
+    
+}
+
 -(NSString *)workoutStartDayOfWeek
 {
     
@@ -108,6 +154,19 @@
     
     return dateString;
     
+}
+-(NSString *)workoutStartTime
+{
+    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:self.date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"h:mm a"];
+    
+    NSString *workoutStartTime = [dateFormatter stringFromDate:startDate];
+    
+    return workoutStartTime;
+
 }
 
 -(NSArray *)arrayOfInfo
@@ -192,116 +251,7 @@
     
 }
 
-//-(NSArray *)arrayOfCompletedExcercises
-//{
-//    
-//    NSArray *excercices = [self.excercises allObjects];
-//    
-//    NSMutableArray *completedExcercises = [[NSMutableArray alloc] init];
-//    
-//    for (Excercise *excercise in excercices)
-//    {
-//        if (excercise.isComplete)
-//        {
-//            [completedExcercises addObject:excercise];
-//        }
-//    }
-//    
-//    return completedExcercises;
-//}
-//
-//-(NSString *)stringCompletedExcercies
-//{
-//    NSArray *excercises = [self.excercises allObjects];
-//    
-//    NSUInteger totalExcercies = excercises.count;
-//    
-//    NSUInteger completedExcercises = 0;
-//    
-//    for (Excercise *excercise in excercises)
-//    {
-//        if (excercise.isComplete)
-//        {
-//            completedExcercises ++;
-//        }
-//    }
-//    
-//    BOOL workoutComplete = (totalExcercies == completedExcercises);
-//    
-//    if (workoutComplete)
-//    {
-//        return [NSString stringWithFormat:@"Completed all %lu excercices",totalExcercies];
-//    }
-//    else
-//    {
-//        return [NSString stringWithFormat:@"Completed %lu/%lu excercices",completedExcercises,totalExcercies];
-//    }
-//}
 
--(Workout *)generateWorkout
-{
-//    NSLog(@"in the create new workout standard method");
-//    
-//    dataStore *store = [dataStore sharedDataStore];
-//    
-//    User *user = store.user;
-//    
-//    // create workout
-//    
-//    Workout *workout = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:store.managedObjectContext];
-//    
-//    NSUInteger workoutNumber = store.user.workouts.count +1;
-//    
-//    NSString *workoutName = [NSString stringWithFormat:@"Workout #%li",(unsigned long)workoutNumber];
-//    
-//    workout.date = [[NSDate date] timeIntervalSince1970];
-//    
-//    workout.isFinished = NO;
-//    workout.isFinishedSuccessfully = NO;
-//    workout.timeInSeconds = 0;
-//    
-//    // create circuits
-//    
-//    Circuit *circuit1 = [NSEntityDescription insertNewObjectForEntityForName:@"Cicuit" inManagedObjectContext:store.managedObjectContext];
-//    
-//    circuit1.name = @"Circuit 1";
-//    circuit1.circuitIndexNumberInWorkout = 0;
-//    
-//    // create excercise sets
-//    
-//    ExcerciseSet *excerciseSet1 =  [NSEntityDescription insertNewObjectForEntityForName:@"Excercise Set" inManagedObjectContext:store.managedObjectContext];
-//    
-//    excerciseSet1.excerciseSetIndexNumberInCicuit = 0;
-//    excerciseSet1.isComplete = NO;
-//    excerciseSet1.name = @"Excercise 1";
-//    excerciseSet1.numberofRepsActual = 0;
-//    excerciseSet1.numberOfRepsSuggested = 8;
-//    excerciseSet1.restTimeAfterInSecondsActual = 0;
-//    excerciseSet1.restTimeAfterInSecondsSuggested = 59;
-//    excerciseSet1.timeInSecondsActual = 0;
-//    excerciseSet1.timeInSecondsSuggested = 60;
-//    excerciseSet1.excerciseSetDescription = @"This is your first excercise, let's get after it";
-//    
-//    // add excercise to excercise set
-//    excerciseSet1.excercise = store.availableExcercises[0];
-//    
-//    // add excercise set to circuit
-//    [circuit1 addExcerciseSetsObject:excerciseSet1];
-//    
-//    // add circuit to workout
-//    [workout addCircuitsObject:circuit1];
-//    
-//    // add workout to user
-//    [user addWorkoutsObject:workout];
-//    
-//    [store fetchData];
-//    
-//    return workout;
-    
-    
-    return nil;
-
-}
 
 
 

@@ -22,16 +22,23 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString *)workoutStartDayOfMonth;
 -(NSString *)workoutStartMonth;
 -(NSString *)workoutTimeString;
-//-(NSString *)stringCompletedExcercies;
-//-(NSArray *)arrayOfCompletedExcercises;
 
--(Workout *)generateWorkout;
 
 -(NSArray *)excercisesInOrder;
 
 -(NSString *)excercisesCompletedString;
 
 -(NSArray *)arrayOfInfo;
+
+-(NSString *)excercisesCompletedStringForSummary;
+
+-(NSString *)longDateString;
+
+-(NSString *)workoutStartTime;
+
+-(NSString *)stringFromTimeInterval:(NSTimeInterval)interval;
+
+-(NSArray *)completedExcercisesInOrder;
 
 
 

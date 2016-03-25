@@ -122,6 +122,7 @@
                     <exclude reference="iff-48-7f3"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="414" y="386"/>
         </view>
     </objects>
 </document>

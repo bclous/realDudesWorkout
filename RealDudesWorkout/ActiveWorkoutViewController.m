@@ -10,7 +10,7 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "RestView.h"
 #import "ExcerciseView.h"
-#import "WorkoutSummaryTableViewController.h"
+
 
 @interface ActiveWorkoutViewController ()
 
@@ -180,7 +180,9 @@
 
 -(void)excerciseComplete
 {
-    //self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
+
+    
+    self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
     
     self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
     self.currentExcerciseSet.isComplete = YES;
@@ -191,7 +193,6 @@
 -(void)workoutFinished
 {
     
-    [self excerciseComplete];
     
     self.workout.timeInSeconds = self.totalWorkoutCounter;
     self.workout.isFinished = YES;
@@ -442,20 +443,20 @@
 }
 
 
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"prepare for segue getting called");
-    
-    WorkoutSummaryTableViewController *destinationVC = segue.destinationViewController;
-    
-    destinationVC.workout = self.workout;
-    
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
+//
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    NSLog(@"prepare for segue getting called");
+//    
+//    WorkoutSummaryTableViewController *destinationVC = segue.destinationViewController;
+//    
+//    destinationVC.workout = self.workout;
+//    
+//    
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//}
 
 
 @end
