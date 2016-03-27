@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/23/16.
+//  Created by Brian Clouser on 3/27/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,8 +10,8 @@
 //
 
 #import "Workout.h"
-#import "Circuit.h"
 #import "User.h"
+#import "Circuit.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSTimeInterval date;
 @property (nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL isFinishedSuccessfully;
+@property (nonatomic) int64_t level;
 @property (nullable, nonatomic, retain) NSString *name;
+@property (nonatomic) int64_t targetTimeInSeconds;
 @property (nonatomic) int64_t timeInSeconds;
 @property (nullable, nonatomic, retain) NSSet<Circuit *> *circuits;
 @property (nullable, nonatomic, retain) User *user;

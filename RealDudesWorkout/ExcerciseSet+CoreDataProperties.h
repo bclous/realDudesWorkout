@@ -2,7 +2,7 @@
 //  ExcerciseSet+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 3/23/16.
+//  Created by Brian Clouser on 3/27/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -27,8 +27,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int64_t restTimeAfterInSecondsSuggested;
 @property (nonatomic) int64_t timeInSecondsActual;
 @property (nonatomic) int64_t timeInSecondsSuggested;
-@property (nullable, nonatomic, retain) Circuit *circuit;
+@property (nullable, nonatomic, retain) NSSet<Circuit *> *circuit;
 @property (nullable, nonatomic, retain) Excercise *excercise;
+
+@end
+
+@interface ExcerciseSet (CoreDataGeneratedAccessors)
+
+- (void)addCircuitObject:(Circuit *)value;
+- (void)removeCircuitObject:(Circuit *)value;
+- (void)addCircuit:(NSSet<Circuit *> *)values;
+- (void)removeCircuit:(NSSet<Circuit *> *)values;
 
 @end
 

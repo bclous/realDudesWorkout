@@ -14,7 +14,7 @@
 @interface NewWorkoutViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *startWorkoutButton;
-@property (strong, nonatomic) Workout *workout;
+
 @property (weak, nonatomic) IBOutlet UILabel *workoutDurationLabel;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *accessToLabel;
@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet AccessoryWithNameView *accessoryMiddleRight;
 @property (weak, nonatomic) IBOutlet AccessoryWithNameView *accessoryBottomLeft;
 @property (weak, nonatomic) IBOutlet AccessoryWithNameView *accessoryBottomRight;
+
+@property (strong, nonatomic) Workout *workout;
 
 @property (strong, nonatomic) NSArray *accessories;
 
@@ -40,11 +42,33 @@
     self.accessories = self.dataStore.availableAccessories;
     
     self.accessoryTopLeft.accessory = self.accessories[0];
-    self.accessoryTopRight.accessory = self.accessories[0];
-    self.accessoryMiddleLeft.accessory = self.accessories[0];
-    self.accessoryMiddleRight.accessory = self.accessories[0];
-    self.accessoryBottomLeft.accessory = self.accessories[0];
-    self.accessoryBottomRight.accessory = self.accessories[0];
+    self.accessoryTopRight.accessory = self.accessories[1];
+    self.accessoryMiddleLeft.accessory = self.accessories[2];
+    self.accessoryMiddleRight.accessory = self.accessories[3];
+    self.accessoryBottomLeft.accessory = self.accessories[4];
+    self.accessoryBottomRight.accessory = self.accessories[5];
+    
+    self.workoutDurationLabel.text = @"I want to work out for 40 minutes";
+    
+    self.accessoryBottomRight.layer.cornerRadius = 5;
+    self.accessoryBottomRight.layer.masksToBounds = YES;
+    
+    self.accessoryBottomLeft.layer.cornerRadius = 5;
+    self.accessoryBottomLeft.layer.masksToBounds = YES;
+    
+    self.accessoryMiddleRight.layer.cornerRadius = 5;
+    self.accessoryMiddleRight.layer.masksToBounds = YES;
+    
+    self.accessoryMiddleLeft.layer.cornerRadius = 5;
+    self.accessoryMiddleLeft.layer.masksToBounds = YES;
+    
+    self.accessoryTopRight.layer.cornerRadius = 5;
+    self.accessoryTopRight.layer.masksToBounds = YES;
+    
+    self.accessoryTopLeft.layer.cornerRadius = 5;
+    self.accessoryTopLeft.layer.masksToBounds = YES;
+    
+    
     
     
     
@@ -80,6 +104,21 @@
     self.accessoryBottomRight.timesTouched++;
 }
 
+- (IBAction)sliderMoved:(id)sender
+{
+    CGFloat RoundedValue =  roundf(self.slider.value);
+    
+    CGFloat floatValueRounded = roundf(RoundedValue / 10.0) * 10.0;
+    
+    NSUInteger LabelValue = floatValueRounded / 1;
+    
+    
+    
+    NSString *label = [NSString stringWithFormat:@"I want to work out for %lu minutes",LabelValue];
+    
+    self.workoutDurationLabel.text = label;
+    
+}
 
 
 

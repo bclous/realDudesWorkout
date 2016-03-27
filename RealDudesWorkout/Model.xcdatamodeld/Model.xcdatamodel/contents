@@ -9,7 +9,7 @@
         <attribute name="circuitIndexNumberInWorkout" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="excerciseSets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExcerciseSet" inverseName="circuit" inverseEntity="ExcerciseSet" syncable="YES"/>
-        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="circuits" inverseEntity="Workout" syncable="YES"/>
+        <relationship name="workout" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Workout" inverseName="circuits" inverseEntity="Workout" syncable="YES"/>
     </entity>
     <entity name="Excercise" representedClassName="Excercise" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,7 +30,7 @@
         <attribute name="restTimeAfterInSecondsSuggested" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeInSecondsActual" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeInSecondsSuggested" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="circuit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Circuit" inverseName="excerciseSets" inverseEntity="Circuit" syncable="YES"/>
+        <relationship name="circuit" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Circuit" inverseName="excerciseSets" inverseEntity="Circuit" syncable="YES"/>
         <relationship name="excercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Excercise" inverseName="excerciseSet" inverseEntity="Excercise" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -46,7 +46,9 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isFinishedSuccessfully" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="targetTimeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="circuits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Circuit" inverseName="workout" inverseEntity="Circuit" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="workouts" inverseEntity="User" syncable="YES"/>
@@ -57,6 +59,6 @@
         <element name="Excercise" positionX="-2" positionY="-72" width="128" height="133"/>
         <element name="ExcerciseSet" positionX="-2" positionY="-333" width="128" height="223"/>
         <element name="User" positionX="-533" positionY="-342" width="128" height="148"/>
-        <element name="Workout" positionX="-335" positionY="-349" width="128" height="148"/>
+        <element name="Workout" positionX="-335" positionY="-349" width="128" height="178"/>
     </elements>
 </model>

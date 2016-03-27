@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="button1View">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="tUW-qS-zY3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="494" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue1" translatesAutoresizingMaskIntoConstraints="NO" id="fDW-Cb-QGk">
+                    <rect key="frame" x="0.0" y="0.0" width="494" height="58"/>
+                </imageView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63h-8B-xYx">
+                    <rect key="frame" x="0.0" y="0.0" width="494" height="58"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="273-Hl-xKb">
+                        <rect key="frame" x="0.0" y="0.0" width="494" height="58"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="63h-8B-xYx" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="05A-On-PLU"/>
+                <constraint firstItem="fDW-Cb-QGk" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="22U-r6-SG0"/>
+                <constraint firstItem="63h-8B-xYx" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="TXO-Yp-apV"/>
+                <constraint firstItem="63h-8B-xYx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dua-cz-SpY"/>
+                <constraint firstItem="fDW-Cb-QGk" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="oVK-9n-79U"/>
+                <constraint firstItem="fDW-Cb-QGk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qVT-jW-L3K"/>
+                <constraint firstItem="63h-8B-xYx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tV6-KV-uTm"/>
+                <constraint firstItem="fDW-Cb-QGk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vQa-L6-vOX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="86" y="120"/>
+        </view>
+        <visualEffectView opaque="NO" contentMode="scaleToFill" id="Xmn-8t-fY4">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gM3-5H-E3T">
+                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            </view>
+            <blurEffect style="light"/>
+        </visualEffectView>
+    </objects>
+    <resources>
+        <image name="blue1" width="300" height="168"/>
+    </resources>
+</document>

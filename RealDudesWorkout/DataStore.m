@@ -141,26 +141,56 @@
 -(void)generateAvailableExcercisesAndAccessoriesArrays
 {
     
+    
+    // create excercises
+    
     Excercise *pullups = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
     Excercise *crawlDownPushups = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
     Excercise *squats = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *squatsWithWeight = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
     Excercise *legKicks = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *lowerBackExtensions = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *bicepCurls = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *dips = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *lunges = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *lungesWithWeight = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *dipsOnBench = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *latPullDowns = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *pushups = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *jumpingJacks = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    Excercise *burpees = [NSEntityDescription insertNewObjectForEntityForName:@"Excercise" inManagedObjectContext:self.managedObjectContext];
+    
+    
+    
+    // create accessories
     
     Accessory *pullupBar = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    Accessory *dipsBar = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    Accessory *bench = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    Accessory *latPullDownMachine = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    Accessory *dumbells = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    Accessory *backExtensionMachine = [NSEntityDescription insertNewObjectForEntityForName:@"Accessory" inManagedObjectContext:self.managedObjectContext];
+    
+    // setting up excercices
     
     pullups.name = @"Pullups";
     pullups.pictureName = @"pullUp";
-    pullups.category = @"back";
+    pullups.category = @"back foundation";
     pullups.excerciseDescription = @"This is the description for pullups";
     
     crawlDownPushups.name = @"Crawl down pushups";
     crawlDownPushups.pictureName = @"crawlDownPushups";
-    crawlDownPushups.category = @"chest";
+    crawlDownPushups.category = @"chest foundation";
     crawlDownPushups.excerciseDescription = @"this is the description for crawl down pushups";
     
-    squats.name = @"Squats";
+    squatsWithWeight.name = @"Body weight squats";
+    squatsWithWeight.pictureName = @"squat";
+    squatsWithWeight.category = @"legs foundation";
+    squatsWithWeight.excerciseDescription = @"This is the description for Squats";
+    
+    squats.name = @"Squats with dumbbell";
     squats.pictureName = @"squat";
-    squats.category = @"legs";
+    squats.category = @"legs foundation";
     squats.excerciseDescription = @"This is the description for Squats";
     
     legKicks.name = @"Leg kicks";
@@ -168,11 +198,91 @@
     legKicks.category = @"core";
     legKicks.excerciseDescription = @"This is the description for leg kicks";
     
+    pushups.name = @"Pushups";
+    pushups.pictureName = @"pushups";
+    pushups.category = @"chest foundation";
+    pushups.excerciseDescription = @"description";
+    
+    lowerBackExtensions.name = @"Lower back extensions";
+    lowerBackExtensions.pictureName = @"lowerBackExtensions";
+    lowerBackExtensions.category = @"core";
+    lowerBackExtensions.excerciseDescription =  @"description";
+    
+    bicepCurls.name = @"Bicep curls";
+    bicepCurls.pictureName = @"curls";
+    bicepCurls.category = @"back";
+    bicepCurls.excerciseDescription =  @"description";
+    
+    dips.name = @"Dips";
+    dips.pictureName = @"dips";
+    dips.category = @"chest";
+    dips.excerciseDescription =  @"description";
+    
+    lunges.name = @"Lunges";
+    lunges.pictureName = @"lunges";
+    lunges.category = @"legs";
+    lunges.excerciseDescription =  @"description";
+    
+    lungesWithWeight.name = @"Lunges with weight";
+    lungesWithWeight.pictureName = @"lunges";
+    lungesWithWeight.category = @"legs";
+    lungesWithWeight.excerciseDescription =  @"description";
+    
+    dipsOnBench.name = @"Bench dips";
+    dipsOnBench.pictureName = @"benchDips";
+    dipsOnBench.category = @"chest";
+    dipsOnBench.excerciseDescription =  @"description";
+    
+    latPullDowns.name = @"Lat pull downs";
+    latPullDowns.pictureName = @"latPullDowns";
+    latPullDowns.category = @"back";
+    latPullDowns.excerciseDescription =  @"description";
+    
+    jumpingJacks.name = @"Jumping Jacks";
+    jumpingJacks.pictureName = @"jumpingJacks";
+    jumpingJacks.category = @"cardio";
+    jumpingJacks.excerciseDescription =  @"description";
+    
+    burpees.name = @"Burpees";
+    burpees.pictureName = @"burpees";
+    burpees.category = @"cardio";
+    burpees.excerciseDescription =  @"description";
+    
+
+    
+    // setting up accessories
+    
     pullupBar.name = @"Pullup bar";
     pullupBar.pictureName = @"pullUpBar";
     
-    [pullups addAccessoriesObject:pullupBar];
+    dipsBar.name = @"Dips bar";
+    dipsBar.pictureName = @"dipsBar";
     
+    bench.name = @"Bench";
+    bench.pictureName = @"bench";
+    
+    backExtensionMachine.name = @"Back Extension machine";
+    backExtensionMachine.pictureName = @"lowerBackExtensionStructure";
+    
+    dumbells.name = @"dumbells";
+    dumbells.pictureName = @"dumbbell";
+    
+    latPullDownMachine.name = @"Lat pull down machine";
+    latPullDownMachine.pictureName = @"latPullDownMachine";
+    
+    // add accessories to excercies
+    
+    [pullups addAccessoriesObject:pullupBar];
+    [latPullDowns addAccessoriesObject:latPullDownMachine];
+    [squatsWithWeight addAccessoriesObject:dumbells];
+    [lungesWithWeight addAccessoriesObject:dumbells];
+    [lowerBackExtensions addAccessoriesObject:backExtensionMachine];
+    [dipsOnBench addAccessoriesObject:bench];
+    [dips addAccessoriesObject:dipsBar];
+    [bicepCurls addAccessoriesObject:dumbells];
+    
+    
+    // create available excerciess and accessories arrays
     
     NSFetchRequest *excercisesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Excercise"];
     NSFetchRequest *accessoriesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Accessory"];
