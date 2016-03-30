@@ -34,6 +34,27 @@
     
     self.navigationItem.titleView = imageView;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //[dateFormatter setDateFormat:@"EEEE"];
+    [dateFormatter setDateFormat:@"eeee"];
+    NSLog(@"The day of the week: %@", [dateFormatter stringFromDate:[NSDate date]]);
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+    int weekday = [comps weekday];
+    NSLog(@"The week day number: %lu", weekday);
+    int time = [comps second];
+      NSLog(@"The second is: %lu", time);
+    int minutes = [comps minute];
+    NSLog(@"The minute is: %lu", minutes);
+    int hours = [comps hour];
+    NSLog(@"The hour is: %lu", hours);
+    
+    
+    
+    
+
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -51,38 +72,81 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.dataStore.user.workouts.count;
+    
+    if(section == 0)
+    {
+        return 4;
+    }
+    
+    else
+    {
+        return self.dataStore.user.workouts.count;
+    }
+    
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
     
-    WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutCell" forIndexPath:indexPath];
     
-    NSArray *workoutsInOrderLIFO = [self.dataStore.user orderedWorkoutsLIFO];
+    if (indexPath.section == 0)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
+        
+        if(indexPath.row == 0)
+        {
+            cell.textLabel.text = @"This week";
+        }
+        else if (indexPath.row == 1)
+        {
+            cell.textLabel.text = @"This month";
+        }
+        else if (indexPath.row == 2)
+        {
+            cell.textLabel.text = @"This year";
+        }
+        else
+        {
+            cell.textLabel.text = @"Lifetime";
+        }
+        
+        return cell;
+    }
     
-    Workout *workout = workoutsInOrderLIFO[indexPath.row];
+    else
+    {
+        
+        
+        WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutCell" forIndexPath:indexPath];
+        
+        NSArray *workoutsInOrderLIFO = [self.dataStore.user orderedWorkoutsLIFO];
+        
+        Workout *workout = workoutsInOrderLIFO[indexPath.row];
+        
+        cell.weekdayLabel.text = [workout workoutStartDayOfWeek];
+        cell.dayOfMonthLabel.text = [workout workoutStartDayOfMonth];
+        cell.monthLabel.text = [workout workoutStartMonth];
+        
+        cell.workoutNameLabel.text = workout.name;
+        cell.workoutTimeAndDurationLabel.text = [workout workoutTimeString];
+        cell.workoutExcercisesCompleteLabel.text = [workout excercisesCompletedString];
+        
+        // set up delete button
+        cell.rightUtilityButtons = [self rightButtons];
+        cell.delegate = self;
+        
+        return cell;
+    }
     
-    cell.weekdayLabel.text = [workout workoutStartDayOfWeek];
-    cell.dayOfMonthLabel.text = [workout workoutStartDayOfMonth];
-    cell.monthLabel.text = [workout workoutStartMonth];
     
-    cell.workoutNameLabel.text = workout.name;
-    cell.workoutTimeAndDurationLabel.text = [workout workoutTimeString];
-    cell.workoutExcercisesCompleteLabel.text = [workout excercisesCompletedString];
-    
-    // set up delete button
-    cell.rightUtilityButtons = [self rightButtons];
-    cell.delegate = self;
-    
-    return cell;
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

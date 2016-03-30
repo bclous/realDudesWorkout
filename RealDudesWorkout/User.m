@@ -43,44 +43,345 @@
     
 }
 
-//-(NSArray *)numberOfWorkoutsSinceMonday
-//{
-//    NSArray *allWorkouts = [self orderedWorkoutsLIFO];
-//    
-// 
-//    
-//    
-//}
-//
-//-(NSArray *)numberOfWorkoutsLastSevenDays
-//{
-//    
-//}
-//
-//-(NSArray *)numberofWorkoutsSinceFirstOfMonth
-//{
-//    
-//}
-//
-//-(NSArray *)numberOfWorkoutsLastThirtyDays
-//{
-//    
-//}
-//
-//-(NSArray *)numberOfWorkoutsSinceJanuaryFirst
-//{
-//    
-//}
-//
-//-(NSArray *)numberOfWorkoutsLast365Days
-//{
-//    
-//}
-//
-//-(NSArray *)numberOfWorkoutsLifetime
-//{
-//    
-//}
+-(NSArray *)workoutsSinceMonday
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"eeee"];
+
+    NSString *dayOfWeek = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSUInteger numberOfDaysSinceMonday = [self numberOfDaysSinceMonday:dayOfWeek];
+    
+    NSUInteger secondsSinceMonday = [self numberOfSecondsInTodayPlusDays:numberOfDaysSinceMonday];
+    
+    NSArray *workoutsSinceMondayArray = [self workoutsSinceTimeInterval:secondsSinceMonday];
+    
+    return workoutsSinceMondayArray;
+    
+}
+
+-(NSArray *)workoutsSinceFirstOfMonth
+{
+    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"dd"];
+    
+    NSString *dayOfMonth = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSUInteger dayOfMonthInt = [dayOfMonth integerValue];
+    
+    NSUInteger secondsSinceFirstOfMonth = [self numberOfSecondsInTodayPlusDays:dayOfMonthInt - 1];
+    
+    NSArray *workoutsSinceTheFirstOfMonth = [self workoutsSinceTimeInterval:secondsSinceFirstOfMonth];
+    
+    return workoutsSinceTheFirstOfMonth;
+    
+}
+
+-(NSArray *)workoutsSinceFirstOfYear
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"DD"];
+    
+    NSString *dayOfYear = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSUInteger dayOfYearInt = [dayOfYear integerValue];
+    
+    NSUInteger secondsSinceFirstOfYear = [self numberOfSecondsInTodayPlusDays:dayOfYearInt - 1];
+    
+    NSArray *workoutsSinceTheFirstOfYear = [self workoutsSinceTimeInterval:secondsSinceFirstOfYear];
+    
+    return workoutsSinceTheFirstOfYear;
+    
+}
+
+-(NSArray *)workoutsLastSevenDays
+{
+    
+    NSUInteger secondsTodayPlusLastSixDays = [self numberOfSecondsInTodayPlusDays:6];
+    
+    NSArray *workoutsLastSevenDays = [self workoutsSinceTimeInterval:secondsTodayPlusLastSixDays];
+    
+    return workoutsLastSevenDays;
+}
+
+-(NSArray *)workoutsLastThirtyDays
+{
+    
+    NSUInteger secondsTodayPlusLast29Days = [self numberOfSecondsInTodayPlusDays:29];
+    
+    NSArray *workoutsLastThirtyDays = [self workoutsSinceTimeInterval:secondsTodayPlusLast29Days];
+    
+    return workoutsLastThirtyDays;
+}
+
+-(NSArray *)workoutsLast365Days
+{
+    
+    NSUInteger secondsTodayPlusLast364Days = [self numberOfSecondsInTodayPlusDays:364];
+    
+    NSArray *workoutsLast365Days = [self workoutsSinceTimeInterval:secondsTodayPlusLast364Days];
+    
+    return workoutsLast365Days;
+}
+
+-(NSArray *)excerciseNameAndQuantitySortedGivenWorkouts:(NSArray *)workouts
+{
+    NSDictionary *dictionary = [self dictionaryOfExcercisesWithPictureNameGivenWorkouts:workouts];
+    
+    NSArray *excerciseNamesInOrder = [self sortedArrayOfExcerciseNamesFromGivenQuantity:dictionary];
+    
+    NSArray *excerciseNamesAndQuantity = [self arrayOfExcercisePlusQuantityStringsFromDictionary:dictionary arrayOfNames:excerciseNamesInOrder];
+    
+    return excerciseNamesAndQuantity;
+}
+
+-(NSArray *)excercisePictureNamesSortedGivenWorkouts:(NSArray *)workouts
+{
+    
+    NSDictionary *dictionary = [self dictionaryOfExcercisesWithPictureNameGivenWorkouts:workouts];
+    
+    NSArray *excerciseNamesInOrder = [self sortedArrayOfExcerciseNamesFromGivenQuantity:dictionary];
+    
+    NSArray *excercisePictureNames = [self arrayOfPictureNamesGivenDictionary:dictionary arrayOfNames:excerciseNamesInOrder];
+    
+    
+    return excercisePictureNames;
+    
+    
+}
+
+
+
+// helper methods for workout totals
+
+-(NSUInteger)numberOfSecondsInTodayPlusDays:(NSUInteger)days
+{
+    
+    NSDate *rightNow = [NSDate date];
+    NSTimeInterval now =  [rightNow timeIntervalSince1970];
+    
+    // get day of week
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"hh"];
+    
+    NSString *hours = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [dateFormatter setDateFormat:@"mm"];
+    
+    NSString *minutes = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [dateFormatter setDateFormat:@"ss"];
+    
+    NSString *seconds = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSUInteger secondsToSubtractFromTodayTime = [self secondsToSubtractGivenHour:hours minutes:minutes seconds:seconds];
+    
+    NSUInteger secondsFromDays = days * 60 * 60 * 24;
+    
+    NSUInteger secondsTotal = secondsFromDays + secondsToSubtractFromTodayTime;
+    
+    return secondsTotal;
+
+}
+
+-(NSArray *)workoutsSinceTimeInterval:(NSTimeInterval)timeInterval
+{
+    NSDate *rightNow = [NSDate date];
+    
+    NSTimeInterval now =  [rightNow timeIntervalSince1970];
+    
+    NSTimeInterval window = now - timeInterval;
+    
+    NSArray *allWorkouts = [self orderedWorkoutsLIFO];
+    
+    NSPredicate *workoutsSinceIntervalPredicate = [NSPredicate predicateWithFormat:@"date > %lu",window];
+    
+    NSArray *workoutsSinceInterval = [allWorkouts filteredArrayUsingPredicate:workoutsSinceIntervalPredicate];
+    
+    return workoutsSinceInterval;
+
+}
+
+-(NSUInteger)numberOfDaysSinceMonday:(NSString *)dayOfWeek
+{
+    if ([dayOfWeek isEqualToString:@"Monday"])
+    {
+        return 0;
+    }
+    else if ([dayOfWeek isEqualToString:@"Tuesday"])
+    {
+        return 1;
+    }
+    else if ([dayOfWeek isEqualToString:@"Wednesday"])
+    {
+        return 2;
+    }
+    else if ([dayOfWeek isEqualToString:@"Thursday"])
+    {
+        return 3;
+    }
+    else if ([dayOfWeek isEqualToString:@"Friday"])
+    {
+        return 4;
+    }
+    else if ([dayOfWeek isEqualToString:@"Saturday"])
+    {
+        return 5;
+    }
+    else if ([dayOfWeek isEqualToString:@"Sunday"])
+    {
+        return 6;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+-(NSTimeInterval)secondsToSubtractGivenHour:(NSString *)hour minutes:(NSString *)minutes seconds:(NSString *)seconds
+{
+    NSUInteger hoursInSeconds = [hour integerValue]*60*60;
+    NSUInteger minutesInSeconds = [minutes integerValue]*60;
+    NSUInteger secondsInSeconds = [seconds integerValue];
+    
+    return hoursInSeconds + minutesInSeconds + secondsInSeconds;
+    
+}
+
+
+
+
+
+-(NSDictionary *)dictionaryOfExcercisesWithQuantityGivenWorkouts:(NSArray *)workouts
+{
+    
+    NSMutableDictionary *excercisesWithQuantities = [[NSMutableDictionary alloc] init];
+    
+    
+    for (Workout *individualWorkout in workouts)
+    {
+        NSArray *excercisesInOrder = [individualWorkout excercisesInOrder];
+                                      
+        for (ExcerciseSet *excerciseSet in excercisesInOrder)
+        {
+            NSString *excerciseName = excerciseSet.excercise.name;
+            
+            BOOL dictionaryHasExcercise = [[excercisesWithQuantities allKeys] containsObject:excerciseName];
+            
+            if (dictionaryHasExcercise)
+            {
+                NSInteger oldQuantity = [excercisesWithQuantities[excerciseName] integerValue];
+                
+                NSInteger newValue = oldQuantity + excerciseSet.numberofRepsActual;
+                
+                excercisesWithQuantities[excerciseName] = [NSNumber numberWithInt:newValue];
+            }
+            else
+            {
+                NSNumber *quantity = [NSNumber numberWithInt:excerciseSet.numberofRepsActual];
+                
+                [excercisesWithQuantities setObject:quantity forKey:excerciseName];
+                
+    
+            }
+        }
+    }
+    
+    return excercisesWithQuantities;
+
+}
+
+-(NSDictionary *)dictionaryOfExcercisesWithPictureNameGivenWorkouts:(NSArray *)workouts
+{
+    
+    NSMutableDictionary *excercisesWithQuantities = [[NSMutableDictionary alloc] init];
+    
+    
+    for (Workout *individualWorkout in workouts)
+    {
+        NSArray *excercisesInOrder = [individualWorkout excercisesInOrder];
+        
+        for (ExcerciseSet *excerciseSet in excercisesInOrder)
+        {
+            NSString *excerciseName = excerciseSet.excercise.name;
+            
+            BOOL dictionaryHasExcercise = [[excercisesWithQuantities allKeys] containsObject:excerciseName];
+            
+            if (!dictionaryHasExcercise)
+            {
+                
+                [excercisesWithQuantities setObject:excerciseSet.excercise.pictureName forKey:excerciseName];
+            }
+
+        }
+    }
+    
+    return excercisesWithQuantities;
+    
+}
+
+-(NSArray *)sortedArrayOfExcerciseNamesFromGivenQuantity:(NSDictionary *)dictionary
+{
+    
+    NSArray *sortedArray  = [dictionary keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        
+    return [[dictionary objectForKey:obj1] compare:[dictionary objectForKey:obj2]];
+        
+    }];
+    
+    
+    return sortedArray;
+    
+    
+}
+
+-(NSArray *)arrayOfPictureNamesGivenDictionary:(NSDictionary *)dictionary arrayOfNames:(NSArray *)arrayOfNames
+{
+    
+    NSMutableArray *arrayOfPicNames = [[NSMutableArray alloc] init];
+    
+    for (NSString *excerciseName in arrayOfNames)
+    {
+        [arrayOfPicNames addObject:dictionary[excerciseName]];
+    }
+    
+    return arrayOfPicNames;
+    
+}
+
+-(NSArray *)arrayOfExcercisePlusQuantityStringsFromDictionary:(NSDictionary *)dictionary arrayOfNames:(NSArray *)arrayOfNames
+{
+    
+    NSMutableArray *arrayOfQuantityAndNames = [[NSMutableArray alloc] init];
+    
+    for (NSString *excerciseName in arrayOfNames)
+    {
+        NSString *quantityAndName = [NSString stringWithFormat:@"%@ %@",dictionary[excerciseName], excerciseName];
+        
+        [arrayOfQuantityAndNames addObject:quantityAndName];
+    }
+    
+    return arrayOfQuantityAndNames;
+    
+}
+
+
+
+
+
+
+
+
+
+#pragma generating workouts space
 
 -(Workout *)generateNewWorkout
 {
@@ -272,6 +573,10 @@
     
     return excercise;
 }
+
+
+
+
 
 
 

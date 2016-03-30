@@ -22,6 +22,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(Workout *)generateNewWorkout;
 
+-(NSArray *)workoutsSinceMonday;
+-(NSArray *)workoutsSinceFirstOfMonth;
+-(NSArray *)workoutsSinceFirstOfYear;
+-(NSArray *)workoutsLastSevenDays;
+-(NSArray *)workoutsLastThirtyDays;
+-(NSArray *)workoutsLast365Days;
+
+-(NSDictionary *)dictionaryOfExcercisesWithQuantityGivenWorkouts:(NSArray *)workouts;
+
+-(NSArray *)excerciseNameAndQuantitySortedGivenWorkouts:(NSArray *)workouts;
+-(NSArray *)excercisePictureNamesSortedGivenWorkouts:(NSArray *)workouts;
+
+
+
+
 
 
 @end
