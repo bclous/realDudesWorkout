@@ -23,32 +23,34 @@
     
     [super viewDidLoad];
     
-    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"hotGirlWorkout"] andHeight:250 andShadow:YES];
+//    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"hotGirlWorkout"] andHeight:250 andShadow:NO];
     
     self.dataStore = [DataStore sharedDataStore];
     
     [self.dataStore fetchData];
     
-    UIImage *image = [UIImage imageNamed: @"manUplogo"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+    //self.tableView.separatorInset = UIEdgeInsetsZero;
     
-    self.navigationItem.titleView = imageView;
+//    UIImage *image = [UIImage imageNamed: @"manUplogo"];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+//    
+//    self.navigationItem.titleView = imageView;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //[dateFormatter setDateFormat:@"EEEE"];
-    [dateFormatter setDateFormat:@"eeee"];
-    NSLog(@"The day of the week: %@", [dateFormatter stringFromDate:[NSDate date]]);
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
-    int weekday = [comps weekday];
-    NSLog(@"The week day number: %lu", weekday);
-    int time = [comps second];
-      NSLog(@"The second is: %lu", time);
-    int minutes = [comps minute];
-    NSLog(@"The minute is: %lu", minutes);
-    int hours = [comps hour];
-    NSLog(@"The hour is: %lu", hours);
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    //[dateFormatter setDateFormat:@"EEEE"];
+//    [dateFormatter setDateFormat:@"eeee"];
+//    NSLog(@"The day of the week: %@", [dateFormatter stringFromDate:[NSDate date]]);
+//    
+//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+//    int weekday = [comps weekday];
+//    NSLog(@"The week day number: %lu", weekday);
+//    int time = [comps second];
+//      NSLog(@"The second is: %lu", time);
+//    int minutes = [comps minute];
+//    NSLog(@"The minute is: %lu", minutes);
+//    int hours = [comps hour];
+//    NSLog(@"The hour is: %lu", hours);
     
     
     
@@ -72,23 +74,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     
-    if(section == 0)
-    {
-        return 4;
-    }
+//    if(section == 0)
+//    {
+//        return 4;
+//    }
+//    
+//    else
+//    {
+//        return self.dataStore.user.workouts.count;
+//    }
     
-    else
-    {
-        return self.dataStore.user.workouts.count;
-    }
-    
-    
+    return self.dataStore.user.workouts.count;
 }
 
 
@@ -96,33 +98,33 @@
 {
     
     
-    if (indexPath.section == 0)
-    {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
-        
-        if(indexPath.row == 0)
-        {
-            cell.textLabel.text = @"This week";
-        }
-        else if (indexPath.row == 1)
-        {
-            cell.textLabel.text = @"This month";
-        }
-        else if (indexPath.row == 2)
-        {
-            cell.textLabel.text = @"This year";
-        }
-        else
-        {
-            cell.textLabel.text = @"Lifetime";
-        }
-        
-        return cell;
-    }
+//    if (indexPath.section == 0)
+//    {
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
+//        
+//        if(indexPath.row == 0)
+//        {
+//            cell.textLabel.text = @"Weekly";
+//        }
+//        else if (indexPath.row == 1)
+//        {
+//            cell.textLabel.text = @"Monthly";
+//        }
+//        else if (indexPath.row == 2)
+//        {
+//            cell.textLabel.text = @"Yearly";
+//        }
+//        else
+//        {
+//            cell.textLabel.text = @"Lifetime";
+//        }
+//        
+//        return cell;
+//    }
+//    
+//    else
+//    {
     
-    else
-    {
-        
         
         WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutCell" forIndexPath:indexPath];
         
@@ -143,7 +145,7 @@
         cell.delegate = self;
         
         return cell;
-    }
+//    }
     
     
 
@@ -152,8 +154,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [self performSegueWithIdentifier:@"segueToWorkoutDetail" sender:self];
+    if (indexPath.section == 1)
+    {
+         [self performSegueWithIdentifier:@"segueToWorkoutDetail" sender:self];
+    }
+    
+   
 }
+
 
 
 // helper method for SWCell delegate
@@ -169,6 +177,49 @@
     return rightUtilityButtons;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (indexPath.section == 0)
+//    {
+//        return 40;
+//    }
+//    else
+//    {
+//        return 100;
+//    }
+    
+    return 100;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+//    
+//    if (section == 0)
+//    {
+//        return 50;
+//    }
+//    else
+//    {
+//        return 0;
+//    }
+    
+    return 0;
+
+}
+
+
+//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if (section == 0)
+//    {
+//        return @"TOTALS";
+//    }
+//    else
+//    {
+//        return @"WORKOUTS";
+//    }
+//}
 
 
 
