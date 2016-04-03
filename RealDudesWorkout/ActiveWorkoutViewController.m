@@ -87,6 +87,8 @@
         
         [self.dataStore saveContext];
         
+        
+        
         [self workoutFinished];
         
          NSLog(@"about to save context");
@@ -196,6 +198,9 @@
     
     self.workout.timeInSeconds = self.totalWorkoutCounter;
     self.workout.isFinished = YES;
+    
+    [self.totalWorkoutTimer invalidate];
+
     
     if (self.isLastExcercise)
     {

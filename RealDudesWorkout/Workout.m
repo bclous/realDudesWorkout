@@ -126,7 +126,7 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
-    [dateFormatter setDateFormat:@"dd"];
+    [dateFormatter setDateFormat:@"d"];
     
     NSString *dayOfMonth = [dateFormatter stringFromDate:workoutDate];
     
