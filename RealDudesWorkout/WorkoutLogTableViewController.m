@@ -35,34 +35,6 @@
     
     [self.dataStore fetchData];
     
-    //self.tableView.separatorInset = UIEdgeInsetsZero;
-    
-//    UIImage *image = [UIImage imageNamed: @"manUplogo"];
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
-//    
-//    self.navigationItem.titleView = imageView;
-    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    //[dateFormatter setDateFormat:@"EEEE"];
-//    [dateFormatter setDateFormat:@"eeee"];
-//    NSLog(@"The day of the week: %@", [dateFormatter stringFromDate:[NSDate date]]);
-//    
-//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//    NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
-//    int weekday = [comps weekday];
-//    NSLog(@"The week day number: %lu", weekday);
-//    int time = [comps second];
-//      NSLog(@"The second is: %lu", time);
-//    int minutes = [comps minute];
-//    NSLog(@"The minute is: %lu", minutes);
-//    int hours = [comps hour];
-//    NSLog(@"The hour is: %lu", hours);
-    
-    
-    
-    
-
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated

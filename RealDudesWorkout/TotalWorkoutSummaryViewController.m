@@ -36,10 +36,31 @@
     self.summaryTableView.delegate = self;
     self.summaryTableView.dataSource = self;
     
-    self.excercisesAndReps = [self.dataStore.user excerciseNameAndQuantitySortedGivenWorkouts:self.workoutsSinceSetDay];
-    self.pictureNames = [self.dataStore.user excercisePictureNamesSortedGivenWorkouts:self.workoutsSinceSetDay];
+    self.excercisesAndReps = [self.dataStore.user excerciseNameAndQuantitySortedGivenWorkouts:self.workoutsSinceTimeInterval];
+    self.pictureNames = [self.dataStore.user excercisePictureNamesSortedGivenWorkouts:self.workoutsSinceTimeInterval];
     
 
+}
+
+- (IBAction)toggleSwitched:(id)sender
+{
+    
+    if (self.timePeriodToggle.selectedSegmentIndex == 0)
+    {
+        self.excercisesAndReps = [self.dataStore.user excerciseNameAndQuantitySortedGivenWorkouts:self.workoutsSinceTimeInterval];
+        self.pictureNames = [self.dataStore.user excercisePictureNamesSortedGivenWorkouts:self.workoutsSinceTimeInterval];
+        
+        [self.summaryTableView reloadData];
+    }
+    
+    else if (self.timePeriodToggle.selectedSegmentIndex == 1)
+    {
+        self.excercisesAndReps = [self.dataStore.user excerciseNameAndQuantitySortedGivenWorkouts:self.workoutsSinceSetDay];
+        self.pictureNames = [self.dataStore.user excercisePictureNamesSortedGivenWorkouts:self.workoutsSinceSetDay];
+        
+        [self.summaryTableView reloadData];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

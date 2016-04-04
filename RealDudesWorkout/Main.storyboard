@@ -250,6 +250,9 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="toggleSwitched:" destination="ljD-Lm-Sx4" eventType="valueChanged" id="0rZ-Na-blz"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Co-gp-hsE">
                                 <rect key="frame" x="0.0" y="130" width="600" height="470"/>

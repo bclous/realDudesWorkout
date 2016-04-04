@@ -62,6 +62,8 @@
     //initialize components
     
     [self initializeViewComponents];
+    
+    [self.navigationController setNavigationBarHidden:YES];
    
 }
 
