@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h6S-Yt-f0q" id="tEs-sI-lMN">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="102.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sMP-4u-Nxe">
@@ -156,7 +156,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GRf-aC-bAQ" id="LXe-yP-yzI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjF-ZZ-QbO" customClass="WorkoutSummaryCellView">
@@ -179,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="222" width="600" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E2j-Tb-8fv" id="eCj-ox-Kkp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="101.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PH1-8t-AuR" customClass="ExcerciseCellView">
@@ -202,7 +202,7 @@
                                 <rect key="frame" x="0.0" y="324" width="600" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZk-BH-s1y" id="2A2-xm-l8L">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rg-yG-GzQ">
@@ -241,7 +241,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-xy-7AA">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-xy-7AA">
                                 <rect key="frame" x="20" y="83" width="560" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="4eb-Zu-TCZ"/>
@@ -251,7 +251,7 @@
                                     <segment title="Second"/>
                                 </segments>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Co-gp-hsE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Co-gp-hsE">
                                 <rect key="frame" x="0.0" y="130" width="600" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -259,7 +259,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kFg-xj-Z31" id="N1a-05-3aa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIJ-t1-MOq" customClass="WorkoutsSinceSummaryView">
@@ -279,7 +279,7 @@
                                         <rect key="frame" x="0.0" y="153" width="600" height="129"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qMX-Rh-s4h" id="FUw-vh-F0M">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="128.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8d-SJ-N6M">
@@ -326,7 +326,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I want to work out for 44 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vp0-3t-mf0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I want to work out for 44 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vp0-3t-mf0">
                                 <rect key="frame" x="0.0" y="101" width="600" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4YC-px-AMQ"/>
@@ -336,13 +336,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-Sh-588" userLabel="Master Stack View">
-                                <rect key="frame" x="20" y="231" width="560" height="343"/>
+                                <rect key="frame" x="20" y="231" width="560" height="299"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Qe-x8-Emc">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="101"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="87"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRR-Qo-f79" customClass="AccessoryWithNameView">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="101"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -350,7 +350,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtY-vs-evS" customClass="AccessoryWithNameView">
-                                                <rect key="frame" x="290" y="0.0" width="270" height="101"/>
+                                                <rect key="frame" x="290" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -360,10 +360,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ek3-HN-B1v">
-                                        <rect key="frame" x="0.0" y="121" width="560" height="101"/>
+                                        <rect key="frame" x="0.0" y="107" width="560" height="86"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGC-mY-6bD" customClass="AccessoryWithNameView">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="101"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="86"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -371,7 +371,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-gN-eR6" customClass="AccessoryWithNameView">
-                                                <rect key="frame" x="290" y="0.0" width="270" height="101"/>
+                                                <rect key="frame" x="290" y="0.0" width="270" height="86"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -381,10 +381,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5F1-0D-d62">
-                                        <rect key="frame" x="0.0" y="242" width="560" height="101"/>
+                                        <rect key="frame" x="0.0" y="213" width="560" height="87"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-mW-LzZ" customClass="AccessoryWithNameView">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="101"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -392,7 +392,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6jf-cH-n4X" customClass="AccessoryWithNameView">
-                                                <rect key="frame" x="290" y="0.0" width="270" height="101"/>
+                                                <rect key="frame" x="290" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -403,7 +403,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="10" maxValue="70" translatesAutoresizingMaskIntoConstraints="NO" id="95I-bn-6yO">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="10" maxValue="70" translatesAutoresizingMaskIntoConstraints="NO" id="95I-bn-6yO">
                                 <rect key="frame" x="18" y="130" width="564" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="lDl-vG-3QG"/>
@@ -414,7 +414,7 @@
                                     <action selector="sliderMoved:" destination="5U6-GR-fjn" eventType="valueChanged" id="kmq-Gi-eyb"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I have access to:  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-x8-tO7" userLabel="I have access to:">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have access to:  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-x8-tO7" userLabel="I have access to:">
                                 <rect key="frame" x="0.0" y="190" width="600" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FJD-AO-wNX"/>
@@ -534,11 +534,11 @@
                                     <action selector="finishedButtonTapped:" destination="NKf-Qy-GjP" eventType="touchUpInside" id="vWf-e2-xMF"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fj2-ug-gHP" userLabel="ExcerciseView" customClass="ExcerciseView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj2-ug-gHP" userLabel="ExcerciseView" customClass="ExcerciseView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34G-v6-KPh" customClass="RestView">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34G-v6-KPh" customClass="RestView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="486"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tfd-0u-Oq4">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
@@ -618,7 +618,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Izs-yn-u9Q" id="kVe-FA-frm">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nt3-XE-dCr" customClass="WorkoutSummaryCellView">
@@ -638,7 +638,7 @@
                                         <rect key="frame" x="0.0" y="212" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sFq-fY-MWw" id="KYe-Ag-WPX">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD5-FL-IuN" customClass="ExcerciseCellView">
