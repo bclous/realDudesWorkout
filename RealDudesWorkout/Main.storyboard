@@ -143,6 +143,36 @@
             </objects>
             <point key="canvasLocation" x="5125" y="625"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Po5-UL-O2V">
+            <objects>
+                <viewController id="V2n-Ad-pjP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6lK-po-OS8"/>
+                        <viewControllerLayoutGuide type="bottom" id="gIz-Tf-2A0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WKJ-te-Xea">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-Zy-jph">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aNT-Zy-jph" firstAttribute="width" secondItem="WKJ-te-Xea" secondAttribute="width" id="0G4-UP-1Pw"/>
+                            <constraint firstItem="aNT-Zy-jph" firstAttribute="centerX" secondItem="WKJ-te-Xea" secondAttribute="centerX" id="J11-Hu-TbH"/>
+                            <constraint firstItem="aNT-Zy-jph" firstAttribute="height" secondItem="WKJ-te-Xea" secondAttribute="height" id="MfI-rx-A0M"/>
+                            <constraint firstItem="aNT-Zy-jph" firstAttribute="centerY" secondItem="WKJ-te-Xea" secondAttribute="centerY" id="dEl-Cf-u4z"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRe-73-QyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4078" y="1407"/>
+        </scene>
         <!--Workout Detail Table View Controller-->
         <scene sceneID="utA-Xe-UpZ">
             <objects>
@@ -227,7 +257,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5WS-sD-H0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4562" y="1402"/>
+            <point key="canvasLocation" x="4731" y="1407"/>
         </scene>
         <!--Total Workout Summary View Controller-->
         <scene sceneID="xhw-Os-csC">
@@ -325,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-AT-dnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5197" y="1402"/>
+            <point key="canvasLocation" x="5401" y="1402"/>
         </scene>
         <!--New Workout View Controller-->
         <scene sceneID="aas-ad-MsJ">

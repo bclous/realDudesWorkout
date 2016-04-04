@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TotalsFrontPageCellView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="aEu-H0-CmM"/>
+                <outlet property="lifetimeLabel" destination="SbJ-Jt-NAw" id="M0P-33-epm"/>
+                <outlet property="lifetimeView" destination="A6g-wD-dBa" id="tU9-2g-Lxw"/>
+                <outlet property="lifetimeWorkoutsLabel" destination="mDS-Ya-zeQ" id="FKJ-Ww-LkV"/>
+                <outlet property="monthLabel" destination="J2Y-dE-xA5" id="YnA-Kp-pEz"/>
+                <outlet property="monthView" destination="wd8-JH-JDc" id="Wb4-ra-gPO"/>
+                <outlet property="monthWorkoutsLabel" destination="2gL-v0-Z7a" id="OG2-00-5bL"/>
+                <outlet property="weekLabel" destination="3b3-8R-xWn" id="8QA-8b-xvu"/>
+                <outlet property="weekView" destination="Bcw-X1-IC4" id="LZU-MZ-YLF"/>
+                <outlet property="weekWorkoutsLabel" destination="6kY-Ki-HEc" id="07z-0O-KgK"/>
+                <outlet property="yearLabel" destination="l2n-4Z-G8C" id="D0w-jB-Cdq"/>
+                <outlet property="yearView" destination="CfH-CQ-6bf" id="D8r-6C-Iim"/>
+                <outlet property="yearWorkoutsLabel" destination="3cA-Sx-Pn1" id="xRb-2I-sRm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="599" height="103"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="p7b-i3-csK">
+                    <rect key="frame" x="0.0" y="0.0" width="599" height="103"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcw-X1-IC4">
+                            <rect key="frame" x="0.0" y="0.0" width="149" height="103"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6 workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kY-Ki-HEc">
+                                    <rect key="frame" x="0.0" y="56" width="150" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3b3-8R-xWn">
+                                    <rect key="frame" x="0.0" y="30" width="150" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="BGb-BQ-Jj7"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="6kY-Ki-HEc" secondAttribute="bottom" constant="30" id="0SF-GF-x86"/>
+                                <constraint firstItem="6kY-Ki-HEc" firstAttribute="centerX" secondItem="Bcw-X1-IC4" secondAttribute="centerX" id="BrZ-qN-q7f"/>
+                                <constraint firstItem="6kY-Ki-HEc" firstAttribute="width" secondItem="Bcw-X1-IC4" secondAttribute="width" id="Mlg-wg-JES"/>
+                                <constraint firstItem="3b3-8R-xWn" firstAttribute="width" secondItem="Bcw-X1-IC4" secondAttribute="width" id="Ske-P4-nqB"/>
+                                <constraint firstItem="3b3-8R-xWn" firstAttribute="top" secondItem="Bcw-X1-IC4" secondAttribute="top" constant="30" id="mrM-Wg-4fl"/>
+                                <constraint firstItem="3b3-8R-xWn" firstAttribute="centerX" secondItem="Bcw-X1-IC4" secondAttribute="centerX" id="nk5-1J-fT6"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="val-aR-tcS" appends="YES" id="Oai-VW-9AS"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wd8-JH-JDc">
+                            <rect key="frame" x="151" y="0.0" width="148" height="103"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6 workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gL-v0-Z7a">
+                                    <rect key="frame" x="0.0" y="53" width="150" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Y-dE-xA5">
+                                    <rect key="frame" x="0.0" y="30" width="150" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="2gL-v0-Z7a" secondAttribute="bottom" constant="30" id="Clr-9n-NV7"/>
+                                <constraint firstItem="2gL-v0-Z7a" firstAttribute="centerX" secondItem="wd8-JH-JDc" secondAttribute="centerX" id="M48-uc-teR"/>
+                                <constraint firstItem="J2Y-dE-xA5" firstAttribute="centerX" secondItem="wd8-JH-JDc" secondAttribute="centerX" id="TGU-5Q-QJz"/>
+                                <constraint firstItem="2gL-v0-Z7a" firstAttribute="width" secondItem="wd8-JH-JDc" secondAttribute="width" id="coT-mK-GmL"/>
+                                <constraint firstItem="J2Y-dE-xA5" firstAttribute="width" secondItem="wd8-JH-JDc" secondAttribute="width" id="spI-yQ-RJa"/>
+                                <constraint firstItem="J2Y-dE-xA5" firstAttribute="top" secondItem="wd8-JH-JDc" secondAttribute="top" constant="30" id="vID-aL-z6s"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="vbJ-9p-UeJ" appends="YES" id="dXy-cc-xYU"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfH-CQ-6bf">
+                            <rect key="frame" x="301" y="0.0" width="149" height="103"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2n-4Z-G8C">
+                                    <rect key="frame" x="0.0" y="30" width="150" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6 workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-Sx-Pn1">
+                                    <rect key="frame" x="0.0" y="53" width="150" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="3cA-Sx-Pn1" firstAttribute="centerX" secondItem="CfH-CQ-6bf" secondAttribute="centerX" id="SFb-lO-8Xo"/>
+                                <constraint firstItem="l2n-4Z-G8C" firstAttribute="centerX" secondItem="CfH-CQ-6bf" secondAttribute="centerX" id="XA2-8Y-jL6"/>
+                                <constraint firstItem="l2n-4Z-G8C" firstAttribute="top" secondItem="CfH-CQ-6bf" secondAttribute="top" constant="30" id="ZGG-lz-BrO"/>
+                                <constraint firstItem="3cA-Sx-Pn1" firstAttribute="width" secondItem="CfH-CQ-6bf" secondAttribute="width" id="dEg-ha-Vqx"/>
+                                <constraint firstAttribute="bottom" secondItem="3cA-Sx-Pn1" secondAttribute="bottom" constant="30" id="qnG-CW-ycP"/>
+                                <constraint firstItem="l2n-4Z-G8C" firstAttribute="width" secondItem="CfH-CQ-6bf" secondAttribute="width" id="s2g-EI-g5G"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="jCx-ht-TQw" appends="YES" id="sUh-HR-4N5"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6g-wD-dBa">
+                            <rect key="frame" x="451" y="0.0" width="148" height="103"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lifetime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbJ-Jt-NAw">
+                                    <rect key="frame" x="1" y="30" width="149" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6 workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDS-Ya-zeQ">
+                                    <rect key="frame" x="1" y="53" width="149" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="SbJ-Jt-NAw" firstAttribute="top" secondItem="A6g-wD-dBa" secondAttribute="top" constant="30" id="0gX-dI-Ifh"/>
+                                <constraint firstItem="SbJ-Jt-NAw" firstAttribute="width" secondItem="A6g-wD-dBa" secondAttribute="width" id="6BE-FT-1Qk"/>
+                                <constraint firstItem="SbJ-Jt-NAw" firstAttribute="centerX" secondItem="A6g-wD-dBa" secondAttribute="centerX" id="FXj-CV-425"/>
+                                <constraint firstItem="mDS-Ya-zeQ" firstAttribute="centerX" secondItem="A6g-wD-dBa" secondAttribute="centerX" id="TUm-ha-8BE"/>
+                                <constraint firstItem="mDS-Ya-zeQ" firstAttribute="width" secondItem="A6g-wD-dBa" secondAttribute="width" id="cb5-3U-IxA"/>
+                                <constraint firstAttribute="bottom" secondItem="mDS-Ya-zeQ" secondAttribute="bottom" constant="30" id="yQx-gl-kYh"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="ck6-Jm-llL" appends="YES" id="xLU-dJ-aFN"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="p7b-i3-csK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6Ra-3f-5aL"/>
+                <constraint firstItem="p7b-i3-csK" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="HyQ-Zt-IeV"/>
+                <constraint firstItem="p7b-i3-csK" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="L5Y-zy-H8G"/>
+                <constraint firstItem="p7b-i3-csK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RPV-f1-hLD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="361.5" y="-462.5"/>
+        </view>
+        <tapGestureRecognizer id="val-aR-tcS">
+            <connections>
+                <action selector="weekViewTapped:" destination="-1" id="AXB-oQ-Fvy"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="vbJ-9p-UeJ">
+            <connections>
+                <action selector="monthViewTapped:" destination="-1" id="zgT-S8-WMl"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="jCx-ht-TQw">
+            <connections>
+                <action selector="yearViewTapped:" destination="-1" id="Po1-E3-pNU"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="ck6-Jm-llL">
+            <connections>
+                <action selector="lifetimeViewTapped:" destination="-1" id="R54-Qj-Gdb"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

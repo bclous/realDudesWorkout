@@ -36,7 +36,6 @@
 		AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB41F2F71C91255D009D7E63 /* addIcon.png */; };
 		AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */; };
 		AB92E7031CA7838000199034 /* Button.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB92E7021CA7838000199034 /* Button.xib */; };
-		AB92E7061CA785C200199034 /* button1View.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E7051CA785C200199034 /* button1View.m */; };
 		AB92E7081CA9B81200199034 /* WorkoutsSinceSummary.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB92E7071CA9B81200199034 /* WorkoutsSinceSummary.xib */; };
 		AB92E70B1CA9BB8300199034 /* WorkoutsSinceSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E70A1CA9BB8300199034 /* WorkoutsSinceSummaryView.m */; };
 		AB92E7BF1CB0713600199034 /* TotalExcercisesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB92E7BE1CB0713600199034 /* TotalExcercisesCell.xib */; };
@@ -44,6 +43,8 @@
 		AB92E7C51CB0745500199034 /* TotalExcercisesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E7C41CB0745500199034 /* TotalExcercisesTableViewCell.m */; };
 		AB92E7C81CB0796100199034 /* TotalWorkoutSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E7C71CB0796100199034 /* TotalWorkoutSummaryViewController.m */; };
 		AB92E7CB1CB07BFC00199034 /* WorkoutsSinceSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E7CA1CB07BFC00199034 /* WorkoutsSinceSummaryTableViewCell.m */; };
+		AB92E7CD1CB2A14900199034 /* TotalsFrontPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB92E7CC1CB2A14900199034 /* TotalsFrontPageCell.xib */; };
+		AB92E7D01CB2A98700199034 /* TotalsFrontPageCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E7CF1CB2A98700199034 /* TotalsFrontPageCellView.m */; };
 		ABA977701C99D41A00D04639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA9776F1C99D41A00D04639 /* Main.storyboard */; };
 		ABA977A51C9B4AFB00D04639 /* WorkoutLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA977A41C9B4AFB00D04639 /* WorkoutLogTableViewController.m */; };
 		ABA977A81C9B7EEC00D04639 /* WorkoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA977A71C9B7EEC00D04639 /* WorkoutTableViewCell.m */; };
@@ -111,8 +112,6 @@
 		AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWorkoutViewController.h; sourceTree = "<group>"; };
 		AB41F3261C91FF55009D7E63 /* NewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWorkoutViewController.m; sourceTree = "<group>"; };
 		AB92E7021CA7838000199034 /* Button.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Button.xib; sourceTree = "<group>"; };
-		AB92E7041CA785C200199034 /* button1View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button1View.h; sourceTree = "<group>"; };
-		AB92E7051CA785C200199034 /* button1View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = button1View.m; sourceTree = "<group>"; };
 		AB92E7071CA9B81200199034 /* WorkoutsSinceSummary.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutsSinceSummary.xib; sourceTree = "<group>"; };
 		AB92E7091CA9BB8300199034 /* WorkoutsSinceSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutsSinceSummaryView.h; sourceTree = "<group>"; };
 		AB92E70A1CA9BB8300199034 /* WorkoutsSinceSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutsSinceSummaryView.m; sourceTree = "<group>"; };
@@ -125,6 +124,9 @@
 		AB92E7C71CB0796100199034 /* TotalWorkoutSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalWorkoutSummaryViewController.m; sourceTree = "<group>"; };
 		AB92E7C91CB07BFC00199034 /* WorkoutsSinceSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutsSinceSummaryTableViewCell.h; sourceTree = "<group>"; };
 		AB92E7CA1CB07BFC00199034 /* WorkoutsSinceSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutsSinceSummaryTableViewCell.m; sourceTree = "<group>"; };
+		AB92E7CC1CB2A14900199034 /* TotalsFrontPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TotalsFrontPageCell.xib; sourceTree = "<group>"; };
+		AB92E7CE1CB2A98700199034 /* TotalsFrontPageCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalsFrontPageCellView.h; sourceTree = "<group>"; };
+		AB92E7CF1CB2A98700199034 /* TotalsFrontPageCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalsFrontPageCellView.m; sourceTree = "<group>"; };
 		ABA9776F1C99D41A00D04639 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ABA977A31C9B4AFB00D04639 /* WorkoutLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutLogTableViewController.h; sourceTree = "<group>"; };
 		ABA977A41C9B4AFB00D04639 /* WorkoutLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutLogTableViewController.m; sourceTree = "<group>"; };
@@ -169,10 +171,10 @@
 				AB92E7C01CB072EC00199034 /* TotalExcercisesCellView.h */,
 				AB1220D31CA4768F0067467C /* WorkoutSummaryCellView.h */,
 				AB1220D41CA4768F0067467C /* WorkoutSummaryCellView.m */,
-				AB92E7041CA785C200199034 /* button1View.h */,
-				AB92E7051CA785C200199034 /* button1View.m */,
 				AB92E7091CA9BB8300199034 /* WorkoutsSinceSummaryView.h */,
 				AB92E70A1CA9BB8300199034 /* WorkoutsSinceSummaryView.m */,
+				AB92E7CE1CB2A98700199034 /* TotalsFrontPageCellView.h */,
+				AB92E7CF1CB2A98700199034 /* TotalsFrontPageCellView.m */,
 				AB1220E71CA5B2F00067467C /* AccessoryWithNameView.h */,
 				AB1220E81CA5B2F00067467C /* AccessoryWithNameView.m */,
 				AB1220DD1CA47FDB0067467C /* ExcerciseCellView.h */,
@@ -213,6 +215,7 @@
 				AB92E7021CA7838000199034 /* Button.xib */,
 				AB92E7071CA9B81200199034 /* WorkoutsSinceSummary.xib */,
 				ABA977BD1C9F5E2F00D04639 /* ExcerciseView.xib */,
+				AB92E7CC1CB2A14900199034 /* TotalsFrontPageCell.xib */,
 				AB92E7BE1CB0713600199034 /* TotalExcercisesCell.xib */,
 				AB1220CD1CA45F660067467C /* ExcerciseCell.xib */,
 				AB1220CF1CA461D00067467C /* RestCell.xib */,
@@ -416,6 +419,7 @@
 				AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */,
 				AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */,
 				ABA977701C99D41A00D04639 /* Main.storyboard in Resources */,
+				AB92E7CD1CB2A14900199034 /* TotalsFrontPageCell.xib in Resources */,
 				AB1220D21CA463010067467C /* WorkoutSummaryCell.xib in Resources */,
 				AB92E7081CA9B81200199034 /* WorkoutsSinceSummary.xib in Resources */,
 			);
@@ -480,11 +484,11 @@
 				AB1220BA1CA300A40067467C /* ExcerciseTableViewCell.m in Sources */,
 				AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */,
 				ABA977B31C9CA7BB00D04639 /* ExcerciseSet+CoreDataProperties.m in Sources */,
+				AB92E7D01CB2A98700199034 /* TotalsFrontPageCellView.m in Sources */,
 				AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */,
 				AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */,
 				ABA977B41C9CA7BB00D04639 /* ExcerciseSet.m in Sources */,
 				AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */,
-				AB92E7061CA785C200199034 /* button1View.m in Sources */,
 				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
 				AB1220BD1CA300ED0067467C /* RestTableViewCell.m in Sources */,
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
