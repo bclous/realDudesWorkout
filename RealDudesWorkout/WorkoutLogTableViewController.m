@@ -11,8 +11,13 @@
 #import "WorkoutTableViewCell.h"
 #import "SWTableViewCell.h"
 #import "WorkoutDetailTableViewController.h"
+#import "TotalWorkoutSummaryViewController.h"
 
 @interface WorkoutLogTableViewController () <SWTableViewCellDelegate>
+
+@property (strong, nonatomic) NSArray *workoutsSinceSetDay;
+@property (strong, nonatomic) NSArray *workoutsSinceTimeInterval;
+@property (strong, nonatomic) NSString *totalsChoice;
 
 @end
 
@@ -23,39 +28,12 @@
     
     [super viewDidLoad];
     
-//    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"hotGirlWorkout"] andHeight:250 andShadow:NO];
+    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"hotGirlWorkout"] andHeight:150
+                               andShadow:YES];
     
     self.dataStore = [DataStore sharedDataStore];
     
     [self.dataStore fetchData];
-    
-    //self.tableView.separatorInset = UIEdgeInsetsZero;
-    
-//    UIImage *image = [UIImage imageNamed: @"manUplogo"];
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
-//    
-//    self.navigationItem.titleView = imageView;
-    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    //[dateFormatter setDateFormat:@"EEEE"];
-//    [dateFormatter setDateFormat:@"eeee"];
-//    NSLog(@"The day of the week: %@", [dateFormatter stringFromDate:[NSDate date]]);
-//    
-//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//    NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
-//    int weekday = [comps weekday];
-//    NSLog(@"The week day number: %lu", weekday);
-//    int time = [comps second];
-//      NSLog(@"The second is: %lu", time);
-//    int minutes = [comps minute];
-//    NSLog(@"The minute is: %lu", minutes);
-//    int hours = [comps hour];
-//    NSLog(@"The hour is: %lu", hours);
-    
-    
-    
-    
-
     
 }
 
@@ -74,23 +52,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     
-//    if(section == 0)
-//    {
-//        return 4;
-//    }
-//    
-//    else
-//    {
-//        return self.dataStore.user.workouts.count;
-//    }
+    if(section == 0)
+    {
+        return 4;
+    }
     
-    return self.dataStore.user.workouts.count;
+    else
+    {
+        return self.dataStore.user.workouts.count;
+    }
+    
+ 
 }
 
 
@@ -98,33 +76,32 @@
 {
     
     
-//    if (indexPath.section == 0)
-//    {
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
-//        
-//        if(indexPath.row == 0)
-//        {
-//            cell.textLabel.text = @"Weekly";
-//        }
-//        else if (indexPath.row == 1)
-//        {
-//            cell.textLabel.text = @"Monthly";
-//        }
-//        else if (indexPath.row == 2)
-//        {
-//            cell.textLabel.text = @"Yearly";
-//        }
-//        else
-//        {
-//            cell.textLabel.text = @"Lifetime";
-//        }
-//        
-//        return cell;
-//    }
-//    
-//    else
-//    {
+    if (indexPath.section == 0)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
+        
+        if(indexPath.row == 0)
+        {
+            cell.textLabel.text = @"Weekly";
+        }
+        else if (indexPath.row == 1)
+        {
+            cell.textLabel.text = @"Monthly";
+        }
+        else if (indexPath.row == 2)
+        {
+            cell.textLabel.text = @"Yearly";
+        }
+        else
+        {
+            cell.textLabel.text = @"Lifetime";
+        }
+        
+        return cell;
+    }
     
+    else
+    {
         
         WorkoutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"workoutCell" forIndexPath:indexPath];
         
@@ -145,7 +122,7 @@
         cell.delegate = self;
         
         return cell;
-//    }
+    }
     
     
 
@@ -153,6 +130,35 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (indexPath.section == 0)
+    {
+        
+        
+        if (indexPath.row == 0)
+        {
+            self.workoutsSinceSetDay = [self.dataStore.user workoutsSinceMonday];
+            self.workoutsSinceTimeInterval = [self.dataStore.user workoutsLastSevenDays];
+            self.totalsChoice = @"weekly";
+        }
+        else if (indexPath.row == 1)
+        {
+            self.workoutsSinceSetDay = [self.dataStore.user workoutsSinceFirstOfMonth];
+            self.workoutsSinceTimeInterval = [self.dataStore.user workoutsLastThirtyDays];
+            self.totalsChoice = @"monthly";
+            
+        }
+        
+        else if (indexPath.row  == 2)
+        {
+            self.workoutsSinceTimeInterval = [self.dataStore.user workoutsSinceFirstOfYear];
+            self.workoutsSinceSetDay = [self.dataStore.user workoutsLast365Days];
+            self.totalsChoice = @"yearly";
+        }
+        
+        [self performSegueWithIdentifier:@"segueToWorkoutTotals" sender:self];
+    }
+    
     
     if (indexPath.section == 1)
     {
@@ -180,46 +186,47 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section == 0)
-//    {
-//        return 40;
-//    }
-//    else
-//    {
-//        return 100;
-//    }
+    if (indexPath.section == 0)
+    {
+        return 40;
+    }
+    else
+    {
+        return 100;
+    }
     
-    return 100;
+   
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-//    
-//    if (section == 0)
-//    {
-//        return 50;
-//    }
-//    else
-//    {
-//        return 0;
-//    }
     
-    return 0;
+    if(section == 0)
+    {
+        return 40;
+    }
+    
+    else
+    {
+        return 25;
+    }
+    
+
 
 }
 
 
-//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    if (section == 0)
-//    {
-//        return @"TOTALS";
-//    }
-//    else
-//    {
-//        return @"WORKOUTS";
-//    }
-//}
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return @"TOTALS";
+    }
+    else
+    {
+        return @"WORKOUTS";
+    }
+}
 
 
 
@@ -279,6 +286,17 @@
         Workout *selectedWorkout = workoutsInOrderLIFO[selectedPath.row];
         
         destinationVC.workout = selectedWorkout;
+    }
+    else if ([segue.identifier isEqualToString:@"segueToWorkoutTotals"])
+    {
+        
+        TotalWorkoutSummaryViewController *destinationVC = segue.destinationViewController;
+        
+        destinationVC.workoutsSinceSetDay = self.workoutsSinceSetDay;
+        destinationVC.workoutsSinceTimeInterval = self.workoutsSinceTimeInterval;
+        destinationVC.timePeriod = self.totalsChoice;
+        
+        
     }
     
     

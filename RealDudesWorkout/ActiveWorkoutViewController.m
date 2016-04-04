@@ -62,6 +62,8 @@
     //initialize components
     
     [self initializeViewComponents];
+    
+    [self.navigationController setNavigationBarHidden:YES];
    
 }
 
@@ -86,6 +88,8 @@
         // modually show the workout summary page
         
         [self.dataStore saveContext];
+        
+        
         
         [self workoutFinished];
         
@@ -196,6 +200,9 @@
     
     self.workout.timeInSeconds = self.totalWorkoutCounter;
     self.workout.isFinished = YES;
+    
+    [self.totalWorkoutTimer invalidate];
+
     
     if (self.isLastExcercise)
     {

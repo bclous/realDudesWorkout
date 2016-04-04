@@ -9,14 +9,14 @@
         <!--Workout Log Table View Controller-->
         <scene sceneID="rS2-Pc-4XO">
             <objects>
-                <tableViewController autoresizesArchivedViewToFullSize="NO" id="PfF-bA-fB7" customClass="WorkoutLogTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="28" sectionFooterHeight="28" id="ia0-Bv-L1b">
+                <tableViewController id="PfF-bA-fB7" customClass="WorkoutLogTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="103" sectionHeaderHeight="18" sectionFooterHeight="18" id="ia0-Bv-L1b">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="workoutCell" rowHeight="103" id="h6S-Yt-f0q" customClass="WorkoutTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="103"/>
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h6S-Yt-f0q" id="tEs-sI-lMN">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="103"/>
@@ -103,7 +103,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="basicCell" textLabel="GoG-H4-nDj" rowHeight="51" style="IBUITableViewCellStyleDefault" id="CTn-fO-bCv">
-                                <rect key="frame" x="0.0" y="131" width="600" height="51"/>
+                                <rect key="frame" x="0.0" y="152.5" width="600" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CTn-fO-bCv" id="TF2-v1-7Yh">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
@@ -227,12 +227,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5WS-sD-H0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3917" y="1437"/>
+            <point key="canvasLocation" x="4562" y="1402"/>
         </scene>
-        <!--View Controller-->
+        <!--Total Workout Summary View Controller-->
         <scene sceneID="xhw-Os-csC">
             <objects>
-                <viewController id="ljD-Lm-Sx4" sceneMemberID="viewController">
+                <viewController id="ljD-Lm-Sx4" customClass="TotalWorkoutSummaryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hUE-ai-8jE"/>
                         <viewControllerLayoutGuide type="bottom" id="evw-4H-ptw"/>
@@ -250,12 +250,15 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="toggleSwitched:" destination="ljD-Lm-Sx4" eventType="valueChanged" id="0rZ-Na-blz"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Co-gp-hsE">
                                 <rect key="frame" x="0.0" y="130" width="600" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="kFg-xj-Z31">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="totalWorkoutsSummaryCell" rowHeight="125" id="kFg-xj-Z31" customClass="WorkoutsSinceSummaryTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kFg-xj-Z31" id="N1a-05-3aa">
@@ -274,15 +277,18 @@
                                                 <constraint firstItem="tIJ-t1-MOq" firstAttribute="height" secondItem="N1a-05-3aa" secondAttribute="height" id="fyr-2k-d1z"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="workoutsSinceSummaryView" destination="tIJ-t1-MOq" id="jd6-mg-iom"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="129" id="qMX-Rh-s4h">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="totalExcercisesCell" rowHeight="129" id="qMX-Rh-s4h" customClass="TotalExcercisesTableViewCell">
                                         <rect key="frame" x="0.0" y="153" width="600" height="129"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qMX-Rh-s4h" id="FUw-vh-F0M">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8d-SJ-N6M">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8d-SJ-N6M" customClass="TotalExcercisesCellView">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
                                                     <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -294,6 +300,9 @@
                                                 <constraint firstItem="j8d-SJ-N6M" firstAttribute="width" secondItem="FUw-vh-F0M" secondAttribute="width" id="iEt-1g-SnH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ExcercisesView" destination="j8d-SJ-N6M" id="arh-Q6-UDw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -309,10 +318,14 @@
                             <constraint firstItem="bdi-xy-7AA" firstAttribute="width" secondItem="6xn-hv-Z3Q" secondAttribute="width" constant="-40" id="uyR-oG-RT7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="summaryTableView" destination="1Co-gp-hsE" id="skC-3Z-T9w"/>
+                        <outlet property="timePeriodToggle" destination="bdi-xy-7AA" id="Vt6-Aj-z0d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-AT-dnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4650" y="1437"/>
+            <point key="canvasLocation" x="5197" y="1402"/>
         </scene>
         <!--New Workout View Controller-->
         <scene sceneID="aas-ad-MsJ">
@@ -335,13 +348,14 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-Sh-588" userLabel="Master Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-Sh-588" userLabel="Master Stack View">
                                 <rect key="frame" x="20" y="231" width="560" height="299"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Qe-x8-Emc">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Qe-x8-Emc">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="87"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRR-Qo-f79" customClass="AccessoryWithNameView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRR-Qo-f79" customClass="AccessoryWithNameView">
+
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -349,7 +363,9 @@
                                                     <outletCollection property="gestureRecognizers" destination="NtC-bb-7P5" appends="YES" id="bY5-JB-ZHG"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtY-vs-evS" customClass="AccessoryWithNameView">
+
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtY-vs-evS" customClass="AccessoryWithNameView">
+
                                                 <rect key="frame" x="290" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -359,10 +375,11 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ek3-HN-B1v">
+
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ek3-HN-B1v">
                                         <rect key="frame" x="0.0" y="107" width="560" height="86"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGC-mY-6bD" customClass="AccessoryWithNameView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGC-mY-6bD" customClass="AccessoryWithNameView">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="86"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -370,7 +387,8 @@
                                                     <outletCollection property="gestureRecognizers" destination="eVe-hX-1ZL" appends="YES" id="iSE-Jf-AwS"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-gN-eR6" customClass="AccessoryWithNameView">
+
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-gN-eR6" customClass="AccessoryWithNameView">
                                                 <rect key="frame" x="290" y="0.0" width="270" height="86"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -380,10 +398,11 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5F1-0D-d62">
+
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5F1-0D-d62">
                                         <rect key="frame" x="0.0" y="213" width="560" height="87"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-mW-LzZ" customClass="AccessoryWithNameView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-mW-LzZ" customClass="AccessoryWithNameView">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -391,7 +410,9 @@
                                                     <outletCollection property="gestureRecognizers" destination="8So-jh-hKS" appends="YES" id="1dt-Dp-pJw"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6jf-cH-n4X" customClass="AccessoryWithNameView">
+
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jf-cH-n4X" customClass="AccessoryWithNameView">
+
                                                 <rect key="frame" x="290" y="0.0" width="270" height="87"/>
                                                 <color key="backgroundColor" red="0.80815374659999994" green="0.83327935230000005" blue="0.92952724360000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>

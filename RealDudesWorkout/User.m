@@ -132,7 +132,7 @@
 
 -(NSArray *)excerciseNameAndQuantitySortedGivenWorkouts:(NSArray *)workouts
 {
-    NSDictionary *dictionary = [self dictionaryOfExcercisesWithPictureNameGivenWorkouts:workouts];
+    NSDictionary *dictionary = [self dictionaryOfExcercisesWithQuantityGivenWorkouts:workouts];
     
     NSArray *excerciseNamesInOrder = [self sortedArrayOfExcerciseNamesFromGivenQuantity:dictionary];
     
@@ -200,11 +200,25 @@
     
     NSTimeInterval window = now - timeInterval;
     
+    NSLog(@"%f",window);
+    
     NSArray *allWorkouts = [self orderedWorkoutsLIFO];
     
-    NSPredicate *workoutsSinceIntervalPredicate = [NSPredicate predicateWithFormat:@"date > %lu",window];
+    NSLog(@"%f",((Workout *)allWorkouts[0]).date);
     
-    NSArray *workoutsSinceInterval = [allWorkouts filteredArrayUsingPredicate:workoutsSinceIntervalPredicate];
+//    NSPredicate *workoutsSinceIntervalPredicate = [NSPredicate predicateWithFormat:@"date > %f",window];
+//    
+//    NSArray *workoutsSinceInterval = [allWorkouts filteredArrayUsingPredicate:workoutsSinceIntervalPredicate];
+    
+    NSMutableArray *workoutsSinceInterval = [[NSMutableArray alloc] init];
+    
+    for (Workout *workout in allWorkouts)
+    {
+        if (workout.date > window)
+        {
+            [workoutsSinceInterval addObject:workout];
+        }
+    }
     
     return workoutsSinceInterval;
 
@@ -331,7 +345,7 @@
 -(NSArray *)sortedArrayOfExcerciseNamesFromGivenQuantity:(NSDictionary *)dictionary
 {
     
-    NSArray *sortedArray  = [dictionary keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+    NSArray *sortedArray  = [dictionary keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id  _Nonnull obj2) {
         
     return [[dictionary objectForKey:obj1] compare:[dictionary objectForKey:obj2]];
         
