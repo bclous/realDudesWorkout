@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExcerciseTotalView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="yYP-sc-S3o"/>
+                <outlet property="excerciseImage" destination="I3F-7T-blV" id="hzv-aL-pIL"/>
+                <outlet property="excerciseNameLabel" destination="9me-ag-urR" id="TYI-j5-aE0"/>
+                <outlet property="numberTotalLabel" destination="jJQ-Fa-3YP" id="NMn-Vi-PUN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="154" height="152"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pullUp" translatesAutoresizingMaskIntoConstraints="NO" id="I3F-7T-blV">
+                    <rect key="frame" x="0.0" y="23" width="154" height="106"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJQ-Fa-3YP">
+                    <rect key="frame" x="0.0" y="13" width="154" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull Ups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9me-ag-urR">
+                    <rect key="frame" x="0.0" y="124" width="154" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="I3F-7T-blV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="B6k-UA-iBA"/>
+                <constraint firstItem="jJQ-Fa-3YP" firstAttribute="centerX" secondItem="I3F-7T-blV" secondAttribute="centerX" id="HOL-VA-s30"/>
+                <constraint firstItem="9me-ag-urR" firstAttribute="top" secondItem="I3F-7T-blV" secondAttribute="bottom" constant="-5" id="QfS-RE-pLt"/>
+                <constraint firstItem="9me-ag-urR" firstAttribute="width" secondItem="I3F-7T-blV" secondAttribute="width" id="WKg-wi-yuK"/>
+                <constraint firstItem="I3F-7T-blV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oFP-Vg-frw"/>
+                <constraint firstItem="jJQ-Fa-3YP" firstAttribute="width" secondItem="I3F-7T-blV" secondAttribute="width" id="piQ-GL-1M9"/>
+                <constraint firstItem="I3F-7T-blV" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="qLl-AZ-fkq"/>
+                <constraint firstItem="9me-ag-urR" firstAttribute="centerX" secondItem="I3F-7T-blV" secondAttribute="centerX" id="vjQ-c2-4pD"/>
+                <constraint firstItem="I3F-7T-blV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vre-KP-Wmu"/>
+                <constraint firstItem="I3F-7T-blV" firstAttribute="top" secondItem="jJQ-Fa-3YP" secondAttribute="bottom" constant="-10" id="zst-Kl-A1L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="567" y="446"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pullUp" width="1188" height="1028"/>
+    </resources>
+</document>

@@ -21,6 +21,14 @@
 		AB1220E91CA5B2F00067467C /* AccessoryWithNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1220E81CA5B2F00067467C /* AccessoryWithNameView.m */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
+		AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */; };
+		AB2A39091CE3FFB5005DD03A /* NumberOfWorkoutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A39081CE3FFB5005DD03A /* NumberOfWorkoutsView.m */; };
+		AB2A390C1CE404CC005DD03A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A390B1CE404CC005DD03A /* HomeViewController.m */; };
+		AB2A39101CEA2BDA005DD03A /* WorkoutScrollSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A390F1CEA2BD9005DD03A /* WorkoutScrollSummaryCell.xib */; };
+		AB2A39121CEA2EE7005DD03A /* ExcerciseTotal.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A39111CEA2EE7005DD03A /* ExcerciseTotal.xib */; };
+		AB2A39151CEA315F005DD03A /* ExcerciseTotalView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A39141CEA315F005DD03A /* ExcerciseTotalView.m */; };
+		AB2A391B1CEA3371005DD03A /* WorkoutScrollSummaryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A391A1CEA3371005DD03A /* WorkoutScrollSummaryCellView.m */; };
+		AB2A39211CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A39201CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m */; };
 		AB345D8E1C9260F800604D55 /* ActiveWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */; };
 		AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB345DA41C9498A100604D55 /* WorkoutDetailTableViewController.m */; };
 		AB41F2CB1C90FC25009D7E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41F2CA1C90FC25009D7E63 /* main.m */; };
@@ -86,6 +94,19 @@
 		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
 		AB1D4D111C9628FD00E71342 /* Accessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accessory.m; sourceTree = "<group>"; };
+		AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberOfWorkouts.xib; sourceTree = "<group>"; };
+		AB2A39071CE3FFB5005DD03A /* NumberOfWorkoutsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberOfWorkoutsView.h; sourceTree = "<group>"; };
+		AB2A39081CE3FFB5005DD03A /* NumberOfWorkoutsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberOfWorkoutsView.m; sourceTree = "<group>"; };
+		AB2A390A1CE404CC005DD03A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		AB2A390B1CE404CC005DD03A /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		AB2A390F1CEA2BD9005DD03A /* WorkoutScrollSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutScrollSummaryCell.xib; sourceTree = "<group>"; };
+		AB2A39111CEA2EE7005DD03A /* ExcerciseTotal.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExcerciseTotal.xib; sourceTree = "<group>"; };
+		AB2A39131CEA315F005DD03A /* ExcerciseTotalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcerciseTotalView.h; sourceTree = "<group>"; };
+		AB2A39141CEA315F005DD03A /* ExcerciseTotalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcerciseTotalView.m; sourceTree = "<group>"; };
+		AB2A39191CEA3371005DD03A /* WorkoutScrollSummaryCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutScrollSummaryCellView.h; sourceTree = "<group>"; };
+		AB2A391A1CEA3371005DD03A /* WorkoutScrollSummaryCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutScrollSummaryCellView.m; sourceTree = "<group>"; };
+		AB2A391F1CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutSummaryScrollTableViewCell.h; sourceTree = "<group>"; };
+		AB2A39201CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSummaryScrollTableViewCell.m; sourceTree = "<group>"; };
 		AB345D8C1C9260F800604D55 /* ActiveWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveWorkoutViewController.h; sourceTree = "<group>"; };
 		AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveWorkoutViewController.m; sourceTree = "<group>"; };
 		AB345DA31C9498A100604D55 /* WorkoutDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailTableViewController.h; sourceTree = "<group>"; };
@@ -171,7 +192,13 @@
 				AB92E7C01CB072EC00199034 /* TotalExcercisesCellView.h */,
 				AB1220D31CA4768F0067467C /* WorkoutSummaryCellView.h */,
 				AB1220D41CA4768F0067467C /* WorkoutSummaryCellView.m */,
+				AB2A39071CE3FFB5005DD03A /* NumberOfWorkoutsView.h */,
+				AB2A39131CEA315F005DD03A /* ExcerciseTotalView.h */,
+				AB2A39141CEA315F005DD03A /* ExcerciseTotalView.m */,
+				AB2A39081CE3FFB5005DD03A /* NumberOfWorkoutsView.m */,
 				AB92E7091CA9BB8300199034 /* WorkoutsSinceSummaryView.h */,
+				AB2A39191CEA3371005DD03A /* WorkoutScrollSummaryCellView.h */,
+				AB2A391A1CEA3371005DD03A /* WorkoutScrollSummaryCellView.m */,
 				AB92E70A1CA9BB8300199034 /* WorkoutsSinceSummaryView.m */,
 				AB92E7CE1CB2A98700199034 /* TotalsFrontPageCellView.h */,
 				AB92E7CF1CB2A98700199034 /* TotalsFrontPageCellView.m */,
@@ -196,6 +223,8 @@
 				ABA977A71C9B7EEC00D04639 /* WorkoutTableViewCell.m */,
 				AB92E7C91CB07BFC00199034 /* WorkoutsSinceSummaryTableViewCell.h */,
 				AB92E7CA1CB07BFC00199034 /* WorkoutsSinceSummaryTableViewCell.m */,
+				AB2A391F1CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.h */,
+				AB2A39201CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m */,
 				AB92E7C31CB0745500199034 /* TotalExcercisesTableViewCell.h */,
 				AB92E7C41CB0745500199034 /* TotalExcercisesTableViewCell.m */,
 				AB1220BB1CA300ED0067467C /* RestTableViewCell.h */,
@@ -213,7 +242,10 @@
 				AB1220D11CA463010067467C /* WorkoutSummaryCell.xib */,
 				ABA977C51C9F9FD000D04639 /* RestView.xib */,
 				AB92E7021CA7838000199034 /* Button.xib */,
+				AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */,
 				AB92E7071CA9B81200199034 /* WorkoutsSinceSummary.xib */,
+				AB2A390F1CEA2BD9005DD03A /* WorkoutScrollSummaryCell.xib */,
+				AB2A39111CEA2EE7005DD03A /* ExcerciseTotal.xib */,
 				ABA977BD1C9F5E2F00D04639 /* ExcerciseView.xib */,
 				AB92E7CC1CB2A14900199034 /* TotalsFrontPageCell.xib */,
 				AB92E7BE1CB0713600199034 /* TotalExcercisesCell.xib */,
@@ -226,6 +258,8 @@
 		AB1D4D0D1C960BC400E71342 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB2A390A1CE404CC005DD03A /* HomeViewController.h */,
+				AB2A390B1CE404CC005DD03A /* HomeViewController.m */,
 				ABA977A31C9B4AFB00D04639 /* WorkoutLogTableViewController.h */,
 				ABA977A41C9B4AFB00D04639 /* WorkoutLogTableViewController.m */,
 				AB41F3251C91FF55009D7E63 /* NewWorkoutViewController.h */,
@@ -408,18 +442,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB2A39121CEA2EE7005DD03A /* ExcerciseTotal.xib in Resources */,
 				AB92E7BF1CB0713600199034 /* TotalExcercisesCell.xib in Resources */,
 				AB1220CE1CA45F660067467C /* ExcerciseCell.xib in Resources */,
 				ABA977C61C9F9FD000D04639 /* RestView.xib in Resources */,
 				ABA977BE1C9F5E2F00D04639 /* ExcerciseView.xib in Resources */,
 				AB92E7031CA7838000199034 /* Button.xib in Resources */,
 				AB1220E41CA5A6830067467C /* AccessoryWithName.xib in Resources */,
+				AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */,
 				AB1220D01CA461D00067467C /* RestCell.xib in Resources */,
 				AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */,
 				AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */,
 				AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */,
 				ABA977701C99D41A00D04639 /* Main.storyboard in Resources */,
 				AB92E7CD1CB2A14900199034 /* TotalsFrontPageCell.xib in Resources */,
+				AB2A39101CEA2BDA005DD03A /* WorkoutScrollSummaryCell.xib in Resources */,
 				AB1220D21CA463010067467C /* WorkoutSummaryCell.xib in Resources */,
 				AB92E7081CA9B81200199034 /* WorkoutsSinceSummary.xib in Resources */,
 			);
@@ -491,11 +528,14 @@
 				AB345DA51C9498A100604D55 /* WorkoutDetailTableViewController.m in Sources */,
 				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
 				AB1220BD1CA300ED0067467C /* RestTableViewCell.m in Sources */,
+				AB2A39151CEA315F005DD03A /* ExcerciseTotalView.m in Sources */,
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
 				ABA977B91C9D9FD900D04639 /* User+CoreDataProperties.m in Sources */,
+				AB2A39091CE3FFB5005DD03A /* NumberOfWorkoutsView.m in Sources */,
 				AB41F3271C91FF55009D7E63 /* NewWorkoutViewController.m in Sources */,
 				AB1220DB1CA47BC00067467C /* WorkoutSummaryTableViewCell.m in Sources */,
 				ABA977BA1C9D9FD900D04639 /* User.m in Sources */,
+				AB2A390C1CE404CC005DD03A /* HomeViewController.m in Sources */,
 				AB92E7C81CB0796100199034 /* TotalWorkoutSummaryViewController.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
 				ABA977A81C9B7EEC00D04639 /* WorkoutTableViewCell.m in Sources */,
@@ -504,10 +544,12 @@
 				AB41F2EB1C90FE33009D7E63 /* Excercise+CoreDataProperties.m in Sources */,
 				AB41F2E21C90FC48009D7E63 /* Model.xcdatamodeld in Sources */,
 				ABA977C41C9F984A00D04639 /* ExcerciseView.m in Sources */,
+				AB2A39211CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m in Sources */,
 				AB1220DF1CA47FDB0067467C /* ExcerciseCellView.m in Sources */,
 				AB41F2EE1C90FE33009D7E63 /* Workout.m in Sources */,
 				ABA977A51C9B4AFB00D04639 /* WorkoutLogTableViewController.m in Sources */,
 				ABA977B11C9CA7BB00D04639 /* Circuit+CoreDataProperties.m in Sources */,
+				AB2A391B1CEA3371005DD03A /* WorkoutScrollSummaryCellView.m in Sources */,
 				AB345D8E1C9260F800604D55 /* ActiveWorkoutViewController.m in Sources */,
 				AB1220E21CA488390067467C /* PostWorkoutSummaryViewController.m in Sources */,
 				AB1220D51CA4768F0067467C /* WorkoutSummaryCellView.m in Sources */,

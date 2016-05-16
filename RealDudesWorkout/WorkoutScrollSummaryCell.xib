@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkoutScrollSummaryCellView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="5jg-bF-8eU"/>
+                <outlet property="dayOfMonthLabel" destination="iDE-pB-Pip" id="TdY-QG-niK"/>
+                <outlet property="dayOfWeekLabel" destination="6AX-pi-Sbr" id="DG0-P1-eUa"/>
+                <outlet property="excercisesStackView" destination="Eco-dQ-xCi" id="zAJ-dk-IT3"/>
+                <outlet property="monthLabel" destination="lB1-pd-6y6" id="wuN-Zo-47D"/>
+                <outlet property="workoutDurationLabel" destination="GR8-NA-ZbZ" id="VEu-wu-OCg"/>
+                <outlet property="workoutNameLabel" destination="6R5-Z9-liZ" id="Hqe-C8-fjF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-Hc-ROX" userLabel="Excercises Scroll View">
+                    <rect key="frame" x="0.0" y="81" width="600" height="119"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eco-dQ-xCi">
+                            <rect key="frame" x="0.0" y="0.0" width="1800" height="119"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juv-k8-sIh" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="EUK-HE-8YV"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQ0-Vl-Zbn" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="120" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="C4m-UC-nOK"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxh-o9-OaS" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="240" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="zyo-FI-y98"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pls-xF-3bF" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="360" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="tJ6-W4-oA5"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayd-Ia-HTW" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="480" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="LZP-kO-0nv"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6i-Dg-0sT" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="600" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="wJW-XK-Uy2"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMx-bM-e1F" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="720" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="x6y-6Q-zCu"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYT-Sp-8dg" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="840" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="yO7-C9-2b7"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAf-9N-rVh" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="960" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="02J-fV-a0Y"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3f8-f3-7t1" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="1080" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="JgP-OH-Tqy"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1i-29-QK6" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="1200" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="wp4-jM-8zv"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYw-cK-gxK" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="1320" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="lzH-ey-7KN"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cmc-6U-DfK" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="1440" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="4WF-J9-VN1"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiW-8w-jPE" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="1560" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="hFg-Vj-UKk"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPF-Bz-f4D" customClass="ExcerciseTotalView">
+                                    <rect key="frame" x="1680" y="0.0" width="120" height="119"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="mKH-IM-Igk"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Eco-dQ-xCi" firstAttribute="top" secondItem="uDc-Hc-ROX" secondAttribute="top" id="0zF-KO-oN3"/>
+                        <constraint firstAttribute="height" constant="119" id="86E-Ya-Cy6"/>
+                        <constraint firstAttribute="trailing" secondItem="Eco-dQ-xCi" secondAttribute="trailing" id="K9h-ww-20y"/>
+                        <constraint firstItem="Juv-k8-sIh" firstAttribute="height" secondItem="uDc-Hc-ROX" secondAttribute="height" id="Z7D-Vu-67J"/>
+                        <constraint firstItem="Eco-dQ-xCi" firstAttribute="height" secondItem="uDc-Hc-ROX" secondAttribute="height" id="lUq-Jd-yib"/>
+                        <constraint firstAttribute="bottom" secondItem="Eco-dQ-xCi" secondAttribute="bottom" id="qqR-KU-gca"/>
+                        <constraint firstItem="Eco-dQ-xCi" firstAttribute="leading" secondItem="uDc-Hc-ROX" secondAttribute="leading" id="zbi-KX-fFH"/>
+                    </constraints>
+                </scrollView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="25W-g8-3ft">
+                    <rect key="frame" x="15" y="8" width="53" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AX-pi-Sbr">
+                            <rect key="frame" x="0.0" y="0.0" width="53" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDE-pB-Pip">
+                            <rect key="frame" x="0.0" y="9" width="53" height="42"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lB1-pd-6y6">
+                            <rect key="frame" x="0.0" y="48" width="53" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Workout #65" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R5-Z9-liZ">
+                    <rect key="frame" x="81" y="29" width="100" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44:44:44" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-NA-ZbZ">
+                    <rect key="frame" x="533" y="31" width="53" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Z-2g-Icq">
+                    <rect key="frame" x="245" y="205" width="110" height="30"/>
+                    <color key="backgroundColor" red="0.27638215649999998" green="0.58690209760000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Repeat Workout">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="uDc-Hc-ROX" secondAttribute="trailing" id="2be-g5-YEM"/>
+                <constraint firstItem="uDc-Hc-ROX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5tK-Nd-RGl"/>
+                <constraint firstItem="25W-g8-3ft" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9fg-fJ-hIr"/>
+                <constraint firstAttribute="bottom" secondItem="Z2Z-2g-Icq" secondAttribute="bottom" constant="10" id="Fw4-jY-ZfA"/>
+                <constraint firstAttribute="bottom" secondItem="uDc-Hc-ROX" secondAttribute="bottom" constant="45" id="WE9-OI-653"/>
+                <constraint firstItem="25W-g8-3ft" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Z4E-Qe-ZFi"/>
+                <constraint firstItem="6R5-Z9-liZ" firstAttribute="leading" secondItem="iDE-pB-Pip" secondAttribute="trailing" constant="13" id="mWl-ha-ZmG"/>
+                <constraint firstItem="6R5-Z9-liZ" firstAttribute="centerY" secondItem="iDE-pB-Pip" secondAttribute="centerY" id="unE-i8-R3z"/>
+                <constraint firstAttribute="trailing" secondItem="GR8-NA-ZbZ" secondAttribute="trailing" constant="14" id="z0K-G5-dGB"/>
+                <constraint firstItem="GR8-NA-ZbZ" firstAttribute="centerY" secondItem="6R5-Z9-liZ" secondAttribute="centerY" id="zEW-1P-u0Q"/>
+                <constraint firstItem="Z2Z-2g-Icq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zXc-od-VFz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="815" y="463.5"/>
+        </view>
+    </objects>
+</document>

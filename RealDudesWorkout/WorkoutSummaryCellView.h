@@ -13,7 +13,4 @@
 
 @property (strong, nonatomic) Workout *workout;
 
-
-
-
 @end
