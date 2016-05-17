@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutDurationLabel;
 @property (weak, nonatomic) IBOutlet UIStackView *excercisesStackView;
+@property (weak, nonatomic) IBOutlet UIView *repeatWorkoutView;
+@property (weak, nonatomic) IBOutlet UIView *deleteWorkoutView;
 
 
 @end
@@ -56,6 +58,8 @@
     
     self.contentView.frame = self.bounds;
     
+    self.repeatWorkoutView.layer.cornerRadius = 15;
+    self.deleteWorkoutView.layer.cornerRadius = 15;
 }
 
 @end

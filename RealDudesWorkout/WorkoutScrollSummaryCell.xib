@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkoutScrollSummaryCellView">
@@ -10,19 +11,21 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="5jg-bF-8eU"/>
                 <outlet property="dayOfMonthLabel" destination="iDE-pB-Pip" id="TdY-QG-niK"/>
                 <outlet property="dayOfWeekLabel" destination="6AX-pi-Sbr" id="DG0-P1-eUa"/>
+                <outlet property="deleteWorkoutView" destination="AGj-Vf-SIf" id="KFV-wi-3a9"/>
                 <outlet property="excercisesStackView" destination="Eco-dQ-xCi" id="zAJ-dk-IT3"/>
                 <outlet property="monthLabel" destination="lB1-pd-6y6" id="wuN-Zo-47D"/>
+                <outlet property="repeatWorkoutView" destination="eKL-Ka-WuA" id="Tqi-pe-OYw"/>
                 <outlet property="workoutDurationLabel" destination="GR8-NA-ZbZ" id="VEu-wu-OCg"/>
                 <outlet property="workoutNameLabel" destination="6R5-Z9-liZ" id="Hqe-C8-fjF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="259"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-Hc-ROX" userLabel="Excercises Scroll View">
-                    <rect key="frame" x="0.0" y="81" width="600" height="119"/>
+                    <rect key="frame" x="0.0" y="85" width="600" height="119"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eco-dQ-xCi">
                             <rect key="frame" x="0.0" y="0.0" width="1800" height="119"/>
@@ -174,36 +177,71 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44:44:44" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-NA-ZbZ">
-                    <rect key="frame" x="533" y="31" width="53" height="15"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="44:44:44" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-NA-ZbZ">
+                    <rect key="frame" x="533" y="32" width="53" height="14"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Z-2g-Icq">
-                    <rect key="frame" x="245" y="205" width="110" height="30"/>
-                    <color key="backgroundColor" red="0.27638215649999998" green="0.58690209760000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Repeat Workout">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGj-Vf-SIf">
+                    <rect key="frame" x="307" y="219" width="278" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIO-Z6-3Fa">
+                            <rect key="frame" x="0.0" y="-1" width="278" height="31"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="yIO-Z6-3Fa" firstAttribute="centerX" secondItem="AGj-Vf-SIf" secondAttribute="centerX" id="5qj-2X-Gti"/>
+                        <constraint firstItem="yIO-Z6-3Fa" firstAttribute="centerY" secondItem="AGj-Vf-SIf" secondAttribute="centerY" id="Fja-Si-Rbu"/>
+                        <constraint firstItem="yIO-Z6-3Fa" firstAttribute="height" secondItem="AGj-Vf-SIf" secondAttribute="height" id="HNm-6z-Q6H"/>
+                        <constraint firstItem="yIO-Z6-3Fa" firstAttribute="width" secondItem="AGj-Vf-SIf" secondAttribute="width" id="ODM-nC-JHn"/>
+                        <constraint firstAttribute="height" constant="30" id="hYj-QW-u9X"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKL-Ka-WuA">
+                    <rect key="frame" x="15" y="219" width="278" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Repeat Workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5A-Yq-gdT">
+                            <rect key="frame" x="0.0" y="-0.5" width="278" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="h5A-Yq-gdT" firstAttribute="centerY" secondItem="eKL-Ka-WuA" secondAttribute="centerY" id="94A-cw-qgu"/>
+                        <constraint firstItem="h5A-Yq-gdT" firstAttribute="height" secondItem="eKL-Ka-WuA" secondAttribute="height" id="BKD-pz-QyC"/>
+                        <constraint firstItem="h5A-Yq-gdT" firstAttribute="centerX" secondItem="eKL-Ka-WuA" secondAttribute="centerX" id="RQi-MH-0h0"/>
+                        <constraint firstAttribute="height" constant="30" id="aIy-UG-DHB"/>
+                        <constraint firstItem="h5A-Yq-gdT" firstAttribute="width" secondItem="eKL-Ka-WuA" secondAttribute="width" id="p9Z-Qq-lkM"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="AGj-Vf-SIf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" constant="-22" id="0LR-Nf-RKH"/>
                 <constraint firstAttribute="trailing" secondItem="uDc-Hc-ROX" secondAttribute="trailing" id="2be-g5-YEM"/>
+                <constraint firstItem="eKL-Ka-WuA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="2hR-JV-fcQ"/>
                 <constraint firstItem="uDc-Hc-ROX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5tK-Nd-RGl"/>
                 <constraint firstItem="25W-g8-3ft" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9fg-fJ-hIr"/>
-                <constraint firstAttribute="bottom" secondItem="Z2Z-2g-Icq" secondAttribute="bottom" constant="10" id="Fw4-jY-ZfA"/>
-                <constraint firstAttribute="bottom" secondItem="uDc-Hc-ROX" secondAttribute="bottom" constant="45" id="WE9-OI-653"/>
+                <constraint firstAttribute="trailing" secondItem="AGj-Vf-SIf" secondAttribute="trailing" constant="15" id="Pj5-8o-937"/>
+                <constraint firstItem="eKL-Ka-WuA" firstAttribute="top" secondItem="uDc-Hc-ROX" secondAttribute="bottom" constant="15" id="SZf-jE-Kvv"/>
+                <constraint firstItem="AGj-Vf-SIf" firstAttribute="top" secondItem="uDc-Hc-ROX" secondAttribute="bottom" constant="15" id="ThZ-bv-eNX"/>
                 <constraint firstItem="25W-g8-3ft" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Z4E-Qe-ZFi"/>
                 <constraint firstItem="6R5-Z9-liZ" firstAttribute="leading" secondItem="iDE-pB-Pip" secondAttribute="trailing" constant="13" id="mWl-ha-ZmG"/>
                 <constraint firstItem="6R5-Z9-liZ" firstAttribute="centerY" secondItem="iDE-pB-Pip" secondAttribute="centerY" id="unE-i8-R3z"/>
+                <constraint firstItem="eKL-Ka-WuA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" constant="-22" id="vTn-2t-fNb"/>
+                <constraint firstItem="uDc-Hc-ROX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="yMy-xC-fxl"/>
                 <constraint firstAttribute="trailing" secondItem="GR8-NA-ZbZ" secondAttribute="trailing" constant="14" id="z0K-G5-dGB"/>
                 <constraint firstItem="GR8-NA-ZbZ" firstAttribute="centerY" secondItem="6R5-Z9-liZ" secondAttribute="centerY" id="zEW-1P-u0Q"/>
-                <constraint firstItem="Z2Z-2g-Icq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zXc-od-VFz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="815" y="463.5"/>
+            <point key="canvasLocation" x="815" y="470.5"/>
         </view>
     </objects>
 </document>
