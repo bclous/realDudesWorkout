@@ -69,10 +69,7 @@
     
     
     self.dataStore = [DataStore sharedDataStore];
-    
-    
-    
-    
+
     
 }
 
@@ -113,11 +110,7 @@
     {
          self.weekWorkoutsLabel.text = [NSString stringWithFormat:@"%lu workouts",workoutsWeek];
     }
-    
-    
-    
-    
-    
+
     
 }
 

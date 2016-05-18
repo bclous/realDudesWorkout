@@ -12,6 +12,7 @@
 
 @interface WorkoutSummaryScrollTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet WorkoutScrollSummaryCellView *workoutSummaryView;
+@property (weak, nonatomic) IBOutlet WorkoutScrollSummaryCellView *workoutScrollSummaryView;
+
 
 @end

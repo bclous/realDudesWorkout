@@ -41,6 +41,8 @@
     
     self.accessories = self.dataStore.availableAccessories;
     
+    NSLog(@"self.accessories count is %lu", self.dataStore.availableAccessories.count);
+    
     self.accessoryTopLeft.accessory = self.accessories[0];
     self.accessoryTopRight.accessory = self.accessories[1];
     self.accessoryMiddleLeft.accessory = self.accessories[2];

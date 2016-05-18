@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExcerciseSet.h"
 
 @interface ExcerciseTotalView : UIView
+
+@property (strong, nonatomic) ExcerciseSet *excerciseSet;
 
 @end

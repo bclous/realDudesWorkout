@@ -55,6 +55,18 @@
     
   
     
+}
+
+-(void)setExcerciseSet:(ExcerciseSet *)excerciseSet
+{
+    
+    _excerciseSet = excerciseSet;
+    
+    self.numberTotalLabel.text = [NSString stringWithFormat:@"%lld",self.excerciseSet.numberofRepsActual];
+    
+    self.excerciseImage.image = [UIImage imageNamed:self.excerciseSet.excercise.pictureName];
+    
+    self.excerciseNameLabel.text = self.excerciseSet.excercise.name;
     
 }
 

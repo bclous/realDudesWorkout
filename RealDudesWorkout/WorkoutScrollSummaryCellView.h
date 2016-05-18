@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Workout.h"
 
 @interface WorkoutScrollSummaryCellView : UIView
+
+@property (strong, nonatomic) Workout *workout;
 
 @end
