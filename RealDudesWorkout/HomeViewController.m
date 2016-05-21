@@ -12,6 +12,7 @@
 #import "ExcerciseTableViewCell.h"
 #import "WorkoutSummaryScrollTableViewCell.h"
 #import "StartWorkoutButtonView.h"
+#import "WorkoutOnBoardView.h"
 
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -28,6 +29,9 @@
 @property (strong, nonatomic) NSLayoutConstraint *blurViewLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *blurViewRightConstraint;
 
+@property (strong, nonatomic) NSLayoutConstraint *workoutOnBoardTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *workoutOnBoardBottomConstraint;
+
 @property (strong, nonatomic) UIImageView *addAndCancelIconImageView;
 
 @property (strong, nonatomic) UITapGestureRecognizer *addAndCancelTapGestureRecognizer;
@@ -35,6 +39,8 @@
 @property (nonatomic) BOOL blurViewDisplayed;
 
 @property (nonatomic) NSInteger selectedRow;
+
+@property (strong, nonatomic) WorkoutOnBoardView *workoutOnBoardView;
 
 
 
@@ -97,9 +103,11 @@
     self.blurView.clipsToBounds = YES;
     self.blurView.alpha = .9;
     
+    [self addButtonToBlurView];
+    
     [self addTapGesture];
     
-    [self addButtonToBlurView];
+    [self createWorkoutOnBoardView];
     
 }
 
@@ -110,7 +118,7 @@
     self.addAndCancelIconImageView.image = [UIImage imageNamed:@"add"];
     self.addAndCancelIconImageView.userInteractionEnabled = YES;
     
-    [self.blurView addSubview:self.addAndCancelIconImageView];
+    [self.view addSubview:self.addAndCancelIconImageView];
     
     self.addAndCancelIconImageView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -120,6 +128,87 @@
     [self.addAndCancelIconImageView.centerXAnchor constraintEqualToAnchor:self.blurView.centerXAnchor].active = YES;
     [self.addAndCancelIconImageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-30].active = YES;
     
+    [self.view bringSubviewToFront:self.addAndCancelIconImageView];
+    
+    
+}
+
+-(void)createWorkoutOnBoardView
+{
+    self.workoutOnBoardView = [[WorkoutOnBoardView alloc] init];
+    
+    [self.blurView addSubview:self.workoutOnBoardView];
+    
+    self.workoutOnBoardView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+//    self.workoutOnBoardTopConstraint = [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:-400];
+//    self.workoutOnBoardBottomConstraint = [self.workoutOnBoardView.bottomAnchor constraintEqualToAnchor:self.view.topAnchor];
+    
+    [self.workoutOnBoardView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.workoutOnBoardView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    [self.workoutOnBoardView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-60].active = YES;
+    
+//    self.workoutOnBoardTopConstraint.active = YES;
+//    self.workoutOnBoardBottomConstraint.active = YES;
+    
+    self.workoutOnBoardView.clipsToBounds = YES;
+    
+    self.workoutOnBoardView.alpha = 0;
+    
+    [self setAccessoryCircleSizes];
+    
+    
+}
+
+-(void)setAccessoryCircleSizes
+{
+    self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+    self.workoutOnBoardView.accessory2.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+    self.workoutOnBoardView.accessory3.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+    self.workoutOnBoardView.accessory4.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+    self.workoutOnBoardView.accessory5.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+    self.workoutOnBoardView.accessory6.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+}
+
+-(void)bringWorkoutOnBoardScreenDown
+{
+    
+    [UIView animateWithDuration:.1 animations:^{
+        
+        
+        self.workoutOnBoardView.alpha = 1;
+        
+        [self.view layoutIfNeeded];
+        
+        
+    } completion:^(BOOL finished) {
+        
+        self.view.userInteractionEnabled = YES;
+        self.addAndCancelTapGestureRecognizer.enabled = YES;
+        self.blurViewDisplayed = YES;
+        
+    }];
+    
+    
+}
+
+-(void)moveWorkoutOnBoardScreenUp
+{
+    
+    [UIView animateWithDuration:.05 animations:^{
+        
+        
+          self.workoutOnBoardView.alpha = 1;
+        
+        [self.view layoutIfNeeded];
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [self shrinkBlurViewBackToButton];
+        
+    }];
     
 }
 
@@ -128,7 +217,6 @@
     
     self.addAndCancelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addOrCancelHit)];
     
-    [self.blurView addGestureRecognizer:self.addAndCancelTapGestureRecognizer];
     [self.addAndCancelIconImageView addGestureRecognizer:self.addAndCancelTapGestureRecognizer];
     
     
@@ -139,14 +227,12 @@
     
     if (self.blurViewDisplayed)
     {
-        [self shrinkBlurViewBackToButton];
+        [self moveWorkoutOnBoardScreenUp];
     }
     else
     {
          [self growBlurViewToFullScreen];
     }
-    
-   
     
 }
 
@@ -156,7 +242,8 @@
     self.view.userInteractionEnabled = NO;
     self.addAndCancelTapGestureRecognizer.enabled = NO;
     
-    [UIView animateWithDuration:.3 animations:^{
+    
+    [UIView animateWithDuration:.2 animations:^{
         
         self.blurView.alpha = 1;
         
@@ -186,11 +273,12 @@
         
     } completion:^(BOOL finished) {
         
+        [self setAccessoryCircleSizes];
         
+        [self bringWorkoutOnBoardScreenDown];
         self.blurView.layer.cornerRadius = 0;
-        self.view.userInteractionEnabled = YES;
-        self.addAndCancelTapGestureRecognizer.enabled = YES;
-        self.blurViewDisplayed = YES;
+    
+      
         
     }];
 }
@@ -201,7 +289,7 @@
     self.view.userInteractionEnabled = NO;
     self.addAndCancelTapGestureRecognizer.enabled = NO;
     
-    [UIView animateWithDuration:.3 animations:^{
+    [UIView animateWithDuration:.2 animations:^{
         
         self.blurView.alpha = 1;
         
@@ -265,6 +353,8 @@
     cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
     

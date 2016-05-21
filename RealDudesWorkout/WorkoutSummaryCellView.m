@@ -60,7 +60,6 @@
 -(void)commonInit
 {
     
-    NSLog(@"the init is getting called");
     
     [[NSBundle mainBundle] loadNibNamed:@"WorkoutSummaryCell" owner:self options:nil];
     
