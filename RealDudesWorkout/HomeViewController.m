@@ -13,9 +13,10 @@
 #import "WorkoutSummaryScrollTableViewCell.h"
 #import "StartWorkoutButtonView.h"
 #import "WorkoutOnBoardView.h"
+#import "GenerateWorkoutView.h"
 
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate>
 
 @property (weak, nonatomic) IBOutlet TotalsFrontPageCellView *totalsView;
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
@@ -29,9 +30,6 @@
 @property (strong, nonatomic) NSLayoutConstraint *blurViewLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *blurViewRightConstraint;
 
-@property (strong, nonatomic) NSLayoutConstraint *workoutOnBoardTopConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *workoutOnBoardBottomConstraint;
-
 @property (strong, nonatomic) UIImageView *addAndCancelIconImageView;
 
 @property (strong, nonatomic) UITapGestureRecognizer *addAndCancelTapGestureRecognizer;
@@ -41,6 +39,9 @@
 @property (nonatomic) NSInteger selectedRow;
 
 @property (strong, nonatomic) WorkoutOnBoardView *workoutOnBoardView;
+@property (strong, nonatomic) GenerateWorkoutView *generateWorkoutView;
+
+@property (nonatomic) BOOL workoutCreated;
 
 
 
@@ -48,18 +49,18 @@
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewDidLoad
+{
     
-    [self setUpMainTableView];
-    [self setUpStartButtonView];
+    [super viewDidLoad];
     
     self.dataStore = [DataStore sharedDataStore];
     
     [self.dataStore fetchData];
-    
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     
+    [self setUpMainTableView];
+    [self setUpStartButtonView];
     
 }
 
@@ -109,6 +110,8 @@
     
     [self createWorkoutOnBoardView];
     
+    [self createGenerateWorkoutView];
+    
 }
 
 -(void)addButtonToBlurView
@@ -137,26 +140,48 @@
 {
     self.workoutOnBoardView = [[WorkoutOnBoardView alloc] init];
     
+    self.workoutOnBoardView.delegate = self;
+    
     [self.blurView addSubview:self.workoutOnBoardView];
     
     self.workoutOnBoardView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-//    self.workoutOnBoardTopConstraint = [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:-400];
-//    self.workoutOnBoardBottomConstraint = [self.workoutOnBoardView.bottomAnchor constraintEqualToAnchor:self.view.topAnchor];
     
     [self.workoutOnBoardView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.workoutOnBoardView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.workoutOnBoardView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-60].active = YES;
     
-//    self.workoutOnBoardTopConstraint.active = YES;
-//    self.workoutOnBoardBottomConstraint.active = YES;
     
     self.workoutOnBoardView.clipsToBounds = YES;
     
     self.workoutOnBoardView.alpha = 0;
     
     [self setAccessoryCircleSizes];
+    [self setAccessories];
+    
+    
+}
+
+-(void)createGenerateWorkoutView
+{
+    
+    self.generateWorkoutView = [[GenerateWorkoutView alloc] init];
+    
+    //self.generateWorkoutView.delegate = self;
+    
+    [self.blurView addSubview:self.generateWorkoutView];
+    
+    self.generateWorkoutView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.generateWorkoutView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.generateWorkoutView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.generateWorkoutView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    [self.generateWorkoutView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-60].active = YES;
+    
+    self.generateWorkoutView.clipsToBounds = YES;
+    
+    self.generateWorkoutView.alpha = 0;
+    
     
     
 }
@@ -169,6 +194,19 @@
     self.workoutOnBoardView.accessory4.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
     self.workoutOnBoardView.accessory5.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
     self.workoutOnBoardView.accessory6.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+}
+
+-(void)setAccessories
+{
+    NSLog(@"the number of accessories is: %lu", self.dataStore.availableAccessories.count);
+    
+    self.workoutOnBoardView.accessory1.accessory = self.dataStore.availableAccessories[0];
+    self.workoutOnBoardView.accessory2.accessory = self.dataStore.availableAccessories[1];
+    self.workoutOnBoardView.accessory3.accessory = self.dataStore.availableAccessories[2];
+    self.workoutOnBoardView.accessory4.accessory = self.dataStore.availableAccessories[3];
+    self.workoutOnBoardView.accessory5.accessory = self.dataStore.availableAccessories[4];
+    self.workoutOnBoardView.accessory6.accessory = self.dataStore.availableAccessories[5];
+    
 }
 
 -(void)bringWorkoutOnBoardScreenDown
@@ -327,6 +365,22 @@
         
     }];
     
+}
+
+-(void)startButtonTapped
+{
+    
+    [self.dataStore.user generateNewWorkout];
+    
+    self.workoutCreated = YES;
+    
+    [self.workoutOnBoardView removeFromSuperview];
+    
+    self.generateWorkoutView.workout = [self.workouts lastObject];
+    
+    self.generateWorkoutView.alpha = 1;
+    
+
 }
 
 

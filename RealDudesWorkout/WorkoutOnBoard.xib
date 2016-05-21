@@ -98,51 +98,51 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOM-Wj-xpb">
-                    <rect key="frame" x="21" y="228" width="375" height="283"/>
+                    <rect key="frame" x="21" y="220" width="375" height="291"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-E5-CtW">
-                            <rect key="frame" x="0.0" y="15" width="375" height="254"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-E5-CtW">
+                            <rect key="frame" x="0.0" y="15" width="375" height="250"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="P8H-Kv-btf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="P8H-Kv-btf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ZT-nP-ZzL" customClass="AccessoryOnBoardView">
-                                            <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="0ZT-nP-ZzL" secondAttribute="height" multiplier="1:1" id="uoK-ev-cYm"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-ge-gd8" customClass="AccessoryOnBoardView">
-                                            <rect key="frame" x="127" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="126" y="0.0" width="124" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="QQ4-ge-gd8" secondAttribute="height" multiplier="1:1" id="oIh-xn-Py0"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9c-KE-GLK" customClass="AccessoryOnBoardView">
-                                            <rect key="frame" x="254" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="252" y="0.0" width="124" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="L9c-KE-GLK" secondAttribute="height" multiplier="1:1" id="bhV-qZ-p3j"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fut-K0-txc">
-                                    <rect key="frame" x="0.0" y="132" width="375" height="122"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fut-K0-txc">
+                                    <rect key="frame" x="0.0" y="126" width="375" height="124"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JM-VY-j1Q" customClass="AccessoryOnBoardView">
-                                            <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="9JM-VY-j1Q" secondAttribute="height" multiplier="1:1" id="wXr-wu-6UL"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iJ-de-p8r" customClass="AccessoryOnBoardView">
-                                            <rect key="frame" x="127" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="126" y="0.0" width="124" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="5iJ-de-p8r" secondAttribute="height" multiplier="1:1" id="Jwk-OH-YCx"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waF-PA-bzy" customClass="AccessoryOnBoardView">
-                                            <rect key="frame" x="254" y="0.0" width="122" height="122"/>
+                                            <rect key="frame" x="252" y="0.0" width="124" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="waF-PA-bzy" secondAttribute="height" multiplier="1:1" id="oG3-jD-w0N"/>
                                             </constraints>
@@ -171,7 +171,7 @@
                 <constraint firstItem="CWE-HQ-Ash" firstAttribute="top" secondItem="jeD-BG-OF2" secondAttribute="bottom" constant="30" id="eJe-rq-TBC"/>
                 <constraint firstItem="CWE-HQ-Ash" firstAttribute="centerX" secondItem="jeD-BG-OF2" secondAttribute="centerX" id="gfv-am-UZg"/>
                 <constraint firstItem="NOM-Wj-xpb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jgr-91-qPx"/>
-                <constraint firstItem="NOM-Wj-xpb" firstAttribute="top" secondItem="CWE-HQ-Ash" secondAttribute="bottom" constant="2" id="qz4-wY-XC2"/>
+                <constraint firstItem="NOM-Wj-xpb" firstAttribute="top" secondItem="CWE-HQ-Ash" secondAttribute="bottom" constant="-6" id="qz4-wY-XC2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="370.5" y="392.5"/>

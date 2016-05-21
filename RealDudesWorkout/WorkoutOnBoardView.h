@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AccessoryOnBoardView.h"
 
+@protocol WorkoutOnBoardDelegate <NSObject>
+
+-(void)startButtonTapped;
+
+@end
+
 @interface WorkoutOnBoardView : UIView
 
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory1;
@@ -17,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory4;
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory5;
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory6;
+
+@property (weak, nonatomic) id <WorkoutOnBoardDelegate> delegate;
 
 
 @end

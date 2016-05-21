@@ -261,13 +261,13 @@
     bench.name = @"Bench";
     bench.pictureName = @"bench";
     
-    backExtensionMachine.name = @"Back Extension machine";
+    backExtensionMachine.name = @"Back Extension";
     backExtensionMachine.pictureName = @"lowerBackExtensionStructure";
     
-    dumbells.name = @"dumbells";
+    dumbells.name = @"Dumbells";
     dumbells.pictureName = @"dumbbell";
     
-    latPullDownMachine.name = @"Lat pull down machine";
+    latPullDownMachine.name = @"Lat pull down";
     latPullDownMachine.pictureName = @"latPullDownMachine";
     
     // add accessories to excercies

@@ -114,8 +114,6 @@
     
     NSUInteger LabelValue = floatValueRounded / 1;
     
-    
-    
     NSString *label = [NSString stringWithFormat:@"I want to work out for %lu minutes",LabelValue];
     
     self.workoutDurationLabel.text = label;

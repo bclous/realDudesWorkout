@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Accessory.h"
 
 @interface AccessoryOnBoardView : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *accessoryOutlineCircleView;
+
+@property (strong, nonatomic) Accessory *accessory;
 
 @end
