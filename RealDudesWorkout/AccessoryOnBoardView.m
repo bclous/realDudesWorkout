@@ -55,7 +55,7 @@
     self.contentView.frame = self.bounds;
     
     self.accessoryOutlineCircleView.layer.borderWidth = 5;
-      self.accessoryOutlineCircleView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+      self.accessoryOutlineCircleView.layer.borderColor = [[UIColor grayColor] CGColor];
     
     self.pictureChosen = NO;
     
@@ -65,7 +65,7 @@
     if (self.pictureChosen)
     {
         self.accessoryOutlineCircleView.layer.borderWidth = 5;
-         self.accessoryOutlineCircleView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+         self.accessoryOutlineCircleView.layer.borderColor = [[UIColor grayColor] CGColor];
        
         
         self.pictureChosen = NO;

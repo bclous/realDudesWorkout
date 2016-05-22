@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "Workout.h"
 
+@protocol GenerateWorkoutViewDelegate <NSObject>
+
+-(void)startWorkoutTapped;
+
+@end
+
 @interface GenerateWorkoutView : UIView
 
 @property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSMutableArray *excerciseViews;
+@property (weak, nonatomic) id <GenerateWorkoutViewDelegate> delegate;
 
 @end

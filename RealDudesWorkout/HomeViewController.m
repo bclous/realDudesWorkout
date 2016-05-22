@@ -17,7 +17,7 @@
 #import "GenerateWorkoutExcerciseView.h"
 
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TotalsFrontPageCellView *totalsView;
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
@@ -36,6 +36,8 @@
 @property (strong, nonatomic) UITapGestureRecognizer *addAndCancelTapGestureRecognizer;
 
 @property (nonatomic) BOOL blurViewDisplayed;
+@property (nonatomic) BOOL accessoryAndTimeViewDisplayed;
+@property (nonatomic) BOOL generateWorkoutViewDisplayed;
 
 @property (nonatomic) NSInteger selectedRow;
 
@@ -105,6 +107,11 @@
     self.blurView.clipsToBounds = YES;
     self.blurView.alpha = .9;
     
+    self.blurViewDisplayed = NO;
+    self.accessoryAndTimeViewDisplayed = NO;
+    self.generateWorkoutViewDisplayed = NO;
+    
+    
     [self addButtonToBlurView];
     
     [self addTapGesture];
@@ -168,7 +175,7 @@
     
     self.generateWorkoutView = [[GenerateWorkoutView alloc] init];
     
-    //self.generateWorkoutView.delegate = self;
+    self.generateWorkoutView.delegate = self;
     
     [self.blurView addSubview:self.generateWorkoutView];
     
@@ -228,6 +235,7 @@
         self.view.userInteractionEnabled = YES;
         self.addAndCancelTapGestureRecognizer.enabled = YES;
         self.blurViewDisplayed = YES;
+        self.accessoryAndTimeViewDisplayed = YES;
         
     }];
     
@@ -266,14 +274,45 @@
 -(void)addOrCancelHit
 {
     
-    if (self.blurViewDisplayed)
+    if (self.blurViewDisplayed )
     {
+        
         [self moveWorkoutOnBoardScreenUp];
+        
     }
-    else
+    
+        else
     {
          [self growBlurViewToFullScreen];
     }
+    
+}
+
+
+-(void)resetOnBoardingViews
+{
+    
+    if (self.accessoryAndTimeViewDisplayed)
+    {
+        
+        [self.workoutOnBoardView removeFromSuperview];
+        self.accessoryAndTimeViewDisplayed = NO;
+        
+        [self createWorkoutOnBoardView];
+        
+        
+    }
+    
+    else if (self.generateWorkoutViewDisplayed)
+    {
+        [self.generateWorkoutView removeFromSuperview];
+        self.generateWorkoutViewDisplayed = NO;
+        
+        [self createWorkoutOnBoardView];
+        [self createGenerateWorkoutView];
+    }
+    
+    
     
 }
 
@@ -366,34 +405,36 @@
         self.addAndCancelTapGestureRecognizer.enabled = YES;
         self.blurViewDisplayed = NO;
         
+        [self resetOnBoardingViews];
+        
     }];
     
 }
 
--(void)startButtonTapped
+-(void)generateWorkoutTapped
 {
     
     [self.dataStore.user generateNewWorkout];
-    
-    self.workoutCreated = YES;
     
     [self.workoutOnBoardView removeFromSuperview];
     
     self.generateWorkoutView.workout = [self.workouts lastObject];
     
-//    for (GenerateWorkoutExcerciseView *view in self.generateWorkoutView.excerciseViews)
-//    {
-//        
-//        view.outerCircleView.layer.cornerRadius = view.outerCircleView.frame.size.width / 2;
-//        view.innerCircleView.layer.cornerRadius = view.innerCircleView.frame.size.width / 2;
-//        
-//    }
-    
-
-    
     self.generateWorkoutView.alpha = 1;
     
+    self.workoutCreated = YES;
+    self.generateWorkoutViewDisplayed = YES;
+    self.accessoryAndTimeViewDisplayed = NO;
+    
 
+}
+
+-(void)startWorkoutTapped
+{
+    
+    [self performSegueWithIdentifier:@"segueToWorkout" sender:nil];
+
+    
 }
 
 

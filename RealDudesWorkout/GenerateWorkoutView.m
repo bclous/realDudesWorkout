@@ -68,7 +68,7 @@
 - (IBAction)startButtonTapped:(id)sender
 {
     
-    
+    [self.delegate startWorkoutTapped];
     
 }
 
@@ -118,11 +118,6 @@
         
         [excerciseTotalView.widthAnchor constraintEqualToAnchor:excerciseTotalView.heightAnchor].active = YES;
         
-        excerciseTotalView.outerCircleView.layer.cornerRadius = excerciseTotalView.outerCircleView.frame.size.height / 2;
-        excerciseTotalView.innerCircleView.layer.cornerRadius = excerciseTotalView.innerCircleView.frame.size.height / 2;
-        
-        NSLog(@"THE HEIGHT OF THE SCROLL VIEW IS: %f", self.excerciseScrollView.frame.size.height);
-        NSLog(@"THE HEIGHT OF THE OUTERCIRCLEVIEW IS: %f", excerciseTotalView.frame.size.height);
         
         
     }

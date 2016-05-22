@@ -11,8 +11,7 @@
 
 @interface GenerateWorkoutExcerciseView : UIView
 
-@property (weak, nonatomic) IBOutlet UIView *outerCircleView;
-@property (weak, nonatomic) IBOutlet UIView *innerCircleView;
+
 
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
 

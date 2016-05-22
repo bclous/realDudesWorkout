@@ -18,13 +18,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLK-XG-i2p">
-                    <rect key="frame" x="0.0" y="248" width="420" height="200"/>
+                    <rect key="frame" x="0.0" y="258" width="420" height="180"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="G65-YM-4Db"/>
+                        <constraint firstAttribute="height" constant="180" id="G65-YM-4Db"/>
                     </constraints>
                 </scrollView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-On-uYy">
-                    <rect key="frame" x="160" y="217.5" width="101" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Excercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-On-uYy">
+                    <rect key="frame" x="160" y="208" width="101" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="eLK-XG-i2p" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CdW-Lv-mGO"/>
-                <constraint firstItem="eLK-XG-i2p" firstAttribute="top" secondItem="Ah5-On-uYy" secondAttribute="bottom" constant="10" id="NtM-Em-WV9"/>
+                <constraint firstItem="eLK-XG-i2p" firstAttribute="top" secondItem="Ah5-On-uYy" secondAttribute="bottom" constant="20" id="NtM-Em-WV9"/>
                 <constraint firstItem="eLK-XG-i2p" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Vl8-uc-OJn"/>
                 <constraint firstItem="eLK-XG-i2p" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="aw7-8V-eqM"/>
                 <constraint firstAttribute="bottom" secondItem="Vry-Uo-2zL" secondAttribute="bottom" constant="30" id="cFu-E4-sDE"/>

@@ -62,7 +62,7 @@
 
 - (IBAction)startButtonTapped:(id)sender
 {
-    [self.delegate startButtonTapped];
+    [self.delegate generateWorkoutTapped];
 }
 
 @end

@@ -11,7 +11,7 @@
 
 @protocol WorkoutOnBoardDelegate <NSObject>
 
--(void)startButtonTapped;
+-(void)generateWorkoutTapped;
 
 @end
 

@@ -13,6 +13,8 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *excerciseNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *excerciseImageView;
+@property (weak, nonatomic) IBOutlet UIView *outerCircleView;
+@property (weak, nonatomic) IBOutlet UIView *innerCircleView;
 
 
 @end
@@ -51,6 +53,9 @@
     [self addSubview:self.contentView];
     
     self.contentView.frame = self.bounds;
+    
+    self.outerCircleView.layer.cornerRadius = 80;
+    self.innerCircleView.layer.cornerRadius = 79;
     
 }
 
