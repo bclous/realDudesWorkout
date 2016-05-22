@@ -12,5 +12,6 @@
 @interface GenerateWorkoutView : UIView
 
 @property (strong, nonatomic) Workout *workout;
+@property (strong, nonatomic) NSMutableArray *excerciseViews;
 
 @end

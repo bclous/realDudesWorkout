@@ -8,6 +8,8 @@
 
 #import "GenerateWorkoutView.h"
 #import "ExcerciseTotalView.h"
+#import "GenerateWorkoutExcerciseView.h"
+
 
 @interface GenerateWorkoutView ()
 
@@ -58,6 +60,9 @@
     
     self.startButton.layer.cornerRadius = 15;
     
+    self.excerciseViews = [[NSMutableArray alloc] init];
+    
+    
 }
 
 - (IBAction)startButtonTapped:(id)sender
@@ -103,7 +108,7 @@
     for (ExcerciseSet *excerciseSet in self.workout.excercisesInOrder)
     {
         
-        ExcerciseTotalView *excerciseTotalView = [[ExcerciseTotalView alloc] init];
+        GenerateWorkoutExcerciseView *excerciseTotalView = [[GenerateWorkoutExcerciseView alloc] init];
         
         excerciseTotalView.excerciseSet = excerciseSet;
         
@@ -112,6 +117,14 @@
         [excerciseTotalView.heightAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
         
         [excerciseTotalView.widthAnchor constraintEqualToAnchor:excerciseTotalView.heightAnchor].active = YES;
+        
+        excerciseTotalView.outerCircleView.layer.cornerRadius = excerciseTotalView.outerCircleView.frame.size.height / 2;
+        excerciseTotalView.innerCircleView.layer.cornerRadius = excerciseTotalView.innerCircleView.frame.size.height / 2;
+        
+        NSLog(@"THE HEIGHT OF THE SCROLL VIEW IS: %f", self.excerciseScrollView.frame.size.height);
+        NSLog(@"THE HEIGHT OF THE OUTERCIRCLEVIEW IS: %f", excerciseTotalView.frame.size.height);
+        
+        
     }
 }
 

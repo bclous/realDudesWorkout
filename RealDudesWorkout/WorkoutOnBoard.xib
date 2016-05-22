@@ -28,13 +28,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="663-hl-HQ8">
-                    <rect key="frame" x="83" y="541" width="250" height="30"/>
+                    <rect key="frame" x="68" y="541" width="280" height="30"/>
                     <color key="backgroundColor" red="0.27638215649999998" green="0.58690209760000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="250" id="SDF-ja-wGP"/>
+                        <constraint firstAttribute="width" constant="280" id="SDF-ja-wGP"/>
                         <constraint firstAttribute="height" constant="30" id="b99-ia-03S"/>
                     </constraints>
-                    <state key="normal" title="Start">
+                    <state key="normal" title="Generate workout">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -98,7 +98,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOM-Wj-xpb">
-                    <rect key="frame" x="21" y="220" width="375" height="291"/>
+                    <rect key="frame" x="21" y="220" width="375" height="301"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-E5-CtW">
                             <rect key="frame" x="0.0" y="15" width="375" height="250"/>
@@ -162,7 +162,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Yne-te-SDB" secondAttribute="trailing" id="51j-OO-90o"/>
                 <constraint firstItem="NOM-Wj-xpb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="IUo-e6-gAK"/>
-                <constraint firstItem="663-hl-HQ8" firstAttribute="top" secondItem="NOM-Wj-xpb" secondAttribute="bottom" constant="30" id="Kvh-0T-u22"/>
+                <constraint firstItem="663-hl-HQ8" firstAttribute="top" secondItem="NOM-Wj-xpb" secondAttribute="bottom" constant="20" id="Kvh-0T-u22"/>
                 <constraint firstItem="663-hl-HQ8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lvi-57-bAV"/>
                 <constraint firstAttribute="bottom" secondItem="663-hl-HQ8" secondAttribute="bottom" constant="30" id="QnH-x7-hZ3"/>
                 <constraint firstItem="Yne-te-SDB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VaS-bd-09L"/>

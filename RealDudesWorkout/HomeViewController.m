@@ -14,6 +14,7 @@
 #import "StartWorkoutButtonView.h"
 #import "WorkoutOnBoardView.h"
 #import "GenerateWorkoutView.h"
+#import "GenerateWorkoutExcerciseView.h"
 
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate>
@@ -181,6 +182,8 @@
     self.generateWorkoutView.clipsToBounds = YES;
     
     self.generateWorkoutView.alpha = 0;
+    
+  
     
     
     
@@ -377,6 +380,16 @@
     [self.workoutOnBoardView removeFromSuperview];
     
     self.generateWorkoutView.workout = [self.workouts lastObject];
+    
+//    for (GenerateWorkoutExcerciseView *view in self.generateWorkoutView.excerciseViews)
+//    {
+//        
+//        view.outerCircleView.layer.cornerRadius = view.outerCircleView.frame.size.width / 2;
+//        view.innerCircleView.layer.cornerRadius = view.innerCircleView.frame.size.width / 2;
+//        
+//    }
+    
+
     
     self.generateWorkoutView.alpha = 1;
     
