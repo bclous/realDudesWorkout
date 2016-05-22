@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "DataStore.h"
 #import "TotalsFrontPageCellView.h"
-#import "ExcerciseTableViewCell.h"
 #import "WorkoutSummaryScrollTableViewCell.h"
 #import "StartWorkoutButtonView.h"
 #import "WorkoutOnBoardView.h"
