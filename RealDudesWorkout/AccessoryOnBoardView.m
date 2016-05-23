@@ -13,6 +13,8 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIImageView *accessoryImageView;
 @property (weak, nonatomic) IBOutlet UILabel *accessoryLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *blueOutlineImage;
+@property (weak, nonatomic) IBOutlet UIImageView *circleImage;
 
 @property (nonatomic) BOOL pictureChosen;
 
@@ -54,32 +56,33 @@
     
     self.contentView.frame = self.bounds;
     
-    self.accessoryOutlineCircleView.layer.borderWidth = 5;
-      self.accessoryOutlineCircleView.layer.borderColor = [[UIColor grayColor] CGColor];
-    
     self.pictureChosen = NO;
+    
+    self.blueOutlineImage.alpha = 0;
+    
+    self.contentView.alpha = .5;
     
 }
 - (IBAction)pictureTapped:(id)sender
 {
+
     if (self.pictureChosen)
     {
-        self.accessoryOutlineCircleView.layer.borderWidth = 5;
-         self.accessoryOutlineCircleView.layer.borderColor = [[UIColor grayColor] CGColor];
-       
-        
+        self.blueOutlineImage.alpha = 0;
+        self.contentView.alpha = .5;
+
         self.pictureChosen = NO;
     }
     else
     {
-        self.accessoryOutlineCircleView.layer.borderWidth = 5;
-        self.accessoryOutlineCircleView.layer.borderColor = [[UIColor colorWithRed:70.0/255.0 green:150.0/255.0 blue:255.0/255.0 alpha:1] CGColor];
-        
+      self.blueOutlineImage.alpha = 1;
+        self.contentView.alpha = 1;
         self.pictureChosen = YES;
-        
+
     }
-    
 }
+
+
 
 -(void)setAccessory:(Accessory *)accessory
 {

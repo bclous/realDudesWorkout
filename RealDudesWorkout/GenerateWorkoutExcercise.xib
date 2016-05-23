@@ -10,10 +10,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateWorkoutExcerciseView">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="RyB-Lx-J94"/>
-                <outlet property="excerciseImageView" destination="kaH-Aw-nxo" id="XbG-Yp-p06"/>
+                <outlet property="excerciseImageView" destination="COo-1j-jO1" id="Tln-YJ-9x3"/>
                 <outlet property="excerciseNameLabel" destination="IIO-gI-Awd" id="UfD-bn-Z3N"/>
-                <outlet property="innerCircleView" destination="dtL-fK-tVl" id="gHW-Yl-lDd"/>
-                <outlet property="outerCircleView" destination="qm3-oO-Or9" id="gwX-dA-79t"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lower Back Extensions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-gI-Awd">
-                    <rect key="frame" x="0.0" y="182" width="200" height="18"/>
+                    <rect key="frame" x="0.0" y="177" width="200" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Cwh-Q7-ucu"/>
                     </constraints>
@@ -30,48 +28,33 @@
                     <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm3-oO-Or9" userLabel="OutCircleView">
-                    <rect key="frame" x="11" y="0.0" width="180" height="180"/>
-                    <subviews>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtL-fK-tVl">
-                            <rect key="frame" x="3" y="2" width="175" height="175"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="curls" translatesAutoresizingMaskIntoConstraints="NO" id="kaH-Aw-nxo">
-                                    <rect key="frame" x="27" y="27" width="124" height="124"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="kaH-Aw-nxo" firstAttribute="height" secondItem="dtL-fK-tVl" secondAttribute="height" multiplier="0.7" id="AWp-QC-GtZ"/>
-                                <constraint firstItem="kaH-Aw-nxo" firstAttribute="centerX" secondItem="dtL-fK-tVl" secondAttribute="centerX" id="ayR-qA-sj0"/>
-                                <constraint firstItem="kaH-Aw-nxo" firstAttribute="centerY" secondItem="dtL-fK-tVl" secondAttribute="centerY" id="egD-i5-ZNJ"/>
-                                <constraint firstItem="kaH-Aw-nxo" firstAttribute="width" secondItem="dtL-fK-tVl" secondAttribute="width" multiplier="0.7" id="yOc-LK-zo0"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" red="0.27638215649999998" green="0.58690209760000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="zr1-Q0-QBS">
+                    <rect key="frame" x="12" y="0.0" width="176" height="176"/>
                     <constraints>
-                        <constraint firstItem="dtL-fK-tVl" firstAttribute="height" secondItem="qm3-oO-Or9" secondAttribute="height" constant="-5" id="3nZ-07-UTY"/>
-                        <constraint firstItem="dtL-fK-tVl" firstAttribute="width" secondItem="qm3-oO-Or9" secondAttribute="width" constant="-5" id="QkQ-Nq-6zJ"/>
-                        <constraint firstAttribute="width" secondItem="qm3-oO-Or9" secondAttribute="height" multiplier="1:1" id="k0E-Rj-HFm"/>
-                        <constraint firstItem="dtL-fK-tVl" firstAttribute="centerY" secondItem="qm3-oO-Or9" secondAttribute="centerY" id="o2j-sv-iK0"/>
-                        <constraint firstItem="dtL-fK-tVl" firstAttribute="centerX" secondItem="qm3-oO-Or9" secondAttribute="centerX" id="xlJ-Qg-nbV"/>
+                        <constraint firstAttribute="width" secondItem="zr1-Q0-QBS" secondAttribute="height" multiplier="1:1" id="7P1-zc-N5M"/>
                     </constraints>
-                </view>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="COo-1j-jO1">
+                    <rect key="frame" x="43" y="31" width="114" height="114"/>
+                </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="IIO-gI-Awd" firstAttribute="top" secondItem="qm3-oO-Or9" secondAttribute="bottom" constant="2" id="3Na-OF-VXb"/>
+                <constraint firstItem="COo-1j-jO1" firstAttribute="width" secondItem="zr1-Q0-QBS" secondAttribute="width" multiplier="0.65" id="7QL-3P-fPA"/>
                 <constraint firstItem="IIO-gI-Awd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FPR-BG-TQq"/>
+                <constraint firstItem="zr1-Q0-QBS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MUE-sf-Rxk"/>
+                <constraint firstItem="zr1-Q0-QBS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="One-PX-vEO"/>
                 <constraint firstItem="IIO-gI-Awd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Pkq-5V-ekh"/>
-                <constraint firstAttribute="bottom" secondItem="IIO-gI-Awd" secondAttribute="bottom" id="Qnh-AZ-PUH"/>
-                <constraint firstItem="qm3-oO-Or9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ucD-T8-Yow"/>
-                <constraint firstItem="qm3-oO-Or9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vKE-2n-Nwi"/>
+                <constraint firstAttribute="bottom" secondItem="IIO-gI-Awd" secondAttribute="bottom" constant="5" id="Qnh-AZ-PUH"/>
+                <constraint firstItem="IIO-gI-Awd" firstAttribute="top" secondItem="zr1-Q0-QBS" secondAttribute="bottom" constant="1" id="RsW-WS-73s"/>
+                <constraint firstItem="COo-1j-jO1" firstAttribute="centerX" secondItem="zr1-Q0-QBS" secondAttribute="centerX" id="Tid-TZ-0dn"/>
+                <constraint firstItem="COo-1j-jO1" firstAttribute="height" secondItem="zr1-Q0-QBS" secondAttribute="height" multiplier="0.65" id="UK4-rI-o1w"/>
+                <constraint firstItem="COo-1j-jO1" firstAttribute="centerY" secondItem="zr1-Q0-QBS" secondAttribute="centerY" id="aIU-Cu-898"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="20" y="192"/>
         </view>
     </objects>
     <resources>
-        <image name="curls" width="500" height="375"/>
+        <image name="circle" width="300" height="300"/>
     </resources>
 </document>

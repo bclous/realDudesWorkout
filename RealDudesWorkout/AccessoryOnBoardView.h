@@ -11,8 +11,6 @@
 
 @interface AccessoryOnBoardView : UIView
 
-@property (weak, nonatomic) IBOutlet UIView *accessoryOutlineCircleView;
-
 @property (strong, nonatomic) Accessory *accessory;
 
 @end

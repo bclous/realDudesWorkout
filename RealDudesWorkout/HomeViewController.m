@@ -163,7 +163,7 @@
     
     self.workoutOnBoardView.alpha = 0;
     
-    [self setAccessoryCircleSizes];
+    //[self setAccessoryCircleSizes];
     [self setAccessories];
     
     
@@ -195,15 +195,15 @@
     
 }
 
--(void)setAccessoryCircleSizes
-{
-    self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-    self.workoutOnBoardView.accessory2.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-    self.workoutOnBoardView.accessory3.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-    self.workoutOnBoardView.accessory4.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-    self.workoutOnBoardView.accessory5.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-    self.workoutOnBoardView.accessory6.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-}
+//-(void)setAccessoryCircleSizes
+//{
+//    self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+//    self.workoutOnBoardView.accessory2.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+//    self.workoutOnBoardView.accessory3.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+//    self.workoutOnBoardView.accessory4.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+//    self.workoutOnBoardView.accessory5.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+//    self.workoutOnBoardView.accessory6.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
+//}
 
 -(void)setAccessories
 {
@@ -352,7 +352,7 @@
         
     } completion:^(BOOL finished) {
         
-        [self setAccessoryCircleSizes];
+        //[self setAccessoryCircleSizes];
         
         [self bringWorkoutOnBoardScreenDown];
         self.blurView.layer.cornerRadius = 0;

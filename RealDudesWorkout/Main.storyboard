@@ -246,14 +246,14 @@
                                     <action selector="finishedButtonTapped:" destination="NKf-Qy-GjP" eventType="touchUpInside" id="vWf-e2-xMF"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fj2-ug-gHP" userLabel="ExcerciseView" customClass="ExcerciseView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj2-ug-gHP" userLabel="ExcerciseView" customClass="ExcerciseView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34G-v6-KPh" customClass="RestView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34G-v6-KPh" customClass="RestView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="530"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tfd-0u-Oq4">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
