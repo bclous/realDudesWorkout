@@ -11,7 +11,6 @@
 @interface ExcerciseTotalView ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *numberTotalLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *excerciseImage;
 @property (weak, nonatomic) IBOutlet UILabel *excerciseNameLabel;
 
@@ -62,11 +61,10 @@
     
     _excerciseSet = excerciseSet;
     
-    self.numberTotalLabel.text = [NSString stringWithFormat:@"%lld",self.excerciseSet.numberofRepsActual];
-    
     self.excerciseImage.image = [UIImage imageNamed:self.excerciseSet.excercise.pictureName];
     
-    self.excerciseNameLabel.text = self.excerciseSet.excercise.name;
+    self.excerciseNameLabel.text = [NSString stringWithFormat:@"%lld %@",self.excerciseSet.numberofRepsActual, self.excerciseSet.excercise.name];
+
     
 }
 
