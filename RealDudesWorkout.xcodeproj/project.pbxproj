@@ -53,6 +53,10 @@
 		ABC0B6851CF113DC00938033 /* GenerateWorkoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B6841CF113DC00938033 /* GenerateWorkoutView.m */; };
 		ABC0B6871CF11FEF00938033 /* GenerateWorkoutExcercise.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B6861CF11FEF00938033 /* GenerateWorkoutExcercise.xib */; };
 		ABC0B68A1CF124E100938033 /* GenerateWorkoutExcerciseView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B6891CF124E100938033 /* GenerateWorkoutExcerciseView.m */; };
+		ABC0B68C1CF3AD1300938033 /* RestView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B68B1CF3AD1200938033 /* RestView2.xib */; };
+		ABC0B68E1CF3B68400938033 /* ExcerciseRestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B68D1CF3B68400938033 /* ExcerciseRestView.xib */; };
+		ABC0B6911CF3B77200938033 /* ExcerciseRestView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B6901CF3B77200938033 /* ExcerciseRestView.m */; };
+		ABC0B6941CF3B8E100938033 /* RestView2.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B6931CF3B8E100938033 /* RestView2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +138,12 @@
 		ABC0B6861CF11FEF00938033 /* GenerateWorkoutExcercise.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateWorkoutExcercise.xib; sourceTree = "<group>"; };
 		ABC0B6881CF124E100938033 /* GenerateWorkoutExcerciseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateWorkoutExcerciseView.h; sourceTree = "<group>"; };
 		ABC0B6891CF124E100938033 /* GenerateWorkoutExcerciseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateWorkoutExcerciseView.m; sourceTree = "<group>"; };
+		ABC0B68B1CF3AD1200938033 /* RestView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestView2.xib; sourceTree = "<group>"; };
+		ABC0B68D1CF3B68400938033 /* ExcerciseRestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExcerciseRestView.xib; sourceTree = "<group>"; };
+		ABC0B68F1CF3B77200938033 /* ExcerciseRestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcerciseRestView.h; sourceTree = "<group>"; };
+		ABC0B6901CF3B77200938033 /* ExcerciseRestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcerciseRestView.m; sourceTree = "<group>"; };
+		ABC0B6921CF3B8E100938033 /* RestView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestView2.h; sourceTree = "<group>"; };
+		ABC0B6931CF3B8E100938033 /* RestView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestView2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +169,10 @@
 				AB2A39081CE3FFB5005DD03A /* NumberOfWorkoutsView.m */,
 				ABC0B67E1CF0C48000938033 /* AccessoryOnBoardView.h */,
 				ABC0B67F1CF0C48000938033 /* AccessoryOnBoardView.m */,
+				ABC0B68F1CF3B77200938033 /* ExcerciseRestView.h */,
+				ABC0B6921CF3B8E100938033 /* RestView2.h */,
+				ABC0B6931CF3B8E100938033 /* RestView2.m */,
+				ABC0B6901CF3B77200938033 /* ExcerciseRestView.m */,
 				AB2A39131CEA315F005DD03A /* ExcerciseTotalView.h */,
 				AB2A39141CEA315F005DD03A /* ExcerciseTotalView.m */,
 				ABC0B6791CEFBE3700938033 /* WorkoutOnBoardView.h */,
@@ -193,10 +207,12 @@
 				AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */,
 				ABC0B64F1CECD12B00938033 /* StartWorkoutButton.xib */,
 				ABC0B6811CF112CA00938033 /* GenerateWorkout.xib */,
+				ABC0B68B1CF3AD1200938033 /* RestView2.xib */,
 				AB2A390F1CEA2BD9005DD03A /* WorkoutScrollSummaryCell.xib */,
 				AB2A39111CEA2EE7005DD03A /* ExcerciseTotal.xib */,
 				ABC0B6771CEE5D8F00938033 /* WorkoutOnBoard.xib */,
 				ABC0B67C1CF0C13300938033 /* AccessoryOnBoard.xib */,
+				ABC0B68D1CF3B68400938033 /* ExcerciseRestView.xib */,
 				ABC0B6861CF11FEF00938033 /* GenerateWorkoutExcercise.xib */,
 				ABA977BD1C9F5E2F00D04639 /* ExcerciseView.xib */,
 				AB92E7CC1CB2A14900199034 /* TotalsFrontPageCell.xib */,
@@ -390,11 +406,13 @@
 				AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */,
 				ABC0B6821CF112CA00938033 /* GenerateWorkout.xib in Resources */,
 				AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */,
+				ABC0B68C1CF3AD1300938033 /* RestView2.xib in Resources */,
 				AB41F2D91C90FC25009D7E63 /* LaunchScreen.storyboard in Resources */,
 				AB41F2D61C90FC25009D7E63 /* Assets.xcassets in Resources */,
 				ABA977701C99D41A00D04639 /* Main.storyboard in Resources */,
 				AB92E7CD1CB2A14900199034 /* TotalsFrontPageCell.xib in Resources */,
 				AB2A39101CEA2BDA005DD03A /* WorkoutScrollSummaryCell.xib in Resources */,
+				ABC0B68E1CF3B68400938033 /* ExcerciseRestView.xib in Resources */,
 				ABC0B6781CEE5D8F00938033 /* WorkoutOnBoard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,10 +484,12 @@
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
 				ABA977B91C9D9FD900D04639 /* User+CoreDataProperties.m in Sources */,
 				AB2A39091CE3FFB5005DD03A /* NumberOfWorkoutsView.m in Sources */,
+				ABC0B6911CF3B77200938033 /* ExcerciseRestView.m in Sources */,
 				ABC0B6531CECD29A00938033 /* StartWorkoutButtonView.m in Sources */,
 				ABA977BA1C9D9FD900D04639 /* User.m in Sources */,
 				AB2A390C1CE404CC005DD03A /* HomeViewController.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
+				ABC0B6941CF3B8E100938033 /* RestView2.m in Sources */,
 				AB41F2EB1C90FE33009D7E63 /* Excercise+CoreDataProperties.m in Sources */,
 				AB41F2E21C90FC48009D7E63 /* Model.xcdatamodeld in Sources */,
 				ABA977C41C9F984A00D04639 /* ExcerciseView.m in Sources */,
