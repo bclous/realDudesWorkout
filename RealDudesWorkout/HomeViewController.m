@@ -91,9 +91,9 @@
     CGFloat screenWidth = self.view.frame.size.width;
     
     self.blurViewBottomConstraint = [self.blurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20];
-    self.blurViewTopConstraint = [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:screenHeight - 70];
-    self.blurViewLeftConstraint = [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:screenWidth/2 - 25];
-    self.blurViewRightConstraint = [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-(screenWidth/2 - 25)];
+    self.blurViewTopConstraint = [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:screenHeight - 60];
+    self.blurViewLeftConstraint = [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:screenWidth/2 - 20];
+    self.blurViewRightConstraint = [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-(screenWidth/2 - 20)];
     
     self.blurViewBottomConstraint.active = YES;
     self.blurViewTopConstraint.active = YES;
@@ -102,9 +102,9 @@
     
     self.blurView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
-    self.blurView.layer.cornerRadius = 25;
+    self.blurView.layer.cornerRadius = 20;
     self.blurView.clipsToBounds = YES;
-    self.blurView.alpha = .9;
+    self.blurView.alpha = .5;
     
     self.blurViewDisplayed = NO;
     self.accessoryAndTimeViewDisplayed = NO;
@@ -136,7 +136,7 @@
     [self.addAndCancelIconImageView.widthAnchor constraintEqualToConstant:30].active = YES;
     
     [self.addAndCancelIconImageView.centerXAnchor constraintEqualToAnchor:self.blurView.centerXAnchor].active = YES;
-    [self.addAndCancelIconImageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-30].active = YES;
+    [self.addAndCancelIconImageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-25].active = YES;
     
     [self.view bringSubviewToFront:self.addAndCancelIconImageView];
     
@@ -189,21 +189,11 @@
     
     self.generateWorkoutView.alpha = 0;
     
-  
-    
-    
+
     
 }
 
-//-(void)setAccessoryCircleSizes
-//{
-//    self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-//    self.workoutOnBoardView.accessory2.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-//    self.workoutOnBoardView.accessory3.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-//    self.workoutOnBoardView.accessory4.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-//    self.workoutOnBoardView.accessory5.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-//    self.workoutOnBoardView.accessory6.accessoryOutlineCircleView.layer.cornerRadius = self.workoutOnBoardView.accessory1.accessoryOutlineCircleView.frame.size.height / 2;
-//}
+
 
 -(void)setAccessories
 {
@@ -370,7 +360,7 @@
     
     [UIView animateWithDuration:.2 animations:^{
         
-        self.blurView.alpha = 1;
+        self.blurView.alpha = .5;
         
          self.addAndCancelIconImageView.transform = CGAffineTransformMakeRotation(0);
         
@@ -383,16 +373,16 @@
         CGFloat screenWidth = self.view.frame.size.width;
         
         self.blurViewBottomConstraint = [self.blurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20];
-        self.blurViewTopConstraint = [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:screenHeight - 70];
-        self.blurViewLeftConstraint = [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:screenWidth/2 - 25];
-        self.blurViewRightConstraint = [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-(screenWidth/2 - 25)];
+        self.blurViewTopConstraint = [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:screenHeight - 60];
+        self.blurViewLeftConstraint = [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:screenWidth/2 - 20];
+        self.blurViewRightConstraint = [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-(screenWidth/2 - 20)];
         
         self.blurViewBottomConstraint.active = YES;
         self.blurViewTopConstraint.active = YES;
         self.blurViewLeftConstraint.active = YES;
         self.blurViewRightConstraint.active = YES;
         
-        self.blurView.layer.cornerRadius = 25;
+        self.blurView.layer.cornerRadius = 20;
         
         [self.view layoutIfNeeded];
         
@@ -403,6 +393,7 @@
         self.view.userInteractionEnabled = YES;
         self.addAndCancelTapGestureRecognizer.enabled = YES;
         self.blurViewDisplayed = NO;
+      
         
         [self resetOnBoardingViews];
         

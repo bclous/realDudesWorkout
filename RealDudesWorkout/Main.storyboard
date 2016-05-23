@@ -3,222 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="Po5-UL-O2V">
-            <objects>
-                <viewController id="V2n-Ad-pjP" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6lK-po-OS8"/>
-                        <viewControllerLayoutGuide type="bottom" id="gIz-Tf-2A0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WKJ-te-Xea">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-Zy-jph">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="aNT-Zy-jph" firstAttribute="width" secondItem="WKJ-te-Xea" secondAttribute="width" id="0G4-UP-1Pw"/>
-                            <constraint firstItem="aNT-Zy-jph" firstAttribute="centerX" secondItem="WKJ-te-Xea" secondAttribute="centerX" id="J11-Hu-TbH"/>
-                            <constraint firstItem="aNT-Zy-jph" firstAttribute="height" secondItem="WKJ-te-Xea" secondAttribute="height" id="MfI-rx-A0M"/>
-                            <constraint firstItem="aNT-Zy-jph" firstAttribute="centerY" secondItem="WKJ-te-Xea" secondAttribute="centerY" id="dEl-Cf-u4z"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bRe-73-QyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4078" y="1407"/>
-        </scene>
-        <!--Workout Detail Table View Controller-->
-        <scene sceneID="utA-Xe-UpZ">
-            <objects>
-                <tableViewController id="05c-gE-abD" customClass="WorkoutDetailTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="5mO-0k-TsP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutSummaryCell" rowHeight="130" id="GRf-aC-bAQ" customClass="WorkoutSummaryTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="130"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GRf-aC-bAQ" id="LXe-yP-yzI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjF-ZZ-QbO" customClass="WorkoutSummaryCellView">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="UjF-ZZ-QbO" firstAttribute="centerY" secondItem="LXe-yP-yzI" secondAttribute="centerY" id="DnJ-fq-ePX"/>
-                                        <constraint firstItem="UjF-ZZ-QbO" firstAttribute="width" secondItem="LXe-yP-yzI" secondAttribute="width" id="bRY-np-jHq"/>
-                                        <constraint firstItem="UjF-ZZ-QbO" firstAttribute="height" secondItem="LXe-yP-yzI" secondAttribute="height" id="cb6-ov-wlj"/>
-                                        <constraint firstItem="UjF-ZZ-QbO" firstAttribute="centerX" secondItem="LXe-yP-yzI" secondAttribute="centerX" id="idn-sl-EEn"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="workoutSummaryCellView" destination="UjF-ZZ-QbO" id="Jkb-Yp-cfX"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="excerciseCell" rowHeight="102" id="E2j-Tb-8fv" customClass="ExcerciseTableViewCell">
-                                <rect key="frame" x="0.0" y="158" width="600" height="102"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E2j-Tb-8fv" id="eCj-ox-Kkp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="101.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PH1-8t-AuR" customClass="ExcerciseCellView">
-                                            <rect key="frame" x="0.0" y="1" width="600" height="101"/>
-                                            <color key="backgroundColor" red="0.30805318459999997" green="0.77031249999999996" blue="0.31742044050000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="PH1-8t-AuR" firstAttribute="centerY" secondItem="eCj-ox-Kkp" secondAttribute="centerY" id="AZh-9A-W3A"/>
-                                        <constraint firstItem="PH1-8t-AuR" firstAttribute="centerX" secondItem="eCj-ox-Kkp" secondAttribute="centerX" id="CbL-cD-RJB"/>
-                                        <constraint firstItem="PH1-8t-AuR" firstAttribute="height" secondItem="eCj-ox-Kkp" secondAttribute="height" id="IFt-r4-0Fd"/>
-                                        <constraint firstItem="PH1-8t-AuR" firstAttribute="width" secondItem="eCj-ox-Kkp" secondAttribute="width" id="PKk-a0-oWK"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="excerciseCellView" destination="PH1-8t-AuR" id="dje-Iz-zQQ"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MZk-BH-s1y">
-                                <rect key="frame" x="0.0" y="260" width="600" height="130"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZk-BH-s1y" id="2A2-xm-l8L">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rg-yG-GzQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
-                                            <color key="backgroundColor" red="1" green="0.2381079224" blue="0.33202566309999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="9Rg-yG-GzQ" firstAttribute="centerX" secondItem="2A2-xm-l8L" secondAttribute="centerX" id="0Wx-9o-mMn"/>
-                                        <constraint firstItem="9Rg-yG-GzQ" firstAttribute="height" secondItem="2A2-xm-l8L" secondAttribute="height" id="GLO-Uq-ieM"/>
-                                        <constraint firstItem="9Rg-yG-GzQ" firstAttribute="width" secondItem="2A2-xm-l8L" secondAttribute="width" id="mMK-Sx-mKD"/>
-                                        <constraint firstItem="9Rg-yG-GzQ" firstAttribute="centerY" secondItem="2A2-xm-l8L" secondAttribute="centerY" id="wpt-dD-7fd"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="05c-gE-abD" id="Bt1-ev-zPc"/>
-                            <outlet property="delegate" destination="05c-gE-abD" id="h8e-nH-NU1"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5WS-sD-H0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4731" y="1407"/>
-        </scene>
-        <!--Total Workout Summary View Controller-->
-        <scene sceneID="xhw-Os-csC">
-            <objects>
-                <viewController id="ljD-Lm-Sx4" customClass="TotalWorkoutSummaryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hUE-ai-8jE"/>
-                        <viewControllerLayoutGuide type="bottom" id="evw-4H-ptw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6xn-hv-Z3Q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-xy-7AA">
-                                <rect key="frame" x="20" y="83" width="560" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="4eb-Zu-TCZ"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="toggleSwitched:" destination="ljD-Lm-Sx4" eventType="valueChanged" id="0rZ-Na-blz"/>
-                                </connections>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Co-gp-hsE">
-                                <rect key="frame" x="0.0" y="130" width="600" height="470"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="totalWorkoutsSummaryCell" rowHeight="125" id="kFg-xj-Z31" customClass="WorkoutsSinceSummaryTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="125"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kFg-xj-Z31" id="N1a-05-3aa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIJ-t1-MOq" customClass="WorkoutsSinceSummaryView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="tIJ-t1-MOq" firstAttribute="centerY" secondItem="N1a-05-3aa" secondAttribute="centerY" id="7Ld-sd-flc"/>
-                                                <constraint firstItem="tIJ-t1-MOq" firstAttribute="centerX" secondItem="N1a-05-3aa" secondAttribute="centerX" id="HQT-By-z7Z"/>
-                                                <constraint firstItem="tIJ-t1-MOq" firstAttribute="width" secondItem="N1a-05-3aa" secondAttribute="width" id="TzX-nA-hnK"/>
-                                                <constraint firstItem="tIJ-t1-MOq" firstAttribute="height" secondItem="N1a-05-3aa" secondAttribute="height" id="fyr-2k-d1z"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="workoutsSinceSummaryView" destination="tIJ-t1-MOq" id="jd6-mg-iom"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="totalExcercisesCell" rowHeight="129" id="qMX-Rh-s4h" customClass="TotalExcercisesTableViewCell">
-                                        <rect key="frame" x="0.0" y="153" width="600" height="129"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qMX-Rh-s4h" id="FUw-vh-F0M">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="128.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8d-SJ-N6M" customClass="TotalExcercisesCellView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
-                                                    <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="j8d-SJ-N6M" firstAttribute="height" secondItem="FUw-vh-F0M" secondAttribute="height" id="I7i-tu-Gyn"/>
-                                                <constraint firstItem="j8d-SJ-N6M" firstAttribute="centerX" secondItem="FUw-vh-F0M" secondAttribute="centerX" id="SsI-91-NpU"/>
-                                                <constraint firstItem="j8d-SJ-N6M" firstAttribute="centerY" secondItem="FUw-vh-F0M" secondAttribute="centerY" id="ewB-e0-rWc"/>
-                                                <constraint firstItem="j8d-SJ-N6M" firstAttribute="width" secondItem="FUw-vh-F0M" secondAttribute="width" id="iEt-1g-SnH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="ExcercisesView" destination="j8d-SJ-N6M" id="arh-Q6-UDw"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bdi-xy-7AA" firstAttribute="centerX" secondItem="6xn-hv-Z3Q" secondAttribute="centerX" id="0LZ-wA-1eA"/>
-                            <constraint firstItem="1Co-gp-hsE" firstAttribute="width" secondItem="6xn-hv-Z3Q" secondAttribute="width" id="3Bl-AH-Hd1"/>
-                            <constraint firstItem="evw-4H-ptw" firstAttribute="top" secondItem="1Co-gp-hsE" secondAttribute="bottom" id="XUV-wD-f6a"/>
-                            <constraint firstItem="bdi-xy-7AA" firstAttribute="top" secondItem="hUE-ai-8jE" secondAttribute="bottom" constant="19" id="aVJ-Cw-J4E"/>
-                            <constraint firstItem="1Co-gp-hsE" firstAttribute="centerX" secondItem="6xn-hv-Z3Q" secondAttribute="centerX" id="ebh-xS-Feq"/>
-                            <constraint firstItem="1Co-gp-hsE" firstAttribute="top" secondItem="bdi-xy-7AA" secondAttribute="bottom" constant="19" id="mq9-2t-zd1"/>
-                            <constraint firstItem="bdi-xy-7AA" firstAttribute="width" secondItem="6xn-hv-Z3Q" secondAttribute="width" constant="-40" id="uyR-oG-RT7"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="summaryTableView" destination="1Co-gp-hsE" id="skC-3Z-T9w"/>
-                        <outlet property="timePeriodToggle" destination="bdi-xy-7AA" id="Vt6-Aj-z0d"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-AT-dnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5401" y="1402"/>
-        </scene>
         <!--Active Workout View Controller-->
         <scene sceneID="Erg-C0-FUA">
             <objects>
@@ -303,94 +90,11 @@
                         <outlet property="quitWorkoutButton" destination="wX8-wL-7dx" id="ATm-jG-GVf"/>
                         <outlet property="restView" destination="34G-v6-KPh" id="c3i-HI-xJU"/>
                         <outlet property="workoutTimeLabel" destination="rI3-yA-O5O" id="hfg-wF-wQV"/>
-                        <segue destination="rn3-NE-HZe" kind="show" identifier="segueToWorkoutSummary" id="xZU-Dg-qgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-Go-8jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6701" y="630"/>
-        </scene>
-        <!--Post Workout Summary View Controller-->
-        <scene sceneID="vcR-4l-9JQ">
-            <objects>
-                <viewController id="rn3-NE-HZe" customClass="PostWorkoutSummaryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6T9-GG-ycO"/>
-                        <viewControllerLayoutGuide type="bottom" id="7Wj-g2-yUy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AZm-ee-h47">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wqf-qf-Ejm">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutSummaryCell" rowHeight="120" id="Izs-yn-u9Q" customClass="WorkoutSummaryTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Izs-yn-u9Q" id="kVe-FA-frm">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nt3-XE-dCr" customClass="WorkoutSummaryCellView">
-                                                    <rect key="frame" x="0.0" y="1" width="600" height="119"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Nt3-XE-dCr" firstAttribute="centerX" secondItem="kVe-FA-frm" secondAttribute="centerX" id="5JH-xi-bms"/>
-                                                <constraint firstItem="Nt3-XE-dCr" firstAttribute="height" secondItem="kVe-FA-frm" secondAttribute="height" id="GuR-Qv-JvR"/>
-                                                <constraint firstItem="Nt3-XE-dCr" firstAttribute="centerY" secondItem="kVe-FA-frm" secondAttribute="centerY" id="aff-ba-w7E"/>
-                                                <constraint firstItem="Nt3-XE-dCr" firstAttribute="width" secondItem="kVe-FA-frm" secondAttribute="width" id="z7F-13-oSJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="excerciseCell" id="sFq-fY-MWw" customClass="ExcerciseTableViewCell">
-                                        <rect key="frame" x="0.0" y="148" width="600" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sFq-fY-MWw" id="KYe-Ag-WPX">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uD5-FL-IuN" customClass="ExcerciseCellView">
-                                                    <rect key="frame" x="0.0" y="1" width="600" height="119"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="uD5-FL-IuN" firstAttribute="width" secondItem="KYe-Ag-WPX" secondAttribute="width" id="1fx-64-7JG"/>
-                                                <constraint firstItem="uD5-FL-IuN" firstAttribute="height" secondItem="KYe-Ag-WPX" secondAttribute="height" id="Pzr-x0-orR"/>
-                                                <constraint firstItem="uD5-FL-IuN" firstAttribute="centerY" secondItem="KYe-Ag-WPX" secondAttribute="centerY" id="dcg-HN-Ma3"/>
-                                                <constraint firstItem="uD5-FL-IuN" firstAttribute="centerX" secondItem="KYe-Ag-WPX" secondAttribute="centerX" id="huZ-zO-RZf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wqf-qf-Ejm" firstAttribute="width" secondItem="AZm-ee-h47" secondAttribute="width" id="LfL-0O-UZr"/>
-                            <constraint firstItem="wqf-qf-Ejm" firstAttribute="centerY" secondItem="AZm-ee-h47" secondAttribute="centerY" id="ZX0-m8-ZsN"/>
-                            <constraint firstItem="wqf-qf-Ejm" firstAttribute="height" secondItem="AZm-ee-h47" secondAttribute="height" id="bKF-gD-MKC"/>
-                            <constraint firstItem="wqf-qf-Ejm" firstAttribute="centerX" secondItem="AZm-ee-h47" secondAttribute="centerX" id="lBH-zz-YqI"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="VKP-iV-wDa">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="lvc-6x-3Bj">
-                            <connections>
-                                <action selector="buttonPressed:" destination="rn3-NE-HZe" id="1pt-Dy-Tfl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="workoutDetailTableView" destination="wqf-qf-Ejm" id="OaQ-U4-OuI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ECb-Ac-z4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8102" y="630"/>
+            <point key="canvasLocation" x="7513" y="630"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="wSB-1D-bAb">
@@ -404,15 +108,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDG-Tp-Y4C" customClass="TotalsFrontPageCellView">
-                                <rect key="frame" x="0.0" y="115" width="600" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="9rg-AR-hIZ"/>
+                                    <constraint firstAttribute="height" constant="70" id="CZM-Qo-Tkl"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-0w-bOz">
-                                <rect key="frame" x="0.0" y="215" width="600" height="385"/>
+                                <rect key="frame" x="0.0" y="218" width="600" height="382"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="summaryCell" rowHeight="111" id="Rec-1B-3G7" customClass="WorkoutSummaryScrollTableViewCell">
@@ -439,42 +143,61 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="workout" translatesAutoresizingMaskIntoConstraints="NO" id="ebt-gP-Pp2">
-                                <rect key="frame" x="0.0" y="35" width="600" height="80"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3q-G9-sOl">
+                                <rect key="frame" x="0.0" y="68" width="600" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wkh-zV-CmI">
+                                        <rect key="frame" x="0.0" y="0.0" width="1200" height="150"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotGirlWorkout" translatesAutoresizingMaskIntoConstraints="NO" id="MVY-Kg-hoX">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beachworkout" translatesAutoresizingMaskIntoConstraints="NO" id="gyW-br-D6H">
+                                                <rect key="frame" x="600" y="0.0" width="600" height="150"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="npL-Qy-YQY"/>
+                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="width" secondItem="r3q-G9-sOl" secondAttribute="width" multiplier="2" id="5xX-iT-vY4"/>
+                                    <constraint firstAttribute="trailing" secondItem="wkh-zV-CmI" secondAttribute="trailing" id="CT8-ra-Sye"/>
+                                    <constraint firstAttribute="bottom" secondItem="wkh-zV-CmI" secondAttribute="bottom" id="Fqd-mL-W1e"/>
+                                    <constraint firstAttribute="height" constant="150" id="ItL-EB-fbM"/>
+                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="top" secondItem="r3q-G9-sOl" secondAttribute="top" id="UaW-tS-WPS"/>
+                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="leading" secondItem="r3q-G9-sOl" secondAttribute="leading" id="Y3H-au-9EN"/>
+                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="height" secondItem="r3q-G9-sOl" secondAttribute="height" id="sJF-DE-boT"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LDG-Tp-Y4C" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="Ca5-ed-53p"/>
-                            <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="9iu-0w-bOz" secondAttribute="bottom" id="K4c-V5-mKz"/>
-                            <constraint firstItem="9iu-0w-bOz" firstAttribute="leading" secondItem="iOo-ef-8U7" secondAttribute="leading" id="SUT-k8-tfA"/>
-                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="LDG-Tp-Y4C" secondAttribute="bottom" id="TxM-ia-PZL"/>
-                            <constraint firstItem="ebt-gP-Pp2" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="15" id="djf-C0-M22"/>
-                            <constraint firstItem="LDG-Tp-Y4C" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="hBf-xP-JHx"/>
-                            <constraint firstAttribute="trailing" secondItem="9iu-0w-bOz" secondAttribute="trailing" id="k2S-51-bD9"/>
-                            <constraint firstItem="LDG-Tp-Y4C" firstAttribute="top" secondItem="ebt-gP-Pp2" secondAttribute="bottom" id="pTL-BR-PqW"/>
-                            <constraint firstItem="ebt-gP-Pp2" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="qBg-bI-gPy"/>
-                            <constraint firstItem="ebt-gP-Pp2" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="xDb-Zp-CUO"/>
+                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="r3q-G9-sOl" secondAttribute="bottom" id="3DW-A5-Zlf"/>
+                            <constraint firstItem="7J2-vp-YNH" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="3iN-9Q-ZkR"/>
+                            <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="9iu-0w-bOz" secondAttribute="bottom" id="7sL-cV-yh3"/>
+                            <constraint firstItem="9iu-0w-bOz" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="DFA-a4-Knu"/>
+                            <constraint firstItem="7J2-vp-YNH" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Hsd-k2-NsW"/>
+                            <constraint firstItem="7J2-vp-YNH" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="-20" id="Wsk-aX-QAi"/>
+                            <constraint firstItem="r3q-G9-sOl" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Z6C-qE-Q5d"/>
+                            <constraint firstItem="r3q-G9-sOl" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" constant="-2" id="d69-qk-9qC"/>
+                            <constraint firstItem="9iu-0w-bOz" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="gRT-W2-ncf"/>
+                            <constraint firstItem="r3q-G9-sOl" firstAttribute="centerX" secondItem="7J2-vp-YNH" secondAttribute="centerX" id="sbI-2H-5RP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Gj-FQ-4Ak">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wN9-sh-7AI"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="totalsView" destination="LDG-Tp-Y4C" id="w76-nN-lBD"/>
                         <outlet property="workoutsTableView" destination="9iu-0w-bOz" id="FGU-Sh-Pi2"/>
                         <segue destination="NKf-Qy-GjP" kind="show" identifier="segueToWorkout" id="FGf-Y7-otV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85l-Rm-RFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5994" y="630"/>
+            <point key="canvasLocation" x="6806" y="630"/>
         </scene>
     </scenes>
     <resources>
-        <image name="workout" width="940" height="198"/>
+        <image name="beachworkout" width="400" height="224"/>
+        <image name="hotGirlWorkout" width="1000" height="500"/>
     </resources>
 </document>
