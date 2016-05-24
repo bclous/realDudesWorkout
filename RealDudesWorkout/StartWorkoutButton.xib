@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartWorkoutButtonView">
+            <connections>
+                <outlet property="blurView" destination="Nsf-30-8fh" id="seS-eQ-n17"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="AMI-U5-GNO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-30-8fh">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0gQ-dV-VQv">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-5T-Dkt">
+                                <rect key="frame" x="34" y="22" width="34" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="3qP-5T-Dkt" firstAttribute="centerY" secondItem="0gQ-dV-VQv" secondAttribute="centerY" constant="-4" id="jcy-aD-wzZ"/>
+                            <constraint firstItem="3qP-5T-Dkt" firstAttribute="centerX" secondItem="0gQ-dV-VQv" secondAttribute="centerX" id="rxz-e8-Ndn"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aad-ge-isz" appends="YES" id="YKh-Sg-gqY"/>
+                        </connections>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Nsf-30-8fh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FN5-67-5OF"/>
+                <constraint firstItem="Nsf-30-8fh" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FSm-b2-eVp"/>
+                <constraint firstItem="Nsf-30-8fh" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="YUH-0m-spa"/>
+                <constraint firstItem="Nsf-30-8fh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="n4D-sf-ing"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="147" y="174"/>
+        </view>
+        <tapGestureRecognizer id="aad-ge-isz">
+            <connections>
+                <action selector="buttonTapped:" destination="-1" id="wP6-8p-40q"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

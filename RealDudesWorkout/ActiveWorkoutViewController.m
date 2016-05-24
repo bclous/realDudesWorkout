@@ -9,6 +9,7 @@
 #import "activeWorkoutViewController.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "RestView.h"
+#import "RestView2.h"
 #import "ExcerciseView.h"
 
 
@@ -22,7 +23,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *workoutTimeLabel;
 
 @property (weak, nonatomic) IBOutlet ExcerciseView *excerciseView;
-@property (weak, nonatomic) IBOutlet RestView *restView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *footerView;
+@property (weak, nonatomic) IBOutlet UIView *footerBackgroundView;
+
+
+@property (strong, nonatomic) RestView2 *restView;
 
 @property (strong, nonatomic) NSArray *excerciseSets;
 @property (strong, nonatomic) ExcerciseSet *currentExcerciseSet;
@@ -39,6 +44,12 @@
 @property (nonatomic) BOOL isLastExcercise;
 @property (nonatomic) BOOL isNextToLastExcercise;
 
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
+
+@property (strong, nonatomic) UIVisualEffectView *restBlurView;
+@property (strong, nonatomic) NSLayoutConstraint *restBlurViewTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *restBlurViewBottomConstraint;
 
 
 @end
@@ -63,10 +74,132 @@
     
     [self initializeViewComponents];
     
-    [self.navigationController setNavigationBarHidden:YES];
+    [self createRestView];
+   
    
 }
 
+-(void)createRestView
+{
+    
+    self.restBlurView = [[UIVisualEffectView alloc] init];
+    
+    [self.view addSubview:self.restBlurView];
+    
+    self.restBlurView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.restBlurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.restBlurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    
+    
+    self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+    
+    self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant: 400];
+    
+    self.restBlurViewTopConstraint.active = YES;
+    self.restBlurViewBottomConstraint.active = YES;
+    
+    self.restBlurView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    
+    
+    self.restView = [[RestView2 alloc] init];
+    
+    [self.restBlurView.contentView addSubview:self.restView];
+    
+    self.restView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.restView.leftAnchor constraintEqualToAnchor:self.restBlurView.contentView.leftAnchor].active = YES;
+    [self.restView.rightAnchor constraintEqualToAnchor:self.restBlurView.contentView.rightAnchor].active = YES;
+    [self.restView.topAnchor constraintEqualToAnchor:self.restBlurView.contentView.topAnchor].active = YES;
+    [self.restView.bottomAnchor constraintEqualToAnchor:self.restBlurView.contentView.bottomAnchor].active = YES;
+    
+    self.restBlurView.clipsToBounds = YES;
+    
+    [self.view bringSubviewToFront:self.footerBackgroundView];
+    [self.view bringSubviewToFront:self.footerView];
+    
+    
+//    self.footerView.layer.borderColor = [[UIColor blueColor] CGColor];
+//    self.footerView.layer.borderWidth = 2;
+    
+    
+} 
+
+-(void)growRestView
+{
+    
+    self.doneButton.enabled = NO;
+    
+    [UIView animateWithDuration:.3 animations:^{
+        
+        
+        self.restBlurViewTopConstraint.active = NO;
+        self.restBlurViewBottomConstraint.active = NO;
+        
+        self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.topAnchor];
+        self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-150];
+        
+        self.restBlurViewTopConstraint.active = YES;
+        self.restBlurViewBottomConstraint.active = YES;
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        
+        
+        self.restViewIsDisplayed = YES;
+        self.doneButton.enabled = YES;
+        
+    }];
+    
+    
+}
+
+-(void)shrinkRestView
+{
+    
+    self.doneButton.enabled = NO;
+    
+    [UIView animateWithDuration:.3 animations:^{
+        
+        
+        self.restBlurViewTopConstraint.active = NO;
+        self.restBlurViewBottomConstraint.active = NO;
+        
+         self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+        self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant: 400];
+        
+        self.restBlurViewTopConstraint.active = YES;
+        self.restBlurViewBottomConstraint.active = YES;
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        
+        
+        self.restViewIsDisplayed = NO;
+        self.doneButton.enabled = YES;
+        
+    }];
+    
+    
+}
+
+- (IBAction)finishButtonTapped:(id)sender
+{
+    NSLog(@"finisheButtonTapped getting called");
+    
+    if (self.restViewIsDisplayed)
+    {
+        [self shrinkRestView];
+    }
+    
+    else
+    {
+        [self growRestView];
+    }
+    
+}
 
 - (IBAction)finishedButtonTapped:(id)sender
 {
@@ -118,6 +251,11 @@
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 -(void)moveToRestScreen
 {
     
@@ -126,7 +264,7 @@
     [self excerciseComplete];
     [self resetRestAndExcerciseCounters];
     
-    [self generateRestComponents];
+    //[self generateRestComponents];
     [self changeButtonTitle];
     
     [UIView animateWithDuration:.5 animations:^{
@@ -291,17 +429,17 @@
     self.excerciseView.excerciseSet = self.currentExcerciseSet;
 }
 
--(void)generateRestComponents
-{
-    self.restView.excerciseSetJustFinished = self.currentExcerciseSet;
-    
-    if (self.nextExcerciseSet)
-    {
-        self.restView.excerciseSetUpNext = self.nextExcerciseSet;
-    }
-    
-    self.restView.currentWorkout = self.workout;
-}
+//-(void)generateRestComponents
+//{
+//    self.restView.excerciseSetJustFinished = self.currentExcerciseSet;
+//    
+//    if (self.nextExcerciseSet)
+//    {
+//        self.restView.excerciseSetUpNext = self.nextExcerciseSet;
+//    }
+//    
+//    self.restView.currentWorkout = self.workout;
+//}
 
 
 -(void)initializeViewComponents
@@ -323,6 +461,9 @@
     self.restViewIsDisplayed = NO;
     
     [self.finishButton setTitle:@"Done" forState:UIControlStateNormal];
+    
+    
+    self.doneButton.layer.cornerRadius = 15;
     
     
     
@@ -356,7 +497,7 @@
     
     [self generateExcerciseComponents];
     
-    [self generateRestComponents];
+    //[self generateRestComponents];
     
 }
 

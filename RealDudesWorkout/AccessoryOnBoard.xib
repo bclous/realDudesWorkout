@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccessoryOnBoardView">
+            <connections>
+                <outlet property="accessoryImageView" destination="BxO-JG-aLZ" id="KIL-JA-uG4"/>
+                <outlet property="accessoryLabel" destination="HQJ-YQ-2ah" id="9dq-qo-6nf"/>
+                <outlet property="blueOutlineImage" destination="bWt-qg-fkb" id="LDM-v4-yx3"/>
+                <outlet property="circleImage" destination="uhW-1Z-TdM" id="geL-3c-dzf"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Fin-Db-gT5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="199" height="199"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQJ-YQ-2ah">
+                    <rect key="frame" x="-1" y="184" width="200" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Gqc-uf-cxw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueCircle2 2" translatesAutoresizingMaskIntoConstraints="NO" id="bWt-qg-fkb">
+                    <rect key="frame" x="8" y="0.0" width="183" height="183"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="bWt-qg-fkb" secondAttribute="height" multiplier="1:1" id="uBz-Ff-ETj"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="uhW-1Z-TdM">
+                    <rect key="frame" x="16" y="8" width="168" height="168"/>
+                </imageView>
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bench" translatesAutoresizingMaskIntoConstraints="NO" id="BxO-JG-aLZ">
+                    <rect key="frame" x="46" y="38" width="109" height="109"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="T4c-6o-ge0" appends="YES" id="58I-qS-vFz"/>
+                    </connections>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bWt-qg-fkb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Pn-UB-zVr"/>
+                <constraint firstItem="uhW-1Z-TdM" firstAttribute="width" secondItem="bWt-qg-fkb" secondAttribute="width" multiplier="0.92" id="9Cl-Kk-PlY"/>
+                <constraint firstItem="BxO-JG-aLZ" firstAttribute="width" secondItem="uhW-1Z-TdM" secondAttribute="width" multiplier="0.65" id="9yQ-77-nmi"/>
+                <constraint firstItem="HQJ-YQ-2ah" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AWq-M6-TrL"/>
+                <constraint firstItem="HQJ-YQ-2ah" firstAttribute="top" secondItem="bWt-qg-fkb" secondAttribute="bottom" constant="1" id="O99-tZ-veg"/>
+                <constraint firstItem="bWt-qg-fkb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qf2-pq-evN"/>
+                <constraint firstItem="uhW-1Z-TdM" firstAttribute="height" secondItem="bWt-qg-fkb" secondAttribute="height" multiplier="0.92" id="Tju-gn-QN8"/>
+                <constraint firstItem="uhW-1Z-TdM" firstAttribute="centerX" secondItem="bWt-qg-fkb" secondAttribute="centerX" id="Xhi-b2-GI4"/>
+                <constraint firstItem="BxO-JG-aLZ" firstAttribute="height" secondItem="uhW-1Z-TdM" secondAttribute="height" multiplier="0.65" id="d6X-PK-fsP"/>
+                <constraint firstAttribute="bottom" secondItem="HQJ-YQ-2ah" secondAttribute="bottom" id="eWp-h4-foQ"/>
+                <constraint firstItem="HQJ-YQ-2ah" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="mOL-l7-RLs"/>
+                <constraint firstItem="BxO-JG-aLZ" firstAttribute="centerY" secondItem="uhW-1Z-TdM" secondAttribute="centerY" id="vDN-iV-axt"/>
+                <constraint firstItem="uhW-1Z-TdM" firstAttribute="centerY" secondItem="bWt-qg-fkb" secondAttribute="centerY" id="xDd-P5-XqF"/>
+                <constraint firstItem="BxO-JG-aLZ" firstAttribute="centerX" secondItem="uhW-1Z-TdM" secondAttribute="centerX" id="xK6-Pu-AW0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="106.5" y="191.5"/>
+        </view>
+        <tapGestureRecognizer id="T4c-6o-ge0">
+            <connections>
+                <action selector="pictureTapped:" destination="-1" id="SXF-iv-uPO"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="bench" width="600" height="600"/>
+        <image name="blueCircle2 2" width="256" height="256"/>
+        <image name="circle" width="300" height="300"/>
+    </resources>
+</document>
