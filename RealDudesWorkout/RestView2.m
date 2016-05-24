@@ -65,6 +65,8 @@
     
     self.contentView.frame = self.bounds;
     
+    self.nextExcerciseRestView.isNext = YES;
+    
     
     
 }

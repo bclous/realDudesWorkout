@@ -104,7 +104,7 @@
     
     self.blurView.layer.cornerRadius = 20;
     self.blurView.clipsToBounds = YES;
-    self.blurView.alpha = .5;
+    self.blurView.alpha = 1;
     
     self.blurViewDisplayed = NO;
     self.accessoryAndTimeViewDisplayed = NO;
@@ -360,7 +360,7 @@
     
     [UIView animateWithDuration:.2 animations:^{
         
-        self.blurView.alpha = .5;
+        self.blurView.alpha = 1;
         
          self.addAndCancelIconImageView.transform = CGAffineTransformMakeRotation(0);
         

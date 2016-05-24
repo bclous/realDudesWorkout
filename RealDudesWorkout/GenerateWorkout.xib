@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateWorkoutView">
@@ -23,17 +24,16 @@
                         <constraint firstAttribute="height" constant="180" id="G65-YM-4Db"/>
                     </constraints>
                 </scrollView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Excercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-On-uYy">
-                    <rect key="frame" x="160" y="208" width="101" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-On-uYy">
+                    <rect key="frame" x="170" y="217.5" width="81.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vry-Uo-2zL">
-                    <rect key="frame" x="70" y="556" width="280" height="30"/>
+                    <rect key="frame" x="21" y="556" width="378" height="30"/>
                     <color key="backgroundColor" red="0.27638215649999998" green="0.58690209760000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="280" id="Yam-0F-yhr"/>
                         <constraint firstAttribute="height" constant="30" id="ogu-5d-ExL"/>
                     </constraints>
                     <state key="normal" title="Start">
@@ -51,6 +51,7 @@
                 <constraint firstItem="eLK-XG-i2p" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="aw7-8V-eqM"/>
                 <constraint firstAttribute="bottom" secondItem="Vry-Uo-2zL" secondAttribute="bottom" constant="30" id="cFu-E4-sDE"/>
                 <constraint firstItem="Ah5-On-uYy" firstAttribute="centerX" secondItem="eLK-XG-i2p" secondAttribute="centerX" id="cyJ-VS-zy9"/>
+                <constraint firstItem="Vry-Uo-2zL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="d4o-O2-q5U"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="drP-JI-BMg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

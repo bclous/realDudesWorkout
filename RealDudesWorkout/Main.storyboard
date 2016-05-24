@@ -29,6 +29,10 @@
                                     <constraint firstAttribute="height" constant="70" id="Vu6-hv-FSM"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Or-Ke-mW9">
+                                <rect key="frame" x="0.0" y="450" width="600" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEV-xl-jxW" userLabel="footer">
                                 <rect key="frame" x="0.0" y="450" width="600" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fL6-FJ-qpU">
@@ -46,16 +50,16 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aBO-WZ-6jT">
-                                            <rect key="frame" x="526" y="26" width="44" height="44"/>
+                                            <rect key="frame" x="525.5" y="26" width="44.5" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44:44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0H-P0-NlQ">
-                                                    <rect key="frame" x="5" y="0.0" width="40" height="17"/>
+                                                    <rect key="frame" x="5" y="0.0" width="39.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 / 24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivP-93-osU">
-                                                    <rect key="frame" x="0.0" y="27" width="45" height="17"/>
+                                                    <rect key="frame" x="0.0" y="27" width="44.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -98,15 +102,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7Or-Ke-mW9" firstAttribute="centerX" secondItem="MEV-xl-jxW" secondAttribute="centerX" id="1Jx-PZ-eGV"/>
                             <constraint firstItem="kaX-bO-1rm" firstAttribute="width" secondItem="RMm-ED-wyQ" secondAttribute="width" id="6Xk-RA-gim"/>
                             <constraint firstItem="GW8-qQ-M8v" firstAttribute="top" secondItem="MEV-xl-jxW" secondAttribute="bottom" id="CCq-Op-uBu"/>
                             <constraint firstItem="kaX-bO-1rm" firstAttribute="centerX" secondItem="RMm-ED-wyQ" secondAttribute="centerX" id="EBi-JB-Kgs"/>
                             <constraint firstItem="MEV-xl-jxW" firstAttribute="leading" secondItem="RMm-ED-wyQ" secondAttribute="leadingMargin" constant="-20" id="H0M-KL-xYO"/>
                             <constraint firstItem="MEV-xl-jxW" firstAttribute="top" secondItem="CD8-hf-WIK" secondAttribute="bottom" id="REs-B6-bjd"/>
+                            <constraint firstItem="7Or-Ke-mW9" firstAttribute="centerY" secondItem="MEV-xl-jxW" secondAttribute="centerY" id="SyH-Ne-0cL"/>
                             <constraint firstItem="CD8-hf-WIK" firstAttribute="width" secondItem="RMm-ED-wyQ" secondAttribute="width" id="Ttc-Ij-w2a"/>
                             <constraint firstItem="kaX-bO-1rm" firstAttribute="top" secondItem="lDl-9k-fzc" secondAttribute="bottom" constant="-20" id="WPb-9y-dNO"/>
                             <constraint firstItem="CD8-hf-WIK" firstAttribute="centerX" secondItem="RMm-ED-wyQ" secondAttribute="centerX" id="hnM-8O-39Z"/>
                             <constraint firstItem="CD8-hf-WIK" firstAttribute="top" secondItem="kaX-bO-1rm" secondAttribute="bottom" id="jnR-CD-gVh"/>
+                            <constraint firstItem="7Or-Ke-mW9" firstAttribute="width" secondItem="MEV-xl-jxW" secondAttribute="width" id="kX4-fH-o6N"/>
+                            <constraint firstItem="7Or-Ke-mW9" firstAttribute="height" secondItem="MEV-xl-jxW" secondAttribute="height" id="oAp-ye-T5l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MEV-xl-jxW" secondAttribute="trailing" constant="-20" id="wcK-fU-mfr"/>
                         </constraints>
                     </view>
@@ -136,6 +144,8 @@
                     <connections>
                         <outlet property="doneButton" destination="uVS-gt-Wqd" id="voQ-XU-9pw"/>
                         <outlet property="excerciseView" destination="CD8-hf-WIK" id="QpS-Nb-Ojn"/>
+                        <outlet property="footerBackgroundView" destination="7Or-Ke-mW9" id="Stv-GU-AjR"/>
+                        <outlet property="footerView" destination="MEV-xl-jxW" id="s94-qM-qjQ"/>
                         <outlet property="quitWorkoutButton" destination="wX8-wL-7dx" id="ATm-jG-GVf"/>
                         <outlet property="workoutTimeLabel" destination="rI3-yA-O5O" id="hfg-wF-wQV"/>
                     </connections>

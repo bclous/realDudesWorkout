@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *workoutTimeLabel;
 
 @property (weak, nonatomic) IBOutlet ExcerciseView *excerciseView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *footerView;
+@property (weak, nonatomic) IBOutlet UIView *footerBackgroundView;
 
 
 @property (strong, nonatomic) RestView2 *restView;
@@ -47,6 +49,7 @@
 
 @property (strong, nonatomic) UIVisualEffectView *restBlurView;
 @property (strong, nonatomic) NSLayoutConstraint *restBlurViewTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *restBlurViewBottomConstraint;
 
 
 @end
@@ -87,11 +90,14 @@
     
     [self.restBlurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.restBlurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
-    [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-150].active = YES;
     
-    self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-150];
+    
+    self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+    
+    self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant: 400];
     
     self.restBlurViewTopConstraint.active = YES;
+    self.restBlurViewBottomConstraint.active = YES;
     
     self.restBlurView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
@@ -109,21 +115,32 @@
     
     self.restBlurView.clipsToBounds = YES;
     
-}
+    [self.view bringSubviewToFront:self.footerBackgroundView];
+    [self.view bringSubviewToFront:self.footerView];
+    
+    
+//    self.footerView.layer.borderColor = [[UIColor blueColor] CGColor];
+//    self.footerView.layer.borderWidth = 2;
+    
+    
+} 
 
 -(void)growRestView
 {
     
     self.doneButton.enabled = NO;
     
-    [UIView animateWithDuration:.1 animations:^{
+    [UIView animateWithDuration:.3 animations:^{
         
         
         self.restBlurViewTopConstraint.active = NO;
+        self.restBlurViewBottomConstraint.active = NO;
         
         self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.topAnchor];
+        self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-150];
         
         self.restBlurViewTopConstraint.active = YES;
+        self.restBlurViewBottomConstraint.active = YES;
         
         [self.view layoutIfNeeded];
         
@@ -143,14 +160,17 @@
     
     self.doneButton.enabled = NO;
     
-    [UIView animateWithDuration:.1 animations:^{
+    [UIView animateWithDuration:.3 animations:^{
         
         
         self.restBlurViewTopConstraint.active = NO;
+        self.restBlurViewBottomConstraint.active = NO;
         
-         self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-150];
+         self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+        self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant: 400];
         
         self.restBlurViewTopConstraint.active = YES;
+        self.restBlurViewBottomConstraint.active = YES;
         
         [self.view layoutIfNeeded];
         
