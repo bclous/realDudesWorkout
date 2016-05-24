@@ -24,7 +24,13 @@
 @property (weak, nonatomic) IBOutlet ExcerciseRestView *nextExcerciseRestView;
 @property (weak, nonatomic) IBOutlet ExcerciseRestView *afterExcerciseRestView;
 
+@property (strong, nonatomic) ExcerciseSet *excerciseSetJustFinished;
+
+@property (strong, nonatomic) NSArray *excerciseSets;
+
 @property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic) NSTimeInterval timerInterval;
+@property (nonatomic) NSUInteger restCountdown;
 
 @end
 
@@ -67,13 +73,184 @@
     
     self.nextExcerciseRestView.isNext = YES;
     
+    [self setUpTimer];
+    
     
     
 }
 - (IBAction)addThirtySecondsButtonTapped:(id)sender
 {
     
+    if (self.restCountdown < 3530)
+    {
+        
+        self.restCountdown = self.restCountdown + 30;
+        self.timerLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
+    }
     
+}
+- (IBAction)sliderMoved:(id)sender
+{
+   
+    NSUInteger truncatedValue =  roundf(self.slider.value);
+    
+    NSString *label = [NSString stringWithFormat:@"You did %lu %@",truncatedValue, self.excerciseSetJustFinished.excercise.name];
+    
+    self.sliderLabel.text = label;
+    
+    self.excerciseSetJustFinished.numberofRepsActual = truncatedValue;
+    
+    NSLog(@")number of reps for %@ was set to: %lld",self.excerciseSetJustFinished.excercise.name, self.excerciseSetJustFinished.numberofRepsActual);
+
+    
+}
+
+-(void)setUpTimer
+{
+    self.timerInterval = 0;
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    
+    [self.timer fire];
+}
+
+-(void)countdown
+{
+    
+    if (self.restCountdown > 0)
+    {
+        self.restCountdown--;
+    }
+    
+    self.timerLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
+    
+    self.timerInterval++;
+    
+}
+
+-(void)setWorkout:(Workout *)workout
+{
+    _workout = workout;
+    
+    self.excerciseSets = [workout excercisesInOrder];
+    
+}
+
+-(void)setIndexOfExcerciseJustFinished:(NSUInteger)indexOfExcerciseJustFinished
+{
+    
+    _indexOfExcerciseJustFinished = indexOfExcerciseJustFinished;
+    
+    self.excerciseSetJustFinished = self.excerciseSets[indexOfExcerciseJustFinished];
+    
+    [self resetTimer];
+    
+    [self resetPicturesAndLabel];
+    
+    [self resetSliderLabel];
+    
+    
+}
+
+-(void)resetSliderLabel
+{
+    
+    self.slider.continuous = YES;
+    self.slider.minimumValue = 0;
+    self.slider.maximumValue = 2 * self.excerciseSetJustFinished.numberOfRepsSuggested;
+    self.slider.value = self.excerciseSetJustFinished.numberOfRepsSuggested;
+    
+    self.sliderLabel.text = [NSString stringWithFormat:@"You did %lld %@", self.excerciseSetJustFinished.numberOfRepsSuggested, self.excerciseSetJustFinished.excercise.name];
+}
+
+-(void)resetPicturesAndLabel
+{
+    BOOL isLastExcercise = self.indexOfExcerciseJustFinished == self.excerciseSets.count - 1;
+    BOOL isNextToLastExcercise = self.indexOfExcerciseJustFinished == self.excerciseSets.count - 2;
+    
+    if (isLastExcercise)
+    {
+        
+        //need to change these
+        self.lastExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
+        self.nextExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
+        self.afterExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
+        
+        self.nextWorkoutLabel.text = [NSString stringWithFormat:@"you are all done champ"];
+        
+    }
+    
+    else if (isNextToLastExcercise)
+    {
+        self.lastExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
+        self.nextExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
+        self.afterExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
+        
+        ExcerciseSet *nextExcerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
+        
+        self.nextWorkoutLabel.text = [NSString stringWithFormat:@"and get ready for %@",nextExcerciseSet.excercise.name];
+    }
+    
+    else
+    {
+        self.lastExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
+        self.nextExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
+        self.afterExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 2];
+        
+        ExcerciseSet *nextExcerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
+        
+        self.nextWorkoutLabel.text = [NSString stringWithFormat:@"and get ready for %@",nextExcerciseSet.excercise.name];
+    }
+}
+
+-(void)resetTimer
+{
+    self.timerInterval = 0;
+    
+    self.restCountdown = self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested;
+    
+     self.timerLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
+    
+    
+    
+    
+}
+
+
+-(NSString *)restCountDisplayFromSeconds:(NSTimeInterval)seconds
+{
+    NSUInteger minutes = seconds/60;
+    NSUInteger remainingSeconds = (NSUInteger)seconds%60;
+    
+    BOOL noMinutes = minutes == 0;
+    BOOL singleDigitSeconds = remainingSeconds < 10;
+    
+    
+    if (noMinutes && singleDigitSeconds)
+    {
+        NSString *timeString = [NSString stringWithFormat:@"0:0%lu",remainingSeconds];
+        
+        return timeString;
+    }
+    else if (noMinutes && !singleDigitSeconds)
+    {
+        NSString *timeString = [NSString stringWithFormat:@"0:%lu",remainingSeconds];
+        
+        return timeString;
+        
+    }
+    else if (!noMinutes && singleDigitSeconds)
+    {
+        NSString *timeString = [NSString stringWithFormat:@"%lu:0%lu",minutes, remainingSeconds];
+        
+        return timeString;
+    }
+    else
+    {
+        NSString *timeString = [NSString stringWithFormat:@"%lu:%lu",minutes, remainingSeconds];
+        
+        return timeString;
+    }
     
 }
 

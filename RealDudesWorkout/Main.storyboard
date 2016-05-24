@@ -92,7 +92,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Q9-Ey-pRf">
-                                            <rect key="frame" x="30" y="26" width="66" height="44"/>
+                                            <rect key="frame" x="30" y="26" width="67" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXm-48-sdo">
                                                     <rect key="frame" x="0.0" y="0.0" width="36" height="17"/>
@@ -100,8 +100,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excercise:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-05-0Pg">
-                                                    <rect key="frame" x="0.0" y="27" width="66" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-05-0Pg">
+                                                    <rect key="frame" x="0.0" y="27" width="67" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -143,36 +143,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="MEV-xl-jxW" secondAttribute="trailing" constant="-20" id="wcK-fU-mfr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="RpZ-Mi-8us">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="wX8-wL-7dx">
-                            <color key="tintColor" red="1" green="0.23810792239136547" blue="0.3320256631137013" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="8oI-e8-tsO">
-                            <view key="customView" contentMode="scaleToFill" id="yy9-mS-E5a">
-                                <rect key="frame" x="447" y="5" width="133" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI3-yA-O5O">
-                                        <rect key="frame" x="16" y="6" width="117" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rI3-yA-O5O" secondAttribute="trailing" id="lMX-fd-kzC"/>
-                                    <constraint firstItem="rI3-yA-O5O" firstAttribute="centerY" secondItem="yy9-mS-E5a" secondAttribute="centerY" id="pe3-eZ-ZdV"/>
-                                </constraints>
-                            </view>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="uVS-gt-Wqd" id="voQ-XU-9pw"/>
+                        <outlet property="excerciseTotalsLabel" destination="ivP-93-osU" id="fqV-Em-pmd"/>
                         <outlet property="excerciseView" destination="CD8-hf-WIK" id="QpS-Nb-Ojn"/>
                         <outlet property="footerBackgroundView" destination="7Or-Ke-mW9" id="Stv-GU-AjR"/>
                         <outlet property="footerView" destination="MEV-xl-jxW" id="s94-qM-qjQ"/>
-                        <outlet property="quitWorkoutButton" destination="wX8-wL-7dx" id="ATm-jG-GVf"/>
-                        <outlet property="workoutTimeLabel" destination="rI3-yA-O5O" id="hfg-wF-wQV"/>
+                        <outlet property="workoutTimeLabel" destination="V0H-P0-NlQ" id="fso-hA-zvD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-Go-8jh" userLabel="First Responder" sceneMemberID="firstResponder"/>

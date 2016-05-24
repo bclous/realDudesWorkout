@@ -12,6 +12,6 @@
 @interface RestView2 : UIView
 
 @property (strong, nonatomic) Workout *workout;
-@property (nonatomic) NSUInteger *indexOfExcerciseJustFinished;
+@property (nonatomic) NSUInteger indexOfExcerciseJustFinished;
 
 @end

@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPP-h0-If2">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="172"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhe-WK-dAQ">
-                    <rect key="frame" x="0.0" y="12" width="600" height="115"/>
+                    <rect key="frame" x="0.0" y="25" width="600" height="115"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="115" id="ZGm-QK-s1L"/>
                     </constraints>
@@ -33,13 +33,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crawl down pushups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCl-gC-4U5">
-                    <rect key="frame" x="0.0" y="120" width="600" height="21"/>
+                    <rect key="frame" x="0.0" y="133" width="600" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ejz-sr-QZj">
-                    <rect key="frame" x="30" y="167" width="540" height="413"/>
+                    <rect key="frame" x="30" y="180" width="540" height="410"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -48,14 +48,14 @@
                 <constraint firstItem="Ejz-sr-QZj" firstAttribute="top" secondItem="nhe-WK-dAQ" secondAttribute="bottom" constant="40" id="5hE-em-JpF"/>
                 <constraint firstItem="hPP-h0-If2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BzC-E4-suP"/>
                 <constraint firstItem="hPP-h0-If2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DEZ-pM-Djd"/>
-                <constraint firstItem="nhe-WK-dAQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="OnA-s3-iTI"/>
+                <constraint firstItem="nhe-WK-dAQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="OnA-s3-iTI"/>
                 <constraint firstItem="nhe-WK-dAQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Q7O-Wk-Q4H"/>
                 <constraint firstItem="WCl-gC-4U5" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Ra6-OX-min"/>
                 <constraint firstItem="Ejz-sr-QZj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="Sh1-C9-sKg"/>
                 <constraint firstItem="nhe-WK-dAQ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="VMu-AA-cwg"/>
                 <constraint firstItem="Ejz-sr-QZj" firstAttribute="top" secondItem="hPP-h0-If2" secondAttribute="bottom" constant="8" id="YUY-Mb-yKF"/>
                 <constraint firstAttribute="trailing" secondItem="hPP-h0-If2" secondAttribute="trailing" id="iTB-iZ-4Mo"/>
-                <constraint firstAttribute="bottom" secondItem="Ejz-sr-QZj" secondAttribute="bottom" constant="20" id="lia-31-ltw"/>
+                <constraint firstAttribute="bottom" secondItem="Ejz-sr-QZj" secondAttribute="bottom" constant="10" id="lia-31-ltw"/>
                 <constraint firstItem="WCl-gC-4U5" firstAttribute="top" secondItem="nhe-WK-dAQ" secondAttribute="bottom" constant="-7" id="oLw-hH-Yjj"/>
                 <constraint firstItem="Ejz-sr-QZj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rBd-zz-IwK"/>
             </constraints>
