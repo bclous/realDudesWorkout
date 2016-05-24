@@ -12,14 +12,12 @@
 @interface WorkoutScrollSummaryCellView ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *dayOfWeekLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dayOfMonthLabel;
-@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
-@property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *workoutDurationLabel;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *excercisesScrollView;
 @property (weak, nonatomic) IBOutlet UIView *repeatWorkoutView;
 @property (weak, nonatomic) IBOutlet UIView *deleteWorkoutView;
+@property (weak, nonatomic) IBOutlet UIView *containerWhiteView;
+@property (weak, nonatomic) IBOutlet UIView *dateContainerCircleView;
 
 @property (strong, nonatomic) UIStackView *stackView;
 
@@ -67,6 +65,8 @@
     
     self.repeatWorkoutView.layer.cornerRadius = 15;
     self.deleteWorkoutView.layer.cornerRadius = 15;
+    //self.containerWhiteView.layer.cornerRadius =15;
+    self.dateContainerCircleView.layer.cornerRadius = 30;
     
     
 }
@@ -122,7 +122,10 @@
     
     [self addExcercisesToScrollView];
     
-    self.workoutNameLabel.text = self.workout.name;
+    //self.workoutNameLabel.text = self.workout.name;
 }
+
+
+
 
 @end

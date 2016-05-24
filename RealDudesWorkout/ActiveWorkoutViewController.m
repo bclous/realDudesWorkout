@@ -408,12 +408,15 @@
 
 - (IBAction)cancelButtonTapped:(id)sender
 {
-    
 
+        [self dismissViewControllerAnimated:YES completion:nil];
+  
+}
+- (IBAction)cancelborderViewTapped:(id)sender
+{
+   
+        [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-
 }
 
 -(void)setUpTimer
@@ -584,7 +587,7 @@
         self.restViewIsDisplayed = YES;
         self.doneButton.enabled = YES;
         
-        self.footerBackgroundView.alpha = 0;
+    
         
     }];
     
@@ -596,7 +599,7 @@
     
     self.doneButton.enabled = NO;
     
-    self.footerBackgroundView.alpha = 1;
+
     
     [UIView animateWithDuration:.3 animations:^{
         

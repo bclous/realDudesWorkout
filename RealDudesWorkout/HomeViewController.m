@@ -469,16 +469,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-        if (indexPath.row == self.selectedRow)
-        {
-            return 265;
-        }
-        else
-        {
-           return 85;
-        }
-        
+//        if (indexPath.row == self.selectedRow)
+//        {
+//            return 265;
+//        }
+//        else
+//        {
+//           return 85;
+//        }
+    
         // Cell isn't selected so return single height
+    
+    return 281;
  
     
 }
