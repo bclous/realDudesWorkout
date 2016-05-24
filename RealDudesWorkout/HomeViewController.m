@@ -197,7 +197,7 @@
 
 -(void)setAccessories
 {
-    NSLog(@"the number of accessories is: %lu", self.dataStore.availableAccessories.count);
+//    NSLog(@"the number of accessories is: %lu", self.dataStore.availableAccessories.count);
     
     self.workoutOnBoardView.accessory1.accessory = self.dataStore.availableAccessories[0];
     self.workoutOnBoardView.accessory2.accessory = self.dataStore.availableAccessories[1];
@@ -422,7 +422,12 @@
 -(void)startWorkoutTapped
 {
     
+   
+    
     [self performSegueWithIdentifier:@"segueToWorkout" sender:nil];
+    
+    [self resetOnBoardingViews];
+    [self shrinkBlurViewBackToButton];
 
     
 }
@@ -442,9 +447,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"creating the cell");
-    
-    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
+//    NSLog(@"creating the cell");
+//    
+//    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
     
     WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
     
@@ -454,9 +459,9 @@
     
     cell.backgroundColor = [UIColor clearColor];
     
-    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
-    
-    NSLog(@"workout name is %@ from the other way",cell.workoutScrollSummaryView.workout.name);
+//    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
+//    
+//    NSLog(@"workout name is %@ from the other way",cell.workoutScrollSummaryView.workout.name);
     
     return cell;
 }

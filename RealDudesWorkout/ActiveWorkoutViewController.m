@@ -500,6 +500,15 @@
     //[self generateRestComponents];
     
 }
+- (IBAction)cancelButtonTapped:(id)sender
+{
+    
+    NSLog(@"CANCEL WORKOUT WAS HIT\N\N\N\N\N\N\N");
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+
+}
 
 -(void)setUpTimer
 {

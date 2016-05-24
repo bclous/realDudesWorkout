@@ -57,7 +57,7 @@
 -(void)commonInit
 {
     
-    NSLog(@"in the init for the workout scroll Summary Cell View, workout name is:%@",self.workout.name);
+//    NSLog(@"in the init for the workout scroll Summary Cell View, workout name is:%@",self.workout.name);
     
     [[NSBundle mainBundle] loadNibNamed:@"WorkoutScrollSummaryCell" owner:self options:nil];
     
@@ -116,9 +116,9 @@
     
     self.excerciseSets = [self.workout excercisesInOrder];
     
-    NSLog(@"excerciseSets in first workout are: %lu", self.excerciseSets.count);
-    
-    NSLog(@"workout name is: %@", self.workout.name);
+//    NSLog(@"excerciseSets in first workout are: %lu", self.excerciseSets.count);
+//    
+//    NSLog(@"workout name is: %@", self.workout.name);
     
     [self addExcercisesToScrollView];
     

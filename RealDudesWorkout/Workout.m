@@ -24,7 +24,7 @@
         
         for (ExcerciseSet *excerciseSet in excerciseSetsInCircuitInOrder)
         {
-            NSLog(@"getting in here");
+           
             [excerciseSetsInOrder addObject:excerciseSet];
         }
     }
