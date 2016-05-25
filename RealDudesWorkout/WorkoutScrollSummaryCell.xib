@@ -11,9 +11,14 @@
                 <outlet property="containerWhiteView" destination="M4v-5C-HWC" id="e7w-et-xhX"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="5jg-bF-8eU"/>
                 <outlet property="dateContainerCircleView" destination="Phj-fb-VlD" id="bCZ-9D-Lzs"/>
+                <outlet property="dayOfMonthLabel" destination="3Wy-DS-RvF" id="IOP-9W-nL6"/>
+                <outlet property="dayOfWeekAndTimeLabel" destination="XaB-bJ-rE4" id="ZQL-21-pNB"/>
                 <outlet property="deleteWorkoutView" destination="seH-xt-Jle" id="syV-Td-Ap9"/>
                 <outlet property="excercisesScrollView" destination="uDc-Hc-ROX" id="udb-Ml-l58"/>
+                <outlet property="monthLabel" destination="41J-ZX-X7f" id="SK4-kG-Qua"/>
                 <outlet property="repeatWorkoutView" destination="jap-Rr-dSf" id="lIe-6U-Jbb"/>
+                <outlet property="workoutDurationLabel" destination="5bc-oe-yXJ" id="7el-z7-fuU"/>
+                <outlet property="workoutNumberLabel" destination="8a3-SS-SEB" id="8tF-1I-uhx"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -66,13 +71,13 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Workout #252" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a3-SS-SEB">
                             <rect key="frame" x="10" y="244" width="81" height="14"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="46 minutes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-oe-yXJ">
                             <rect key="frame" x="526" y="244" width="64" height="15"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -82,11 +87,12 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jap-Rr-dSf">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_refresh_3x" translatesAutoresizingMaskIntoConstraints="NO" id="TFZ-9A-riE">
+                                        <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_refresh_3x" translatesAutoresizingMaskIntoConstraints="NO" id="TFZ-9A-riE">
                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="HUy-ie-B1p"/>
                                         <constraint firstItem="TFZ-9A-riE" firstAttribute="centerX" secondItem="jap-Rr-dSf" secondAttribute="centerX" id="XqC-6Z-qbO"/>
@@ -95,6 +101,9 @@
                                         <constraint firstItem="TFZ-9A-riE" firstAttribute="centerY" secondItem="jap-Rr-dSf" secondAttribute="centerY" id="dFK-z7-TxZ"/>
                                         <constraint firstAttribute="width" constant="30" id="nXA-YI-vKy"/>
                                     </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="x09-rd-C1n" appends="YES" id="RvY-Cd-2KT"/>
+                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seH-xt-Jle">
                                     <rect key="frame" x="55" y="0.0" width="30" height="30"/>
@@ -105,6 +114,7 @@
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="pdW-Rc-VVB" firstAttribute="height" secondItem="seH-xt-Jle" secondAttribute="height" id="2EH-W2-YyO"/>
                                         <constraint firstItem="pdW-Rc-VVB" firstAttribute="centerY" secondItem="seH-xt-Jle" secondAttribute="centerY" id="8e0-Cc-4AU"/>
@@ -113,6 +123,9 @@
                                         <constraint firstItem="pdW-Rc-VVB" firstAttribute="width" secondItem="seH-xt-Jle" secondAttribute="width" id="TwV-7T-e7V"/>
                                         <constraint firstAttribute="width" constant="30" id="zFw-bl-saz"/>
                                     </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="0Gj-lx-QVv" appends="YES" id="6Ch-EB-RQq"/>
+                                    </connections>
                                 </view>
                             </subviews>
                         </stackView>
@@ -149,6 +162,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="813" y="486.5"/>
         </view>
+        <tapGestureRecognizer id="x09-rd-C1n">
+            <connections>
+                <action selector="repeatWorkoutTapped:" destination="-1" id="dFG-MK-6fE"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="0Gj-lx-QVv">
+            <connections>
+                <action selector="deleteWorkoutTapped:" destination="-1" id="eoj-JY-v1g"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="ic_clear_3x" width="72" height="72"/>

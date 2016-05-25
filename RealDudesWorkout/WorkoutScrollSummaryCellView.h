@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) Workout *workout;
 
+-(void)setStackViewWidth;
+
 @end

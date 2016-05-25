@@ -459,6 +459,9 @@
     
     cell.backgroundColor = [UIColor clearColor];
     
+    [cell.workoutScrollSummaryView setStackViewWidth];
+    
+    
 //    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
 //    
 //    NSLog(@"workout name is %@ from the other way",cell.workoutScrollSummaryView.workout.name);
@@ -483,6 +486,18 @@
     return 281;
  
     
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    WorkoutSummaryScrollTableViewCell *scrollCell = cell;
+//    
+//    [scrollCell.workoutScrollSummaryView setStackViewWidth];
+    
+    NSLog(@"this is getting called for row: %lu", indexPath.row);
+    
+
+    //[cell.workoutScrollSummaryView layoutIfNeeded];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath

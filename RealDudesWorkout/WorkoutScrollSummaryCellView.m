@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UIView *deleteWorkoutView;
 @property (weak, nonatomic) IBOutlet UIView *containerWhiteView;
 @property (weak, nonatomic) IBOutlet UIView *dateContainerCircleView;
+@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayOfMonthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayOfWeekAndTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workoutNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workoutDurationLabel;
 
 @property (strong, nonatomic) UIStackView *stackView;
 
@@ -68,6 +73,8 @@
     //self.containerWhiteView.layer.cornerRadius =15;
     self.dateContainerCircleView.layer.cornerRadius = 30;
     
+    [self addExcercisesToScrollView];
+    
     
 }
 
@@ -89,7 +96,12 @@
     
     [self.stackView.heightAnchor constraintEqualToAnchor:self.excercisesScrollView.heightAnchor].active = YES;
     
-    //[self.stackView.widthAnchor constraintEqualToAnchor:self.excercisesScrollView.widthAnchor multiplier:10].active = YES;
+    CGFloat stackViewWidth = self.excerciseSets.count * 124 - 5;
+    
+    [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth].active = YES;
+    
+    self.stackView.spacing = 5;
+    
     
    
     for (ExcerciseSet *excerciseSet in self.excerciseSets)
@@ -108,24 +120,48 @@
     }
     
     
+    
+    
+}
+
+-(void)setStackViewWidth
+{
+    CGFloat stackViewWidth = self.excerciseSets.count * 124 - 5;
+    
+    [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth].active = YES;
+    
+    
+    NSLog(@"set stack view width is getting called with a width of: %f", stackViewWidth);
 }
 
 -(void)setWorkout:(Workout *)workout
 {
     _workout = workout;
     
-    self.excerciseSets = [self.workout excercisesInOrder];
-    
-//    NSLog(@"excerciseSets in first workout are: %lu", self.excerciseSets.count);
-//    
-//    NSLog(@"workout name is: %@", self.workout.name);
+    self.excerciseSets = [self.workout completedExcercisesInOrder];
     
     [self addExcercisesToScrollView];
     
-    //self.workoutNameLabel.text = self.workout.name;
+    self.monthLabel.text = [workout workoutStartMonth];
+    self.dayOfMonthLabel.text = [workout workoutStartDayOfMonth];
+    
+    self.dayOfWeekAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", [workout workoutStartDayOfWeek], [workout workoutStartTime]];
+
+    self.workoutNumberLabel.text = workout.name;
+                                  
+    
+    
 }
 
+- (IBAction)repeatWorkoutTapped:(id)sender
+{
+    
+}
 
+- (IBAction)deleteWorkoutTapped:(id)sender
+{
+    
+}
 
 
 @end
