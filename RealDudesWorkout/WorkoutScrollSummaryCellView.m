@@ -73,8 +73,6 @@
     //self.containerWhiteView.layer.cornerRadius =15;
     self.dateContainerCircleView.layer.cornerRadius = 25;
     
-    [self addExcercisesToScrollView];
-    
     
 }
 
@@ -85,7 +83,7 @@
     
     self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.stackView.distribution = UIStackViewDistributionFill;
+   
     
     [self.excercisesScrollView addSubview:self.stackView];
     
@@ -96,16 +94,24 @@
     
     [self.stackView.heightAnchor constraintEqualToAnchor:self.excercisesScrollView.heightAnchor].active = YES;
     
-    CGFloat stackViewWidth = 24 * 124 - 5;
-    [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth].active = YES;
+    //CGFloat stackViewWidth = 100;
+    //NSLayoutConstraint *stackViewWidthConstraint = [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth];
     
-    self.stackView.spacing = 5;
-    self.stackView.alignment = UIStackViewAlignmentFirstBaseline;
+    //stackViewWidthConstraint.active = YES;
+    //stackViewWidthConstraint.priority = 800;
     
     
-   
+    
+    
+    
+    NSLog(@"%@ adding %lu excercises to scroll view", self.workout.name, self.excerciseSets.count);
+
     for (ExcerciseSet *excerciseSet in self.excerciseSets)
     {
+        
+        NSUInteger viewNumber = 1;
+        
+        NSLog(@"%@ adding excerciseView: %lu", self.workout.name, viewNumber);
         
         ExcerciseTotalView *excerciseView = [[ExcerciseTotalView alloc] init];
         
@@ -113,17 +119,23 @@
         
          [self.stackView addArrangedSubview:excerciseView];
         
-        NSLayoutConstraint *excerciseHeightConstraint = [excerciseView.heightAnchor constraintEqualToAnchor:self.stackView.heightAnchor];
+        NSLayoutConstraint *excerciseHeightConstraint = [excerciseView.heightAnchor constraintEqualToAnchor:self.excercisesScrollView.heightAnchor];
         NSLayoutConstraint *excerciseWidthConstraint = [excerciseView.widthAnchor constraintEqualToAnchor:excerciseView.heightAnchor];
-        
-//        excerciseHeightConstraint.priority = 1000;
-//        excerciseWidthConstraint.priority = 1000;
         
         excerciseHeightConstraint.active = YES;
         excerciseWidthConstraint.active = YES;
         
+        excerciseHeightConstraint.priority = 1000;
+        excerciseWidthConstraint.priority = 1000;
+        
+        viewNumber ++;
+        
         
     }
+    
+    //self.stackView.distribution = UIStackViewDistributionFillEqually;
+    //self.stackView.alignment = UIStackViewAlignmentFirstBaseline;
+    self.stackView.spacing = 10;
     
     
     

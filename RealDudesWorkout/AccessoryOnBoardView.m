@@ -74,9 +74,9 @@
     {
         self.blueOutlineImage.alpha = 0;
         self.accessoryImageView.alpha = .5;
-        
-
         self.pictureChosen = NO;
+        
+        [self.delegate accessoryUnchosen:self.accessory];
     }
     else
     {
@@ -84,6 +84,8 @@
         self.accessoryImageView.alpha = 1;
         self.circleImage.alpha = 1;
         self.pictureChosen = YES;
+        
+        [self.delegate accessoryChosen:self.accessory];
 
     }
 }

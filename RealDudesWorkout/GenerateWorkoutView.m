@@ -16,6 +16,9 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *excerciseScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workoutDateAndTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workoutEstimatedTimeLabel;
 
 @property (strong, nonatomic) UIStackView *excercisesStackView;
 
@@ -81,6 +84,8 @@
     
     [self generateExcercises];
     
+    [self createLabels];
+    
 }
 
 -(void)createStackView
@@ -121,6 +126,17 @@
         
         
     }
+}
+
+-(void)createLabels
+{
+    
+    self.workoutNameLabel.text = self.workout.name;
+    self.workoutDateAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", [self.workout longDateString], [self.workout workoutStartTime] ];
+    self.workoutEstimatedTimeLabel.text = [NSString stringWithFormat:@"Estimated time: %lld minutes", self.workout.targetTimeInSeconds];
+     
+    
+    
 }
 
 @end

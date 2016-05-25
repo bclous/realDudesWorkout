@@ -11,18 +11,13 @@
 
 @protocol WorkoutOnBoardDelegate <NSObject>
 
--(void)generateWorkoutTapped;
+-(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories;
 
 @end
 
 @interface WorkoutOnBoardView : UIView
 
-@property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory1;
-@property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory2;
-@property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory3;
-@property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory4;
-@property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory5;
-@property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory6;
+
 
 @property (weak, nonatomic) id <WorkoutOnBoardDelegate> delegate;
 

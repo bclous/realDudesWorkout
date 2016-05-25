@@ -60,12 +60,14 @@
     self.dataStore = [DataStore sharedDataStore];
     
     [self.dataStore fetchData];
+    
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     
     [self setUpMainTableView];
     [self setUpStartButtonView];
     
-    self.workoutsTableView.rowHeight = UITableViewAutomaticDimension;
+    //Workout *lastWorkout = [self.workouts firstObject];
+    
     
 }
 
@@ -171,9 +173,6 @@
     
     self.workoutOnBoardView.alpha = 0;
     
-    //[self setAccessoryCircleSizes];
-    [self setAccessories];
-    
     
 }
 
@@ -202,19 +201,6 @@
 }
 
 
-
--(void)setAccessories
-{
-//    NSLog(@"the number of accessories is: %lu", self.dataStore.availableAccessories.count);
-    
-    self.workoutOnBoardView.accessory1.accessory = self.dataStore.availableAccessories[0];
-    self.workoutOnBoardView.accessory2.accessory = self.dataStore.availableAccessories[1];
-    self.workoutOnBoardView.accessory3.accessory = self.dataStore.availableAccessories[2];
-    self.workoutOnBoardView.accessory4.accessory = self.dataStore.availableAccessories[3];
-    self.workoutOnBoardView.accessory5.accessory = self.dataStore.availableAccessories[4];
-    self.workoutOnBoardView.accessory6.accessory = self.dataStore.availableAccessories[5];
-    
-}
 
 -(void)bringWorkoutOnBoardScreenDown
 {
@@ -409,14 +395,22 @@
     
 }
 
--(void)generateWorkoutTapped
+-(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
 {
     
-    [self.dataStore.user generateNewWorkout];
+    NSLog(@"New workout with %lu accessories and %lu minutes", accessories.count, minutes);
+    
+   [self.dataStore.user generateNewWorkout];
+    
+    [self.dataStore saveContext];
+    
+    [self.dataStore fetchData];
+    
+    self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
+    
+    self.generateWorkoutView.workout = [self.workouts firstObject];
     
     [self.workoutOnBoardView removeFromSuperview];
-    
-    self.generateWorkoutView.workout = [self.workouts lastObject];
     
     self.generateWorkoutView.alpha = 1;
     
@@ -431,7 +425,6 @@
 {
     
    
-    
     [self performSegueWithIdentifier:@"segueToWorkout" sender:nil];
     
     [self resetOnBoardingViews];

@@ -55,7 +55,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aby-z8-Ig0">
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aby-z8-Ig0">
                                             <rect key="frame" x="304" y="92" width="31" height="60"/>
                                             <gestureRecognizers/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
@@ -65,7 +65,7 @@
                                                 <outletCollection property="gestureRecognizers" destination="Aqd-qS-3T2" appends="YES" id="xZV-Qw-boH"/>
                                             </connections>
                                         </label>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cz-92-n3Z">
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cz-92-n3Z">
                                             <rect key="frame" x="92" y="92" width="22" height="60"/>
                                             <gestureRecognizers/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
@@ -75,12 +75,12 @@
                                                 <outletCollection property="gestureRecognizers" destination="KbG-U0-cOo" appends="YES" id="uhl-Nn-nTt"/>
                                             </connections>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFx-AJ-7gS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFx-AJ-7gS">
                                             <rect key="frame" x="149" y="74" width="120" height="95"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="AIC-wP-tQI"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="90"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>

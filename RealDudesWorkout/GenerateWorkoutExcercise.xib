@@ -20,22 +20,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lower Back Extensions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-gI-Awd">
-                    <rect key="frame" x="0.0" y="177" width="200" height="18"/>
+                    <rect key="frame" x="0.0" y="172" width="200" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Cwh-Q7-ucu"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="zr1-Q0-QBS">
-                    <rect key="frame" x="12" y="0.0" width="176" height="176"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="zr1-Q0-QBS">
+                    <rect key="frame" x="14" y="0.0" width="174" height="174"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="zr1-Q0-QBS" secondAttribute="height" multiplier="1:1" id="7P1-zc-N5M"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="COo-1j-jO1">
-                    <rect key="frame" x="43" y="31" width="114" height="114"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COo-1j-jO1">
+                    <rect key="frame" x="45" y="31" width="112" height="112"/>
                 </imageView>
             </subviews>
             <constraints>
@@ -44,8 +44,8 @@
                 <constraint firstItem="zr1-Q0-QBS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MUE-sf-Rxk"/>
                 <constraint firstItem="zr1-Q0-QBS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="One-PX-vEO"/>
                 <constraint firstItem="IIO-gI-Awd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Pkq-5V-ekh"/>
-                <constraint firstAttribute="bottom" secondItem="IIO-gI-Awd" secondAttribute="bottom" constant="5" id="Qnh-AZ-PUH"/>
-                <constraint firstItem="IIO-gI-Awd" firstAttribute="top" secondItem="zr1-Q0-QBS" secondAttribute="bottom" constant="1" id="RsW-WS-73s"/>
+                <constraint firstAttribute="bottom" secondItem="IIO-gI-Awd" secondAttribute="bottom" constant="10" id="Qnh-AZ-PUH"/>
+                <constraint firstItem="IIO-gI-Awd" firstAttribute="top" secondItem="zr1-Q0-QBS" secondAttribute="bottom" constant="7" id="RsW-WS-73s"/>
                 <constraint firstItem="COo-1j-jO1" firstAttribute="centerX" secondItem="zr1-Q0-QBS" secondAttribute="centerX" id="Tid-TZ-0dn"/>
                 <constraint firstItem="COo-1j-jO1" firstAttribute="height" secondItem="zr1-Q0-QBS" secondAttribute="height" multiplier="0.65" id="UK4-rI-o1w"/>
                 <constraint firstItem="COo-1j-jO1" firstAttribute="centerY" secondItem="zr1-Q0-QBS" secondAttribute="centerY" id="aIU-Cu-898"/>

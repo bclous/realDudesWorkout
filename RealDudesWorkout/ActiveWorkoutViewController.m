@@ -221,6 +221,8 @@
     // set restViewExcercise
     self.restView.indexOfExcerciseJustFinished = self.currentExcerciseSetIndexValue;
     
+    NSLog(@"current excercise set index value is: %lu", self.currentExcerciseSetIndexValue);
+    
     // excercise compelte stuff
     
     [self excerciseComplete];
@@ -273,10 +275,10 @@
 
     
     self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
-    
     self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
     self.currentExcerciseSet.isComplete = YES;
     
+    NSLog(@"excercise with name: %@ is being set to complete", self.currentExcerciseSet.excercise.name);
     
 }
 

@@ -29,7 +29,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4v-5C-HWC">
                     <rect key="frame" x="0.0" y="10" width="600" height="271"/>
                     <subviews>
-                        <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-Hc-ROX" userLabel="Excercises Scroll View">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-Hc-ROX" userLabel="Excercises Scroll View">
                             <rect key="frame" x="0.0" y="80" width="600" height="119"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="119" id="86E-Ya-Cy6"/>
