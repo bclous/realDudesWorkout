@@ -71,7 +71,7 @@
     self.repeatWorkoutView.layer.cornerRadius = 15;
     self.deleteWorkoutView.layer.cornerRadius = 15;
     //self.containerWhiteView.layer.cornerRadius =15;
-    self.dateContainerCircleView.layer.cornerRadius = 30;
+    self.dateContainerCircleView.layer.cornerRadius = 25;
     
     [self addExcercisesToScrollView];
     
@@ -85,7 +85,7 @@
     
     self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.stackView.distribution = UIStackViewDistributionFillEqually;
+    self.stackView.distribution = UIStackViewDistributionFill;
     
     [self.excercisesScrollView addSubview:self.stackView];
     
@@ -96,11 +96,11 @@
     
     [self.stackView.heightAnchor constraintEqualToAnchor:self.excercisesScrollView.heightAnchor].active = YES;
     
-    CGFloat stackViewWidth = self.excerciseSets.count * 124 - 5;
-    
+    CGFloat stackViewWidth = 24 * 124 - 5;
     [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth].active = YES;
     
     self.stackView.spacing = 5;
+    self.stackView.alignment = UIStackViewAlignmentFirstBaseline;
     
     
    
@@ -113,8 +113,14 @@
         
          [self.stackView addArrangedSubview:excerciseView];
         
-        [excerciseView.heightAnchor constraintEqualToAnchor:self.stackView.heightAnchor].active = YES;
-        [excerciseView.widthAnchor constraintEqualToAnchor:excerciseView.heightAnchor].active = YES;
+        NSLayoutConstraint *excerciseHeightConstraint = [excerciseView.heightAnchor constraintEqualToAnchor:self.stackView.heightAnchor];
+        NSLayoutConstraint *excerciseWidthConstraint = [excerciseView.widthAnchor constraintEqualToAnchor:excerciseView.heightAnchor];
+        
+//        excerciseHeightConstraint.priority = 1000;
+//        excerciseWidthConstraint.priority = 1000;
+        
+        excerciseHeightConstraint.active = YES;
+        excerciseWidthConstraint.active = YES;
         
         
     }
@@ -126,12 +132,12 @@
 
 -(void)setStackViewWidth
 {
-    CGFloat stackViewWidth = self.excerciseSets.count * 124 - 5;
+//    CGFloat stackViewWidth = self.excerciseSets.count * 124 - 5;
+//    
+//    [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth].active = YES;
     
-    [self.stackView.widthAnchor constraintEqualToConstant:stackViewWidth].active = YES;
     
-    
-    NSLog(@"set stack view width is getting called with a width of: %f", stackViewWidth);
+//    NSLog(@"set stack view width is getting called with a width of: %f", stackViewWidth);
 }
 
 -(void)setWorkout:(Workout *)workout
@@ -156,11 +162,13 @@
 - (IBAction)repeatWorkoutTapped:(id)sender
 {
     
+    [self.delegate repeatWorkoutTapped:self.workout];
+    
 }
 
 - (IBAction)deleteWorkoutTapped:(id)sender
 {
-    
+    [self.delegate deleteWorkoutTapped:self.workout];
 }
 
 

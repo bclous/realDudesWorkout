@@ -190,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-0w-bOz">
-                                <rect key="frame" x="0.0" y="218" width="600" height="382"/>
+                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="summaryCell" rowHeight="111" id="Rec-1B-3G7" customClass="WorkoutSummaryScrollTableViewCell">
@@ -215,34 +215,28 @@
                                             <outlet property="workoutScrollSummaryView" destination="vfc-gQ-Znh" id="pjH-iv-kAk"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="5QZ-aM-aPi">
+                                        <rect key="frame" x="0.0" y="139" width="600" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5QZ-aM-aPi" id="Y2O-M4-iG5">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6y-v5-jy1" customClass="WorkoutTotalsTopCellView">
+                                                    <rect key="frame" x="0.0" y="1" width="600" height="111"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="M6y-v5-jy1" firstAttribute="centerY" secondItem="Y2O-M4-iG5" secondAttribute="centerY" id="2Fw-9d-GeD"/>
+                                                <constraint firstItem="M6y-v5-jy1" firstAttribute="width" secondItem="Y2O-M4-iG5" secondAttribute="width" id="3Cq-Bj-pLD"/>
+                                                <constraint firstItem="M6y-v5-jy1" firstAttribute="centerX" secondItem="Y2O-M4-iG5" secondAttribute="centerX" id="eCq-LZ-hhb"/>
+                                                <constraint firstItem="M6y-v5-jy1" firstAttribute="height" secondItem="Y2O-M4-iG5" secondAttribute="height" id="hpw-Gk-0P3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3q-G9-sOl">
-                                <rect key="frame" x="0.0" y="68" width="600" height="150"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wkh-zV-CmI">
-                                        <rect key="frame" x="0.0" y="0.0" width="1200" height="150"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotGirlWorkout" translatesAutoresizingMaskIntoConstraints="NO" id="MVY-Kg-hoX">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beachworkout" translatesAutoresizingMaskIntoConstraints="NO" id="gyW-br-D6H">
-                                                <rect key="frame" x="600" y="0.0" width="600" height="150"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </imageView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="width" secondItem="r3q-G9-sOl" secondAttribute="width" multiplier="2" id="5xX-iT-vY4"/>
-                                    <constraint firstAttribute="trailing" secondItem="wkh-zV-CmI" secondAttribute="trailing" id="CT8-ra-Sye"/>
-                                    <constraint firstAttribute="bottom" secondItem="wkh-zV-CmI" secondAttribute="bottom" id="Fqd-mL-W1e"/>
-                                    <constraint firstAttribute="height" constant="150" id="ItL-EB-fbM"/>
-                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="top" secondItem="r3q-G9-sOl" secondAttribute="top" id="UaW-tS-WPS"/>
-                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="leading" secondItem="r3q-G9-sOl" secondAttribute="leading" id="Y3H-au-9EN"/>
-                                    <constraint firstItem="wkh-zV-CmI" firstAttribute="height" secondItem="r3q-G9-sOl" secondAttribute="height" id="sJF-DE-boT"/>
-                                </constraints>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                 <subviews>
@@ -263,16 +257,13 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="r3q-G9-sOl" secondAttribute="bottom" id="3DW-A5-Zlf"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="3iN-9Q-ZkR"/>
                             <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="9iu-0w-bOz" secondAttribute="bottom" id="7sL-cV-yh3"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="DFA-a4-Knu"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Hsd-k2-NsW"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="-20" id="Wsk-aX-QAi"/>
-                            <constraint firstItem="r3q-G9-sOl" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Z6C-qE-Q5d"/>
-                            <constraint firstItem="r3q-G9-sOl" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" constant="-2" id="d69-qk-9qC"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="gRT-W2-ncf"/>
-                            <constraint firstItem="r3q-G9-sOl" firstAttribute="centerX" secondItem="7J2-vp-YNH" secondAttribute="centerX" id="sbI-2H-5RP"/>
+                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" id="gUF-ED-COX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Gj-FQ-4Ak">
@@ -289,9 +280,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="beachworkout" width="400" height="224"/>
         <image name="cancel" width="357" height="357"/>
-        <image name="hotGirlWorkout" width="1000" height="500"/>
         <image name="logo" width="716" height="714"/>
     </resources>
 </document>

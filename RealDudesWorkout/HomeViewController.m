@@ -14,9 +14,10 @@
 #import "WorkoutOnBoardView.h"
 #import "GenerateWorkoutView.h"
 #import "GenerateWorkoutExcerciseView.h"
+#import "WorkoutTotalsTopCellTableViewCell.h"
 
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate, WorkoutScrollSummaryCellDelegate>
 
 @property (weak, nonatomic) IBOutlet TotalsFrontPageCellView *totalsView;
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
@@ -63,6 +64,8 @@
     
     [self setUpMainTableView];
     [self setUpStartButtonView];
+    
+    self.workoutsTableView.rowHeight = UITableViewAutomaticDimension;
     
 }
 
@@ -434,71 +437,90 @@
 
 
 
+
+#pragma tableView methods
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    NSLog(@"%lu is the number of workouts", self.workouts.count);
+    if (section == 0)
+    {
+        return 1;
+    }
     
-    return self.workouts.count;
+    else
+    {
+        return self.workouts.count;
+    }
+    
    
+   
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"creating the cell");
-//    
-//    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
+
+    if (indexPath.section == 0)
+    {
+        WorkoutTotalsTopCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topCell"];
+        
+        return cell;
+    }
     
-    WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
+    else
+    {
+        WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
+        
+        cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.backgroundColor = [UIColor clearColor];
+        
+        [cell.workoutScrollSummaryView setStackViewWidth];
+        
+        cell.workoutScrollSummaryView.delegate = self;
+        
+        return cell;
+    }
     
-    cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.backgroundColor = [UIColor clearColor];
-    
-    [cell.workoutScrollSummaryView setStackViewWidth];
-    
-    
-//    NSLog(@"Workout name is %@",((Workout *)self.workouts[indexPath.row]).name);
-//    
-//    NSLog(@"workout name is %@ from the other way",cell.workoutScrollSummaryView.workout.name);
-    
-    return cell;
+   
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//        if (indexPath.row == self.selectedRow)
-//        {
-//            return 265;
-//        }
-//        else
-//        {
-//           return 85;
-//        }
-    
-        // Cell isn't selected so return single height
-    
-    return 281;
+    if (indexPath.section == 0)
+    {
+        return 160;
+    }
+    else
+    {
+        return 281;
+    }
  
     
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    WorkoutSummaryScrollTableViewCell *scrollCell = cell;
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+////    WorkoutSummaryScrollTableViewCell *scrollCell = cell;
+////    
+////    [scrollCell.workoutScrollSummaryView setStackViewWidth];
 //    
-//    [scrollCell.workoutScrollSummaryView setStackViewWidth];
-    
-    NSLog(@"this is getting called for row: %lu", indexPath.row);
-    
-
-    //[cell.workoutScrollSummaryView layoutIfNeeded];
-}
+//    NSLog(@"this is getting called for row: %lu", indexPath.row);
+//    
+//
+//    //[cell.workoutScrollSummaryView layoutIfNeeded];
+//}
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -545,6 +567,18 @@
 }
 
 
+#pragma cell delegate methods
+
+
+- (void)repeatWorkoutTapped:(Workout *)workout
+{
+    /// copy workout and launch
+}
+
+-(void)deleteWorkoutTapped:(Workout *)workout
+{
+    // delete workout and reload table cell
+}
 
 
 
