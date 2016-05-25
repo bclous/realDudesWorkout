@@ -36,11 +36,11 @@
                         <constraint firstAttribute="width" secondItem="bWt-qg-fkb" secondAttribute="height" multiplier="1:1" id="uBz-Ff-ETj"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="uhW-1Z-TdM">
-                    <rect key="frame" x="16" y="8" width="168" height="168"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="uhW-1Z-TdM">
+                    <rect key="frame" x="19" y="14" width="163" height="156"/>
                 </imageView>
-                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bench" translatesAutoresizingMaskIntoConstraints="NO" id="BxO-JG-aLZ">
-                    <rect key="frame" x="46" y="38" width="109" height="109"/>
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bench" translatesAutoresizingMaskIntoConstraints="NO" id="BxO-JG-aLZ">
+                    <rect key="frame" x="48" y="42" width="105" height="101"/>
                     <gestureRecognizers/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="T4c-6o-ge0" appends="YES" id="58I-qS-vFz"/>
@@ -49,12 +49,12 @@
             </subviews>
             <constraints>
                 <constraint firstItem="bWt-qg-fkb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Pn-UB-zVr"/>
-                <constraint firstItem="uhW-1Z-TdM" firstAttribute="width" secondItem="bWt-qg-fkb" secondAttribute="width" multiplier="0.92" id="9Cl-Kk-PlY"/>
+                <constraint firstItem="uhW-1Z-TdM" firstAttribute="width" secondItem="bWt-qg-fkb" secondAttribute="width" multiplier="0.89" id="9Cl-Kk-PlY"/>
                 <constraint firstItem="BxO-JG-aLZ" firstAttribute="width" secondItem="uhW-1Z-TdM" secondAttribute="width" multiplier="0.65" id="9yQ-77-nmi"/>
                 <constraint firstItem="HQJ-YQ-2ah" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AWq-M6-TrL"/>
                 <constraint firstItem="HQJ-YQ-2ah" firstAttribute="top" secondItem="bWt-qg-fkb" secondAttribute="bottom" constant="1" id="O99-tZ-veg"/>
                 <constraint firstItem="bWt-qg-fkb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qf2-pq-evN"/>
-                <constraint firstItem="uhW-1Z-TdM" firstAttribute="height" secondItem="bWt-qg-fkb" secondAttribute="height" multiplier="0.92" id="Tju-gn-QN8"/>
+                <constraint firstItem="uhW-1Z-TdM" firstAttribute="height" secondItem="bWt-qg-fkb" secondAttribute="height" multiplier="0.89" id="Tju-gn-QN8"/>
                 <constraint firstItem="uhW-1Z-TdM" firstAttribute="centerX" secondItem="bWt-qg-fkb" secondAttribute="centerX" id="Xhi-b2-GI4"/>
                 <constraint firstItem="BxO-JG-aLZ" firstAttribute="height" secondItem="uhW-1Z-TdM" secondAttribute="height" multiplier="0.65" id="d6X-PK-fsP"/>
                 <constraint firstAttribute="bottom" secondItem="HQJ-YQ-2ah" secondAttribute="bottom" id="eWp-h4-foQ"/>

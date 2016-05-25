@@ -8,6 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkoutTotalsTopCellView">
             <connections>
+                <outlet property="circle1" destination="VMs-e2-Oyf" id="qdu-Hf-X44"/>
+                <outlet property="circle2" destination="JIg-PB-MfJ" id="okN-jb-m3v"/>
+                <outlet property="circle3" destination="Bae-90-22a" id="Tuv-nY-fo0"/>
+                <outlet property="circle4" destination="hhY-SF-yWD" id="c46-dG-LSk"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="GEJ-Fk-dwh"/>
             </connections>
         </placeholder>
@@ -24,7 +28,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-MS-705">
                                     <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
-                                    <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-VV-w4u">
                                     <rect key="frame" x="554" y="0.0" width="554" height="130"/>
@@ -60,12 +64,39 @@
                         <constraint firstItem="jgp-MS-705" firstAttribute="width" secondItem="EoM-LH-9tp" secondAttribute="width" id="vHJ-jN-y9T"/>
                     </constraints>
                 </scrollView>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XPM-ne-fVd">
+                    <rect key="frame" x="243" y="110" width="70" height="10"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMs-e2-Oyf">
+                            <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                            <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIg-PB-MfJ">
+                            <rect key="frame" x="20" y="0.0" width="10" height="10"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bae-90-22a">
+                            <rect key="frame" x="40" y="0.0" width="10" height="10"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-SF-yWD">
+                            <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="uGu-jp-q7U"/>
+                        <constraint firstAttribute="height" constant="10" id="vmL-Rf-JfM"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EoM-LH-9tp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6bK-jw-CTG"/>
                 <constraint firstItem="EoM-LH-9tp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Iio-Hn-4Ef"/>
                 <constraint firstAttribute="bottom" secondItem="EoM-LH-9tp" secondAttribute="bottom" id="RAw-97-b3b"/>
+                <constraint firstItem="XPM-ne-fVd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TgB-Bq-cYt"/>
+                <constraint firstAttribute="bottom" secondItem="XPM-ne-fVd" secondAttribute="bottom" constant="10" id="ZJW-DI-vwv"/>
                 <constraint firstAttribute="trailing" secondItem="EoM-LH-9tp" secondAttribute="trailing" id="lSa-0D-EgK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *plusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
 
+@property (nonatomic) NSUInteger workoutLength;
+
 
 @end
 
@@ -56,6 +58,10 @@
     self.contentView.frame = self.bounds;
     
     self.startButton.layer.cornerRadius = 15;
+    
+    self.workoutLength = 30;
+    
+    [self updateMinutesLabel];
 
     
 }
@@ -63,6 +69,37 @@
 - (IBAction)startButtonTapped:(id)sender
 {
     [self.delegate generateWorkoutTapped];
+}
+- (IBAction)minusMinutesTapped:(id)sender
+{
+    
+    if (!(self.workoutLength <= 5))
+    {
+        self.workoutLength = self.workoutLength - 5;
+        
+        [self updateMinutesLabel];
+    }
+    
+    
+}
+- (IBAction)plusMinutesTapped:(id)sender
+{
+    
+    if (self.workoutLength < 75)
+    {
+        self.workoutLength = self.workoutLength + 5;
+        
+        [self updateMinutesLabel];
+    }
+    
+    
+}
+
+-(void)updateMinutesLabel
+{
+    
+    self.minutesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.workoutLength];
+    
 }
 
 @end

@@ -69,6 +69,11 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.workoutsTableView reloadData];
+}
+
 -(void)setUpMainTableView
 {
     

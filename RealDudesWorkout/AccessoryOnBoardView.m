@@ -60,7 +60,11 @@
     
     self.blueOutlineImage.alpha = 0;
     
-    self.contentView.alpha = .5;
+    self.blueOutlineImage.alpha = 0;
+    self.accessoryImageView.alpha = .5;
+    
+    
+    
     
 }
 - (IBAction)pictureTapped:(id)sender
@@ -69,14 +73,16 @@
     if (self.pictureChosen)
     {
         self.blueOutlineImage.alpha = 0;
-        self.contentView.alpha = .5;
+        self.accessoryImageView.alpha = .5;
+        
 
         self.pictureChosen = NO;
     }
     else
     {
       self.blueOutlineImage.alpha = 1;
-        self.contentView.alpha = 1;
+        self.accessoryImageView.alpha = 1;
+        self.circleImage.alpha = 1;
         self.pictureChosen = YES;
 
     }
