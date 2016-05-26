@@ -28,7 +28,18 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-MS-705">
                                     <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotGirlWorkout" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-10-2ct">
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <constraints>
+                                        <constraint firstItem="YjU-10-2ct" firstAttribute="width" secondItem="jgp-MS-705" secondAttribute="width" id="03M-2U-zEk"/>
+                                        <constraint firstItem="YjU-10-2ct" firstAttribute="centerX" secondItem="jgp-MS-705" secondAttribute="centerX" id="5vr-Mi-pLO"/>
+                                        <constraint firstItem="YjU-10-2ct" firstAttribute="centerY" secondItem="jgp-MS-705" secondAttribute="centerY" id="XCj-de-frz"/>
+                                        <constraint firstItem="YjU-10-2ct" firstAttribute="height" secondItem="jgp-MS-705" secondAttribute="height" id="hOL-uP-wcc"/>
+                                    </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-VV-w4u">
                                     <rect key="frame" x="554" y="0.0" width="554" height="130"/>
@@ -36,11 +47,11 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBx-zK-gJA">
                                     <rect key="frame" x="1108" y="0.0" width="554" height="130"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz9-yG-rnT">
                                     <rect key="frame" x="1662" y="0.0" width="554" height="130"/>
-                                    <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
                             <constraints>
@@ -103,4 +114,7 @@
             <point key="canvasLocation" x="761" y="239"/>
         </view>
     </objects>
+    <resources>
+        <image name="hotGirlWorkout" width="1000" height="500"/>
+    </resources>
 </document>

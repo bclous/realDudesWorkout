@@ -246,7 +246,7 @@
     }
     else
     {
-        return @"< 1 minute";
+        return @"< 1 min";
     }
     
 }

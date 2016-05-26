@@ -9,7 +9,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateWorkoutView">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="bLW-mR-v4a"/>
-                <outlet property="excerciseScrollView" destination="eLK-XG-i2p" id="Cpd-NZ-5Aw"/>
+                <outlet property="generatingWorkoutLabel" destination="TZr-mb-z9g" id="MOn-fq-uyB"/>
+                <outlet property="numberOfExcercisesLabel" destination="bGd-nu-Yxt" id="dxH-WU-gWc"/>
                 <outlet property="startButton" destination="Vry-Uo-2zL" id="OI8-2b-G8e"/>
                 <outlet property="workoutDateAndTimeLabel" destination="LKD-jj-lZw" id="hzg-c5-wmt"/>
                 <outlet property="workoutEstimatedTimeLabel" destination="7N2-lN-BMZ" id="lsp-hv-oLI"/>
@@ -21,12 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="420" height="616"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLK-XG-i2p">
-                    <rect key="frame" x="0.0" y="258" width="420" height="180"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="180" id="G65-YM-4Db"/>
-                    </constraints>
-                </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vry-Uo-2zL">
                     <rect key="frame" x="21" y="556" width="378" height="30"/>
                     <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,8 +35,8 @@
                         <action selector="startButtonTapped:" destination="-1" eventType="touchUpInside" id="JGA-n7-BDE"/>
                     </connections>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GK1-y4-z4j">
-                    <rect key="frame" x="121" y="95" width="179" height="64"/>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GK1-y4-z4j">
+                    <rect key="frame" x="122" y="95" width="179" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout #27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-D1-6K2">
                             <rect key="frame" x="0.0" y="0.0" width="179" height="36"/>
@@ -57,24 +52,40 @@
                         </label>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated time: 55 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-lN-BMZ">
-                    <rect key="frame" x="118" y="513" width="185" height="18"/>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xvz-9z-tW9">
+                    <rect key="frame" x="119" y="487" width="185" height="41"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excercises: 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-nu-Yxt">
+                            <rect key="frame" x="0.0" y="0.0" width="185" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated time: 55 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-lN-BMZ">
+                            <rect key="frame" x="0.0" y="23" width="185" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Generating workout..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZr-mb-z9g">
+                    <rect key="frame" x="128" y="239" width="165" height="20"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="Vry-Uo-2zL" firstAttribute="top" secondItem="7N2-lN-BMZ" secondAttribute="bottom" constant="25" id="05l-ys-PK8"/>
+                <constraint firstItem="Xvz-9z-tW9" firstAttribute="centerX" secondItem="Vry-Uo-2zL" secondAttribute="centerX" id="2qC-rv-CCx"/>
                 <constraint firstItem="GK1-y4-z4j" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="91K-qx-2SJ"/>
-                <constraint firstItem="eLK-XG-i2p" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CdW-Lv-mGO"/>
-                <constraint firstItem="eLK-XG-i2p" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Vl8-uc-OJn"/>
-                <constraint firstItem="eLK-XG-i2p" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="aw7-8V-eqM"/>
+                <constraint firstItem="TZr-mb-z9g" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-85" id="LF3-Ph-JEF"/>
+                <constraint firstItem="TZr-mb-z9g" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QGj-yc-oJ2"/>
                 <constraint firstAttribute="bottom" secondItem="Vry-Uo-2zL" secondAttribute="bottom" constant="30" id="cFu-E4-sDE"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="d4o-O2-q5U"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="drP-JI-BMg"/>
                 <constraint firstItem="GK1-y4-z4j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="95" id="iJL-Nf-dTL"/>
-                <constraint firstItem="7N2-lN-BMZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nXK-OM-bjV"/>
+                <constraint firstItem="Vry-Uo-2zL" firstAttribute="top" secondItem="Xvz-9z-tW9" secondAttribute="bottom" constant="28" id="qWU-PJ-L9L"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="198" y="400"/>

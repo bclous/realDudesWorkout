@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayOfWeekAndTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutDurationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *excercisesLabel;
 
 @property (strong, nonatomic) UIStackView *stackView;
 
@@ -158,7 +159,7 @@
     
     self.excerciseSets = [self.workout completedExcercisesInOrder];
     
-    [self addExcercisesToScrollView];
+    //[self addExcercisesToScrollView];
     
     self.monthLabel.text = [workout workoutStartMonth];
     self.dayOfMonthLabel.text = [workout workoutStartDayOfMonth];
@@ -166,6 +167,10 @@
     self.dayOfWeekAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", [workout workoutStartDayOfWeek], [workout workoutStartTime]];
 
     self.workoutNumberLabel.text = workout.name;
+    
+    self.workoutDurationLabel.text = [workout stringFromTimeInterval:workout.timeInSeconds];
+    
+    self.excercisesLabel.text = [NSString stringWithFormat:@"%lu excercises >",[workout completedExcercisesInOrder].count];
                                   
     
     

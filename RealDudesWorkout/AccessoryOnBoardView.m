@@ -61,7 +61,7 @@
     self.blueOutlineImage.alpha = 0;
     
     self.blueOutlineImage.alpha = 0;
-    self.accessoryImageView.alpha = .5;
+    self.accessoryImageView.alpha = .7;
     
     
     
@@ -73,7 +73,7 @@
     if (self.pictureChosen)
     {
         self.blueOutlineImage.alpha = 0;
-        self.accessoryImageView.alpha = .5;
+        self.accessoryImageView.alpha = .7;
         self.pictureChosen = NO;
         
         [self.delegate accessoryUnchosen:self.accessory];

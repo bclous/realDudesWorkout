@@ -11,16 +11,22 @@
 #import "GenerateWorkoutExcerciseView.h"
 
 
-@interface GenerateWorkoutView ()
+@interface GenerateWorkoutView () <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIScrollView *excerciseScrollView;
+@property (strong, nonatomic) UIScrollView *excerciseScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UILabel *workoutNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutDateAndTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutEstimatedTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfExcercisesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *generatingWorkoutLabel;
 
 @property (strong, nonatomic) UIStackView *excercisesStackView;
+
+@property (strong, nonatomic) NSLayoutConstraint *scrollViewCenterXConstraint;
+
+
 
 
 @end
@@ -65,6 +71,10 @@
     
     self.excerciseViews = [[NSMutableArray alloc] init];
     
+    [self createScrollView];
+    
+    [self setAllLabels];
+    
     
 }
 
@@ -86,6 +96,72 @@
     
     [self createLabels];
     
+    [self layoutIfNeeded];
+    
+    [self animateInExcercices];
+    
+}
+
+-(void)setAllLabels
+{
+    self.workoutNameLabel.alpha = 0;
+    self.workoutDateAndTimeLabel.alpha = 0;
+    self.workoutEstimatedTimeLabel.alpha = 0;
+    self.numberOfExcercisesLabel.alpha = 0;
+    
+    self.generatingWorkoutLabel.alpha = 1;
+    
+    self.startButton.alpha = 0;
+    self.startButton.enabled = NO;
+    
+}
+
+-(void)updateAllLabels
+{
+    
+    [UIView animateWithDuration:.2 delay:.1 options:NO animations:^{
+        
+        
+        self.workoutNameLabel.alpha = 1;
+        self.workoutDateAndTimeLabel.alpha = 1;
+        self.workoutEstimatedTimeLabel.alpha = 1;
+        self.numberOfExcercisesLabel.alpha = 1;
+        
+        self.generatingWorkoutLabel.alpha = 0;
+        
+        
+    } completion:^(BOOL finished)
+     
+    {
+        self.startButton.alpha = 1;
+        self.startButton.enabled = YES;
+    }];
+    
+   
+    
+}
+
+-(void)createScrollView
+{
+    
+    self.excerciseScrollView = [[UIScrollView alloc] init];
+    
+    [self addSubview:self.excerciseScrollView];
+    
+    self.excerciseScrollView.delegate = self;
+    
+    self.excerciseScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.excerciseScrollView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor constant:40].active = YES;
+    
+    [self.excerciseScrollView.heightAnchor constraintEqualToConstant: 180].active = YES;
+    
+    [self.excerciseScrollView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
+    
+    self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor constant:600];
+    
+    self.scrollViewCenterXConstraint.active = YES;
+    
 }
 
 -(void)createStackView
@@ -104,6 +180,8 @@
     [self.excercisesStackView.bottomAnchor constraintEqualToAnchor:self.excerciseScrollView.bottomAnchor].active = YES;
     
     [self.excercisesStackView.heightAnchor constraintEqualToAnchor:self.excerciseScrollView.heightAnchor].active = YES;
+    
+    self.excercisesStackView.spacing = 5;
 
 }
 
@@ -124,8 +202,88 @@
         [excerciseTotalView.widthAnchor constraintEqualToAnchor:excerciseTotalView.heightAnchor].active = YES;
         
         
-        
     }
+}
+
+-(void)animateInExcercices
+{
+//    [UIView animateWithDuration:.2 animations:^{
+//        
+//        self.scrollViewCenterXConstraint.active = NO;
+//        
+//           self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor];
+//        
+//        self.scrollViewCenterXConstraint.active = YES;
+//        
+//        [self layoutIfNeeded];
+//        
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        //self.excercisesStackView.spacing = 5;
+//    
+//    }];
+    
+    CGFloat length = self.excercisesStackView.frame.size.width;
+    
+    
+    [UIView animateWithDuration:2 delay:.2 options:NO animations:^{
+        
+        self.scrollViewCenterXConstraint.active = NO;
+        
+        self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor];
+        
+        self.scrollViewCenterXConstraint.active = YES;
+        
+          [self layoutIfNeeded];
+        
+      
+        
+        
+    } completion:^(BOOL finished) {
+        
+        
+        [UIView animateWithDuration:5 delay:0 options:NO animations:^{
+            
+            CGPoint offset;
+            
+            offset.x = length - 100;
+            offset.y = 0;
+            
+            
+            
+            [self.excerciseScrollView setContentOffset:offset animated:NO];
+            
+            [self layoutIfNeeded];
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration:1 animations:^{
+                CGPoint home;
+                
+                home.x = 0;
+                home.y = 0;
+                
+                [self.excerciseScrollView setContentOffset:home animated:NO];
+                
+                [self layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                
+                [self updateAllLabels];
+                
+                
+            }];
+
+            
+        }];
+    
+
+        
+    }];
+    
+ 
+    
+    
 }
 
 -(void)createLabels
@@ -133,7 +291,9 @@
     
     self.workoutNameLabel.text = self.workout.name;
     self.workoutDateAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", [self.workout longDateString], [self.workout workoutStartTime] ];
-    self.workoutEstimatedTimeLabel.text = [NSString stringWithFormat:@"Estimated time: %lld minutes", self.workout.targetTimeInSeconds];
+    self.workoutEstimatedTimeLabel.text = [NSString stringWithFormat:@"Estimated time: %lld minutes", self.workout.targetTimeInSeconds / 60];
+    
+    self.numberOfExcercisesLabel.text = [NSString stringWithFormat:@"Excercises: %lu", self.workout.excercisesInOrder.count];
      
     
     

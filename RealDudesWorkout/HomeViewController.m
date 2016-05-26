@@ -15,9 +15,10 @@
 #import "GenerateWorkoutView.h"
 #import "GenerateWorkoutExcerciseView.h"
 #import "WorkoutTotalsTopCellTableViewCell.h"
+#import "WorkoutDetailView.h"
 
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate, WorkoutScrollSummaryCellDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate, WorkoutScrollSummaryCellDelegate, WorkoutDetailViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TotalsFrontPageCellView *totalsView;
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
@@ -31,6 +32,8 @@
 @property (strong, nonatomic) NSLayoutConstraint *blurViewLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *blurViewRightConstraint;
 
+@property (strong, nonatomic) NSLayoutConstraint *workoutDetailViewHeightConstraint;
+
 @property (strong, nonatomic) UIImageView *addAndCancelIconImageView;
 
 @property (strong, nonatomic) UITapGestureRecognizer *addAndCancelTapGestureRecognizer;
@@ -43,8 +46,11 @@
 
 @property (strong, nonatomic) WorkoutOnBoardView *workoutOnBoardView;
 @property (strong, nonatomic) GenerateWorkoutView *generateWorkoutView;
+@property (strong, nonatomic) WorkoutDetailView *workoutDetailView;
 
 @property (nonatomic) BOOL workoutCreated;
+
+@property (nonatomic) BOOL hasLoadedBefore;
 
 
 
@@ -65,15 +71,25 @@
     
     [self setUpMainTableView];
     [self setUpStartButtonView];
+    [self setUpWorkoutDetailView];
     
     //Workout *lastWorkout = [self.workouts firstObject];
     
+    self.hasLoadedBefore = YES;
     
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.workoutsTableView reloadData];
+    
+    
+    if (self.hasLoadedBefore)
+    {
+        [self resetOnBoardingViews];
+        [self shrinkBlurViewBackToButton];
+    }
+    
 }
 
 -(void)setUpMainTableView
@@ -84,6 +100,90 @@
     
     self.selectedRow = -1;
 
+}
+
+-(void)setUpWorkoutDetailView
+{
+    
+    self.workoutDetailView = [[WorkoutDetailView alloc] init];
+    
+    [self.view addSubview:self.workoutDetailView];
+    
+    self.workoutDetailView.delegate = self;
+    
+    self.workoutDetailView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.workoutDetailView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+    [self.workoutDetailView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.workoutDetailView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+    
+    self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor];
+    
+    self.workoutDetailViewHeightConstraint.active = YES;
+    
+    self.workoutDetailView.alpha = 0;
+    
+    self.workoutDetailView.clipsToBounds = YES;
+    
+    [self.view layoutIfNeeded];
+    
+}
+
+-(void)growWorkoutDetailViewWithWorkout:(Workout *)workout
+{
+    
+     self.workoutDetailView.workout = workout;
+    
+    [self.view bringSubviewToFront:self.workoutDetailView];
+    
+    
+    
+    [UIView animateWithDuration:.2 animations:^{
+        
+        
+        self.workoutDetailView.alpha = 1;
+        
+        self.workoutDetailViewHeightConstraint.active = NO;
+        
+        self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor];
+        
+        self.workoutDetailViewHeightConstraint.active = YES;
+        
+        [self.view layoutIfNeeded];
+        
+        
+    } completion:^(BOOL finished) {
+        
+        
+        
+    }];
+    
+}
+
+-(void)shrinkWorkoutDetailView
+{
+    
+    [UIView animateWithDuration:.1 animations:^{
+        
+        
+//        self.workoutDetailViewHeightConstraint.active = NO;
+//        
+//        self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToConstant:1];
+//        
+//        self.workoutDetailViewHeightConstraint.active = YES;
+        
+        [self.view layoutIfNeeded];
+        
+        self.workoutDetailView.alpha = 0;
+        
+        
+    } completion:^(BOOL finished) {
+        
+        
+        
+    }];
+    
+    
 }
 
 -(void)setUpStartButtonView
@@ -195,8 +295,6 @@
     self.generateWorkoutView.clipsToBounds = YES;
     
     self.generateWorkoutView.alpha = 0;
-    
-
     
 }
 
@@ -400,6 +498,8 @@
     
     NSLog(@"New workout with %lu accessories and %lu minutes", accessories.count, minutes);
     
+    
+    
    [self.dataStore.user generateNewWorkout];
     
     [self.dataStore saveContext];
@@ -408,11 +508,17 @@
     
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     
-    self.generateWorkoutView.workout = [self.workouts firstObject];
+    Workout *newWorkout = [self.workouts firstObject];
+    
+    newWorkout.targetTimeInSeconds = minutes * 60;
+    
+    self.generateWorkoutView.workout = newWorkout;
     
     [self.workoutOnBoardView removeFromSuperview];
     
     self.generateWorkoutView.alpha = 1;
+    
+    //[self.generateWorkoutView animateInExcercices];
     
     self.workoutCreated = YES;
     self.generateWorkoutViewDisplayed = YES;
@@ -427,8 +533,7 @@
    
     [self performSegueWithIdentifier:@"segueToWorkout" sender:nil];
     
-    [self resetOnBoardingViews];
-    [self shrinkBlurViewBackToButton];
+  
 
     
 }
@@ -489,7 +594,7 @@
         return cell;
     }
     
-   
+  
 
 }
 
@@ -502,7 +607,7 @@
     }
     else
     {
-        return 281;
+        return 110;
     }
  
     
@@ -536,22 +641,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedRow == indexPath.row)
+//    if (self.selectedRow == indexPath.row)
+//    {
+//        self.selectedRow = -1;
+//        [tableView beginUpdates];
+//        [tableView endUpdates];
+//    }
+//    
+//    else
+//    {
+//        self.selectedRow = indexPath.row;
+//        [tableView beginUpdates];
+//        [tableView endUpdates];
+//    }
+//    
+    
+    if (!(indexPath.section == 0))
     {
-        self.selectedRow = -1;
-        [tableView beginUpdates];
-        [tableView endUpdates];
+        
+        [self setUpWorkoutDetailView];
+        
+        Workout *workoutChosen = self.workouts[indexPath.row];
+        
+        [self growWorkoutDetailViewWithWorkout:workoutChosen];
+        
     }
     
-    else
-    {
-        self.selectedRow = indexPath.row;
-        [tableView beginUpdates];
-        [tableView endUpdates];
-    }
     
-    
-   
     
     NSLog(@"row %lu selected", indexPath.row);
 }
@@ -578,6 +694,13 @@
     // delete workout and reload table cell
 }
 
+
+-(void)leaveWorkoutDetailButtonTapped
+{
+    
+    [self shrinkWorkoutDetailView];
+    
+}
 
 
 /*

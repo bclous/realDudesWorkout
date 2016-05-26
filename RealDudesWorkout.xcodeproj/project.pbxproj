@@ -60,6 +60,8 @@
 		ABC0B6BE1CF5F63D00938033 /* WorkoutTotalsTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC0B6BD1CF5F63C00938033 /* WorkoutTotalsTopCell.xib */; };
 		ABC0B6C11CF5F76C00938033 /* WorkoutTotalsTopCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B6C01CF5F76C00938033 /* WorkoutTotalsTopCellView.m */; };
 		ABC0B6C41CF5F82400938033 /* WorkoutTotalsTopCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0B6C31CF5F82400938033 /* WorkoutTotalsTopCellTableViewCell.m */; };
+		ABCE7FF91CF672B400E93339 /* WorkoutDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCE7FF81CF672B300E93339 /* WorkoutDetail.xib */; };
+		ABCE7FFC1CF73FBF00E93339 /* WorkoutDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCE7FFB1CF73FBF00E93339 /* WorkoutDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +154,9 @@
 		ABC0B6C01CF5F76C00938033 /* WorkoutTotalsTopCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTotalsTopCellView.m; sourceTree = "<group>"; };
 		ABC0B6C21CF5F82400938033 /* WorkoutTotalsTopCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTotalsTopCellTableViewCell.h; sourceTree = "<group>"; };
 		ABC0B6C31CF5F82400938033 /* WorkoutTotalsTopCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTotalsTopCellTableViewCell.m; sourceTree = "<group>"; };
+		ABCE7FF81CF672B300E93339 /* WorkoutDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutDetail.xib; sourceTree = "<group>"; };
+		ABCE7FFA1CF73FBF00E93339 /* WorkoutDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailView.h; sourceTree = "<group>"; };
+		ABCE7FFB1CF73FBF00E93339 /* WorkoutDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,11 +182,13 @@
 				AB2A39081CE3FFB5005DD03A /* NumberOfWorkoutsView.m */,
 				ABC0B67E1CF0C48000938033 /* AccessoryOnBoardView.h */,
 				ABC0B67F1CF0C48000938033 /* AccessoryOnBoardView.m */,
+				ABCE7FFA1CF73FBF00E93339 /* WorkoutDetailView.h */,
+				ABCE7FFB1CF73FBF00E93339 /* WorkoutDetailView.m */,
 				ABC0B6BF1CF5F76C00938033 /* WorkoutTotalsTopCellView.h */,
 				ABC0B6C01CF5F76C00938033 /* WorkoutTotalsTopCellView.m */,
-				ABC0B68F1CF3B77200938033 /* ExcerciseRestView.h */,
 				ABC0B6921CF3B8E100938033 /* RestView2.h */,
 				ABC0B6931CF3B8E100938033 /* RestView2.m */,
+				ABC0B68F1CF3B77200938033 /* ExcerciseRestView.h */,
 				ABC0B6901CF3B77200938033 /* ExcerciseRestView.m */,
 				AB2A39131CEA315F005DD03A /* ExcerciseTotalView.h */,
 				AB2A39141CEA315F005DD03A /* ExcerciseTotalView.m */,
@@ -225,6 +232,7 @@
 				AB2A39111CEA2EE7005DD03A /* ExcerciseTotal.xib */,
 				ABC0B6771CEE5D8F00938033 /* WorkoutOnBoard.xib */,
 				ABC0B67C1CF0C13300938033 /* AccessoryOnBoard.xib */,
+				ABCE7FF81CF672B300E93339 /* WorkoutDetail.xib */,
 				ABC0B68D1CF3B68400938033 /* ExcerciseRestView.xib */,
 				ABC0B6861CF11FEF00938033 /* GenerateWorkoutExcercise.xib */,
 				ABA977BD1C9F5E2F00D04639 /* ExcerciseView.xib */,
@@ -411,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2A39121CEA2EE7005DD03A /* ExcerciseTotal.xib in Resources */,
+				ABCE7FF91CF672B400E93339 /* WorkoutDetail.xib in Resources */,
 				ABC0B6871CF11FEF00938033 /* GenerateWorkoutExcercise.xib in Resources */,
 				ABA977C61C9F9FD000D04639 /* RestView.xib in Resources */,
 				ABA977BE1C9F5E2F00D04639 /* ExcerciseView.xib in Resources */,
@@ -495,6 +504,7 @@
 				ABA977B41C9CA7BB00D04639 /* ExcerciseSet.m in Sources */,
 				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
 				AB2A39151CEA315F005DD03A /* ExcerciseTotalView.m in Sources */,
+				ABCE7FFC1CF73FBF00E93339 /* WorkoutDetailView.m in Sources */,
 				AB41F2CE1C90FC25009D7E63 /* AppDelegate.m in Sources */,
 				ABA977B91C9D9FD900D04639 /* User+CoreDataProperties.m in Sources */,
 				ABC0B6C11CF5F76C00938033 /* WorkoutTotalsTopCellView.m in Sources */,
