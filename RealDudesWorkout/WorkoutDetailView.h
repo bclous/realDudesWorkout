@@ -12,6 +12,8 @@
 @protocol WorkoutDetailViewDelegate <NSObject>
 
 -(void)leaveWorkoutDetailButtonTapped;
+-(void)deleteWorkoutButtonTapped:(Workout *)workout;
+-(void)repeatWorkoutButtonTapped:(Workout *)workout;
 
 
 @end

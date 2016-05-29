@@ -410,14 +410,26 @@
 
 - (IBAction)cancelButtonTapped:(id)sender
 {
+    
+    self.workout.timeInSeconds = self.totalWorkoutCounter;
+    
+    self.workout.isFinished = YES;
+    
+    [self.totalWorkoutTimer invalidate];
 
-        [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
   
 }
 - (IBAction)cancelborderViewTapped:(id)sender
 {
+    
+    self.workout.timeInSeconds = self.totalWorkoutCounter;
+    
+    self.workout.isFinished = YES;
+    
+    [self.totalWorkoutTimer invalidate];
    
-        [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

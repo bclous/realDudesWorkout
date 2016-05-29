@@ -4,6 +4,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Excercise" inverseName="accessories" inverseEntity="Excercise" syncable="YES"/>
+        <relationship name="workouts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Workout" inverseName="availableAccessories" inverseEntity="Workout" syncable="YES"/>
     </entity>
     <entity name="Circuit" representedClassName="Circuit" syncable="YES">
         <attribute name="circuitIndexNumberInWorkout" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -50,15 +51,16 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetTimeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="availableAccessories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accessory" inverseName="workouts" inverseEntity="Accessory" syncable="YES"/>
         <relationship name="circuits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Circuit" inverseName="workout" inverseEntity="Circuit" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="workouts" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Accessory" positionX="7" positionY="92" width="128" height="88"/>
-        <element name="Circuit" positionX="-171" positionY="-324" width="128" height="103"/>
+        <element name="Accessory" positionX="7" positionY="92" width="128" height="103"/>
+        <element name="Circuit" positionX="-171" positionY="-283" width="128" height="103"/>
         <element name="Excercise" positionX="-2" positionY="-72" width="128" height="133"/>
         <element name="ExcerciseSet" positionX="-2" positionY="-333" width="128" height="223"/>
         <element name="User" positionX="-533" positionY="-342" width="128" height="148"/>
-        <element name="Workout" positionX="-335" positionY="-349" width="128" height="178"/>
+        <element name="Workout" positionX="-360" positionY="-72" width="128" height="193"/>
     </elements>
 </model>

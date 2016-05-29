@@ -29,13 +29,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="zr1-Q0-QBS">
-                    <rect key="frame" x="14" y="0.0" width="174" height="174"/>
+                    <rect key="frame" x="13.5" y="0.0" width="174" height="174"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="zr1-Q0-QBS" secondAttribute="height" multiplier="1:1" id="7P1-zc-N5M"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COo-1j-jO1">
-                    <rect key="frame" x="45" y="31" width="112" height="112"/>
+                    <rect key="frame" x="44.5" y="31" width="112" height="112"/>
                 </imageView>
             </subviews>
             <constraints>

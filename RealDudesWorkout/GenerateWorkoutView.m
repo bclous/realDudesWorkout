@@ -73,6 +73,8 @@
     
     [self createScrollView];
     
+    [self createStackView];
+    
     [self setAllLabels];
     
     
@@ -90,15 +92,13 @@
    
     _workout = workout;
     
-    [self createStackView];
+    [self.excercisesStackView.widthAnchor constraintEqualToConstant:[workout excercisesInOrder].count * 190 - 10];
     
     [self generateExcercises];
     
     [self createLabels];
     
-    [self layoutIfNeeded];
-    
-    [self animateInExcercices];
+  
     
 }
 
@@ -182,6 +182,8 @@
     [self.excercisesStackView.heightAnchor constraintEqualToAnchor:self.excerciseScrollView.heightAnchor].active = YES;
     
     self.excercisesStackView.spacing = 5;
+    
+    self.excercisesStackView.distribution = UIStackViewDistributionFillEqually;
 
 }
 
@@ -195,36 +197,25 @@
         
         excerciseTotalView.excerciseSet = excerciseSet;
         
+        [excerciseTotalView.heightAnchor constraintEqualToConstant:180].active = YES;
+        
+        [excerciseTotalView.widthAnchor constraintEqualToConstant:180].active = YES;
+        
         [self.excercisesStackView addArrangedSubview:excerciseTotalView];
-        
-        [excerciseTotalView.heightAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
-        
-        [excerciseTotalView.widthAnchor constraintEqualToAnchor:excerciseTotalView.heightAnchor].active = YES;
-        
+    
         
     }
+    
+    [self layoutIfNeeded];
+    
+     [self animateInExcercices];
 }
 
 -(void)animateInExcercices
 {
-//    [UIView animateWithDuration:.2 animations:^{
-//        
-//        self.scrollViewCenterXConstraint.active = NO;
-//        
-//           self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor];
-//        
-//        self.scrollViewCenterXConstraint.active = YES;
-//        
-//        [self layoutIfNeeded];
-//        
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        //self.excercisesStackView.spacing = 5;
-//    
-//    }];
+
     
-    CGFloat length = self.excercisesStackView.frame.size.width;
+    CGFloat length = self.workout.excercisesInOrder.count * 190 - 10;
     
     
     [UIView animateWithDuration:2 delay:.2 options:NO animations:^{
@@ -241,7 +232,7 @@
         
         
     } completion:^(BOOL finished) {
-        
+    
         
         [UIView animateWithDuration:5 delay:0 options:NO animations:^{
             
@@ -249,7 +240,6 @@
             
             offset.x = length - 100;
             offset.y = 0;
-            
             
             
             [self.excerciseScrollView setContentOffset:offset animated:NO];
@@ -271,18 +261,14 @@
                 
                 [self updateAllLabels];
                 
-                
+
             }];
 
             
         }];
     
 
-        
     }];
-    
- 
-    
     
 }
 

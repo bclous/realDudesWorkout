@@ -65,6 +65,10 @@
     self.repeatButton.layer.cornerRadius = 15;
     self.deleteButton.layer.cornerRadius = 15;
     
+    self.smallerContentView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    self.smallerContentView.layer.borderWidth = 1;
+    
     
 }
 
@@ -144,8 +148,21 @@
         
     }
     
+    [self layoutIfNeeded];
+    
 }
 
+- (IBAction)deleteButtonTapped:(id)sender
+{
+    
+    [self.delegate deleteWorkoutButtonTapped:self.workout];
+    
+}
+- (IBAction)clearButtonTapped:(id)sender
+{
+    
+    [self.delegate repeatWorkoutButtonTapped:self.workout];
+}
 
 
 @end

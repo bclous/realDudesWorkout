@@ -166,12 +166,6 @@
     [UIView animateWithDuration:.1 animations:^{
         
         
-//        self.workoutDetailViewHeightConstraint.active = NO;
-//        
-//        self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToConstant:1];
-//        
-//        self.workoutDetailViewHeightConstraint.active = YES;
-        
         [self.view layoutIfNeeded];
         
         self.workoutDetailView.alpha = 0;
@@ -300,7 +294,7 @@
 
 
 
--(void)bringWorkoutOnBoardScreenDown
+-(void)makeWorkoutOnBoardScreenAppear
 {
     
     [UIView animateWithDuration:.1 animations:^{
@@ -323,7 +317,7 @@
     
 }
 
--(void)moveWorkoutOnBoardScreenUp
+-(void)makeWorkoutOnBoardScreenDisappear
 {
     
     [UIView animateWithDuration:.05 animations:^{
@@ -354,12 +348,22 @@
 
 -(void)addOrCancelHit
 {
+    NSLog(@"this is getting called");
     
-    if (self.blurViewDisplayed )
+    if (self.blurViewDisplayed)
     {
         
-        [self moveWorkoutOnBoardScreenUp];
+        [self shrinkBlurViewBackToButton];
         
+    }
+    
+    else if (self.generateWorkoutViewDisplayed)
+    {
+        Workout *lastWorkout = [self.workouts firstObject];
+        
+        [self deleteWorkout:lastWorkout];
+        
+        [self shrinkBlurViewBackToButton];
     }
     
         else
@@ -372,6 +376,8 @@
 
 -(void)resetOnBoardingViews
 {
+    
+    NSLog(@"reset on boarding is getting called");
     
     if (self.accessoryAndTimeViewDisplayed)
     {
@@ -388,6 +394,7 @@
     {
         [self.generateWorkoutView removeFromSuperview];
         self.generateWorkoutViewDisplayed = NO;
+        
         
         [self createWorkoutOnBoardView];
         [self createGenerateWorkoutView];
@@ -434,19 +441,77 @@
         
     } completion:^(BOOL finished) {
         
-        //[self setAccessoryCircleSizes];
         
-        [self bringWorkoutOnBoardScreenDown];
+        [self makeWorkoutOnBoardScreenAppear];
         self.blurView.layer.cornerRadius = 0;
     
-      
         
     }];
 }
 
--(void)shrinkBlurViewBackToButton
+-(void)growOnBoardingScreenWhenRepeatWorkoutTapped
 {
     
+    NSLog(@"grow onboarding is getting called");
+    
+    self.view.userInteractionEnabled = NO;
+    self.addAndCancelTapGestureRecognizer.enabled = NO;
+    
+    
+    [UIView animateWithDuration:.2 animations:^{
+        
+        self.blurView.alpha = 1;
+        
+        
+        self.addAndCancelIconImageView.transform = CGAffineTransformMakeRotation(M_PI/4);
+        
+        
+        self.blurViewBottomConstraint.active = NO;
+        self.blurViewTopConstraint.active = NO;
+        self.blurViewLeftConstraint.active = NO;
+        self.blurViewRightConstraint.active = NO;
+        
+        self.blurViewBottomConstraint = [self.blurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+        self.blurViewTopConstraint = [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor ];
+        self.blurViewLeftConstraint = [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor];
+        self.blurViewRightConstraint = [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor];
+        
+        self.blurViewBottomConstraint.active = YES;
+        self.blurViewTopConstraint.active = YES;
+        self.blurViewLeftConstraint.active = YES;
+        self.blurViewRightConstraint.active = YES;
+        
+        
+        
+        [self.view layoutIfNeeded];
+        
+        
+    } completion:^(BOOL finished) {
+        
+        self.view.userInteractionEnabled = YES;
+        self.addAndCancelTapGestureRecognizer.enabled = YES;
+        self.blurViewDisplayed = YES;
+        
+        self.generateWorkoutView.alpha = 1;
+        
+        self.workoutCreated = YES;
+        self.generateWorkoutViewDisplayed = YES;
+        self.accessoryAndTimeViewDisplayed = NO;
+
+        self.blurView.layer.cornerRadius = 0;
+
+        
+        
+    }];
+
+    
+    
+    
+}
+
+-(void)shrinkBlurViewBackToButton
+{
+    NSLog(@"shrink blur view getting called");
     self.view.userInteractionEnabled = NO;
     self.addAndCancelTapGestureRecognizer.enabled = NO;
     
@@ -486,7 +551,6 @@
         self.addAndCancelTapGestureRecognizer.enabled = YES;
         self.blurViewDisplayed = NO;
       
-        
         [self resetOnBoardingViews];
         
     }];
@@ -496,13 +560,22 @@
 -(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
 {
     
-    NSLog(@"New workout with %lu accessories and %lu minutes", accessories.count, minutes);
+    [self createNewWorkout:minutes accessories:accessories];
     
+    [self.workoutOnBoardView removeFromSuperview];
     
+    self.generateWorkoutView.alpha = 1;
     
-   [self.dataStore.user generateNewWorkout];
+    self.workoutCreated = YES;
+    self.generateWorkoutViewDisplayed = YES;
+    self.accessoryAndTimeViewDisplayed = NO;
     
-    [self.dataStore saveContext];
+
+}
+
+-(void)createNewWorkout:(NSInteger)minutes accessories:(NSMutableArray *)accessories
+{
+    [self.dataStore.user generateNewWorkout];
     
     [self.dataStore fetchData];
     
@@ -513,28 +586,15 @@
     newWorkout.targetTimeInSeconds = minutes * 60;
     
     self.generateWorkoutView.workout = newWorkout;
-    
-    [self.workoutOnBoardView removeFromSuperview];
-    
-    self.generateWorkoutView.alpha = 1;
-    
-    //[self.generateWorkoutView animateInExcercices];
-    
-    self.workoutCreated = YES;
-    self.generateWorkoutViewDisplayed = YES;
-    self.accessoryAndTimeViewDisplayed = NO;
-    
 
+    
+    
 }
 
 -(void)startWorkoutTapped
 {
-    
    
     [self performSegueWithIdentifier:@"segueToWorkout" sender:nil];
-    
-  
-
     
 }
 
@@ -613,26 +673,6 @@
     
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-////    WorkoutSummaryScrollTableViewCell *scrollCell = cell;
-////    
-////    [scrollCell.workoutScrollSummaryView setStackViewWidth];
-//    
-//    NSLog(@"this is getting called for row: %lu", indexPath.row);
-//    
-//
-//    //[cell.workoutScrollSummaryView layoutIfNeeded];
-//}
-
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
-{
- 
-    NSLog(@"highlight row method getting called");
-    
-    return YES;
-
-}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -641,20 +681,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (self.selectedRow == indexPath.row)
-//    {
-//        self.selectedRow = -1;
-//        [tableView beginUpdates];
-//        [tableView endUpdates];
-//    }
-//    
-//    else
-//    {
-//        self.selectedRow = indexPath.row;
-//        [tableView beginUpdates];
-//        [tableView endUpdates];
-//    }
-//    
+ 
     
     if (!(indexPath.section == 0))
     {
@@ -667,31 +694,84 @@
         
     }
     
-    
-    
-    NSLog(@"row %lu selected", indexPath.row);
+
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)deleteWorkout:(Workout *)workout
 {
     
-    NSLog(@"row %lu deselected", indexPath.row);
+    [self.dataStore.user removeWorkoutsObject:workout];
     
+    [self.dataStore fetchData];
+    
+    self.workouts = self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
+    
+    [self.workoutsTableView reloadData];
     
 }
+
+-(void)replicateWorkout:(Workout *)workout
+{
+    [self createNewWorkout:workout.timeInSeconds/60 accessories:workout.availableAccessories];
+    
+}
+
 
 
 #pragma cell delegate methods
 
 
-- (void)repeatWorkoutTapped:(Workout *)workout
+-(void)repeatWorkoutButtonTapped:(Workout *)workout
 {
-    /// copy workout and launch
+
+    [self shrinkWorkoutDetailView];
+    
+    [self replicateWorkout:workout];
+    
+        // this needs to actually make a workout with the exact same circuits, etc.
+    
+    [self growOnBoardingScreenWhenRepeatWorkoutTapped];
+    
+
 }
 
--(void)deleteWorkoutTapped:(Workout *)workout
+-(void)deleteWorkoutButtonTapped:(Workout *)workout
 {
-    // delete workout and reload table cell
+   
+    NSString *alertTitle = [NSString stringWithFormat:@"Delete %@", workout.name];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                   message:@"Are you sure?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"delete hit");
+        
+        [self shrinkWorkoutDetailView];
+        
+        [self deleteWorkout:workout];
+
+        
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"cancel hit");
+        
+        
+    }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:deleteAction];
+   
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+
+    
 }
 
 
@@ -701,6 +781,7 @@
     [self shrinkWorkoutDetailView];
     
 }
+
 
 
 /*
