@@ -140,14 +140,26 @@
 
 - (IBAction)finishButtonTapped:(id)sender
 {
-    NSLog(@"finisheButtonTapped getting called");
     
-    if (self.restViewIsDisplayed)
+    
+    if (self.restViewIsDisplayed && !self.isLastExcercise)
     {
         
          [self moveBackToExcerciseScreen];
         
-       
+    }
+    
+    else if (self.restViewIsDisplayed && self.isLastExcercise)
+    {
+        
+        [self workoutFinished];
+        
+        self.workout.isFinishedSuccessfully = YES;
+        
+        [self.dataStore saveContext];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
     }
     
     else
@@ -156,60 +168,11 @@
         [self moveToRestScreen];
         [self growRestView];
         
-        
     }
     
 }
 
-- (IBAction)finishedButtonTapped:(id)sender
-{
-    
-    NSLog(@"%d rest view is displayed and %d is last excercise",self.restViewIsDisplayed, self.isLastExcercise);
-    
-    if (self.restViewIsDisplayed && !self.isLastExcercise)
-    {
-        
-        NSLog(@"move back to excercise called");
-        
-        [self moveBackToExcerciseScreen];
-        
-    }
-    else if (self.restViewIsDisplayed && self.isLastExcercise)
-    {
-        
-        NSLog(@"the rest view knows this is the last excercise");
-        // modually show the workout summary page
-        
-        [self.dataStore saveContext];
-        
-        
-        
-        [self workoutFinished];
-        
-         NSLog(@"about to save context");
-        
-        
-        
-        NSLog(@"just saved context");
-        
-        [self performSegueWithIdentifier:@"segueToWorkoutSummary" sender:nil];
-      
-        
-        
-        NSLog(@"end workout called");
-        
-    }
-    else
-    {
-        NSLog(@"move back to rest screen called");
-      
-        [self moveToRestScreen];
-        
-        
-    
-    }
-    
-}
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -220,8 +183,6 @@
 {
     // set restViewExcercise
     self.restView.indexOfExcerciseJustFinished = self.currentExcerciseSetIndexValue;
-    
-    NSLog(@"current excercise set index value is: %lu", self.currentExcerciseSetIndexValue);
     
     // excercise compelte stuff
     
@@ -248,8 +209,6 @@
 
 -(void)moveBackToExcerciseScreen
 {
-    
-    
     
     self.currentExcerciseSet.restTimeAfterInSecondsActual = self.restCounter;
     
@@ -278,7 +237,6 @@
     self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
     self.currentExcerciseSet.isComplete = YES;
     
-    NSLog(@"excercise with name: %@ is being set to complete", self.currentExcerciseSet.excercise.name);
     
 }
 
@@ -320,33 +278,6 @@
 }
 
 
-- (IBAction)workoutFinishedButtonTapped:(id)sender
-{
-    self.currentExcerciseSet.isComplete = YES;
-    self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
-    self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
-    
-    ((ExcerciseSet *)self.excerciseSets[self.currentExcerciseSetIndexValue]).timeInSecondsActual = self.individualExcerciseCounter;
-    
-    self.workout.timeInSeconds = self.totalWorkoutCounter;
-    
-    self.workout.isFinished = YES;
-    self.workout.isFinishedSuccessfully = YES;
-    
-    [self.totalWorkoutTimer invalidate];
-    
-   // [self performSegueWithIdentifier:@"segueToSummary" sender:nil];
-    
-    
-    
-    
-    
-    
-    //do some other stuff
-}
-
-
-
 -(void)updateExcercise
 {
     self.currentExcerciseSetIndexValue++;
@@ -361,19 +292,14 @@
         self.nextExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue + 1];
     }
     
-    NSLog(@"%d is what update excercise says about last excercise", self.isLastExcercise);
 }
-
-
-
-
 
 
 -(void)changeButtonTitle
 {
     if (self.restViewIsDisplayed && self.isLastExcercise)
     {
-        [self.doneButton setTitle:@"Finish workout!" forState:UIControlStateNormal];
+        [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
     }
     else if (self.restViewIsDisplayed)
     {
@@ -381,7 +307,7 @@
     }
     else if (self.isLastExcercise)
     {
-        [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
+        [self.doneButton setTitle:@"Workout finished" forState:UIControlStateNormal];
     }
     else
     {
