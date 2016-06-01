@@ -99,6 +99,8 @@
     self.workoutsTableView.delegate = self;
     
     self.selectedRow = -1;
+    
+    self.workoutsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
 }
 
@@ -350,7 +352,7 @@
 {
     NSLog(@"this is getting called");
     
-    if (self.blurViewDisplayed)
+    if (self.blurViewDisplayed && !self.generateWorkoutViewDisplayed)
     {
         
         [self shrinkBlurViewBackToButton];

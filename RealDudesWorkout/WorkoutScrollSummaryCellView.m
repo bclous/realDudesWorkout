@@ -134,12 +134,7 @@
         
     }
     
-    //self.stackView.distribution = UIStackViewDistributionFillEqually;
-    //self.stackView.alignment = UIStackViewAlignmentFirstBaseline;
     self.stackView.spacing = 10;
-    
-    
-    
     
 }
 
@@ -170,7 +165,19 @@
     
     self.workoutDurationLabel.text = [workout stringFromTimeInterval:workout.timeInSeconds];
     
-    self.excercisesLabel.text = [NSString stringWithFormat:@"%lu excercises >",[workout completedExcercisesInOrder].count];
+    
+    BOOL oneExcercise = [workout completedExcercisesInOrder].count == 1;
+    
+    if (oneExcercise)
+    {
+        self.excercisesLabel.text = @"1 exercise";
+    }
+    
+    else
+    {
+        self.excercisesLabel.text = [NSString stringWithFormat:@"%lu exercises >",[workout completedExcercisesInOrder].count];
+    }
+    
                                   
     
     

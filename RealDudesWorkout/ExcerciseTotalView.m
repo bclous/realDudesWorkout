@@ -90,7 +90,7 @@
     
     else if (!hasHours)
     {
-        NSString *stringNoHours = [NSString stringWithFormat:@"%@:%@",[self timeStringFromTime:minutes],[self timeStringFromTime:seconds]];
+        NSString *stringNoHours = [NSString stringWithFormat:@"%lu:%@",minutes,[self timeStringFromTime:seconds]];
         
         return stringNoHours;
     }

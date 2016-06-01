@@ -23,7 +23,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoM-LH-9tp">
                     <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCQ-SJ-EAu">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cCQ-SJ-EAu">
                             <rect key="frame" x="0.0" y="0.0" width="2216" height="130"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-MS-705">
@@ -43,15 +43,15 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-VV-w4u">
                                     <rect key="frame" x="554" y="0.0" width="554" height="130"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBx-zK-gJA">
                                     <rect key="frame" x="1108" y="0.0" width="554" height="130"/>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz9-yG-rnT">
                                     <rect key="frame" x="1662" y="0.0" width="554" height="130"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
                             <constraints>
@@ -64,35 +64,47 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="cCQ-SJ-EAu" secondAttribute="trailing" id="HuP-fI-CiY"/>
-                        <constraint firstItem="Xz9-yG-rnT" firstAttribute="width" secondItem="EoM-LH-9tp" secondAttribute="width" id="L2c-2C-Rw3"/>
                         <constraint firstItem="cCQ-SJ-EAu" firstAttribute="height" secondItem="EoM-LH-9tp" secondAttribute="height" id="Msb-Sl-fwn"/>
-                        <constraint firstItem="xz2-VV-w4u" firstAttribute="width" secondItem="EoM-LH-9tp" secondAttribute="width" id="SUE-Fy-Oeu"/>
                         <constraint firstItem="cCQ-SJ-EAu" firstAttribute="width" secondItem="EoM-LH-9tp" secondAttribute="width" multiplier="4" id="VvR-vU-iZ8"/>
                         <constraint firstItem="cCQ-SJ-EAu" firstAttribute="top" secondItem="EoM-LH-9tp" secondAttribute="top" id="Ysv-cy-Uha"/>
-                        <constraint firstItem="xBx-zK-gJA" firstAttribute="width" secondItem="EoM-LH-9tp" secondAttribute="width" id="bku-Je-I0o"/>
                         <constraint firstAttribute="bottom" secondItem="cCQ-SJ-EAu" secondAttribute="bottom" id="qn9-hz-NfM"/>
                         <constraint firstItem="cCQ-SJ-EAu" firstAttribute="leading" secondItem="EoM-LH-9tp" secondAttribute="leading" id="tYg-9p-Jd5"/>
-                        <constraint firstItem="jgp-MS-705" firstAttribute="width" secondItem="EoM-LH-9tp" secondAttribute="width" id="vHJ-jN-y9T"/>
                     </constraints>
                 </scrollView>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XPM-ne-fVd">
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XPM-ne-fVd" userLabel="circleStackView">
                     <rect key="frame" x="243" y="110" width="70" height="10"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMs-e2-Oyf">
                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
                             <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="qXN-aU-9de"/>
+                                <constraint firstAttribute="width" constant="10" id="vAe-8P-AjX"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIg-PB-MfJ">
                             <rect key="frame" x="20" y="0.0" width="10" height="10"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="Qex-er-w7N"/>
+                                <constraint firstAttribute="height" constant="10" id="fzh-as-gDi"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bae-90-22a">
                             <rect key="frame" x="40" y="0.0" width="10" height="10"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="ZWP-U3-qFA"/>
+                                <constraint firstAttribute="width" constant="10" id="c8G-9w-MpV"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-SF-yWD">
                             <rect key="frame" x="60" y="0.0" width="10" height="10"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="WDc-v5-77c"/>
+                                <constraint firstAttribute="height" constant="10" id="sJU-Nq-CoH"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <constraints>
