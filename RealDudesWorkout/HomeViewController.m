@@ -577,6 +577,9 @@
 
 -(void)createNewWorkout:(NSInteger)minutes accessories:(NSMutableArray *)accessories
 {
+    
+    NSLog(@"in create new workout, minutes is %lu", minutes);
+    
     [self.dataStore.user generateNewWorkout];
     
     [self.dataStore fetchData];
@@ -586,6 +589,8 @@
     Workout *newWorkout = [self.workouts firstObject];
     
     newWorkout.targetTimeInSeconds = minutes * 60;
+    
+    NSLog(@"still in create new workout, target time in seconds = %lu", newWorkout.targetTimeInSeconds);
     
     self.generateWorkoutView.workout = newWorkout;
 
@@ -715,7 +720,9 @@
 
 -(void)replicateWorkout:(Workout *)workout
 {
-    [self createNewWorkout:workout.timeInSeconds/60 accessories:workout.availableAccessories];
+    NSLog(@"in replicate workout, target time is %lu", workout.targetTimeInSeconds);
+    
+    [self createNewWorkout:workout.targetTimeInSeconds/60 accessories:workout.availableAccessories];
     
 }
 
@@ -726,6 +733,8 @@
 
 -(void)repeatWorkoutButtonTapped:(Workout *)workout
 {
+    
+    NSLog(@"in repeat workout button tapped, workout time is %lu", workout.targetTimeInSeconds);
 
     [self shrinkWorkoutDetailView];
     

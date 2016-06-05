@@ -280,7 +280,9 @@
     self.workoutEstimatedTimeLabel.text = [NSString stringWithFormat:@"Estimated time: %lld minutes", self.workout.targetTimeInSeconds / 60];
     
     self.numberOfExcercisesLabel.text = [NSString stringWithFormat:@"Excercises: %lu", self.workout.excercisesInOrder.count];
-     
+    
+    
+    NSLog(@"target time in seconds is %lu", self.workout.targetTimeInSeconds);
     
     
 }
