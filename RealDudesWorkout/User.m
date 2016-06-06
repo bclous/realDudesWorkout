@@ -399,17 +399,29 @@
 
 -(Workout *)generateNewWorkout
 {
-    NSLog(@"in the create new workout standard method");
-    
+   
     DataStore *store = [DataStore sharedDataStore];
     
     // create workout
     
+    BOOL firstWorkout = self.workouts.count == 0;
+    
     Workout *workout = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:store.managedObjectContext];
     
-    NSUInteger workoutNumber = self.workouts.count +1;
     
-    NSString *workoutName = [NSString stringWithFormat:@"Workout #%li",(unsigned long)workoutNumber];
+    if (firstWorkout)
+    {
+        workout.workoutNumber = 1;
+    }
+    else
+    {
+        Workout *lastworkout = [[self orderedWorkoutsLIFO] firstObject];
+        
+        workout.workoutNumber = lastworkout.workoutNumber + 1;
+    }
+
+    
+    NSString *workoutName = [NSString stringWithFormat:@"Workout #%li",(unsigned long)workout.workoutNumber];
     
     workout.name = workoutName;
     

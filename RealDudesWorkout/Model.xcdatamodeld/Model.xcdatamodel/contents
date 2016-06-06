@@ -51,6 +51,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetTimeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeInSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="workoutNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="availableAccessories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accessory" inverseName="workouts" inverseEntity="Accessory" syncable="YES"/>
         <relationship name="circuits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Circuit" inverseName="workout" inverseEntity="Circuit" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="workouts" inverseEntity="User" syncable="YES"/>
@@ -61,6 +62,6 @@
         <element name="Excercise" positionX="-2" positionY="-72" width="128" height="133"/>
         <element name="ExcerciseSet" positionX="-2" positionY="-333" width="128" height="223"/>
         <element name="User" positionX="-533" positionY="-342" width="128" height="148"/>
-        <element name="Workout" positionX="-360" positionY="-72" width="128" height="193"/>
+        <element name="Workout" positionX="-360" positionY="-72" width="128" height="208"/>
     </elements>
 </model>

@@ -23,25 +23,6 @@
     return _sharedDataStore;
 }
 
-//-(instancetype)init
-//{
-//    self = [super init];
-//    
-//    if (self)
-//    {
-//        NSLog(@"this is getting called and count is: %lu",self.availableExcercises.count);
-//        BOOL firstTime = self.availableExcercises.count == 0;
-//        
-//        if (firstTime)
-//        {
-//            NSLog(@"this is happening");
-//            [self createUser];
-//            [self generateAvailableExcercisesAndAccessoriesArrays];
-//        }
-//    }
-//    
-//    return self;
-//}
 
 
 -(void)createUser
@@ -141,6 +122,7 @@
 -(void)generateAvailableExcercisesAndAccessoriesArrays
 {
     
+    self.maxWorkoutNumber = 0;
     
     // create excercises
     

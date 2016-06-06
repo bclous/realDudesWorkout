@@ -17,6 +17,7 @@
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) NSArray *availableExcercises;
 @property (strong, nonatomic) NSArray *availableAccessories;
+@property (nonatomic) NSUInteger maxWorkoutNumber;
 
 
 +(instancetype)sharedDataStore;
