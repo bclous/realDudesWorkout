@@ -11,9 +11,10 @@
 #import "RestView.h"
 #import "RestView2.h"
 #import "ExcerciseView.h"
+#import "ExerciseDescriptionView.h"
 
 
-@interface ActiveWorkoutViewController ()
+@interface ActiveWorkoutViewController () <ExerciseDescriptionDelegate>
 
 @property (strong, nonatomic) Workout *workout;
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet ExcerciseView *excerciseView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *footerView;
 @property (weak, nonatomic) IBOutlet UIView *footerBackgroundView;
+@property (weak, nonatomic) IBOutlet UIView *navBar;
 
 @property (weak, nonatomic) IBOutlet UILabel *excerciseTotalsLabel;
 
@@ -50,6 +52,10 @@
 @property (strong, nonatomic) NSLayoutConstraint *restBlurViewTopConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *restBlurViewBottomConstraint;
 
+@property (strong, nonatomic) ExerciseDescriptionView *exerciseDescriptionView;
+@property (nonatomic) BOOL descriptionViewDisplayed;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *exerciseDescriptionTapGestureRecognizer;
+
 
 @end
 
@@ -73,7 +79,11 @@
     
     [self initializeViewComponents];
     
+    [self createExerciseDescriptionView];
+    
     [self createRestView];
+    
+    
    
    
 }
@@ -132,8 +142,6 @@
     
     [self generateExcerciseComponents];
     
-    //[self generateRestComponents];
-    
 }
 
 
@@ -184,6 +192,8 @@
     // set restViewExcercise
     self.restView.indexOfExcerciseJustFinished = self.currentExcerciseSetIndexValue;
     
+
+    
     // excercise compelte stuff
     
     [self excerciseComplete];
@@ -204,7 +214,10 @@
     [self.dataStore saveContext];
     
     [self growRestView];
-
+    
+    [self.view layoutIfNeeded];
+    
+ 
 }
 
 -(void)moveBackToExcerciseScreen
@@ -224,6 +237,14 @@
     [self.dataStore saveContext];
     
     [self resetRestAndExcerciseCounters];
+    
+    if (self.descriptionViewDisplayed)
+    {
+        self.exerciseDescriptionView.alpha = 0;
+        
+        self.descriptionViewDisplayed = NO;
+    }
+
     
     [self shrinkRestView];
 
@@ -321,6 +342,8 @@
 -(void)generateExcerciseComponents
 {
     self.excerciseView.excerciseSet = self.currentExcerciseSet;
+    self.exerciseDescriptionView.excerciseSet = self.currentExcerciseSet;
+    
 }
 
 -(void)generateRestComponents
@@ -565,6 +588,55 @@
     
     
 }
+
+-(void)createExerciseDescriptionView
+{
+    self.descriptionViewDisplayed = NO;
+    
+    self.exerciseDescriptionView = [[ExerciseDescriptionView alloc] init];
+    
+    self.exerciseDescriptionView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.exerciseDescriptionView];
+    
+    self.exerciseDescriptionView.delegate = self;
+    
+    [self.exerciseDescriptionView.centerXAnchor constraintEqualToAnchor:self.excerciseView.centerXAnchor].active = YES;
+    [self.exerciseDescriptionView.centerYAnchor constraintEqualToAnchor:self.excerciseView.centerYAnchor].active = YES;
+    [self.exerciseDescriptionView.widthAnchor constraintEqualToAnchor:self.excerciseView.widthAnchor].active = YES;
+    [self.exerciseDescriptionView.heightAnchor constraintEqualToAnchor:self.excerciseView.heightAnchor].active = YES;
+    
+ 
+    self.exerciseDescriptionView.alpha = 0;
+    
+    self.exerciseDescriptionView.excerciseSet = self.currentExcerciseSet;
+
+    
+}
+
+-(void)leaveDescriptionViewTapped
+{
+    self.exerciseDescriptionView.alpha = 0;
+    
+    self.descriptionViewDisplayed = NO;
+    
+
+    
+    
+}
+
+- (IBAction)excerciseDescriptionTapped:(id)sender
+{
+    self.exerciseDescriptionView.alpha = 1;
+    
+    self.descriptionViewDisplayed = YES;
+    
+
+    
+}
+
+
+
 
 
 //

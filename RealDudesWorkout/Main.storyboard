@@ -22,6 +22,10 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CD8-hf-WIK" customClass="ExcerciseView">
                                 <rect key="frame" x="0.0" y="70" width="600" height="380"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XGx-pw-blZ" appends="YES" id="fDH-g4-M4b"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaX-bO-1rm" userLabel="navbar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
@@ -158,8 +162,10 @@
                         <outlet property="doneButton" destination="uVS-gt-Wqd" id="voQ-XU-9pw"/>
                         <outlet property="excerciseTotalsLabel" destination="ivP-93-osU" id="fqV-Em-pmd"/>
                         <outlet property="excerciseView" destination="CD8-hf-WIK" id="QpS-Nb-Ojn"/>
+                        <outlet property="exerciseDescriptionTapGestureRecognizer" destination="XGx-pw-blZ" id="Yv5-3P-L3P"/>
                         <outlet property="footerBackgroundView" destination="7Or-Ke-mW9" id="Stv-GU-AjR"/>
                         <outlet property="footerView" destination="MEV-xl-jxW" id="s94-qM-qjQ"/>
+                        <outlet property="navBar" destination="kaX-bO-1rm" id="PF5-sd-gho"/>
                         <outlet property="workoutTimeLabel" destination="V0H-P0-NlQ" id="fso-hA-zvD"/>
                     </connections>
                 </viewController>
@@ -172,6 +178,11 @@
                 <tapGestureRecognizer id="vey-zq-hpY">
                     <connections>
                         <action selector="cancelborderViewTapped:" destination="NKf-Qy-GjP" id="eHU-C8-5le"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="XGx-pw-blZ">
+                    <connections>
+                        <action selector="excerciseDescriptionTapped:" destination="NKf-Qy-GjP" id="ihd-tn-nge"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

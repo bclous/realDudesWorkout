@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExerciseDescriptionView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Mf0-4i-77K"/>
+                <outlet property="exerciseDescriptionTextField" destination="a5q-fB-SRX" id="bec-St-0dQ"/>
+                <outlet property="exerciseNameLabel" destination="YJd-up-8eT" id="cfh-M3-DU4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rx4-xT-VHt">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7U2-8V-zmJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-up-8eT">
+                                <rect key="frame" x="279" y="26" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5q-fB-SRX">
+                                <rect key="frame" x="10" y="60" width="580" height="540"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="a5q-fB-SRX" firstAttribute="top" secondItem="7U2-8V-zmJ" secondAttribute="top" constant="60" id="A7f-Wm-fiu"/>
+                            <constraint firstItem="YJd-up-8eT" firstAttribute="top" secondItem="7U2-8V-zmJ" secondAttribute="top" constant="25" id="AhZ-Ho-iM0"/>
+                            <constraint firstItem="YJd-up-8eT" firstAttribute="centerX" secondItem="7U2-8V-zmJ" secondAttribute="centerX" id="b3w-mB-mXc"/>
+                            <constraint firstAttribute="bottom" secondItem="a5q-fB-SRX" secondAttribute="bottom" id="sag-on-X1l"/>
+                            <constraint firstAttribute="trailing" secondItem="a5q-fB-SRX" secondAttribute="trailing" constant="10" id="siY-9b-XaE"/>
+                            <constraint firstItem="a5q-fB-SRX" firstAttribute="leading" secondItem="7U2-8V-zmJ" secondAttribute="leading" constant="10" id="ucG-lw-Ssw"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="WVk-9b-5Z4" appends="YES" id="5gX-Yf-fMg"/>
+                        </connections>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="rx4-xT-VHt" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="2On-IE-Dke"/>
+                <constraint firstItem="rx4-xT-VHt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Z8G-X4-7qp"/>
+                <constraint firstItem="rx4-xT-VHt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qLn-9C-YEI"/>
+                <constraint firstItem="rx4-xT-VHt" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="qOX-Mb-Yxg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="320" y="518"/>
+        </view>
+        <tapGestureRecognizer id="WVk-9b-5Z4">
+            <connections>
+                <action selector="screenTapped:" destination="-1" id="iz2-Qz-rjc"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>
