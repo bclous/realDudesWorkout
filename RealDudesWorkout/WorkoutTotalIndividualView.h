@@ -10,4 +10,9 @@
 
 @interface WorkoutTotalIndividualView : UIView
 
+@property (strong, nonatomic) NSString *timePeriod;
+@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *averageTimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *workoutTotalSmileFaceImageView;
+
 @end

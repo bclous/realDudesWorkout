@@ -204,7 +204,6 @@
     
     NSArray *allWorkouts = [self orderedWorkoutsLIFO];
     
-    NSLog(@"%f",((Workout *)allWorkouts[0]).date);
     
 //    NSPredicate *workoutsSinceIntervalPredicate = [NSPredicate predicateWithFormat:@"date > %f",window];
 //    

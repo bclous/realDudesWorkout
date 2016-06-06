@@ -7,6 +7,7 @@
 //
 
 #import "WorkoutTotalsTopCellView.h"
+#import "WorkoutTotalIndividualView.h"
 
 @interface WorkoutTotalsTopCellView () <UIScrollViewDelegate>
 
@@ -18,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet WorkoutTotalIndividualView *weekView;
+@property (weak, nonatomic) IBOutlet WorkoutTotalIndividualView *monthView;
+@property (weak, nonatomic) IBOutlet WorkoutTotalIndividualView *yearView;
 
 @property (nonatomic) CGFloat page;
 
@@ -70,7 +74,9 @@
     
     self.page = 0;
     
-    
+    self.weekView.timePeriod = @"week";
+    self.monthView.timePeriod = @"month";
+    self.yearView.timePeriod = @"year";
     
     
 }
@@ -99,17 +105,17 @@
     
     self.page = offset / widthOfFrame;
     
-    NSLog(@"page is: %f", self.page);
+    [self resetLabels];
     
     [self setCircleColorsFromPage:self.page];
+
     
 }
 
 -(void)setCircleColorsFromPage:(CGFloat)page
 {
     
-   
-    
+
     if (page == 0.0)
     {
         [self resetCircleColors];
@@ -122,17 +128,29 @@
          [self resetCircleColors];
         self.circle2.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
         
+        self.weekView.totalTimeLabel.alpha = 1;
+        self.weekView.averageTimeLabel.alpha = 1;
+        self.weekView.workoutTotalSmileFaceImageView.alpha = 1;
+        
     }
     else if (page == 2.0)
     {
        [self resetCircleColors];
         self.circle3.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+        
+        self.monthView.totalTimeLabel.alpha = 1;
+        self.monthView.averageTimeLabel.alpha = 1;
+        self.monthView.workoutTotalSmileFaceImageView.alpha = 1;
        
     }
     else if (page == 3.0)
     {
         [self resetCircleColors];
         self.circle4.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+        
+        self.yearView.totalTimeLabel.alpha = 1;
+        self.yearView.averageTimeLabel.alpha = 1;
+        self.yearView.workoutTotalSmileFaceImageView.alpha = 1;
         
     }
     
@@ -145,6 +163,25 @@
     self.circle3.backgroundColor = [UIColor whiteColor];
     self.circle4.backgroundColor = [UIColor whiteColor];
 }
+
+-(void)resetLabels
+{
+    
+    self.weekView.totalTimeLabel.alpha = 0;
+    self.weekView.averageTimeLabel.alpha = 0;
+    self.weekView.workoutTotalSmileFaceImageView.alpha = 0;
+    
+    self.monthView.totalTimeLabel.alpha = 0;
+    self.monthView.averageTimeLabel.alpha = 0;
+    self.monthView.workoutTotalSmileFaceImageView.alpha = 0;
+    
+    self.yearView.totalTimeLabel.alpha = 0;
+    self.yearView.averageTimeLabel.alpha = 0;
+    self.yearView.workoutTotalSmileFaceImageView.alpha = 0;
+    
+}
+
+
 
 
 

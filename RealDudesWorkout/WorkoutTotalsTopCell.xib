@@ -14,7 +14,10 @@
                 <outlet property="circle3" destination="Bae-90-22a" id="Tuv-nY-fo0"/>
                 <outlet property="circle4" destination="hhY-SF-yWD" id="c46-dG-LSk"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="GEJ-Fk-dwh"/>
+                <outlet property="monthView" destination="xBx-zK-gJA" id="XVW-x5-DmJ"/>
                 <outlet property="scrollView" destination="EoM-LH-9tp" id="xAF-nc-4kX"/>
+                <outlet property="weekView" destination="xz2-VV-w4u" id="Ema-zz-e2k"/>
+                <outlet property="yearView" destination="Xz9-yG-rnT" id="PDP-jd-51E"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

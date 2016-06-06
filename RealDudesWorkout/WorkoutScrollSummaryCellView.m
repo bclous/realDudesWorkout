@@ -170,7 +170,7 @@
     
     if (oneExcercise)
     {
-        self.excercisesLabel.text = @"1 exercise";
+        self.excercisesLabel.text = @"1 exercise >";
     }
     
     else
