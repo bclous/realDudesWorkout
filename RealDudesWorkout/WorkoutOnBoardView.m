@@ -108,9 +108,9 @@
 - (IBAction)minusMinutesTapped:(id)sender
 {
     
-    if (!(self.workoutLength <= 5))
+    if (self.workoutLength > 10)
     {
-        self.workoutLength = self.workoutLength - 5;
+        self.workoutLength = self.workoutLength - 10;
         
         [self updateMinutesLabel];
     }
@@ -120,9 +120,9 @@
 - (IBAction)plusMinutesTapped:(id)sender
 {
     
-    if (self.workoutLength < 75)
+    if (self.workoutLength < 60)
     {
-        self.workoutLength = self.workoutLength + 5;
+        self.workoutLength = self.workoutLength + 10;
         
         [self updateMinutesLabel];
     }
