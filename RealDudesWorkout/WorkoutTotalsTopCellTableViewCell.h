@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WorkoutTotalsTopCellView.h"
 
 @interface WorkoutTotalsTopCellTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet WorkoutTotalsTopCellView *workoutTotalsTopCellView;
+
 
 @end

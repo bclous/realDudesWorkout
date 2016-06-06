@@ -77,6 +77,7 @@
     
     self.hasLoadedBefore = YES;
     
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -226,7 +226,7 @@
                                             <outlet property="workoutScrollSummaryView" destination="vfc-gQ-Znh" id="pjH-iv-kAk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="5QZ-aM-aPi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="5QZ-aM-aPi" customClass="WorkoutTotalsTopCellTableViewCell">
                                         <rect key="frame" x="0.0" y="139" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5QZ-aM-aPi" id="Y2O-M4-iG5">
@@ -245,6 +245,10 @@
                                                 <constraint firstItem="M6y-v5-jy1" firstAttribute="height" secondItem="Y2O-M4-iG5" secondAttribute="height" id="hpw-Gk-0P3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentView" destination="Y2O-M4-iG5" id="rPI-KL-G2h"/>
+                                            <outlet property="workoutTotalsTopCellView" destination="M6y-v5-jy1" id="feQ-ep-H7s"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -10,4 +10,5 @@
 
 @interface WorkoutTotalsTopCellView : UIView
 
+
 @end

@@ -8,7 +8,7 @@
 
 #import "WorkoutTotalsTopCellView.h"
 
-@interface WorkoutTotalsTopCellView ()
+@interface WorkoutTotalsTopCellView () <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIView *circle1;
@@ -16,6 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIView *circle3;
 @property (weak, nonatomic) IBOutlet UIView *circle4;
 
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic) CGFloat page;
 
 @end
 
@@ -60,7 +64,88 @@
     self.circle3.layer.cornerRadius =5;
     self.circle4.layer.cornerRadius =5;
     
+    self.blurView.alpha = 0;
+    
+    self.scrollView.delegate = self;
+    
+    self.page = 0;
+    
+    
+    
     
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scroll view scrolled called with content offset of :%f and view size of: %f", self.scrollView.contentOffset.x
+          , self.frame.size.width);
+    
+    CGFloat widthOfFrame = self.frame.size.width;
+    CGFloat offset = self.scrollView.contentOffset.x;
+    
+    if (offset > 0)
+    {
+        
+        if (offset / widthOfFrame > 1)
+        {
+            self.blurView.alpha = .6;
+        }
+        else
+        {
+            self.blurView.alpha = offset / widthOfFrame * .6;
+        }
+        
+    }
+    
+    self.page = offset / widthOfFrame;
+    
+    NSLog(@"page is: %f", self.page);
+    
+    [self setCircleColorsFromPage:self.page];
+    
+}
+
+-(void)setCircleColorsFromPage:(CGFloat)page
+{
+    
+   
+    
+    if (page == 0.0)
+    {
+        [self resetCircleColors];
+        self.circle1.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+
+    }
+    
+    else if (page == 1.0)
+    {
+         [self resetCircleColors];
+        self.circle2.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+        
+    }
+    else if (page == 2.0)
+    {
+       [self resetCircleColors];
+        self.circle3.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+       
+    }
+    else if (page == 3.0)
+    {
+        [self resetCircleColors];
+        self.circle4.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+        
+    }
+    
+}
+
+-(void)resetCircleColors
+{
+    self.circle1.backgroundColor = [UIColor whiteColor];
+    self.circle2.backgroundColor = [UIColor whiteColor];
+    self.circle3.backgroundColor = [UIColor whiteColor];
+    self.circle4.backgroundColor = [UIColor whiteColor];
+}
+
+
 
 @end
