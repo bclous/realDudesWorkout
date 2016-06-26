@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "NSString+BDC_Utility.h"
 
 @class Workout;
 
@@ -33,8 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSArray *)excerciseNameAndQuantitySortedGivenWorkouts:(NSArray *)workouts;
 -(NSArray *)excercisePictureNamesSortedGivenWorkouts:(NSArray *)workouts;
-
-
 
 
 

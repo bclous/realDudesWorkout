@@ -12,9 +12,9 @@
 
 +(NSString *)timeInSentenceForm:(NSTimeInterval)timeInSeconds includSecondsAlways:(BOOL)includeSecondsAlways includeSecondsWhenUnderOneHour:(BOOL)includeSecondsWhenUnderOneHour abbreviate:(BOOL)abbreviate
 {
-    if (!includeSecondsWhenUnderOneHour)
+    if (includeSecondsAlways)
     {
-        includeSecondsAlways = NO;
+        includeSecondsWhenUnderOneHour = YES;
     }
     
     NSUInteger hours = timeInSeconds / 3600;
@@ -33,9 +33,23 @@
     BOOL minutePlural = minutes !=1;
     BOOL secondPlural = seconds !=1;
     
-    if (timeInSeconds == 0 || !(hasHours && hasMinutes))
+    if (timeInSeconds == 0)
     {
-        return [NSString stringWithFormat:@"< 1 %@", [@"minutes" abbreviateTimeUnit:abbreviate plural:NO]];
+        return @"-";
+    }
+    
+    else if (!hasHours && !hasMinutes)
+    {
+        
+        if (includeSecondsWhenUnderOneHour)
+        {
+            return [NSString stringWithFormat:@"%lu %@", seconds, [@"seconds" abbreviateTimeUnit:abbreviate plural:secondPlural]];
+        }
+        else
+        {
+            return [NSString stringWithFormat:@"< 1 %@", [@"minutes" abbreviateTimeUnit:abbreviate plural:NO]];
+        }
+        
     }
     
     else if (!hasHours)
@@ -85,6 +99,11 @@
     
 }
 
+
+
+
+// Helper methods
+
 - (NSString *)abbreviateTimeUnit:(BOOL)abbreviate plural:(BOOL)plural
 {
     NSString *timeString;
@@ -111,6 +130,7 @@
         return [timeString substringToIndex:[timeString length]-1];
     }
 }
+
 
 +(NSString *)hoursFormatted:(NSUInteger)hours
 {
@@ -146,6 +166,40 @@
     {
         return [NSString stringWithFormat:@"%lu", seconds];
     }
+}
+
++(NSString *)monthFromTimeInterval:(NSTimeInterval)timeInterval
+{
+    NSDate *workoutDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"MMMM"];
+    
+    return  [dateFormatter stringFromDate:workoutDate];
+    
+}
+
++(NSString *)currentMonth
+{
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"MMMM"];
+    
+    return  [dateFormatter stringFromDate:date];
+}
+
++(NSString *)currentYear
+{
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"YYYY"];
+    
+    return  [dateFormatter stringFromDate:date];
 }
 
 

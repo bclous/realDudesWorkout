@@ -90,11 +90,11 @@
         
         if (offset / widthOfFrame > 1)
         {
-            self.blurView.alpha = .75;
+            self.blurView.alpha = 1;
         }
         else
         {
-            self.blurView.alpha = offset / widthOfFrame * .75;
+            self.blurView.alpha = offset / widthOfFrame * 1;
         }
         
     }

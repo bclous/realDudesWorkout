@@ -67,6 +67,8 @@
 		ABCE80031D060AA600E93339 /* WorkoutTotalIndividual.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCE80021D060AA600E93339 /* WorkoutTotalIndividual.xib */; };
 		ABCE80061D060E6E00E93339 /* WorkoutTotalIndividualView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCE80051D060E6E00E93339 /* WorkoutTotalIndividualView.m */; };
 		ABDFCF3D1D1F18AC00FF3007 /* NSString+BDC_Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */; };
+		ABDFCF3F1D2085F100FF3007 /* WorkoutTotalsDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDFCF3E1D2085F100FF3007 /* WorkoutTotalsDetail.xib */; };
+		ABDFCF421D208C9000FF3007 /* WorkoutTotalsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF411D208C9000FF3007 /* WorkoutTotalsDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +172,9 @@
 		ABCE80051D060E6E00E93339 /* WorkoutTotalIndividualView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTotalIndividualView.m; sourceTree = "<group>"; };
 		ABDFCF3B1D1F18AC00FF3007 /* NSString+BDC_Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BDC_Utility.h"; sourceTree = "<group>"; };
 		ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BDC_Utility.m"; sourceTree = "<group>"; };
+		ABDFCF3E1D2085F100FF3007 /* WorkoutTotalsDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTotalsDetail.xib; sourceTree = "<group>"; };
+		ABDFCF401D208C9000FF3007 /* WorkoutTotalsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTotalsDetailView.h; sourceTree = "<group>"; };
+		ABDFCF411D208C9000FF3007 /* WorkoutTotalsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTotalsDetailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +194,8 @@
 			children = (
 				ABCE80041D060E6E00E93339 /* WorkoutTotalIndividualView.h */,
 				ABCE80051D060E6E00E93339 /* WorkoutTotalIndividualView.m */,
+				ABDFCF401D208C9000FF3007 /* WorkoutTotalsDetailView.h */,
+				ABDFCF411D208C9000FF3007 /* WorkoutTotalsDetailView.m */,
 				ABCE7FFF1D05DAF000E93339 /* ExerciseDescriptionView.h */,
 				ABCE80001D05DAF000E93339 /* ExerciseDescriptionView.m */,
 				ABC0B6831CF113DC00938033 /* GenerateWorkoutView.h */,
@@ -252,6 +259,7 @@
 				ABC0B6771CEE5D8F00938033 /* WorkoutOnBoard.xib */,
 				ABC0B67C1CF0C13300938033 /* AccessoryOnBoard.xib */,
 				ABCE7FF81CF672B300E93339 /* WorkoutDetail.xib */,
+				ABDFCF3E1D2085F100FF3007 /* WorkoutTotalsDetail.xib */,
 				ABC0B68D1CF3B68400938033 /* ExcerciseRestView.xib */,
 				ABC0B6861CF11FEF00938033 /* GenerateWorkoutExcercise.xib */,
 				ABA977BD1C9F5E2F00D04639 /* ExcerciseView.xib */,
@@ -460,6 +468,7 @@
 				AB2A39101CEA2BDA005DD03A /* WorkoutScrollSummaryCell.xib in Resources */,
 				ABC0B68E1CF3B68400938033 /* ExcerciseRestView.xib in Resources */,
 				ABC0B6781CEE5D8F00938033 /* WorkoutOnBoard.xib in Resources */,
+				ABDFCF3F1D2085F100FF3007 /* WorkoutTotalsDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +548,7 @@
 				ABDFCF3D1D1F18AC00FF3007 /* NSString+BDC_Utility.m in Sources */,
 				AB2A390C1CE404CC005DD03A /* HomeViewController.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
+				ABDFCF421D208C9000FF3007 /* WorkoutTotalsDetailView.m in Sources */,
 				ABCE80011D05DAF000E93339 /* ExerciseDescriptionView.m in Sources */,
 				ABC0B6941CF3B8E100938033 /* RestView2.m in Sources */,
 				AB41F2EB1C90FE33009D7E63 /* Excercise+CoreDataProperties.m in Sources */,

@@ -125,7 +125,7 @@
     
     [self.excercisesStackView.heightAnchor constraintEqualToAnchor:self.excercisesScrollView.heightAnchor].active = YES;
     
-    self.excercisesStackView.spacing = 5;
+    self.excercisesStackView.spacing = 0;
     
 }
 
