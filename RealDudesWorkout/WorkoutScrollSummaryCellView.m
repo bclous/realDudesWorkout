@@ -183,17 +183,6 @@
     
 }
 
-- (IBAction)repeatWorkoutTapped:(id)sender
-{
-    
-    [self.delegate repeatWorkoutTapped:self.workout];
-    
-}
-
-- (IBAction)deleteWorkoutTapped:(id)sender
-{
-    [self.delegate deleteWorkoutTapped:self.workout];
-}
 
 
 @end

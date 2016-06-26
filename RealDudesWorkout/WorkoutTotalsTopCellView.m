@@ -55,8 +55,7 @@
 
 -(void)commonInit
 {
-    
-    
+
     [[NSBundle mainBundle] loadNibNamed:@"WorkoutTotalsTopCell" owner:self options:nil];
     
     [self addSubview:self.contentView];
@@ -83,9 +82,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"scroll view scrolled called with content offset of :%f and view size of: %f", self.scrollView.contentOffset.x
-          , self.frame.size.width);
-    
     CGFloat widthOfFrame = self.frame.size.width;
     CGFloat offset = self.scrollView.contentOffset.x;
     
@@ -94,11 +90,11 @@
         
         if (offset / widthOfFrame > 1)
         {
-            self.blurView.alpha = .6;
+            self.blurView.alpha = .75;
         }
         else
         {
-            self.blurView.alpha = offset / widthOfFrame * .6;
+            self.blurView.alpha = offset / widthOfFrame * .75;
         }
         
     }
@@ -114,8 +110,6 @@
 
 -(void)setCircleColorsFromPage:(CGFloat)page
 {
-    
-
     if (page == 0.0)
     {
         [self resetCircleColors];
@@ -130,7 +124,8 @@
         
         self.weekView.totalTimeLabel.alpha = 1;
         self.weekView.averageTimeLabel.alpha = 1;
-        self.weekView.workoutTotalSmileFaceImageView.alpha = 1;
+        self.weekView.moreLabel.alpha = 1;
+     
         
     }
     else if (page == 2.0)
@@ -140,7 +135,8 @@
         
         self.monthView.totalTimeLabel.alpha = 1;
         self.monthView.averageTimeLabel.alpha = 1;
-        self.monthView.workoutTotalSmileFaceImageView.alpha = 1;
+        self.monthView.moreLabel.alpha = 1;
+      
        
     }
     else if (page == 3.0)
@@ -150,7 +146,8 @@
         
         self.yearView.totalTimeLabel.alpha = 1;
         self.yearView.averageTimeLabel.alpha = 1;
-        self.yearView.workoutTotalSmileFaceImageView.alpha = 1;
+        self.yearView.moreLabel.alpha = 1;
+        
         
     }
     
@@ -169,15 +166,15 @@
     
     self.weekView.totalTimeLabel.alpha = 0;
     self.weekView.averageTimeLabel.alpha = 0;
-    self.weekView.workoutTotalSmileFaceImageView.alpha = 0;
+    self.weekView.moreLabel.alpha = 0;
     
     self.monthView.totalTimeLabel.alpha = 0;
     self.monthView.averageTimeLabel.alpha = 0;
-    self.monthView.workoutTotalSmileFaceImageView.alpha = 0;
+    self.monthView.moreLabel.alpha = 0;
     
     self.yearView.totalTimeLabel.alpha = 0;
     self.yearView.averageTimeLabel.alpha = 0;
-    self.yearView.workoutTotalSmileFaceImageView.alpha = 0;
+    self.yearView.moreLabel.alpha = 0;
     
 }
 

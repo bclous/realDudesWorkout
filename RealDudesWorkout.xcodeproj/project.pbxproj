@@ -66,6 +66,7 @@
 		ABCE80011D05DAF000E93339 /* ExerciseDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCE80001D05DAF000E93339 /* ExerciseDescriptionView.m */; };
 		ABCE80031D060AA600E93339 /* WorkoutTotalIndividual.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCE80021D060AA600E93339 /* WorkoutTotalIndividual.xib */; };
 		ABCE80061D060E6E00E93339 /* WorkoutTotalIndividualView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCE80051D060E6E00E93339 /* WorkoutTotalIndividualView.m */; };
+		ABDFCF3D1D1F18AC00FF3007 /* NSString+BDC_Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +168,8 @@
 		ABCE80021D060AA600E93339 /* WorkoutTotalIndividual.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTotalIndividual.xib; sourceTree = "<group>"; };
 		ABCE80041D060E6E00E93339 /* WorkoutTotalIndividualView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTotalIndividualView.h; sourceTree = "<group>"; };
 		ABCE80051D060E6E00E93339 /* WorkoutTotalIndividualView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTotalIndividualView.m; sourceTree = "<group>"; };
+		ABDFCF3B1D1F18AC00FF3007 /* NSString+BDC_Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BDC_Utility.h"; sourceTree = "<group>"; };
+		ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BDC_Utility.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +294,8 @@
 			children = (
 				AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */,
 				AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */,
+				ABDFCF3B1D1F18AC00FF3007 /* NSString+BDC_Utility.h */,
+				ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */,
 				ABA9776F1C99D41A00D04639 /* Main.storyboard */,
 				AB1D4D0D1C960BC400E71342 /* View Controllers */,
 				AB1220B71CA2ED390067467C /* Table View Cells */,
@@ -531,6 +536,7 @@
 				ABC0B6911CF3B77200938033 /* ExcerciseRestView.m in Sources */,
 				ABC0B6531CECD29A00938033 /* StartWorkoutButtonView.m in Sources */,
 				ABA977BA1C9D9FD900D04639 /* User.m in Sources */,
+				ABDFCF3D1D1F18AC00FF3007 /* NSString+BDC_Utility.m in Sources */,
 				AB2A390C1CE404CC005DD03A /* HomeViewController.m in Sources */,
 				AB41F2CB1C90FC25009D7E63 /* main.m in Sources */,
 				ABCE80011D05DAF000E93339 /* ExerciseDescriptionView.m in Sources */,

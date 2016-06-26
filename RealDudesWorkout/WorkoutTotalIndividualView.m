@@ -47,8 +47,7 @@
 
 -(void)commonInit
 {
-    
-    
+
     [[NSBundle mainBundle] loadNibNamed:@"WorkoutTotalIndividual" owner:self options:nil];
     
     [self addSubview:self.contentView];
@@ -57,52 +56,46 @@
     
     self.dataStore = [DataStore sharedDataStore];
     
-    
 }
 
 -(void)setTimePeriod:(NSString *)timePeriod
 {
     _timePeriod = timePeriod;
+    [self setViewForTimePeriod:timePeriod];
     
+}
+
+-(void)setViewForTimePeriod:(NSString *)timePeriod
+{
     if ([timePeriod isEqualToString:@"week"])
     {
-        [self setViewForWeek];
+        self.workouts = [self.dataStore.user workoutsSinceMonday];
+        
     }
     else if ([timePeriod isEqualToString:@"month"])
     {
-        [self setViewForMonth];
+        self.workouts = [self.dataStore.user workoutsSinceFirstOfMonth];
     }
-    else if ([timePeriod isEqualToString:@"year"])
+    else
     {
-        [self setViewForYear];
+        self.workouts = [self.dataStore.user workoutsSinceFirstOfYear];
     }
     
+    self.workoutNumberLabel.text = [NSString stringWithFormat:@"%lu", self.workouts.count];
+    self.workoutsSinceLabel.text = self.workouts.count == 1 ? [NSString stringWithFormat:@"workout this %@", timePeriod] : [NSString stringWithFormat:@"workouts this %@", timePeriod];
 }
 
--(void)setViewForWeek
+- (IBAction)moreLabelTapped:(id)sender
 {
-    self.workouts = [self.dataStore.user workoutsSinceMonday];
-    
-    self.workoutNumberLabel.text = [NSString stringWithFormat:@"%lu", self.workouts.count];
-    self.workoutsSinceLabel.text = @"workouts this week";
+    [self.delegate moreDetailsTappped:self.timePeriod];
 }
 
--(void)setViewForMonth
+- (IBAction)moreLabelOuterViewTapped:(id)sender
 {
-    self.workouts = [self.dataStore.user workoutsSinceFirstOfMonth];
-    
-    self.workoutNumberLabel.text = [NSString stringWithFormat:@"%lu", self.workouts.count];
-    self.workoutsSinceLabel.text = @"workouts this month";
-    
+    [self.delegate moreDetailsTappped:self.timePeriod];
 }
 
--(void)setViewForYear
-{
-    self.workouts = [self.dataStore.user workoutsSinceFirstOfYear];
-    
-    self.workoutNumberLabel.text = [NSString stringWithFormat:@"%lu", self.workouts.count];
-    self.workoutsSinceLabel.text = @"workouts this year";
-}
+
 
 
 

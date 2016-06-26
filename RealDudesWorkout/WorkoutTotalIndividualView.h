@@ -8,11 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WorkoutTotalIndividualViewDelegate <NSObject>
+
+-(void)moreDetailsTappped:(NSString *)timePeriod;
+
+@end
+
 @interface WorkoutTotalIndividualView : UIView
 
 @property (strong, nonatomic) NSString *timePeriod;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averageTimeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *workoutTotalSmileFaceImageView;
+@property (weak, nonatomic) IBOutlet UILabel *moreLabel;
+@property (weak, nonatomic) id <WorkoutTotalIndividualViewDelegate> delegate;
+
 
 @end

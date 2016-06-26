@@ -109,15 +109,5 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="813" y="401"/>
         </view>
-        <tapGestureRecognizer id="x09-rd-C1n">
-            <connections>
-                <action selector="repeatWorkoutTapped:" destination="-1" id="dFG-MK-6fE"/>
-            </connections>
-        </tapGestureRecognizer>
-        <tapGestureRecognizer id="0Gj-lx-QVv">
-            <connections>
-                <action selector="deleteWorkoutTapped:" destination="-1" id="eoj-JY-v1g"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>

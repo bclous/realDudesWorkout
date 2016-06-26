@@ -16,11 +16,12 @@
 #import "GenerateWorkoutExcerciseView.h"
 #import "WorkoutTotalsTopCellTableViewCell.h"
 #import "WorkoutDetailView.h"
+#import "WorkoutTotalIndividualView.h"
 
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate, WorkoutScrollSummaryCellDelegate, WorkoutDetailViewDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate,  WorkoutDetailViewDelegate, WorkoutTotalIndividualViewDelegate>
 
-@property (weak, nonatomic) IBOutlet TotalsFrontPageCellView *totalsView;
+
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
 @property (strong, nonatomic) DataStore *dataStore;
 @property (strong, nonatomic) NSArray *workouts;
@@ -51,8 +52,6 @@
 @property (nonatomic) BOOL workoutCreated;
 
 @property (nonatomic) BOOL hasLoadedBefore;
-
-
 
 @end
 
@@ -502,14 +501,8 @@
         self.accessoryAndTimeViewDisplayed = NO;
 
         self.blurView.layer.cornerRadius = 0;
-
-        
         
     }];
-
-    
-    
-    
 }
 
 -(void)shrinkBlurViewBackToButton
@@ -657,7 +650,7 @@
         
         [cell.workoutScrollSummaryView setStackViewWidth];
         
-        cell.workoutScrollSummaryView.delegate = self;
+        //cell.workoutScrollSummaryView.delegate = self;
         
         return cell;
     }
@@ -689,20 +682,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
-    
     if (!(indexPath.section == 0))
     {
-        
         [self setUpWorkoutDetailView];
         
         Workout *workoutChosen = self.workouts[indexPath.row];
         
         [self growWorkoutDetailViewWithWorkout:workoutChosen];
-        
     }
-    
-
 }
 
 
@@ -759,21 +746,14 @@
     
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"delete hit");
-        
         [self shrinkWorkoutDetailView];
         
         [self deleteWorkout:workout];
 
-        
-        
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        NSLog(@"cancel hit");
-        
-        
+     
     }];
     
     [alert addAction:cancelAction];
@@ -791,6 +771,11 @@
 {
     
     [self shrinkWorkoutDetailView];
+    
+}
+
+-(void)moreDetailsTappped:(NSString *)timePeriod
+{
     
 }
 
