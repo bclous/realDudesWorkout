@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarDay">
+            <connections>
+                <outlet property="circleView" destination="frH-fj-Iea" id="tN5-lx-LMa"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="8l2-Ds-1gS"/>
+                <outlet property="dayLabel" destination="BjE-nO-nYi" id="nqw-tv-VMz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="297"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frH-fj-Iea">
+                    <rect key="frame" x="9" y="0.0" width="297" height="297"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjE-nO-nYi">
+                            <rect key="frame" x="127" y="138" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="BjE-nO-nYi" firstAttribute="centerX" secondItem="frH-fj-Iea" secondAttribute="centerX" id="gtH-r1-4KY"/>
+                        <constraint firstItem="BjE-nO-nYi" firstAttribute="centerY" secondItem="frH-fj-Iea" secondAttribute="centerY" id="tOX-jc-pUe"/>
+                        <constraint firstAttribute="width" secondItem="frH-fj-Iea" secondAttribute="height" multiplier="1:1" id="xeZ-1V-6hh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="frH-fj-Iea" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4te-kH-b4Y"/>
+                <constraint firstItem="frH-fj-Iea" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BTN-40-cmN"/>
+                <constraint firstItem="frH-fj-Iea" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="XeX-zR-OoB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="161.5" y="356.5"/>
+        </view>
+    </objects>
+</document>

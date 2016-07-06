@@ -76,6 +76,12 @@
     
     self.hasLoadedBefore = YES;
     
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now = [NSDate date];
+    
+    NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:now ];
+    NSLog(@"weekday: %lu", components.weekday);
+    
     
 }
 
@@ -584,8 +590,6 @@
     
     newWorkout.targetTimeInSeconds = minutes * 60;
     
-    NSLog(@"still in create new workout, target time in seconds = %lu", newWorkout.targetTimeInSeconds);
-    
     self.generateWorkoutView.workout = newWorkout;
 
     
@@ -664,7 +668,7 @@
     
     if (indexPath.section == 0)
     {
-        return 160;
+        return 250;
     }
     else
     {

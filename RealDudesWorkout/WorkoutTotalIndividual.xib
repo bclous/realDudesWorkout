@@ -91,7 +91,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="396.5" y="304"/>
+            <point key="canvasLocation" x="120.5" y="187"/>
         </view>
         <tapGestureRecognizer id="l5n-uL-6mb">
             <connections>

@@ -96,16 +96,13 @@
 -(void)setLabels
 {
     
-//    self.monthLabel.text = [workout workoutStartMonth];
-//    self.dayOfMonthLabel.text = [workout workoutStartDayOfMonth];
-    
     self.workoutDayAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", [self.workout workoutStartDayOfWeek], [self.workout workoutStartTime]];
     
     self.workoutNameLabel.text = self.workout.name;
     
     self.workoutDurationLabel.text = [self.workout stringFromTimeInterval:self.workout.timeInSeconds];
     
-//    self.excercisesLabel.text = [NSString stringWithFormat:@"%lu excercises >",[workout completedExcercisesInOrder].count];
+
 }
 
 -(void)createStackView
@@ -143,9 +140,6 @@
         
         [newView.heightAnchor constraintEqualToConstant:180].active = YES;
         [newView.widthAnchor constraintEqualToAnchor:newView.heightAnchor].active = YES;
-        
-        
-        
     }
     
     [self layoutIfNeeded];

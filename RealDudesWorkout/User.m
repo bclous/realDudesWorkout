@@ -223,6 +223,29 @@
 
 }
 
+
+-(NSOrderedSet *)orderedSetOfWorkoutDates
+{
+    NSMutableOrderedSet *workoutDates = [[NSMutableOrderedSet alloc] init];
+    
+    NSArray *allWorkouts = [self orderedWorkoutsFIFO];
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    for (Workout *workout in allWorkouts)
+    {
+    
+        NSDate *workoutDate = [NSDate dateWithTimeIntervalSince1970:workout.date];
+        NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:workoutDate];
+        NSString *dateString = [NSString stringWithFormat:@"%lu%lu%lu", components.month, components.day, components.year];
+        
+        [workoutDates addObject:dateString];
+        
+    }
+    
+    return workoutDates;
+}
+
 -(NSUInteger)numberOfDaysSinceMonday:(NSString *)dayOfWeek
 {
     if ([dayOfWeek isEqualToString:@"Monday"])

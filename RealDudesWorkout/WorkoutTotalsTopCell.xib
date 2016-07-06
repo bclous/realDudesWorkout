@@ -14,10 +14,10 @@
                 <outlet property="circle3" destination="Bae-90-22a" id="Tuv-nY-fo0"/>
                 <outlet property="circle4" destination="hhY-SF-yWD" id="c46-dG-LSk"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="GEJ-Fk-dwh"/>
-                <outlet property="monthView" destination="xBx-zK-gJA" id="XVW-x5-DmJ"/>
+                <outlet property="firstMonthView" destination="xz2-VV-w4u" id="I1L-an-SZZ"/>
+                <outlet property="last12MonthsView" destination="Xz9-yG-rnT" id="4J1-6P-W4c"/>
+                <outlet property="lastMonthView" destination="xBx-zK-gJA" id="DjI-YG-JDg"/>
                 <outlet property="scrollView" destination="EoM-LH-9tp" id="xAF-nc-4kX"/>
-                <outlet property="weekView" destination="xz2-VV-w4u" id="Ema-zz-e2k"/>
-                <outlet property="yearView" destination="Xz9-yG-rnT" id="PDP-jd-51E"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -45,13 +45,13 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-MS-705">
                                     <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-VV-w4u" customClass="WorkoutTotalIndividualView">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-VV-w4u" customClass="MonthlyWorkoutCalendarTopCellView">
                                     <rect key="frame" x="554" y="0.0" width="554" height="130"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBx-zK-gJA" customClass="WorkoutTotalIndividualView">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBx-zK-gJA" customClass="MonthlyWorkoutCalendarTopCellView">
                                     <rect key="frame" x="1108" y="0.0" width="554" height="130"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz9-yG-rnT" customClass="WorkoutTotalIndividualView">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz9-yG-rnT" customClass="WeeklyWorkoutTotalsView">
                                     <rect key="frame" x="1662" y="0.0" width="554" height="130"/>
                                 </view>
                             </subviews>
@@ -72,45 +72,45 @@
                         <constraint firstItem="cCQ-SJ-EAu" firstAttribute="leading" secondItem="EoM-LH-9tp" secondAttribute="leading" id="tYg-9p-Jd5"/>
                     </constraints>
                 </scrollView>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XPM-ne-fVd" userLabel="circleStackView">
-                    <rect key="frame" x="243" y="110" width="70" height="10"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XPM-ne-fVd" userLabel="circleStackView">
+                    <rect key="frame" x="249" y="114" width="56" height="8"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMs-e2-Oyf">
-                            <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                            <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="10" id="qXN-aU-9de"/>
-                                <constraint firstAttribute="width" constant="10" id="vAe-8P-AjX"/>
+                                <constraint firstAttribute="height" constant="8" id="qXN-aU-9de"/>
+                                <constraint firstAttribute="width" constant="8" id="vAe-8P-AjX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIg-PB-MfJ">
-                            <rect key="frame" x="20" y="0.0" width="10" height="10"/>
+                            <rect key="frame" x="16" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="10" id="Qex-er-w7N"/>
-                                <constraint firstAttribute="height" constant="10" id="fzh-as-gDi"/>
+                                <constraint firstAttribute="width" constant="8" id="Qex-er-w7N"/>
+                                <constraint firstAttribute="height" constant="8" id="fzh-as-gDi"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bae-90-22a">
-                            <rect key="frame" x="40" y="0.0" width="10" height="10"/>
+                            <rect key="frame" x="32" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="10" id="ZWP-U3-qFA"/>
-                                <constraint firstAttribute="width" constant="10" id="c8G-9w-MpV"/>
+                                <constraint firstAttribute="height" constant="8" id="ZWP-U3-qFA"/>
+                                <constraint firstAttribute="width" constant="8" id="c8G-9w-MpV"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-SF-yWD">
-                            <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                            <rect key="frame" x="48" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="10" id="WDc-v5-77c"/>
-                                <constraint firstAttribute="height" constant="10" id="sJU-Nq-CoH"/>
+                                <constraint firstAttribute="width" constant="8" id="WDc-v5-77c"/>
+                                <constraint firstAttribute="height" constant="8" id="sJU-Nq-CoH"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="uGu-jp-q7U"/>
-                        <constraint firstAttribute="height" constant="10" id="vmL-Rf-JfM"/>
+                        <constraint firstAttribute="width" constant="56" id="uGu-jp-q7U"/>
+                        <constraint firstAttribute="height" constant="8" id="vmL-Rf-JfM"/>
                     </constraints>
                 </stackView>
             </subviews>
@@ -125,7 +125,7 @@
                 <constraint firstAttribute="bottom" secondItem="EoM-LH-9tp" secondAttribute="bottom" id="RAw-97-b3b"/>
                 <constraint firstItem="XPM-ne-fVd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TgB-Bq-cYt"/>
                 <constraint firstItem="YjU-10-2ct" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="XMu-VF-IfP"/>
-                <constraint firstAttribute="bottom" secondItem="XPM-ne-fVd" secondAttribute="bottom" constant="10" id="ZJW-DI-vwv"/>
+                <constraint firstAttribute="bottom" secondItem="XPM-ne-fVd" secondAttribute="bottom" constant="8" id="ZJW-DI-vwv"/>
                 <constraint firstItem="YjU-10-2ct" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ghh-c4-vm8"/>
                 <constraint firstAttribute="trailing" secondItem="EoM-LH-9tp" secondAttribute="trailing" id="lSa-0D-EgK"/>
                 <constraint firstItem="YjU-10-2ct" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="r16-UI-wO6"/>

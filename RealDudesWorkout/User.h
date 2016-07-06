@@ -34,9 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSArray *)excerciseNameAndQuantitySortedGivenWorkouts:(NSArray *)workouts;
 -(NSArray *)excercisePictureNamesSortedGivenWorkouts:(NSArray *)workouts;
-
-
-
+-(NSOrderedSet *)orderedSetOfWorkoutDates;
 
 @end
 

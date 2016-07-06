@@ -8,6 +8,8 @@
 
 #import "WorkoutTotalsTopCellView.h"
 #import "WorkoutTotalIndividualView.h"
+#import "WeeklyWorkoutTotalsView.h"
+#import "MonthlyWorkoutCalendarTopCellView.h"
 
 @interface WorkoutTotalsTopCellView () <UIScrollViewDelegate>
 
@@ -19,9 +21,10 @@
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet WorkoutTotalIndividualView *weekView;
-@property (weak, nonatomic) IBOutlet WorkoutTotalIndividualView *monthView;
-@property (weak, nonatomic) IBOutlet WorkoutTotalIndividualView *yearView;
+
+@property (weak, nonatomic) IBOutlet MonthlyWorkoutCalendarTopCellView *firstMonthView;
+@property (weak, nonatomic) IBOutlet MonthlyWorkoutCalendarTopCellView *lastMonthView;
+@property (weak, nonatomic) IBOutlet WeeklyWorkoutTotalsView *last12MonthsView;
 
 @property (nonatomic) CGFloat page;
 
@@ -62,10 +65,10 @@
     
     self.contentView.frame = self.bounds;
     
-    self.circle1.layer.cornerRadius =5;
-    self.circle2.layer.cornerRadius =5;
-    self.circle3.layer.cornerRadius =5;
-    self.circle4.layer.cornerRadius =5;
+    self.circle1.layer.cornerRadius =4;
+    self.circle2.layer.cornerRadius =4;
+    self.circle3.layer.cornerRadius =4;
+    self.circle4.layer.cornerRadius =4;
     
     self.blurView.alpha = 0;
     
@@ -73,15 +76,20 @@
     
     self.page = 0;
     
-    self.weekView.timePeriod = @"week";
-    self.monthView.timePeriod = @"month";
-    self.yearView.timePeriod = @"year";
+
+    self.firstMonthView.monthOffset = 0;
+    self.lastMonthView.monthOffset = -1;
+    
     
     
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+    [self.firstMonthView transitionToScrollingView];
+    [self.lastMonthView transitionToScrollingView];
+    
     CGFloat widthOfFrame = self.frame.size.width;
     CGFloat offset = self.scrollView.contentOffset.x;
     
@@ -122,10 +130,8 @@
          [self resetCircleColors];
         self.circle2.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
         
-        self.weekView.totalTimeLabel.alpha = 1;
-        self.weekView.averageTimeLabel.alpha = 1;
-        self.weekView.moreLabel.alpha = 1;
-     
+        [self.firstMonthView transitionToStaticView];
+        
         
     }
     else if (page == 2.0)
@@ -133,9 +139,7 @@
        [self resetCircleColors];
         self.circle3.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
         
-        self.monthView.totalTimeLabel.alpha = 1;
-        self.monthView.averageTimeLabel.alpha = 1;
-        self.monthView.moreLabel.alpha = 1;
+        [self.lastMonthView transitionToStaticView];
       
        
     }
@@ -144,11 +148,7 @@
         [self resetCircleColors];
         self.circle4.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
         
-        self.yearView.totalTimeLabel.alpha = 1;
-        self.yearView.averageTimeLabel.alpha = 1;
-        self.yearView.moreLabel.alpha = 1;
-        
-        
+
     }
     
 }
@@ -164,18 +164,11 @@
 -(void)resetLabels
 {
     
-    self.weekView.totalTimeLabel.alpha = 0;
-    self.weekView.averageTimeLabel.alpha = 0;
-    self.weekView.moreLabel.alpha = 0;
+    //self.weekView.totalTimeLabel.alpha = 0;
+    //self.weekView.averageTimeLabel.alpha = 0;
+    //self.weekView.moreLabel.alpha = 0;
     
-    self.monthView.totalTimeLabel.alpha = 0;
-    self.monthView.averageTimeLabel.alpha = 0;
-    self.monthView.moreLabel.alpha = 0;
-    
-    self.yearView.totalTimeLabel.alpha = 0;
-    self.yearView.averageTimeLabel.alpha = 0;
-    self.yearView.moreLabel.alpha = 0;
-    
+
 }
 
 
