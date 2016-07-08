@@ -69,7 +69,7 @@
 		ABDFCF3D1D1F18AC00FF3007 /* NSString+BDC_Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */; };
 		ABDFCF3F1D2085F100FF3007 /* WorkoutTotalsDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDFCF3E1D2085F100FF3007 /* WorkoutTotalsDetail.xib */; };
 		ABDFCF421D208C9000FF3007 /* WorkoutTotalsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF411D208C9000FF3007 /* WorkoutTotalsDetailView.m */; };
-		ABDFCF441D20DDD000FF3007 /* WeeklyWorkoutTotals.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDFCF431D20DDD000FF3007 /* WeeklyWorkoutTotals.xib */; };
+		ABDFCF441D20DDD000FF3007 /* LastTwelveMonthsWorkoutTotals.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDFCF431D20DDD000FF3007 /* LastTwelveMonthsWorkoutTotals.xib */; };
 		ABDFCF471D20E4CB00FF3007 /* WeeklyWorkoutTotalsView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF461D20E4CB00FF3007 /* WeeklyWorkoutTotalsView.m */; };
 		ABDFCF4A1D29535E00FF3007 /* CalendarDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDFCF491D29535E00FF3007 /* CalendarDay.xib */; };
 		ABDFCF4D1D29541E00FF3007 /* CalendarDay.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFCF4C1D29541E00FF3007 /* CalendarDay.m */; };
@@ -183,7 +183,7 @@
 		ABDFCF3E1D2085F100FF3007 /* WorkoutTotalsDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTotalsDetail.xib; sourceTree = "<group>"; };
 		ABDFCF401D208C9000FF3007 /* WorkoutTotalsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutTotalsDetailView.h; sourceTree = "<group>"; };
 		ABDFCF411D208C9000FF3007 /* WorkoutTotalsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutTotalsDetailView.m; sourceTree = "<group>"; };
-		ABDFCF431D20DDD000FF3007 /* WeeklyWorkoutTotals.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyWorkoutTotals.xib; sourceTree = "<group>"; };
+		ABDFCF431D20DDD000FF3007 /* LastTwelveMonthsWorkoutTotals.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastTwelveMonthsWorkoutTotals.xib; sourceTree = "<group>"; };
 		ABDFCF451D20E4CB00FF3007 /* WeeklyWorkoutTotalsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyWorkoutTotalsView.h; sourceTree = "<group>"; };
 		ABDFCF461D20E4CB00FF3007 /* WeeklyWorkoutTotalsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyWorkoutTotalsView.m; sourceTree = "<group>"; };
 		ABDFCF491D29535E00FF3007 /* CalendarDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDay.xib; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 				ABC0B64F1CECD12B00938033 /* StartWorkoutButton.xib */,
 				ABC0B6811CF112CA00938033 /* GenerateWorkout.xib */,
 				ABC0B68B1CF3AD1200938033 /* RestView2.xib */,
-				ABDFCF431D20DDD000FF3007 /* WeeklyWorkoutTotals.xib */,
+				ABDFCF431D20DDD000FF3007 /* LastTwelveMonthsWorkoutTotals.xib */,
 				ABC0B6BD1CF5F63C00938033 /* WorkoutTotalsTopCell.xib */,
 				ABCE80021D060AA600E93339 /* WorkoutTotalIndividual.xib */,
 				AB2A390F1CEA2BD9005DD03A /* WorkoutScrollSummaryCell.xib */,
@@ -496,7 +496,7 @@
 				ABA977BE1C9F5E2F00D04639 /* ExcerciseView.xib in Resources */,
 				ABC0B67D1CF0C13300938033 /* AccessoryOnBoard.xib in Resources */,
 				ABC0B6501CECD12B00938033 /* StartWorkoutButton.xib in Resources */,
-				ABDFCF441D20DDD000FF3007 /* WeeklyWorkoutTotals.xib in Resources */,
+				ABDFCF441D20DDD000FF3007 /* LastTwelveMonthsWorkoutTotals.xib in Resources */,
 				AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */,
 				ABCE7FFE1D05D80A00E93339 /* ExerciseDescription.xib in Resources */,
 				ABC0B6821CF112CA00938033 /* GenerateWorkout.xib in Resources */,

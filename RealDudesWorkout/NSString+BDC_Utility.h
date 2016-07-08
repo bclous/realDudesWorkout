@@ -15,5 +15,6 @@
 +(NSString *)monthFromTimeInterval:(NSTimeInterval)timeInterval;
 +(NSString *)currentMonth;
 +(NSString *)currentYear;
++(NSString *)shortMonthNameFromDate:(NSDate *)date;
 
 @end

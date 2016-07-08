@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray *)workoutsLastThirtyDays;
 -(NSArray *)workoutsLast365Days;
 
+-(NSArray *)workoutsInMonthFromDate:(NSDate *)date;
+
 -(NSDictionary *)dictionaryOfExcercisesWithQuantityGivenWorkouts:(NSArray *)workouts;
 
 -(NSArray *)excerciseNameAndQuantitySortedGivenWorkouts:(NSArray *)workouts;

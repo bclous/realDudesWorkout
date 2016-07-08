@@ -246,6 +246,26 @@
     return workoutDates;
 }
 
+-(NSArray *)workoutsInMonthFromDate:(NSDate *)date
+{
+    NSMutableArray *workoutsInMonth = [[NSMutableArray alloc] init];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *newComponents = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
+    
+    for (Workout *workout in [self orderedWorkoutsLIFO])
+    {
+        NSDate *workoutDate = [NSDate dateWithTimeIntervalSince1970:workout.date];
+        NSDateComponents *compareComponents = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:workoutDate];
+        
+        if (newComponents.year == compareComponents.year && newComponents.month == compareComponents.month)
+        {
+            [workoutsInMonth addObject:workout];
+        }
+    }
+    
+    return workoutsInMonth;
+}
+
 -(NSUInteger)numberOfDaysSinceMonday:(NSString *)dayOfWeek
 {
     if ([dayOfWeek isEqualToString:@"Monday"])

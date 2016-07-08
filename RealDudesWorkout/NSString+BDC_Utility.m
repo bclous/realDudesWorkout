@@ -202,6 +202,13 @@
     return  [dateFormatter stringFromDate:date];
 }
 
++(NSString *)shortMonthNameFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMM"];
+    return [dateFormatter stringFromDate:date];
+}
+
 
 
 @end

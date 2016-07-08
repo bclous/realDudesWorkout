@@ -266,8 +266,6 @@
     }
     
     return workoutsInThisMonth;
-
-
 }
 
 -(NSString *)numberOfWorkoutsLabel

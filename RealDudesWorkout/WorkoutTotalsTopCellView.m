@@ -89,6 +89,7 @@
     
     [self.firstMonthView transitionToScrollingView];
     [self.lastMonthView transitionToScrollingView];
+    [self.last12MonthsView setAllMonthsToHeightZeroAnimated:NO];
     
     CGFloat widthOfFrame = self.frame.size.width;
     CGFloat offset = self.scrollView.contentOffset.x;
@@ -147,6 +148,8 @@
     {
         [self resetCircleColors];
         self.circle4.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:164.0/255.5 blue:1 alpha:1];
+        
+        [self.last12MonthsView setAllMonthsToAdjustedHeight:YES];
         
 
     }
