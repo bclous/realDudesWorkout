@@ -291,9 +291,7 @@
     }
     
     return [NSString timeInSentenceForm:totalTime includSecondsAlways:NO includeSecondsWhenUnderOneHour:YES abbreviate:YES];
-    
-    
-    
+
 }
 
 

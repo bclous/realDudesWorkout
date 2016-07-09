@@ -10,5 +10,6 @@
 
 @interface WorkoutTotalsTopCellView : UIView
 
+-(void)updateDataAndScrollToPage:(NSInteger)page;
 
 @end

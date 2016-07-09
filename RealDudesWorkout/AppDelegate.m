@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "ActiveWorkoutViewController.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) NSNotificationCenter *notificationCenter;
+@property (strong, nonatomic) NSTimer *masterClock;
 
 @end
 
@@ -18,7 +22,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-   
+    _masterClock = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimerData) userInfo:nil repeats:YES];
+    _notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    [self.masterClock fire];
     
     return YES;
 }
@@ -43,6 +50,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [self.masterClock invalidate];
+}
+
+-(void)updateTimerData
+{
+    [self.notificationCenter postNotificationName:@"timer" object:nil];
 }
 
 @end

@@ -57,24 +57,15 @@
 
 -(void)transitionToScrollingView
 {
-    self.calendarMonth.alpha = 0;
-    self.workoutNumberLabel.alpha = 0;
-    self.totalTimeLabel.alpha = 0;
-    self.bigLabel.alpha = 1;
-    
-
+    [self formatContentShow:NO];
 }
 
 -(void)transitionToStaticView
 {
-    
-    
-    [UIView animateWithDuration:.6 animations:^{
-        self.bigLabel.alpha = 0;
-        self.calendarMonth.alpha = 1;
-        self.workoutNumberLabel.alpha = 1;
-        self.totalTimeLabel.alpha = 1;
-        
+    [UIView animateWithDuration:.2 delay:.2 options:0 animations:^{
+        [self formatContentShow:YES];
+    } completion:^(BOOL finished) {
+    // nada
     }];
 }
 
@@ -104,6 +95,16 @@
     self.workoutNumberLabel.text = [self.calendarMonth numberOfWorkoutsLabel];
     self.totalTimeLabel.text = [self.calendarMonth totalTimeLabel];
 }
+
+-(void)formatContentShow:(BOOL)show
+{
+    self.bigLabel.alpha = !show;
+    self.calendarMonth.alpha = show;
+    self.workoutNumberLabel.alpha = show;
+    self.totalTimeLabel.alpha = show;
+}
+
+
 
 
 @end

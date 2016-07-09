@@ -11,6 +11,7 @@
                 <outlet property="containerWhiteView" destination="M4v-5C-HWC" id="e7w-et-xhX"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="5jg-bF-8eU"/>
                 <outlet property="dateContainerCircleView" destination="Phj-fb-VlD" id="bCZ-9D-Lzs"/>
+                <outlet property="dateStackView" destination="VOU-Tb-3Rh" id="Uva-By-BiV"/>
                 <outlet property="dayOfMonthLabel" destination="3Wy-DS-RvF" id="IOP-9W-nL6"/>
                 <outlet property="dayOfWeekAndTimeLabel" destination="XaB-bJ-rE4" id="ZQL-21-pNB"/>
                 <outlet property="excercisesLabel" destination="h8E-SM-KKG" id="Bne-Za-2Nk"/>
@@ -35,34 +36,34 @@
                                 <constraint firstAttribute="width" constant="50" id="yRL-TD-FnR"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-Tb-3Rh">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-Tb-3Rh">
                             <rect key="frame" x="18" y="18" width="35" height="35"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41J-ZX-X7f">
-                                    <rect key="frame" x="0.0" y="0.0" width="35" height="9"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="15"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3Wy-DS-RvF">
-                                    <rect key="frame" x="0.0" y="9" width="35" height="26"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Wy-DS-RvF">
+                                    <rect key="frame" x="0.0" y="14" width="35" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="3Wy-DS-RvF" firstAttribute="height" secondItem="41J-ZX-X7f" secondAttribute="height" multiplier="3" id="sqI-4C-hJO"/>
+                                <constraint firstItem="3Wy-DS-RvF" firstAttribute="height" secondItem="41J-ZX-X7f" secondAttribute="height" multiplier="1.5" id="sqI-4C-hJO"/>
                             </constraints>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday 6:58 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaB-bJ-rE4">
-                            <rect key="frame" x="75" y="26" width="118" height="18"/>
+                            <rect key="frame" x="75" y="26" width="117.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout #252" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a3-SS-SEB">
-                            <rect key="frame" x="10" y="71" width="81" height="15"/>
+                            <rect key="frame" x="10" y="71" width="80.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -74,7 +75,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24  excercises &gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8E-SM-KKG">
-                            <rect key="frame" x="494" y="70" width="96" height="14"/>
+                            <rect key="frame" x="494" y="69.5" width="96" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                             <color key="textColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

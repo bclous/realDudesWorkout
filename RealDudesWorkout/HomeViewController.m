@@ -72,68 +72,47 @@
     [self setUpStartButtonView];
     [self setUpWorkoutDetailView];
     
-    //Workout *lastWorkout = [self.workouts firstObject];
+    [self.view layoutIfNeeded];
     
     self.hasLoadedBefore = YES;
-    
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *now = [NSDate date];
-    
-    NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:now ];
-    NSLog(@"weekday: %lu", components.weekday);
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.workoutsTableView reloadData];
     
-    
     if (self.hasLoadedBefore)
     {
         [self resetOnBoardingViews];
         [self shrinkBlurViewBackToButton];
+        
     }
-    
 }
 
 -(void)setUpMainTableView
 {
-    
     self.workoutsTableView.dataSource = self;
     self.workoutsTableView.delegate = self;
-    
     self.selectedRow = -1;
-    
     self.workoutsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
 }
 
 -(void)setUpWorkoutDetailView
 {
-    
     self.workoutDetailView = [[WorkoutDetailView alloc] init];
-    
     [self.view addSubview:self.workoutDetailView];
-    
     self.workoutDetailView.delegate = self;
     
     self.workoutDetailView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     [self.workoutDetailView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
     [self.workoutDetailView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [self.workoutDetailView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
-    
     self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor];
-    
     self.workoutDetailViewHeightConstraint.active = YES;
-    
     self.workoutDetailView.alpha = 0;
-    
     self.workoutDetailView.clipsToBounds = YES;
     
-    [self.view layoutIfNeeded];
+    
     
 }
 
@@ -144,10 +123,7 @@
     
     [self.view bringSubviewToFront:self.workoutDetailView];
     
-    
-    
     [UIView animateWithDuration:.2 animations:^{
-        
         
         self.workoutDetailView.alpha = 1;
         
@@ -159,11 +135,9 @@
         
         [self.view layoutIfNeeded];
         
-        
     } completion:^(BOOL finished) {
         
-        
-        
+    // nada
     }];
     
 }
@@ -251,8 +225,6 @@
     [self.addAndCancelIconImageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-25].active = YES;
     
     [self.view bringSubviewToFront:self.addAndCancelIconImageView];
-    
-    
 }
 
 -(void)createWorkoutOnBoardView
@@ -260,156 +232,95 @@
     self.workoutOnBoardView = [[WorkoutOnBoardView alloc] init];
     
     self.workoutOnBoardView.delegate = self;
-    
     [self.blurView addSubview:self.workoutOnBoardView];
-    
     self.workoutOnBoardView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     [self.workoutOnBoardView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.workoutOnBoardView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.workoutOnBoardView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-60].active = YES;
-    
-    
     self.workoutOnBoardView.clipsToBounds = YES;
-    
     self.workoutOnBoardView.alpha = 0;
-    
-    
 }
 
 -(void)createGenerateWorkoutView
 {
-    
     self.generateWorkoutView = [[GenerateWorkoutView alloc] init];
-    
     self.generateWorkoutView.delegate = self;
     
     [self.blurView addSubview:self.generateWorkoutView];
     
     self.generateWorkoutView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     [self.generateWorkoutView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.generateWorkoutView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     [self.generateWorkoutView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.generateWorkoutView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-60].active = YES;
-    
     self.generateWorkoutView.clipsToBounds = YES;
-    
     self.generateWorkoutView.alpha = 0;
     
 }
 
-
-
 -(void)makeWorkoutOnBoardScreenAppear
 {
-    
-    [UIView animateWithDuration:.1 animations:^{
-        
-        
-        self.workoutOnBoardView.alpha = 1;
-        
-        [self.view layoutIfNeeded];
-        
-        
-    } completion:^(BOOL finished) {
-        
-        self.view.userInteractionEnabled = YES;
-        self.addAndCancelTapGestureRecognizer.enabled = YES;
-        self.blurViewDisplayed = YES;
-        self.accessoryAndTimeViewDisplayed = YES;
-        
-    }];
-    
-    
+    self.workoutOnBoardView.alpha = 1;
+    self.view.userInteractionEnabled = YES;
+    self.addAndCancelTapGestureRecognizer.enabled = YES;
+    self.blurViewDisplayed = YES;
+    self.accessoryAndTimeViewDisplayed = YES;
 }
 
 -(void)makeWorkoutOnBoardScreenDisappear
 {
-    
     [UIView animateWithDuration:.05 animations:^{
-        
-        
           self.workoutOnBoardView.alpha = 1;
-        
         [self.view layoutIfNeeded];
-        
         
     } completion:^(BOOL finished) {
         
         [self shrinkBlurViewBackToButton];
         
     }];
-    
 }
 
 -(void)addTapGesture
 {
-    
     self.addAndCancelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addOrCancelHit)];
-    
     [self.addAndCancelIconImageView addGestureRecognizer:self.addAndCancelTapGestureRecognizer];
-    
-    
 }
 
 -(void)addOrCancelHit
 {
-    NSLog(@"this is getting called");
-    
     if (self.blurViewDisplayed && !self.generateWorkoutViewDisplayed)
     {
-        
         [self shrinkBlurViewBackToButton];
-        
     }
     
     else if (self.generateWorkoutViewDisplayed)
     {
         Workout *lastWorkout = [self.workouts firstObject];
-        
         [self deleteWorkout:lastWorkout];
-        
         [self shrinkBlurViewBackToButton];
     }
-    
-        else
+    else
     {
          [self growBlurViewToFullScreen];
     }
-    
 }
-
 
 -(void)resetOnBoardingViews
 {
-    
-    NSLog(@"reset on boarding is getting called");
-    
     if (self.accessoryAndTimeViewDisplayed)
     {
-        
         [self.workoutOnBoardView removeFromSuperview];
         self.accessoryAndTimeViewDisplayed = NO;
-        
         [self createWorkoutOnBoardView];
-        
-        
     }
-    
     else if (self.generateWorkoutViewDisplayed)
     {
         [self.generateWorkoutView removeFromSuperview];
         self.generateWorkoutViewDisplayed = NO;
-        
-        
         [self createWorkoutOnBoardView];
         [self createGenerateWorkoutView];
     }
-    
-    
-    
 }
 
 -(void)growBlurViewToFullScreen
@@ -418,20 +329,17 @@
     self.view.userInteractionEnabled = NO;
     self.addAndCancelTapGestureRecognizer.enabled = NO;
     
-    
-    [UIView animateWithDuration:.2 animations:^{
+    [UIView animateWithDuration:.15 animations:^{
         
         self.blurView.alpha = 1;
         
-      
         self.addAndCancelIconImageView.transform = CGAffineTransformMakeRotation(M_PI/4);
  
-        
         self.blurViewBottomConstraint.active = NO;
         self.blurViewTopConstraint.active = NO;
         self.blurViewLeftConstraint.active = NO;
         self.blurViewRightConstraint.active = NO;
-        
+
         self.blurViewBottomConstraint = [self.blurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor];
         self.blurViewTopConstraint = [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor ];
         self.blurViewLeftConstraint = [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor];
@@ -441,39 +349,24 @@
         self.blurViewTopConstraint.active = YES;
         self.blurViewLeftConstraint.active = YES;
         self.blurViewRightConstraint.active = YES;
-        
-        
+        [self makeWorkoutOnBoardScreenAppear];
         
         [self.view layoutIfNeeded];
-        
-        
+
     } completion:^(BOOL finished) {
-        
-        
-        [self makeWorkoutOnBoardScreenAppear];
         self.blurView.layer.cornerRadius = 0;
-    
-        
     }];
 }
 
 -(void)growOnBoardingScreenWhenRepeatWorkoutTapped
 {
-    
-    NSLog(@"grow onboarding is getting called");
-    
     self.view.userInteractionEnabled = NO;
     self.addAndCancelTapGestureRecognizer.enabled = NO;
-    
     
     [UIView animateWithDuration:.2 animations:^{
         
         self.blurView.alpha = 1;
-        
-        
         self.addAndCancelIconImageView.transform = CGAffineTransformMakeRotation(M_PI/4);
-        
-        
         self.blurViewBottomConstraint.active = NO;
         self.blurViewTopConstraint.active = NO;
         self.blurViewLeftConstraint.active = NO;
@@ -488,11 +381,8 @@
         self.blurViewTopConstraint.active = YES;
         self.blurViewLeftConstraint.active = YES;
         self.blurViewRightConstraint.active = YES;
-        
-        
-        
+    
         [self.view layoutIfNeeded];
-        
         
     } completion:^(BOOL finished) {
         
@@ -561,68 +451,37 @@
 
 -(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
 {
-    
     [self createNewWorkout:minutes accessories:accessories];
-    
     [self.workoutOnBoardView removeFromSuperview];
-    
     self.generateWorkoutView.alpha = 1;
-    
     self.workoutCreated = YES;
     self.generateWorkoutViewDisplayed = YES;
     self.accessoryAndTimeViewDisplayed = NO;
-    
-
 }
 
 -(void)createNewWorkout:(NSInteger)minutes accessories:(NSMutableArray *)accessories
 {
-    
-    NSLog(@"in create new workout, minutes is %lu", minutes);
-    
+
     [self.dataStore.user generateNewWorkout];
-    
     [self.dataStore fetchData];
-    
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     
     Workout *newWorkout = [self.workouts firstObject];
-    
     newWorkout.targetTimeInSeconds = minutes * 60;
-    
     self.generateWorkoutView.workout = newWorkout;
-
-    
-    
 }
 
 -(void)startWorkoutTapped
 {
-   
     [self performSegueWithIdentifier:@"segueToWorkout" sender:nil];
-    
 }
 
 
-
-
-#pragma tableView methods
+#pragma mark tableView methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    if (section == 0)
-    {
-        return 1;
-    }
-    
-    else
-    {
-        return self.workouts.count;
-    }
-    
-   
-   
+    return section == 0 ? 1 : self.workouts.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -630,54 +489,31 @@
     return 2;
 }
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     if (indexPath.section == 0)
     {
         WorkoutTotalsTopCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topCell"];
-        
+        [cell.workoutTotalsTopCellView updateDataAndScrollToPage:0];
         return cell;
     }
     
     else
     {
         WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
-        
+    
         cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         cell.backgroundColor = [UIColor clearColor];
-        
-        [cell.workoutScrollSummaryView setStackViewWidth];
-        
-        //cell.workoutScrollSummaryView.delegate = self;
-        
         return cell;
     }
-    
-  
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.section == 0)
-    {
-        return 250;
-    }
-    else
-    {
-        return 110;
-    }
- 
-    
+    return indexPath.section == 0 ? 250 : 110;
 }
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -696,28 +532,18 @@
     }
 }
 
-
 -(void)deleteWorkout:(Workout *)workout
 {
-    
     [self.dataStore.user removeWorkoutsObject:workout];
-    
     [self.dataStore fetchData];
-    
     self.workouts = self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
-    
     [self.workoutsTableView reloadData];
-    
 }
 
 -(void)replicateWorkout:(Workout *)workout
 {
-    NSLog(@"in replicate workout, target time is %lu", workout.targetTimeInSeconds);
-    
     [self createNewWorkout:workout.targetTimeInSeconds/60 accessories:workout.availableAccessories];
-    
 }
-
 
 
 #pragma cell delegate methods
@@ -725,9 +551,6 @@
 
 -(void)repeatWorkoutButtonTapped:(Workout *)workout
 {
-    
-    NSLog(@"in repeat workout button tapped, workout time is %lu", workout.targetTimeInSeconds);
-
     [self shrinkWorkoutDetailView];
     
     [self replicateWorkout:workout];
@@ -736,7 +559,6 @@
     
     [self growOnBoardingScreenWhenRepeatWorkoutTapped];
     
-
 }
 
 -(void)deleteWorkoutButtonTapped:(Workout *)workout
@@ -762,37 +584,15 @@
     
     [alert addAction:cancelAction];
     [alert addAction:deleteAction];
-   
-    
-    [self presentViewController:alert animated:YES completion:nil];
-    
 
-    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
 -(void)leaveWorkoutDetailButtonTapped
 {
-    
     [self shrinkWorkoutDetailView];
-    
 }
 
--(void)moreDetailsTappped:(NSString *)timePeriod
-{
-    
-}
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

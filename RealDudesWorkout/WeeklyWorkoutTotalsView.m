@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *month3Label;
 @property (weak, nonatomic) IBOutlet UILabel *month2Label;
 @property (weak, nonatomic) IBOutlet UILabel *month1Label;
+@property (weak, nonatomic) IBOutlet UIView *graphBottomLineView;
 
 @property (strong, nonatomic) NSMutableArray *workoutTotals;
 @property (strong, nonatomic) NSMutableArray *monthStrings;
@@ -49,6 +50,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *month3Height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *month2Height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *month1Height;
+@property (weak, nonatomic) IBOutlet UILabel *last12MonthsBigLabel;
 
 @end
 
@@ -92,10 +94,14 @@
     _totalTime = 0;
     _maxWorkouts = 0;
     
+    [self formatView];
+}
+
+-(void)formatView
+{
     [self generateMonthlyWorkoutTotalsAndNames];
     [self formatLabels];
     [self setAllMonthsToHeightZeroAnimated:NO];
-    
 }
 
 -(void)generateMonthlyWorkoutTotalsAndNames
@@ -209,6 +215,42 @@
     [UIView animateWithDuration:.3 animations:^{
         [self layoutIfNeeded];
     }];
+}
+
+-(void)transitionToScrollingView
+{
+    [self formatGraphContentShow:NO];
+    [self setAllMonthsToHeightZeroAnimated:NO];
+}
+-(void)transitionToStaticView
+{
+    [UIView animateWithDuration:.2 delay:.2 options:0 animations:^{
+        [self formatGraphContentShow:YES];
+    } completion:^(BOOL finished) {
+        [self setAllMonthsToAdjustedHeight:YES];
+    }];
+}
+
+-(void)formatGraphContentShow:(BOOL)show
+{
+    self.monthLabelsStackView.alpha = show;
+    self.monthStackView.alpha = show;
+    self.month1Label.alpha = show;
+    self.month2Label.alpha = show;
+    self.month3Label.alpha = show;
+    self.month4Label.alpha = show;
+    self.month5Label.alpha = show;
+    self.month6Label.alpha = show;
+    self.month7Label.alpha = show;
+    self.month8Label.alpha = show;
+    self.month9Label.alpha = show;
+    self.month10Label.alpha = show;
+    self.month11Label.alpha = show;
+    self.month12Label.alpha = show;
+    self.totalWorkoutsLabel.alpha = show;
+    self.totalTimeLabel.alpha = show;
+    self.graphBottomLineView.alpha = show;
+    self.last12MonthsBigLabel.alpha = !show;
 }
 
 

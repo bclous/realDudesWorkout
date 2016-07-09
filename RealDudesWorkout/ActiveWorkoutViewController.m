@@ -12,6 +12,7 @@
 #import "RestView2.h"
 #import "ExcerciseView.h"
 #import "ExerciseDescriptionView.h"
+#import "NSString+BDC_Utility.h"
 
 
 @interface ActiveWorkoutViewController () <ExerciseDescriptionDelegate>
@@ -37,6 +38,16 @@
 @property (nonatomic) NSUInteger currentExcerciseSetIndexValue;
 
 @property (strong, nonatomic) NSTimer *totalWorkoutTimer;
+
+
+@property (nonatomic) NSTimeInterval totalWorkoutTimeInterval;
+@property (nonatomic) NSTimeInterval individualExerciseStartTimeInterval;
+@property (nonatomic) NSTimeInterval individualExcerciseCurrentTimeInterval;
+@property (nonatomic) NSTimeInterval restCounterStartTimeInterval;
+@property (nonatomic) NSTimeInterval restCounterCurrentTimeInterval;
+
+
+
 @property (nonatomic) NSTimeInterval totalWorkoutCounter;
 @property (nonatomic) NSTimeInterval individualExcerciseCounter;
 @property (nonatomic) NSTimeInterval restCounter;
@@ -66,54 +77,48 @@
     [super viewDidLoad];
     
     self.dataStore = [DataStore sharedDataStore];
-    
     NSArray *workoutsInOrder = [self.dataStore.user orderedWorkoutsLIFO];
-    
     self.workout = workoutsInOrder[0];
-    
-    // set up the excercise array in order
-    
     self.excerciseSets = [self.workout excercisesInOrder];
     
     //initialize components
-    
     [self initializeViewComponents];
-    
     [self createExerciseDescriptionView];
-    
     [self createRestView];
-    
-    
-   
-   
+    [self setUpTimerNotification];
+}
+
+-(void)setUpTimerNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:@"timer observer" selector:@selector(masterClockTick) name:@"timer" object:nil];
+    self.totalWorkoutTimeInterval = 0;
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:@"timer observer"];
+}
+
+-(void)masterClockTick
+{
+    self.totalWorkoutTimeInterval++;
+    self.workoutTimeLabel.text = [NSString timeInClockForm:self.totalWorkoutTimeInterval];
+    self.workout.timeInSeconds = self.totalWorkoutTimeInterval;
+    [self.dataStore saveContext];
 }
 
 -(void)initializeViewComponents
 {
     
-    
-    
-    [self setUpTimer];
-    
-    
     self.currentExcerciseSetIndexValue = 0;
-    
     self.excerciseView.alpha = 1;
     self.restView.alpha = 0;
-    
     self.restViewIsDisplayed = NO;
-    
     [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
-    
-    
     self.doneButton.layer.cornerRadius = 15;
-    
     [self initializeExcerciseTotals];
     
-    
-    
     // set up first excercise and second excercise and set isLastWorkout BOOL
-    
     self.currentExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue];
     
     BOOL oneExcerciseInWorkout = self.excerciseSets.count == 1;
@@ -123,7 +128,7 @@
     {
         self.isLastExcercise = YES;
         self.isNextToLastExcercise = NO;
-        
+
     }
     
     else if (twoExcercisesInWorkout)
@@ -145,42 +150,25 @@
 }
 
 
-
 - (IBAction)finishButtonTapped:(id)sender
 {
-    
-    
     if (self.restViewIsDisplayed && !self.isLastExcercise)
     {
-        
          [self moveBackToExcerciseScreen];
-        
     }
-    
     else if (self.restViewIsDisplayed && self.isLastExcercise)
     {
-        
         [self workoutFinished];
-        
         self.workout.isFinishedSuccessfully = YES;
-        
         [self.dataStore saveContext];
-        
         [self dismissViewControllerAnimated:YES completion:nil];
-        
     }
-    
     else
     {
-        
         [self moveToRestScreen];
         [self growRestView];
-        
     }
-    
 }
-
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -192,14 +180,11 @@
     // set restViewExcercise
     self.restView.indexOfExcerciseJustFinished = self.currentExcerciseSetIndexValue;
     
-
-    
-    // excercise compelte stuff
-    
+    // excercise complete stuff
     [self excerciseComplete];
     
-    // reset counters
-    [self resetRestAndExcerciseCounters];
+    // updateTimeIntervals
+    [self updateTimeIntervalStartTimes];
     
     //update excercise totals
     [self updateExcerciseTotals];
@@ -217,26 +202,21 @@
     
     [self.view layoutIfNeeded];
     
- 
 }
 
 -(void)moveBackToExcerciseScreen
 {
     
-    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.restCounter;
+    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.totalWorkoutTimeInterval - self.restCounterStartTimeInterval;
     
-    [self resetRestAndExcerciseCounters];
-    
+    [self updateTimeIntervalStartTimes];
     [self updateExcercise];
     [self generateExcerciseComponents];
     [self changeButtonTitle];
     
-    
     self.restViewIsDisplayed = NO;
     
     [self.dataStore saveContext];
-    
-    [self resetRestAndExcerciseCounters];
     
     if (self.descriptionViewDisplayed)
     {
@@ -244,58 +224,36 @@
         
         self.descriptionViewDisplayed = NO;
     }
-
     
     [self shrinkRestView];
-
 }
 
 -(void)excerciseComplete
 {
-
-    
+    self.currentExcerciseSet.timeInSecondsActual = self.totalWorkoutTimeInterval - self.individualExerciseStartTimeInterval;
     self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
-    self.currentExcerciseSet.timeInSecondsActual = self.individualExcerciseCounter;
     self.currentExcerciseSet.isComplete = YES;
-    
-    
 }
 
 -(void)initializeExcerciseTotals
 {
     self.excerciseTotalsLabel.text = [NSString stringWithFormat:@"0%%"];
-
 }
 
 -(void)updateExcerciseTotals
 {
-    
     NSUInteger totalExcercises = self.excerciseSets.count;
     NSUInteger currentExcercise = self.currentExcerciseSetIndexValue + 1;
-    
     NSUInteger percentage = currentExcercise * 100 / totalExcercises;
-    
     self.excerciseTotalsLabel.text = [NSString stringWithFormat:@"%lu%%", (unsigned long)percentage];
-    
 }
 
 -(void)workoutFinished
 {
-    
-    
     self.workout.timeInSeconds = self.totalWorkoutCounter;
     self.workout.isFinished = YES;
-    
-    [self.totalWorkoutTimer invalidate];
-
-    
-    if (self.isLastExcercise)
-    {
-        self.workout.isFinishedSuccessfully = YES;
-    }
-    
+    self.workout.isFinishedSuccessfully = self.isLastExcercise ? YES : NO;
     [self.dataStore saveContext];
-    
 }
 
 
@@ -337,8 +295,6 @@
         
 }
 
-
-
 -(void)generateExcerciseComponents
 {
     self.excerciseView.excerciseSet = self.currentExcerciseSet;
@@ -348,133 +304,34 @@
 
 -(void)generateRestComponents
 {
-    
     self.restView.workout = self.workout;
-    
     self.restView.indexOfExcerciseJustFinished = 0;
-    
 }
-
-
 
 - (IBAction)cancelButtonTapped:(id)sender
 {
     
     self.workout.timeInSeconds = self.totalWorkoutCounter;
-    
     self.workout.isFinished = YES;
-    
-    [self.totalWorkoutTimer invalidate];
-
     [self dismissViewControllerAnimated:YES completion:nil];
   
 }
 - (IBAction)cancelborderViewTapped:(id)sender
 {
-    
     self.workout.timeInSeconds = self.totalWorkoutCounter;
-    
     self.workout.isFinished = YES;
-    
-    [self.totalWorkoutTimer invalidate];
-   
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
--(void)setUpTimer
+
+-(void)updateTimeIntervalStartTimes;
 {
-    self.totalWorkoutCounter = 0;
-    self.individualExcerciseCounter = 0;
-    self.restCounter = 0;
-    
-    self.totalWorkoutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
-    
-    [self.totalWorkoutTimer fire];
-}
-
--(void)countdown
-{
-    
-    self.workoutTimeLabel.text = [self generateTimeStringGivenTime:self.totalWorkoutCounter];
-    
-    self.totalWorkoutCounter++;
-    self.individualExcerciseCounter++;
-    self.restCounter++;
-    
-    self.workout.timeInSeconds = self.totalWorkoutCounter;
-    [self.dataStore saveContext];
-    
-}
--(void)resetRestAndExcerciseCounters
-{
-    self.individualExcerciseCounter = 0;
-    self.restCounter = 0;
-}
-
--(NSString *)generateTimeStringGivenTime:(NSTimeInterval)time
-{
-    
-    NSInteger hours = time/3600;
-    NSInteger minutes = (((NSInteger)time)%3600)/60;
-    NSInteger seconds = (((NSInteger)time)%3600)%60;
-    
-    BOOL hasHours = hours > 0;
-    BOOL hasMinutes = minutes > 0;
-   
-    
-    if (!hasHours && !hasMinutes)
-    {
-        NSString *stringNoMinutesOrHours = [NSString stringWithFormat:@"0:%@",[self timeStringFromTime:seconds]];
-        
-        return stringNoMinutesOrHours;
-    }
-    
-    else if (!hasHours)
-    {
-        NSString *stringNoHours = [NSString stringWithFormat:@"%lu:%@",minutes,[self timeStringFromTime:seconds]];
-        
-        return stringNoHours;
-    }
-    
-    else if (hasHours)
-    {
-        NSString *stringWithHours = [NSString stringWithFormat:@"%@:%@:%@",[self timeStringFromTime:hours],[self timeStringFromTime:minutes],[self timeStringFromTime:seconds]];
-        
-        return stringWithHours;
-    }
-    else
-    {
-        return @"0:00";
-    }
-    
-    
-    
-}
-
--(NSString *)timeStringFromTime:(NSInteger)time
-{
-    BOOL singleDigit = time < 10;
-    
-    if (singleDigit)
-    {
-        NSString *timeString = [NSString stringWithFormat:@"0%li",time];
-        
-        return timeString;
-        
-    }
-    else
-    {
-        NSString *timeString = [NSString stringWithFormat:@"%li",time];
-        
-        return timeString;
-    }
+    self.individualExerciseStartTimeInterval = self.totalWorkoutTimeInterval;
+    self.restCounterStartTimeInterval = self.totalWorkoutTimeInterval;
 }
 
 
-
-// Rest view creation, growing and shrinking
-
+#pragma mark Rest View methods
 
 -(void)createRestView
 {
@@ -488,7 +345,6 @@
     [self.restBlurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.restBlurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     
-    
     self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
     
     self.restBlurViewBottomConstraint = [self.restBlurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant: 400];
@@ -497,7 +353,6 @@
     self.restBlurViewBottomConstraint.active = YES;
     
     self.restBlurView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    
     
     self.restView = [[RestView2 alloc] init];
     
@@ -515,14 +370,9 @@
     [self.view bringSubviewToFront:self.footerBackgroundView];
     [self.view bringSubviewToFront:self.footerView];
     
-    
-    //    self.footerView.layer.borderColor = [[UIColor blueColor] CGColor];
-    //    self.footerView.layer.borderWidth = 2;
-    
     self.restView.workout = self.workout;
     self.restView.indexOfExcerciseJustFinished = 0;
-    
-    
+
 }
 
 -(void)growRestView
@@ -546,27 +396,18 @@
         
     } completion:^(BOOL finished) {
         
-        
         self.restViewIsDisplayed = YES;
         self.doneButton.enabled = YES;
-        
-    
-        
     }];
-    
-    
 }
 
 -(void)shrinkRestView
 {
-    
     self.doneButton.enabled = NO;
-    
-
     
     [UIView animateWithDuration:.3 animations:^{
         
-        
+
         self.restBlurViewTopConstraint.active = NO;
         self.restBlurViewBottomConstraint.active = NO;
         
@@ -580,12 +421,10 @@
         
     } completion:^(BOOL finished) {
         
-        
         self.restViewIsDisplayed = NO;
         self.doneButton.enabled = YES;
         
     }];
-    
     
 }
 
@@ -606,12 +445,10 @@
     [self.exerciseDescriptionView.widthAnchor constraintEqualToAnchor:self.excerciseView.widthAnchor].active = YES;
     [self.exerciseDescriptionView.heightAnchor constraintEqualToAnchor:self.excerciseView.heightAnchor].active = YES;
     
- 
     self.exerciseDescriptionView.alpha = 0;
     
     self.exerciseDescriptionView.excerciseSet = self.currentExcerciseSet;
 
-    
 }
 
 -(void)leaveDescriptionViewTapped
@@ -619,10 +456,6 @@
     self.exerciseDescriptionView.alpha = 0;
     
     self.descriptionViewDisplayed = NO;
-    
-
-    
-    
 }
 
 - (IBAction)excerciseDescriptionTapped:(id)sender
@@ -630,29 +463,8 @@
     self.exerciseDescriptionView.alpha = 1;
     
     self.descriptionViewDisplayed = YES;
-    
-
-    
 }
 
-
-
-
-
-//
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    NSLog(@"prepare for segue getting called");
-//    
-//    WorkoutSummaryTableViewController *destinationVC = segue.destinationViewController;
-//    
-//    destinationVC.workout = self.workout;
-//    
-//    
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
 
 
 @end

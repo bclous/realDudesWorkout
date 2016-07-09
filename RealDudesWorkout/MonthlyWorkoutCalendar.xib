@@ -26,27 +26,27 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1:22 Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8n-bt-fdo">
-                    <rect key="frame" x="238.5" y="232" width="84.5" height="12"/>
+                    <rect key="frame" x="239" y="232" width="84" height="12"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6T-bk-x0p">
-                    <rect key="frame" x="159.5" y="234" width="56" height="8"/>
+                    <rect key="frame" x="160" y="234" width="56" height="8"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="56" id="LTF-Hk-h4J"/>
                         <constraint firstAttribute="height" constant="8" id="trA-Cr-yS3"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ng-kD-ObQ" customClass="CalendarMonth">
-                    <rect key="frame" x="50.5" y="0.0" width="274" height="250"/>
+                    <rect key="frame" x="51" y="0.0" width="274" height="250"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="274" id="hvq-ov-Ft3"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS MONTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-Fi-fau">
-                    <rect key="frame" x="8" y="95" width="270" height="60"/>
-                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="THIS MONTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-Fi-fau">
+                    <rect key="frame" x="53" y="95" width="270" height="60"/>
+                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -54,6 +54,7 @@
             <constraints>
                 <constraint firstItem="qgu-eE-bXD" firstAttribute="leading" secondItem="3ng-kD-ObQ" secondAttribute="leading" constant="2" id="7Pp-lQ-Qp5"/>
                 <constraint firstItem="3ng-kD-ObQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AXJ-g4-m7L"/>
+                <constraint firstItem="fHp-Fi-fau" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Egk-fq-mvO"/>
                 <constraint firstAttribute="bottom" secondItem="m6T-bk-x0p" secondAttribute="bottom" constant="8" id="EqU-Jq-DSY"/>
                 <constraint firstItem="m6T-bk-x0p" firstAttribute="leading" secondItem="qgu-eE-bXD" secondAttribute="trailing" constant="5" id="Jsw-qU-IFT"/>
                 <constraint firstItem="fHp-Fi-fau" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Khg-SW-Cq1"/>
@@ -61,7 +62,6 @@
                 <constraint firstItem="qgu-eE-bXD" firstAttribute="centerY" secondItem="m6T-bk-x0p" secondAttribute="centerY" id="bCY-Mn-CC5"/>
                 <constraint firstItem="m6T-bk-x0p" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fdh-v4-WIh"/>
                 <constraint firstItem="3ng-kD-ObQ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="gRP-Jv-Qn9"/>
-                <constraint firstItem="fHp-Fi-fau" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="gq3-nt-Ydo"/>
                 <constraint firstItem="S8n-bt-fdo" firstAttribute="trailing" secondItem="3ng-kD-ObQ" secondAttribute="trailing" constant="-2" id="siP-3p-4gB"/>
                 <constraint firstItem="3ng-kD-ObQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xvH-k0-MYr"/>
             </constraints>
