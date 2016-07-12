@@ -11,9 +11,6 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) NSNotificationCenter *notificationCenter;
-@property (strong, nonatomic) NSTimer *masterClock;
-
 @end
 
 @implementation AppDelegate
@@ -21,11 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    _masterClock = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimerData) userInfo:nil repeats:YES];
-    _notificationCenter = [NSNotificationCenter defaultCenter];
-    
-    [self.masterClock fire];
     
     return YES;
 }
@@ -42,6 +34,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"app entered foreground" object:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -51,12 +45,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
-    [self.masterClock invalidate];
+    
+    // want to end current workout here 
+    
 }
 
--(void)updateTimerData
-{
-    [self.notificationCenter postNotificationName:@"timer" object:nil];
-}
+
 
 @end

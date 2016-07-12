@@ -95,13 +95,15 @@
     _maxWorkouts = 0;
     
     [self formatView];
+    [self setAllMonthsToHeightZeroAnimated:NO];
 }
 
 -(void)formatView
 {
+    self.totalTime = 0;
+    self.totalWorkouts= 0;
     [self generateMonthlyWorkoutTotalsAndNames];
     [self formatLabels];
-    [self setAllMonthsToHeightZeroAnimated:NO];
 }
 
 -(void)generateMonthlyWorkoutTotalsAndNames
@@ -187,7 +189,7 @@
 
 -(void)setAllMonthsToAdjustedHeight:(BOOL)animated
 {
-    CGFloat interval = 147.0 / self.maxWorkouts;
+    CGFloat interval = self.maxWorkouts == 0? 147.0 : 147.0 / self.maxWorkouts;
     
     self.month1Height.constant = [self.workoutTotals[0] floatValue] * interval;
     self.month2Height.constant = [self.workoutTotals[1] floatValue] * interval;

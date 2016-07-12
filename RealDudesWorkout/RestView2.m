@@ -32,6 +32,8 @@
 @property (nonatomic) NSTimeInterval timerInterval;
 @property (nonatomic) NSUInteger restCountdown;
 
+@property (nonatomic) NSTimeInterval restStartTime;
+
 @end
 
 @implementation RestView2
@@ -63,8 +65,6 @@
 
 -(void)commonInit
 {
-    
-    
     [[NSBundle mainBundle] loadNibNamed:@"RestView2" owner:self options:nil];
     
     [self addSubview:self.contentView];
@@ -72,18 +72,12 @@
     self.contentView.frame = self.bounds;
     
     self.nextExcerciseRestView.isNext = YES;
-    
-    [self setUpTimer];
-    
-    
-    
 }
 - (IBAction)addThirtySecondsButtonTapped:(id)sender
 {
     
     if (self.restCountdown < 3530)
     {
-        
         self.restCountdown = self.restCountdown + 30;
         self.timerLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
     }
@@ -99,33 +93,26 @@
     self.sliderLabel.text = label;
     
     self.excerciseSetJustFinished.numberofRepsActual = truncatedValue;
-    
-    NSLog(@")number of reps for %@ was set to: %lld",self.excerciseSetJustFinished.excercise.name, self.excerciseSetJustFinished.numberofRepsActual);
-
-    
 }
 
--(void)setUpTimer
-{
-    self.timerInterval = 0;
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
-    
-    [self.timer fire];
-}
 
 -(void)countdown
 {
+    if (self.restCountdown == 0)
+    {
+        return;
+    }
     
-    if (self.restCountdown > 0)
+    if (self.restCountdown - ([[NSDate date] timeIntervalSince1970] - self.restStartTime) < -10)
+    {
+        self.restCountdown = 0 ;
+    }
+    else
     {
         self.restCountdown--;
     }
-    
-    self.timerLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
-    
-    self.timerInterval++;
-    
+    self.timerLabel.text = [NSString timeInClockForm:self.restCountdown];
+    self.restStartTime = [[NSDate date] timeIntervalSince1970];
 }
 
 -(void)setWorkout:(Workout *)workout
@@ -138,18 +125,12 @@
 
 -(void)setIndexOfExcerciseJustFinished:(NSUInteger)indexOfExcerciseJustFinished
 {
-    
     _indexOfExcerciseJustFinished = indexOfExcerciseJustFinished;
     
     self.excerciseSetJustFinished = self.excerciseSets[indexOfExcerciseJustFinished];
-    
     [self resetTimer];
-    
     [self resetPicturesAndLabel];
-    
     [self resetSliderLabel];
-    
-    
 }
 
 -(void)resetSliderLabel
@@ -205,15 +186,10 @@
 
 -(void)resetTimer
 {
-    self.timerInterval = 0;
     
     self.restCountdown = self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested;
-    
-     self.timerLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
-    
-    
-    
-    
+    self.restStartTime = [[NSDate date] timeIntervalSince1970];
+    self.timerLabel.text = [NSString timeInClockForm:self.restCountdown];
 }
 
 

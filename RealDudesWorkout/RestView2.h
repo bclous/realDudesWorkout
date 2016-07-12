@@ -14,4 +14,6 @@
 @property (strong, nonatomic) Workout *workout;
 @property (nonatomic) NSUInteger indexOfExcerciseJustFinished;
 
+-(void)countdown;
+
 @end

@@ -37,16 +37,13 @@
                                             <constraint firstAttribute="height" constant="30" id="ng0-Dn-Dup"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView alpha="0.45000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="26k-JN-Yuf">
+                                    <imageView userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="26k-JN-Yuf">
                                         <rect key="frame" x="20" y="35" width="20" height="20"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="26k-JN-Yuf" secondAttribute="height" multiplier="1:1" id="Vpd-Vz-mFB"/>
                                             <constraint firstAttribute="height" constant="20" id="jQL-n8-kME"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Qeb-f4-BRH" appends="YES" id="hTi-6h-2VT"/>
-                                        </connections>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCm-hr-Sz7">
                                         <rect key="frame" x="10" y="25" width="40" height="40"/>
@@ -170,11 +167,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-Go-8jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Qeb-f4-BRH">
-                    <connections>
-                        <action selector="cancelButtonTapped:" destination="NKf-Qy-GjP" id="0Jr-ZH-cg3"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="vey-zq-hpY">
                     <connections>
                         <action selector="cancelborderViewTapped:" destination="NKf-Qy-GjP" id="eHU-C8-5le"/>
@@ -271,7 +263,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="3iN-9Q-ZkR"/>
                             <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="9iu-0w-bOz" secondAttribute="bottom" id="7sL-cV-yh3"/>

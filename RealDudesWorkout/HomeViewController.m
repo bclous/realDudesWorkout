@@ -17,6 +17,7 @@
 #import "WorkoutTotalsTopCellTableViewCell.h"
 #import "WorkoutDetailView.h"
 #import "WorkoutTotalIndividualView.h"
+#import "IntroView.h"
 
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate,  WorkoutDetailViewDelegate, WorkoutTotalIndividualViewDelegate>
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) WorkoutOnBoardView *workoutOnBoardView;
 @property (strong, nonatomic) GenerateWorkoutView *generateWorkoutView;
 @property (strong, nonatomic) WorkoutDetailView *workoutDetailView;
+@property (strong, nonatomic) IntroView *introView;
 
 @property (nonatomic) BOOL workoutCreated;
 
@@ -69,8 +71,9 @@
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     
     [self setUpMainTableView];
-    [self setUpStartButtonView];
     [self setUpWorkoutDetailView];
+    [self setUpIntroView];
+    [self setUpStartButtonView];
     
     [self.view layoutIfNeeded];
     
@@ -111,9 +114,19 @@
     self.workoutDetailViewHeightConstraint.active = YES;
     self.workoutDetailView.alpha = 0;
     self.workoutDetailView.clipsToBounds = YES;
-    
-    
-    
+}
+
+-(void)setUpIntroView
+{
+    self.introView = [[IntroView alloc] init];
+    [self.view addSubview:self.introView];
+    self.introView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.introView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.introView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.introView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    [self.introView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:320].active = YES;
+    [self.view bringSubviewToFront:self.introView];
+    self.introView.alpha = self.workouts.count ? 0 : 1;
 }
 
 -(void)growWorkoutDetailViewWithWorkout:(Workout *)workout
@@ -538,6 +551,7 @@
     [self.dataStore fetchData];
     self.workouts = self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     [self.workoutsTableView reloadData];
+    self.introView.alpha = self.workouts.count ? 0 : 1;
 }
 
 -(void)replicateWorkout:(Workout *)workout

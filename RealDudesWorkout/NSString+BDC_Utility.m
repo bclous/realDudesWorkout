@@ -91,16 +91,13 @@
 +(NSString *)timeInClockForm:(NSTimeInterval)timeInSeconds
 {
     
-    NSUInteger hours = timeInSeconds / 3600;
+    NSUInteger hours = (NSUInteger)timeInSeconds / 3600;
     NSUInteger minutes = ((NSUInteger)timeInSeconds % 3600) / 60;
-    NSUInteger seconds = (((NSUInteger)timeInSeconds % 3600) % 60) / 60;
+    NSUInteger seconds = (((NSUInteger)timeInSeconds % 3600) % 60);
     
     return [NSString stringWithFormat:@"%@%@%@", [NSString hoursFormatted:hours], [NSString minutesFormatted:minutes hasHours:hours > 0], [NSString secondsFormatted:seconds]];
     
 }
-
-
-
 
 // Helper methods
 

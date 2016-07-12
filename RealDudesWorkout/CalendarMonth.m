@@ -241,6 +241,15 @@
     
     NSString *dateString = [NSString stringWithFormat:@"%lu%lu%lu", components.month, components.day, components.year];
     
+    NSDate *downloadDate = [NSDate dateWithTimeIntervalSince1970:self.dataStore.user.downloadDate];
+    NSDateComponents *downloadComponents = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:downloadDate];
+    
+
+    BOOL yearMatches = components.year == downloadComponents.year;
+    BOOL monthMatches = components.month == downloadComponents.month;
+    BOOL isPreDownload = (components.year < downloadComponents.year) || (yearMatches && (components.month < downloadComponents.month)) || (yearMatches && monthMatches && (components.day < downloadComponents.day));
+    
+    day.isPreDownload = isPreDownload;
     day.isToday = todaysComponents.year == components.year && todaysComponents.month == components.month && todaysComponents.day == components.day;
     day.isFuture  = calendarDayDate.timeIntervalSinceNow > 0 && !day.isToday;
     day.didWorkout = [[self.dataStore.user orderedSetOfWorkoutDates] containsObject:dateString];

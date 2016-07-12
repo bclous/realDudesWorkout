@@ -35,10 +35,11 @@
     user.legsLevel = 0;
     user.coreLevel = 0;
     user.flexLevel = 0;
+    user.downloadDate = [[NSDate date] timeIntervalSince1970];
     
     self.user = user;
     
-   // [self saveContext]; do I need this?
+   [self saveContext];
     
     
 }

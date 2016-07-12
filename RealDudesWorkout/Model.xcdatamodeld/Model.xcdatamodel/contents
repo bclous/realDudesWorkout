@@ -38,6 +38,7 @@
         <attribute name="backLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="chestLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="coreLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="downloadDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="flexLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="legsLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -61,7 +62,7 @@
         <element name="Circuit" positionX="-171" positionY="-283" width="128" height="103"/>
         <element name="Excercise" positionX="-2" positionY="-72" width="128" height="133"/>
         <element name="ExcerciseSet" positionX="-2" positionY="-333" width="128" height="223"/>
-        <element name="User" positionX="-533" positionY="-342" width="128" height="148"/>
+        <element name="User" positionX="-533" positionY="-342" width="128" height="165"/>
         <element name="Workout" positionX="-360" positionY="-72" width="128" height="208"/>
     </elements>
 </model>

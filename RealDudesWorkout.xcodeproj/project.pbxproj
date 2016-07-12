@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		60455D2B2D3CC971690A19C9 /* libPods-RealDudesWorkout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */; };
+		AB19B3BF1D349B4A009D54D0 /* IntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB19B3BE1D349B49009D54D0 /* IntroView.xib */; };
+		AB19B3C21D349F8D009D54D0 /* IntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19B3C11D349F8D009D54D0 /* IntroView.m */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
 		AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */; };
@@ -83,6 +85,9 @@
 		43C50A71DB08BD7B22B20E3C /* Pods-RealDudesWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDudesWorkout.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout.release.xcconfig"; sourceTree = "<group>"; };
 		6AC68073E94711102B10B694 /* Pods-RealDudesWorkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDudesWorkout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealDudesWorkout/Pods-RealDudesWorkout.debug.xcconfig"; sourceTree = "<group>"; };
 		7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RealDudesWorkout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB19B3BE1D349B49009D54D0 /* IntroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroView.xib; sourceTree = "<group>"; };
+		AB19B3C01D349F8D009D54D0 /* IntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroView.h; sourceTree = "<group>"; };
+		AB19B3C11D349F8D009D54D0 /* IntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroView.m; sourceTree = "<group>"; };
 		AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Accessory+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
@@ -299,6 +304,9 @@
 				AB2A390B1CE404CC005DD03A /* HomeViewController.m */,
 				AB345D8C1C9260F800604D55 /* ActiveWorkoutViewController.h */,
 				AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */,
+				AB19B3C01D349F8D009D54D0 /* IntroView.h */,
+				AB19B3C11D349F8D009D54D0 /* IntroView.m */,
+				AB19B3BE1D349B49009D54D0 /* IntroView.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -510,6 +518,7 @@
 				AB92E7CD1CB2A14900199034 /* TotalsFrontPageCell.xib in Resources */,
 				AB2A39101CEA2BDA005DD03A /* WorkoutScrollSummaryCell.xib in Resources */,
 				ABC0B68E1CF3B68400938033 /* ExcerciseRestView.xib in Resources */,
+				AB19B3BF1D349B4A009D54D0 /* IntroView.xib in Resources */,
 				ABDFCF4F1D29553C00FF3007 /* CalendarMonth.xib in Resources */,
 				ABC0B6781CEE5D8F00938033 /* WorkoutOnBoard.xib in Resources */,
 				ABDFCF3F1D2085F100FF3007 /* WorkoutTotalsDetail.xib in Resources */,
@@ -576,6 +585,7 @@
 				AB41F2ED1C90FE33009D7E63 /* Workout+CoreDataProperties.m in Sources */,
 				ABA977B31C9CA7BB00D04639 /* ExcerciseSet+CoreDataProperties.m in Sources */,
 				AB92E7D01CB2A98700199034 /* TotalsFrontPageCellView.m in Sources */,
+				AB19B3C21D349F8D009D54D0 /* IntroView.m in Sources */,
 				AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */,
 				AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */,
 				ABA977B41C9CA7BB00D04639 /* ExcerciseSet.m in Sources */,

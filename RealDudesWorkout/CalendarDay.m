@@ -103,12 +103,22 @@
 {
     _didWorkout = didWorkout;
     
-    if (!self.isFuture)
+    if (!self.isFuture && !self.isPreDownload)
     {
         self.circleView.backgroundColor = didWorkout ? [UIColor colorWithRed:60.0/255.0 green:196.0/255.0 blue:94.0/255.0 alpha:1] : [UIColor redColor];
     }
+}
+
+-(void)setIsPreDownload:(BOOL)isPreDownload
+{
+    _isPreDownload = isPreDownload;
     
-    
+    if (isPreDownload)
+    {
+
+        self.circleView.backgroundColor = [UIColor darkGrayColor];
+
+    }
 }
 
 

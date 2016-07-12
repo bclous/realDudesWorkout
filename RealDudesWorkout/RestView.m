@@ -201,7 +201,6 @@
 
 -(void)countdown
 {
-    
     if (self.restCountdown > 0)
     {
         self.restCountdown--;
@@ -209,11 +208,7 @@
     
     self.restCountdownLabel.text = [self restCountDisplayFromSeconds:self.restCountdown];
 
-    
     self.timer++;
-    
-  
-    
 }
 
 

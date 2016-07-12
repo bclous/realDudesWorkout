@@ -14,23 +14,17 @@
 #import "ExerciseDescriptionView.h"
 #import "NSString+BDC_Utility.h"
 
-
 @interface ActiveWorkoutViewController () <ExerciseDescriptionDelegate>
 
-@property (strong, nonatomic) Workout *workout;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *workoutTimeLabel;
-
 @property (weak, nonatomic) IBOutlet ExcerciseView *excerciseView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *footerView;
 @property (weak, nonatomic) IBOutlet UIView *footerBackgroundView;
 @property (weak, nonatomic) IBOutlet UIView *navBar;
-
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UILabel *excerciseTotalsLabel;
 
-@property (strong, nonatomic) RestView2 *restView;
-
+@property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSArray *excerciseSets;
 @property (strong, nonatomic) ExcerciseSet *currentExcerciseSet;
 @property (strong, nonatomic) ExcerciseSet *lastExcerciseSet;
@@ -38,26 +32,17 @@
 @property (nonatomic) NSUInteger currentExcerciseSetIndexValue;
 
 @property (strong, nonatomic) NSTimer *totalWorkoutTimer;
+@property (nonatomic) NSTimeInterval totalWorkoutBaseTimeInterval;
+@property (nonatomic) NSTimeInterval individualExcerciseBaseTimeInterval;
+@property (nonatomic) NSTimeInterval restBaseTimeInterval;
+@property (nonatomic) NSTimeInterval currentTimeInterval;
 
-
-@property (nonatomic) NSTimeInterval totalWorkoutTimeInterval;
-@property (nonatomic) NSTimeInterval individualExerciseStartTimeInterval;
-@property (nonatomic) NSTimeInterval individualExcerciseCurrentTimeInterval;
-@property (nonatomic) NSTimeInterval restCounterStartTimeInterval;
-@property (nonatomic) NSTimeInterval restCounterCurrentTimeInterval;
-
-
-
-@property (nonatomic) NSTimeInterval totalWorkoutCounter;
-@property (nonatomic) NSTimeInterval individualExcerciseCounter;
-@property (nonatomic) NSTimeInterval restCounter;
 
 @property (nonatomic) BOOL restViewIsDisplayed;
 @property (nonatomic) BOOL isLastExcercise;
 @property (nonatomic) BOOL isNextToLastExcercise;
 
-@property (weak, nonatomic) IBOutlet UIButton *doneButton;
-
+@property (strong, nonatomic) RestView2 *restView;
 
 @property (strong, nonatomic) UIVisualEffectView *restBlurView;
 @property (strong, nonatomic) NSLayoutConstraint *restBlurViewTopConstraint;
@@ -66,7 +51,6 @@
 @property (strong, nonatomic) ExerciseDescriptionView *exerciseDescriptionView;
 @property (nonatomic) BOOL descriptionViewDisplayed;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *exerciseDescriptionTapGestureRecognizer;
-
 
 @end
 
@@ -85,26 +69,44 @@
     [self initializeViewComponents];
     [self createExerciseDescriptionView];
     [self createRestView];
-    [self setUpTimerNotification];
+    [self setUpTimer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:@"app entered foreground" object:nil];
 }
 
--(void)setUpTimerNotification
+-(void)viewWillDisappear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] addObserver:@"timer observer" selector:@selector(masterClockTick) name:@"timer" object:nil];
-    self.totalWorkoutTimeInterval = 0;
+    [self.totalWorkoutTimer invalidate];
+    [[NSNotificationCenter defaultCenter] removeObserver:@"app entered foreground"];
 }
 
--(void)viewDidDisappear:(BOOL)animated
+-(void)appEnteredForeground
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:@"timer observer"];
+    //[self countdown];
 }
 
--(void)masterClockTick
+-(void)setUpTimer
 {
-    self.totalWorkoutTimeInterval++;
-    self.workoutTimeLabel.text = [NSString timeInClockForm:self.totalWorkoutTimeInterval];
-    self.workout.timeInSeconds = self.totalWorkoutTimeInterval;
-    [self.dataStore saveContext];
+    _totalWorkoutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    _totalWorkoutBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
+    _individualExcerciseBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
+    _restBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
+    _currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    [self.totalWorkoutTimer fire];
+    
+}
+
+-(void)countdown
+{
+    self.currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    self.workoutTimeLabel.text = [NSString timeInClockForm:self.currentTimeInterval - self.totalWorkoutBaseTimeInterval];
+    self.workout.timeInSeconds = self.currentTimeInterval - self.totalWorkoutBaseTimeInterval;
+    
+    if (self.restViewIsDisplayed)
+    {
+        [self.restView countdown];
+    }
+    
 }
 
 -(void)initializeViewComponents
@@ -149,7 +151,6 @@
     
 }
 
-
 - (IBAction)finishButtonTapped:(id)sender
 {
     if (self.restViewIsDisplayed && !self.isLastExcercise)
@@ -189,7 +190,6 @@
     //update excercise totals
     [self updateExcerciseTotals];
     
-    
     //[self generateRestComponents];
     [self changeButtonTitle];
     
@@ -206,8 +206,8 @@
 
 -(void)moveBackToExcerciseScreen
 {
-    
-    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.totalWorkoutTimeInterval - self.restCounterStartTimeInterval;
+
+    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.currentTimeInterval - self.restBaseTimeInterval;
     
     [self updateTimeIntervalStartTimes];
     [self updateExcercise];
@@ -230,7 +230,7 @@
 
 -(void)excerciseComplete
 {
-    self.currentExcerciseSet.timeInSecondsActual = self.totalWorkoutTimeInterval - self.individualExerciseStartTimeInterval;
+    self.currentExcerciseSet.timeInSecondsActual = self.currentTimeInterval - self.individualExcerciseBaseTimeInterval;
     self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
     self.currentExcerciseSet.isComplete = YES;
 }
@@ -250,7 +250,7 @@
 
 -(void)workoutFinished
 {
-    self.workout.timeInSeconds = self.totalWorkoutCounter;
+    self.workout.timeInSeconds = self.currentTimeInterval - self.totalWorkoutBaseTimeInterval;
     self.workout.isFinished = YES;
     self.workout.isFinishedSuccessfully = self.isLastExcercise ? YES : NO;
     [self.dataStore saveContext];
@@ -270,9 +270,7 @@
     {
         self.nextExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue + 1];
     }
-    
 }
-
 
 -(void)changeButtonTitle
 {
@@ -308,26 +306,17 @@
     self.restView.indexOfExcerciseJustFinished = 0;
 }
 
-- (IBAction)cancelButtonTapped:(id)sender
-{
-    
-    self.workout.timeInSeconds = self.totalWorkoutCounter;
-    self.workout.isFinished = YES;
-    [self dismissViewControllerAnimated:YES completion:nil];
-  
-}
 - (IBAction)cancelborderViewTapped:(id)sender
 {
-    self.workout.timeInSeconds = self.totalWorkoutCounter;
+    self.workout.timeInSeconds = self.currentTimeInterval - self.totalWorkoutBaseTimeInterval;
     self.workout.isFinished = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 -(void)updateTimeIntervalStartTimes;
 {
-    self.individualExerciseStartTimeInterval = self.totalWorkoutTimeInterval;
-    self.restCounterStartTimeInterval = self.totalWorkoutTimeInterval;
+    self.individualExcerciseBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
+    self.restBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
 }
 
 
@@ -454,14 +443,12 @@
 -(void)leaveDescriptionViewTapped
 {
     self.exerciseDescriptionView.alpha = 0;
-    
     self.descriptionViewDisplayed = NO;
 }
 
 - (IBAction)excerciseDescriptionTapped:(id)sender
 {
     self.exerciseDescriptionView.alpha = 1;
-    
     self.descriptionViewDisplayed = YES;
 }
 
