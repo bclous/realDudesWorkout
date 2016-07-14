@@ -83,6 +83,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.workoutsTableView reloadData];
+    self.introView.alpha = self.workouts.count ? 0 : 1;
     
     if (self.hasLoadedBefore)
     {
@@ -525,6 +526,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.introView.alpha = self.workouts.count ? 0 : 1;
     return indexPath.section == 0 ? 250 : 110;
 }
 

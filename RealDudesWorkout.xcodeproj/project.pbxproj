@@ -107,7 +107,7 @@
 		AB2A39201CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutSummaryScrollTableViewCell.m; sourceTree = "<group>"; };
 		AB345D8C1C9260F800604D55 /* ActiveWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveWorkoutViewController.h; sourceTree = "<group>"; };
 		AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveWorkoutViewController.m; sourceTree = "<group>"; };
-		AB41F2C61C90FC25009D7E63 /* RealDudesWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealDudesWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB41F2C61C90FC25009D7E63 /* Man Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Man Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB41F2CA1C90FC25009D7E63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 		AB41F2C71C90FC25009D7E63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB41F2C61C90FC25009D7E63 /* RealDudesWorkout.app */,
+				AB41F2C61C90FC25009D7E63 /* Man Up.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -454,7 +454,7 @@
 			);
 			name = RealDudesWorkout;
 			productName = RealDudesWorkout;
-			productReference = AB41F2C61C90FC25009D7E63 /* RealDudesWorkout.app */;
+			productReference = AB41F2C61C90FC25009D7E63 /* Man Up.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -729,10 +729,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RealDudesWorkout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Qwiz.RealDudesWorkout;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Qwiz.ManUpFitness;
+				PRODUCT_NAME = "Man Up";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -743,13 +743,13 @@
 			baseConfigurationReference = 43C50A71DB08BD7B22B20E3C /* Pods-RealDudesWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: The Qwiz LLC (WGMLG78T9W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: The Qwiz LLC (WGMLG78T9W)";
 				INFOPLIST_FILE = RealDudesWorkout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Qwiz.RealDudesWorkout;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Qwiz.ManUpFitness;
+				PRODUCT_NAME = "Man Up";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
