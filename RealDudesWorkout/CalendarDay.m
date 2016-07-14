@@ -85,7 +85,7 @@
     
     if (isFuture)
     {
-        self.circleView.backgroundColor = [UIColor darkGrayColor];
+        self.circleView.backgroundColor = [UIColor clearColor];
     }
 }
 
@@ -116,7 +116,7 @@
     if (isPreDownload)
     {
 
-        self.circleView.backgroundColor = [UIColor darkGrayColor];
+        self.circleView.backgroundColor = [UIColor clearColor];
 
     }
 }
