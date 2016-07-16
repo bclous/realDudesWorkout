@@ -10,6 +10,8 @@
 		60455D2B2D3CC971690A19C9 /* libPods-RealDudesWorkout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8FA97201C279063F456360 /* libPods-RealDudesWorkout.a */; };
 		AB19B3BF1D349B4A009D54D0 /* IntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB19B3BE1D349B49009D54D0 /* IntroView.xib */; };
 		AB19B3C21D349F8D009D54D0 /* IntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19B3C11D349F8D009D54D0 /* IntroView.m */; };
+		AB19B3E81D39B3F1009D54D0 /* WorkoutOnBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19B3E71D39B3F1009D54D0 /* WorkoutOnBoardViewController.m */; };
+		AB19B3EC1D39B4F1009D54D0 /* WorkoutDurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB19B3EB1D39B4F1009D54D0 /* WorkoutDurationView.xib */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
 		AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */; };
@@ -88,6 +90,9 @@
 		AB19B3BE1D349B49009D54D0 /* IntroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroView.xib; sourceTree = "<group>"; };
 		AB19B3C01D349F8D009D54D0 /* IntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroView.h; sourceTree = "<group>"; };
 		AB19B3C11D349F8D009D54D0 /* IntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroView.m; sourceTree = "<group>"; };
+		AB19B3E61D39B3F1009D54D0 /* WorkoutOnBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutOnBoardViewController.h; sourceTree = "<group>"; };
+		AB19B3E71D39B3F1009D54D0 /* WorkoutOnBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutOnBoardViewController.m; sourceTree = "<group>"; };
+		AB19B3EB1D39B4F1009D54D0 /* WorkoutDurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutDurationView.xib; sourceTree = "<group>"; };
 		AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Accessory+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
@@ -297,6 +302,16 @@
 			name = Xibs;
 			sourceTree = "<group>";
 		};
+		AB19B3EA1D39B4CE009D54D0 /* WorkoutOnBoard */ = {
+			isa = PBXGroup;
+			children = (
+				AB19B3E71D39B3F1009D54D0 /* WorkoutOnBoardViewController.m */,
+				AB19B3E61D39B3F1009D54D0 /* WorkoutOnBoardViewController.h */,
+				AB19B3EB1D39B4F1009D54D0 /* WorkoutDurationView.xib */,
+			);
+			name = WorkoutOnBoard;
+			sourceTree = "<group>";
+		};
 		AB1D4D0D1C960BC400E71342 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +352,7 @@
 				ABDFCF3B1D1F18AC00FF3007 /* NSString+BDC_Utility.h */,
 				ABDFCF3C1D1F18AC00FF3007 /* NSString+BDC_Utility.m */,
 				ABA9776F1C99D41A00D04639 /* Main.storyboard */,
+				AB19B3EA1D39B4CE009D54D0 /* WorkoutOnBoard */,
 				AB1D4D0D1C960BC400E71342 /* View Controllers */,
 				AB1220B71CA2ED390067467C /* Table View Cells */,
 				AB1220DC1CA47F830067467C /* Xibs */,
@@ -507,6 +523,7 @@
 				ABDFCF441D20DDD000FF3007 /* LastTwelveMonthsWorkoutTotals.xib in Resources */,
 				AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */,
 				ABCE7FFE1D05D80A00E93339 /* ExerciseDescription.xib in Resources */,
+				AB19B3EC1D39B4F1009D54D0 /* WorkoutDurationView.xib in Resources */,
 				ABC0B6821CF112CA00938033 /* GenerateWorkout.xib in Resources */,
 				AB41F2F81C91255D009D7E63 /* addIcon.png in Resources */,
 				ABC0B68C1CF3AD1300938033 /* RestView2.xib in Resources */,
@@ -601,6 +618,7 @@
 				AB2A39091CE3FFB5005DD03A /* NumberOfWorkoutsView.m in Sources */,
 				ABC0B6911CF3B77200938033 /* ExcerciseRestView.m in Sources */,
 				ABC0B6531CECD29A00938033 /* StartWorkoutButtonView.m in Sources */,
+				AB19B3E81D39B3F1009D54D0 /* WorkoutOnBoardViewController.m in Sources */,
 				ABA977BA1C9D9FD900D04639 /* User.m in Sources */,
 				ABDFCF3D1D1F18AC00FF3007 /* NSString+BDC_Utility.m in Sources */,
 				AB2A390C1CE404CC005DD03A /* HomeViewController.m in Sources */,
