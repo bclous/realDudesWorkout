@@ -15,5 +15,8 @@
 @property (nonatomic) NSUInteger indexOfExcerciseJustFinished;
 
 -(void)countdown;
+-(void)generateExerciseStackView;
+//-(void)updateScrollView;
+-(void)updateScrollViewAnimate:(BOOL)animate;
 
 @end

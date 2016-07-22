@@ -90,8 +90,6 @@
     }
 }
 
-
-
 -(void)setAccessory:(Accessory *)accessory
 {
     
@@ -99,7 +97,6 @@
     
     self.accessoryImageView.image = [UIImage imageNamed:accessory.pictureName];
     self.accessoryLabel.text = accessory.name;
-    
     
 }
 

@@ -17,9 +17,9 @@
 
 @interface WorkoutOnBoardView : UIView
 
-
-
 @property (weak, nonatomic) id <WorkoutOnBoardDelegate> delegate;
+
+-(void)resetView;
 
 
 @end

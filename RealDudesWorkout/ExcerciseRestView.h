@@ -13,5 +13,9 @@
 
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
 @property (nonatomic) BOOL isNext;
+@property (weak, nonatomic) IBOutlet UIView *doneView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkImage;
+
+-(void)adjustFormatFinished:(BOOL)finished;
 
 @end

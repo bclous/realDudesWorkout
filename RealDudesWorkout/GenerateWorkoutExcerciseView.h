@@ -11,8 +11,6 @@
 
 @interface GenerateWorkoutExcerciseView : UIView
 
-
-
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
 
 @end

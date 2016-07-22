@@ -147,4 +147,17 @@
     [self.availableAccessories removeObject:accessory];
 }
 
+-(void)resetView
+{
+    self.accessory1.accessory = self.dataStore.availableAccessories[0];
+    self.accessory2.accessory = self.dataStore.availableAccessories[1];
+    self.accessory3.accessory = self.dataStore.availableAccessories[2];
+    self.accessory4.accessory = self.dataStore.availableAccessories[3];
+    self.accessory5.accessory = self.dataStore.availableAccessories[4];
+    self.accessory6.accessory = self.dataStore.availableAccessories[5];
+    
+    self.workoutLength = 30;
+    [self updateMinutesLabel];
+}
+
 @end

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -9,7 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExcerciseRestView">
             <connections>
                 <outlet property="blueCircle" destination="kLz-xM-N1w" id="Xz8-LN-7LX"/>
+                <outlet property="checkImage" destination="S33-aW-HGm" id="ZqA-w2-rA1"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="4d6-eT-oxx"/>
+                <outlet property="doneView" destination="tjO-Zl-DRn" id="sFK-wh-5LD"/>
                 <outlet property="excerciseImage" destination="yKW-hW-OLf" id="4lu-uj-r4a"/>
             </connections>
         </placeholder>
@@ -27,18 +28,33 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="crunch" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-hW-OLf">
                     <rect key="frame" x="38" y="38" width="128" height="128"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_done_white" translatesAutoresizingMaskIntoConstraints="NO" id="S33-aW-HGm">
+                    <rect key="frame" x="38" y="38" width="126" height="126"/>
+                </imageView>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Zl-DRn">
+                    <rect key="frame" x="0.0" y="2" width="202" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="kLz-xM-N1w" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3Dn-BX-cXe"/>
+                <constraint firstItem="S33-aW-HGm" firstAttribute="width" secondItem="yKW-hW-OLf" secondAttribute="width" id="3yP-uh-NuW"/>
+                <constraint firstItem="S33-aW-HGm" firstAttribute="centerX" secondItem="yKW-hW-OLf" secondAttribute="centerX" id="7wB-gI-p5v"/>
+                <constraint firstItem="tjO-Zl-DRn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BJ8-9J-U4C"/>
+                <constraint firstItem="tjO-Zl-DRn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-8" id="DBc-Cg-BiQ"/>
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="height" secondItem="kLz-xM-N1w" secondAttribute="height" constant="-8" id="HJF-9s-cr8"/>
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="centerX" secondItem="kLz-xM-N1w" secondAttribute="centerX" id="KKD-bG-7cb"/>
                 <constraint firstItem="kLz-xM-N1w" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="KXb-m6-GFR"/>
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="centerY" secondItem="kLz-xM-N1w" secondAttribute="centerY" id="Kxb-3P-Zqv"/>
+                <constraint firstItem="S33-aW-HGm" firstAttribute="centerY" secondItem="yKW-hW-OLf" secondAttribute="centerY" id="OTu-Bh-86n"/>
+                <constraint firstItem="tjO-Zl-DRn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QaJ-r0-7ce"/>
                 <constraint firstItem="kLz-xM-N1w" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="RdA-mQ-sDh"/>
                 <constraint firstItem="yKW-hW-OLf" firstAttribute="centerX" secondItem="7iA-gU-Efj" secondAttribute="centerX" id="Uvn-3K-B68"/>
                 <constraint firstItem="yKW-hW-OLf" firstAttribute="width" secondItem="7iA-gU-Efj" secondAttribute="width" multiplier="0.65" id="aZJ-Ao-Sgf"/>
+                <constraint firstItem="tjO-Zl-DRn" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" constant="-8" id="bYX-p4-zIo"/>
                 <constraint firstItem="kLz-xM-N1w" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rHM-fk-fEd"/>
                 <constraint firstItem="yKW-hW-OLf" firstAttribute="centerY" secondItem="7iA-gU-Efj" secondAttribute="centerY" id="vmj-JS-crW"/>
+                <constraint firstItem="S33-aW-HGm" firstAttribute="height" secondItem="yKW-hW-OLf" secondAttribute="height" id="vxb-no-nyX"/>
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="width" secondItem="kLz-xM-N1w" secondAttribute="width" constant="-8" id="wqY-mA-N8h"/>
                 <constraint firstItem="yKW-hW-OLf" firstAttribute="height" secondItem="7iA-gU-Efj" secondAttribute="height" multiplier="0.65" id="wtF-cu-lId"/>
             </constraints>
@@ -50,5 +66,6 @@
         <image name="blueCircle2 2" width="256" height="256"/>
         <image name="circle" width="300" height="300"/>
         <image name="crunch" width="300" height="300"/>
+        <image name="ic_done_white" width="24" height="24"/>
     </resources>
 </document>

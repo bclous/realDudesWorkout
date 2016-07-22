@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *blueCircle;
 
 
+
 @end
 
 @implementation ExcerciseRestView
@@ -53,6 +54,10 @@
     self.contentView.frame = self.bounds;
     
     self.blueCircle.alpha = 0;
+    self.doneView.layer.cornerRadius = 56;
+    self.doneView.alpha = 0;
+    self.checkImage.alpha = 0;
+    
     
 }
 
@@ -61,6 +66,14 @@
     _excerciseSet = excerciseSet;
     
     self.excerciseImage.image = [UIImage imageNamed:excerciseSet.excercise.pictureName];
+
+}
+
+-(void)adjustFormatFinished:(BOOL)finished
+{
+    
+    self.doneView.alpha = finished ? .7 : 0;
+    self.checkImage.alpha = finished ? 1 : 0;
 
 }
 

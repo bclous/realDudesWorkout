@@ -22,5 +22,6 @@
 @property (weak, nonatomic) id <GenerateWorkoutViewDelegate> delegate;
 
 -(void)animateInExcercices;
+-(void)resetView;
 
 @end

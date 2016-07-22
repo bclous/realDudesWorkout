@@ -76,9 +76,6 @@
     self.excerciseNameLabel.text = self.excerciseSet.excercise.name;
     self.excerciseImage.image = [UIImage imageNamed:self.excerciseSet.excercise.pictureName];
     
-   
-    
-    
 }
 
 
