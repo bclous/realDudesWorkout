@@ -75,6 +75,8 @@
     //self.nextExcerciseRestView.isNext = YES;
     
     _exerciseViewsArray = [[NSMutableArray alloc] init];
+    
+    self.previousIndexOfExerciseJustFinished = -1; // dummy value so zero works;
 }
 - (IBAction)addThirtySecondsButtonTapped:(id)sender
 {
@@ -145,7 +147,7 @@
 
 -(void)setIndexOfExcerciseJustFinished:(NSUInteger)indexOfExcerciseJustFinished
 {
-    self.preservesSuperviewLayoutMargins = self.indexOfExcerciseJustFinished;
+    self.previousIndexOfExerciseJustFinished = self.indexOfExcerciseJustFinished;
     
     _indexOfExcerciseJustFinished = indexOfExcerciseJustFinished;
     
@@ -157,23 +159,7 @@
     [self layoutIfNeeded];
 
 }
-//
-//-(void)updateScrollView
-//{
-//    ExcerciseRestView *justFinishedView = self.exerciseViewsArray[self.indexOfExcerciseJustFinished];
-//    
-//    [UIView animateWithDuration:.02 delay:.2 options:nil
-//                     animations:^{
-//                         [justFinishedView adjustFormatFinished:YES];
-//                     
-//                     } completion:^(BOOL finished) {
-//                         CGPoint offset;
-//                         offset.y = 0;
-//                         offset.x = self.exerciseScrollView.contentOffset.x + 130;
-//                         
-//                         [self.exerciseScrollView setContentOffset:offset animated:YES];
-//                     }];
-//}
+
 
 -(void)updateScrollViewAnimate:(BOOL)animate
 {
@@ -181,14 +167,14 @@
     offset.y = 0;
     offset.x = 130 * self.indexOfExcerciseJustFinished + 130;
     
-    BOOL forwards = self.indexOfExcerciseJustFinished > self.previousIndexOfExerciseJustFinished;
+    BOOL forwards = self.indexOfExcerciseJustFinished >= self.previousIndexOfExerciseJustFinished;
     CGFloat delay = animate ? .2 : 0;
     CGFloat duration = animate ? .02 : 0;
     
     
     if (forwards)
     {
-       [UIView animateWithDuration:duration delay:delay options:nil animations:^{
+       [UIView animateWithDuration:duration delay:delay options:0 animations:^{
            ExcerciseRestView *justFinishedView = self.exerciseViewsArray[self.indexOfExcerciseJustFinished];
            [justFinishedView adjustFormatFinished:YES];
        } completion:^(BOOL finished) {

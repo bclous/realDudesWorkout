@@ -194,12 +194,12 @@
     self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor];
     self.scrollViewCenterXConstraint.active = YES;
     
-    [UIView animateWithDuration:2 delay:.2 options:NO animations:^{
+    [UIView animateWithDuration:.1 delay:0 options:NO animations:^{
         [self layoutIfNeeded];
         
     } completion:^(BOOL finished) {
     
-        [UIView animateWithDuration:5 delay:0 options:NO animations:^{
+        [UIView animateWithDuration:.1 delay:0 options:NO animations:^{
     
             [self.excerciseScrollView setContentOffset:offset animated:NO];
             [self layoutIfNeeded];

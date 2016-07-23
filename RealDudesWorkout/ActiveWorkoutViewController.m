@@ -43,12 +43,22 @@
 @property (nonatomic) NSTimeInterval individualExcerciseBaseTimeInterval;
 @property (nonatomic) NSTimeInterval restBaseTimeInterval;
 @property (nonatomic) NSTimeInterval currentTimeInterval;
+@property (weak, nonatomic) IBOutlet UIStackView *buttonStackView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *infoTap;
 
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *backTap;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *skipTap;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *skipAndComeBackTap;
 
 @property (nonatomic) BOOL restViewIsDisplayed;
 @property (nonatomic) BOOL isLastExcercise;
 @property (nonatomic) BOOL isNextToLastExcercise;
 @property (nonatomic) BOOL skipViewIsDisplayed;
+
+@property (nonatomic) BOOL backAvailable;
+@property (nonatomic) BOOL skipAvailable;
+
+
 @property (strong, nonatomic) RestView2 *restView;
 @property (strong, nonatomic) SkipExerciseView *skipView;
 @property (strong, nonatomic) UIView *skipViewBlurView;
@@ -71,36 +81,33 @@
 
 -(void)leaveDescriptionViewTapped
 {
-    self.exerciseDescriptionView.alpha = 0;
-    self.descriptionViewDisplayed = NO;
+    [self excerciseDescriptionTapped:nil];
 }
 
 - (IBAction)excerciseDescriptionTapped:(id)sender
 {
-    self.exerciseDescriptionView.alpha = 1;
-    self.descriptionViewDisplayed = YES;
+    self.descriptionViewDisplayed = !self.descriptionViewDisplayed;
+    self.exerciseDescriptionView.alpha = self.descriptionViewDisplayed;
+    
 }
 
 - (IBAction)backButtonTapped:(id)sender
 {
     
-    //if on rest view
-    //updateScrollViewbackwards
-    //animate rest view down
+    if (self.restViewIsDisplayed)
+    {
     
-    //if not on rest view
-    //iterateeercise backwards
-    //updateScrollViewbackwards no animation
-    //pop restview back up
-    
-    //if skip view displayed
-    //animate skip view down
+        [self animateRestViewUp:NO];
+        
+    }
+    else
+    {
+  
+    }
+
     
 }
-- (IBAction)skipButtonTapped:(id)sender
-{
-    [self animateSkipViewUp:!self.skipViewIsDisplayed];
-}
+
 
 - (IBAction)cancelborderViewTapped:(id)sender
 {
@@ -114,6 +121,7 @@
     if (self.restViewIsDisplayed && !self.isLastExcercise)
     {
         [self restCompleted];
+        [self animateRestViewUp:NO];
     }
     else if (self.restViewIsDisplayed && self.isLastExcercise)
     {
@@ -125,37 +133,48 @@
     else
     {
         [self exerciseCompleted];
+        [self updateRestViewIndex];
+        [self animateRestViewUp:YES];
     }
+}
+- (IBAction)backTapped:(id)sender
+{
+    [self updateTimeIntervalStartTimes];
+    [self updateRestViewIndex];
+    self.currentExcerciseSetIndexValue--;
+    [self.restView updateScrollViewAnimate:NO];
+    [self updateProgressBar];
+}
+- (IBAction)skipTapped:(id)sender
+{
+    [self recordExerciseDataCompleted:NO];
+    [self updateTimeIntervalStartTimes];
+    [self updateRestViewIndex];
+    self.currentExcerciseSetIndexValue++;
+    [self.restView updateScrollViewAnimate:NO];
+    [self updateProgressBar];
+}
+- (IBAction)skipAndComeBackTapped:(id)sender {
+}
+- (IBAction)infoTapped:(id)sender
+{
+    [self excerciseDescriptionTapped:nil];
 }
 
 
 -(void)exerciseCompleted
 {
-    self.restView.indexOfExcerciseJustFinished = self.currentExcerciseSetIndexValue;
-
-    [self recordExerciseData];
+    [self updateProgressBar];
+    [self recordExerciseDataCompleted:YES];
     [self updateTimeIntervalStartTimes];
-    [self updateExcerciseTotals];
-    [self.dataStore saveContext];
-    [self animateRestViewUp:YES];
 }
 
 -(void)restCompleted
 {
-    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.currentTimeInterval - self.restBaseTimeInterval;
-    
+    [self recordRestData];
     [self updateTimeIntervalStartTimes];
-    [self updateExcerciseForward];
-    [self generateExcerciseComponents];
-    [self.dataStore saveContext];
-    
-    if (self.descriptionViewDisplayed)
-    {
-        self.exerciseDescriptionView.alpha = 0;
-        self.descriptionViewDisplayed = NO;
-    }
-    
-    [self animateRestViewUp:NO];
+    self.currentExcerciseSetIndexValue++;
+  
 }
 
 -(void)workoutFinished
@@ -166,31 +185,32 @@
     [self.dataStore saveContext];
 }
 
--(void)updateExcerciseForward
+-(void)setCurrentExcerciseSetIndexValue:(NSUInteger)currentExcerciseSetIndexValue
 {
-    self.currentExcerciseSetIndexValue++;
+    _currentExcerciseSetIndexValue = currentExcerciseSetIndexValue;
+    self.currentExcerciseSet = self.excerciseSets[currentExcerciseSetIndexValue];
+    [self updateExcerciseComponents];
     
-    self.currentExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue];
-    
-    self.isLastExcercise = self.currentExcerciseSetIndexValue == self.excerciseSets.count - 1;
-    self.isNextToLastExcercise = self.currentExcerciseSetIndexValue == self.excerciseSets.count - 2;
-    
-    if (!self.isLastExcercise)
-    {
-        self.nextExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue + 1];
-    }
 }
 
--(void)updateExerciseBackward
+-(void)updateRestViewIndex
 {
-    
-    
-    
+    self.restView.indexOfExcerciseJustFinished = self.currentExcerciseSetIndexValue;
 }
+
 
 
 #pragma mark update exercise methods
 
+-(void)setRestViewIsDisplayed:(BOOL)restViewIsDisplayed
+{
+    _restViewIsDisplayed = restViewIsDisplayed;
+    
+    self.backTap.enabled = !restViewIsDisplayed;
+    self.skipTap.enabled = !restViewIsDisplayed;
+    self.skipAndComeBackTap.enabled = !restViewIsDisplayed;
+    self.infoTap.enabled = !restViewIsDisplayed;
+}
 
 -(void)updateTimeIntervalStartTimes;
 {
@@ -198,7 +218,7 @@
     self.restBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
 }
 
--(void)updateExcerciseTotals
+-(void)updateProgressBar
 {
     NSUInteger totalExcercises = self.excerciseSets.count;
     NSUInteger currentExcercise = self.currentExcerciseSetIndexValue + 1;
@@ -206,11 +226,19 @@
     self.excerciseTotalsLabel.text = [NSString stringWithFormat:@"%lu%%", (unsigned long)percentage];
 }
 
--(void)recordExerciseData
+-(void)recordExerciseDataCompleted:(BOOL)completed
 {
-    self.currentExcerciseSet.timeInSecondsActual = self.currentTimeInterval - self.individualExcerciseBaseTimeInterval;
-    self.currentExcerciseSet.numberofRepsActual = self.currentExcerciseSet.numberOfRepsSuggested;
-    self.currentExcerciseSet.isComplete = YES;
+    
+    self.currentExcerciseSet.timeInSecondsActual = completed ? self.currentTimeInterval - self.individualExcerciseBaseTimeInterval : 0;
+    self.currentExcerciseSet.numberofRepsActual = completed ? self.currentExcerciseSet.numberOfRepsSuggested : 0;
+    self.currentExcerciseSet.isComplete = completed;
+    
+    [self.dataStore saveContext];
+}
+
+-(void)recordRestData
+{
+    self.currentExcerciseSet.restTimeAfterInSecondsActual = self.currentTimeInterval - self.restBaseTimeInterval;
 }
 
 -(void)changeButtonTitle
@@ -233,23 +261,9 @@
 
 #pragma mark View animations
 
--(void)animateSkipViewUp:(BOOL)up
-{
-    self.view.userInteractionEnabled = NO;
-    self.skipViewTopConstraint.active = NO;
-    self.skipViewTopConstraint = up ? [self.skipViewBlurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:70] :  [self.skipViewBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
-    self.skipViewTopConstraint.active = YES;
-    
-    [UIView animateWithDuration:.2 animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        self.skipViewIsDisplayed = up;
-        self.view.userInteractionEnabled = YES;
-    }];
-}
-
 -(void)animateRestViewUp:(BOOL)up
 {
+    
     self.view.userInteractionEnabled = NO;
     self.restBlurViewTopConstraint.active = NO;
     self.restBlurViewTopConstraint = up ? [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:70] : [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
@@ -261,10 +275,13 @@
         [self changeButtonTitle];
         self.restViewIsDisplayed = up;
         self.view.userInteractionEnabled = YES;
-        [self.restView updateScrollViewAnimate:up]; // need to fix this;
+        if (self.descriptionViewDisplayed)
+        {
+            [self excerciseDescriptionTapped:nil];
+        }
+        
+        [self.restView updateScrollViewAnimate:up];
     }];
-    
-    
 }
 
 
@@ -282,6 +299,8 @@
     self.excerciseView.alpha = 1;
     self.restView.alpha = 0;
     self.restViewIsDisplayed = NO;
+    self.backAvailable = NO;
+    self.skipAvailable = YES;
     
     self.doneButton.layer.cornerRadius = 3;
     self.skipButton.layer.cornerRadius = 3;
@@ -315,11 +334,11 @@
         self.nextExcerciseSet = self.excerciseSets[self.currentExcerciseSetIndexValue + 1];
     }
     
-    [self generateExcerciseComponents];
+    [self updateExcerciseComponents];
     
 }
 
--(void)generateExcerciseComponents
+-(void)updateExcerciseComponents
 {
     self.excerciseView.excerciseSet = self.currentExcerciseSet;
     self.exerciseDescriptionView.excerciseSet = self.currentExcerciseSet;
@@ -448,6 +467,7 @@
     [self setUpTimer];
     [self.view bringSubviewToFront:self.footerBackgroundView];
     [self.view bringSubviewToFront:self.footerView];
+    [self.view bringSubviewToFront:self.buttonStackView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:@"app entered foreground" object:nil];
 }

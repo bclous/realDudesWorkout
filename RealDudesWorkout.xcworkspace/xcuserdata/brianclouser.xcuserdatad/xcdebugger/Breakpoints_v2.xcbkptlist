@@ -13,5 +13,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RealDudesWorkout/RestView2.m"
+            timestampString = "490984063.094554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-updateScrollViewAnimate:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RestView2 updateScrollViewAnimate:]"
+                  moduleName = "Man Up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brianclouser/Desktop/RealDudesWorkout/RealDudesWorkout/RestView2.m"
+                  timestampString = "490984063.956001"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[RestView2 updateScrollViewAnimate:]_block_invoke"
+                  moduleName = "Man Up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brianclouser/Desktop/RealDudesWorkout/RealDudesWorkout/RestView2.m"
+                  timestampString = "490984063.956447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
