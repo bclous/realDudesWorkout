@@ -16,6 +16,8 @@
 		AB19B3F21D3A7806009D54D0 /* StartButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19B3F11D3A7806009D54D0 /* StartButtonView.m */; };
 		AB19B3F61D42B858009D54D0 /* SkipExercise.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB19B3F51D42B858009D54D0 /* SkipExercise.xib */; };
 		AB19B3FC1D42BAA6009D54D0 /* SkipExerciseView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19B3FB1D42BAA6009D54D0 /* SkipExerciseView.m */; };
+		AB19B3FE1D4484BF009D54D0 /* LogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB19B3FD1D4484BE009D54D0 /* LogoView.xib */; };
+		AB19B4011D448941009D54D0 /* LogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19B4001D448941009D54D0 /* LogoView.m */; };
 		AB1D4D121C9628FD00E71342 /* Accessory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */; };
 		AB1D4D131C9628FD00E71342 /* Accessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1D4D111C9628FD00E71342 /* Accessory.m */; };
 		AB2A39061CE3FDF1005DD03A /* NumberOfWorkouts.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A39051CE3FDF1005DD03A /* NumberOfWorkouts.xib */; };
@@ -102,6 +104,9 @@
 		AB19B3F51D42B858009D54D0 /* SkipExercise.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkipExercise.xib; sourceTree = "<group>"; };
 		AB19B3FA1D42BAA6009D54D0 /* SkipExerciseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipExerciseView.h; sourceTree = "<group>"; };
 		AB19B3FB1D42BAA6009D54D0 /* SkipExerciseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipExerciseView.m; sourceTree = "<group>"; };
+		AB19B3FD1D4484BE009D54D0 /* LogoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoView.xib; sourceTree = "<group>"; };
+		AB19B3FF1D448941009D54D0 /* LogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoView.h; sourceTree = "<group>"; };
+		AB19B4001D448941009D54D0 /* LogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoView.m; sourceTree = "<group>"; };
 		AB1D4D0E1C9628FD00E71342 /* Accessory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Accessory+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AB1D4D0F1C9628FD00E71342 /* Accessory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Accessory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AB1D4D101C9628FD00E71342 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
@@ -236,6 +241,8 @@
 				ABDFCF461D20E4CB00FF3007 /* WeeklyWorkoutTotalsView.m */,
 				ABDFCF401D208C9000FF3007 /* WorkoutTotalsDetailView.h */,
 				AB19B3FA1D42BAA6009D54D0 /* SkipExerciseView.h */,
+				AB19B3FF1D448941009D54D0 /* LogoView.h */,
+				AB19B4001D448941009D54D0 /* LogoView.m */,
 				AB19B3FB1D42BAA6009D54D0 /* SkipExerciseView.m */,
 				ABDFCF411D208C9000FF3007 /* WorkoutTotalsDetailView.m */,
 				ABCE7FFF1D05DAF000E93339 /* ExerciseDescriptionView.h */,
@@ -298,6 +305,7 @@
 				ABC0B6BD1CF5F63C00938033 /* WorkoutTotalsTopCell.xib */,
 				ABCE80021D060AA600E93339 /* WorkoutTotalIndividual.xib */,
 				AB2A390F1CEA2BD9005DD03A /* WorkoutScrollSummaryCell.xib */,
+				AB19B3FD1D4484BE009D54D0 /* LogoView.xib */,
 				ABCE7FFD1D05D80900E93339 /* ExerciseDescription.xib */,
 				AB2A39111CEA2EE7005DD03A /* ExcerciseTotal.xib */,
 				ABC0B6771CEE5D8F00938033 /* WorkoutOnBoard.xib */,
@@ -561,6 +569,7 @@
 				ABDFCF4F1D29553C00FF3007 /* CalendarMonth.xib in Resources */,
 				ABC0B6781CEE5D8F00938033 /* WorkoutOnBoard.xib in Resources */,
 				ABDFCF3F1D2085F100FF3007 /* WorkoutTotalsDetail.xib in Resources */,
+				AB19B3FE1D4484BF009D54D0 /* LogoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +661,7 @@
 				ABC0B6941CF3B8E100938033 /* RestView2.m in Sources */,
 				AB41F2EB1C90FE33009D7E63 /* Excercise+CoreDataProperties.m in Sources */,
 				AB41F2E21C90FC48009D7E63 /* Model.xcdatamodeld in Sources */,
+				AB19B4011D448941009D54D0 /* LogoView.m in Sources */,
 				ABA977C41C9F984A00D04639 /* ExcerciseView.m in Sources */,
 				ABC0B6C41CF5F82400938033 /* WorkoutTotalsTopCellTableViewCell.m in Sources */,
 				AB2A39211CEA35CE005DD03A /* WorkoutSummaryScrollTableViewCell.m in Sources */,
