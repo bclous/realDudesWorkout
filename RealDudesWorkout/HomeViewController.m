@@ -19,9 +19,10 @@
 #import "WorkoutTotalIndividualView.h"
 #import "IntroView.h"
 #import "StartButtonView.h"
+#import "LogoView.h"
 
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate,  WorkoutDetailViewDelegate, WorkoutTotalIndividualViewDelegate, StartButtonDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate,  WorkoutDetailViewDelegate, WorkoutTotalIndividualViewDelegate, StartButtonDelegate, LogoViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
@@ -52,6 +53,7 @@
 @property (strong, nonatomic) WorkoutDetailView *workoutDetailView;
 @property (strong, nonatomic) IntroView *introView;
 @property (strong, nonatomic) StartButtonView *startButtonView;
+@property (strong, nonatomic) LogoView *logoView;
 
 @property (strong, nonatomic) NSLayoutConstraint *onBoardViewLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *generateWorkoutLeftConstraint;
@@ -65,102 +67,6 @@
 @implementation HomeViewController
 
 
-#pragma mark Set up all views
-
--(void)setUpMainTableView
-{
-    self.workoutsTableView.dataSource = self;
-    self.workoutsTableView.delegate = self;
-    self.selectedRow = -1;
-    self.workoutsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-}
-
--(void)setUpWorkoutDetailView
-{
-    self.workoutDetailView = [[WorkoutDetailView alloc] init];
-    [self.view addSubview:self.workoutDetailView];
-    self.workoutDetailView.delegate = self;
-    
-    self.workoutDetailView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.workoutDetailView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
-    [self.workoutDetailView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    [self.workoutDetailView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
-    self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor];
-    self.workoutDetailViewHeightConstraint.active = YES;
-    self.workoutDetailView.alpha = 0;
-    self.workoutDetailView.clipsToBounds = YES;
-}
-
--(void)setUpIntroView
-{
-    self.introView = [[IntroView alloc] init];
-    [self.view addSubview:self.introView];
-    self.introView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.introView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
-    [self.introView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
-    [self.introView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-    [self.introView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:320].active = YES;
-    [self.view bringSubviewToFront:self.introView];
-    self.introView.alpha = self.workouts.count ? 0 : 1;
-}
-
--(void)generateStartButton
-{
-    self.startButtonView = [[StartButtonView alloc] init];
-    [self.view addSubview:self.startButtonView];
-    self.startButtonView.delegate = self;
-    self.startButtonView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.startButtonView.heightAnchor constraintEqualToConstant:60].active = YES;
-    [self.startButtonView.widthAnchor constraintEqualToConstant:60].active = YES;
-    [self.startButtonView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    [self.startButtonView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-10].active = YES;
-}
-
--(void)generateBlurView
-{
-    self.blurView = [[UIView alloc] init];
-    [self.view addSubview:self.blurView];
-    self.blurView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.blurView.backgroundColor = [UIColor blackColor];
-    
-    [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
-    [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
-    [self.blurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-    [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:70].active = YES;
-    
-    self.blurView.clipsToBounds = YES;
-    self.blurView.alpha = 0;
-    self.blurViewDisplayed = NO;
-    self.accessoryAndTimeViewDisplayed = NO;
-    self.generateWorkoutViewDisplayed = NO;
-}
-
--(void)createWorkoutOnBoardView
-{
-    self.workoutOnBoardView = [[WorkoutOnBoardView alloc] init];
-    self.workoutOnBoardView.delegate = self;
-    self.workoutOnBoardView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.workoutOnBoardView];
-    [self.workoutOnBoardView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
-    [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
-    [self.workoutOnBoardView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor constant:-60].active = YES;
-    self.onBoardViewLeftConstraint = [self.workoutOnBoardView.leftAnchor constraintEqualToAnchor:self.view.rightAnchor];
-    self.onBoardViewLeftConstraint.active = YES;
-}
-
--(void)createGenerateWorkoutView
-{
-    self.generateWorkoutView = [[GenerateWorkoutView alloc] init];
-    self.generateWorkoutView.delegate = self;
-    [self.view addSubview:self.generateWorkoutView];
-    self.generateWorkoutView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.generateWorkoutView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
-    [self.generateWorkoutView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
-    [self.generateWorkoutView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor constant:-60].active = YES;
-    self.generateWorkoutLeftConstraint = [self.generateWorkoutView.leftAnchor constraintEqualToAnchor:self.view.rightAnchor];
-    self.generateWorkoutLeftConstraint.active = YES;
-    self.generateWorkoutView.alpha = 0;
-}
 
 #pragma mark workout onboard user actions
 
@@ -186,11 +92,21 @@
 {
     [self createNewWorkout:minutes accessories:accessories];
     self.workoutOnBoardView.alpha = 0;
+    
+    self.view.userInteractionEnabled = NO;
+    [self.logoView performGenerateWorkoutAnimation];
+    
+}
+
+-(void)animationComplete
+{
+    self.view.userInteractionEnabled = YES;
     self.generateWorkoutView.alpha = 1;
     self.workoutCreated = YES;
     self.generateWorkoutViewDisplayed = YES;
     self.accessoryAndTimeViewDisplayed = NO;
 }
+
 
 -(void)startWorkoutTapped
 {
@@ -458,6 +374,117 @@
 }
 
 
+#pragma mark Set up all views
+
+-(void)setUpMainTableView
+{
+    self.workoutsTableView.dataSource = self;
+    self.workoutsTableView.delegate = self;
+    self.selectedRow = -1;
+    self.workoutsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+-(void)setUpWorkoutDetailView
+{
+    self.workoutDetailView = [[WorkoutDetailView alloc] init];
+    [self.view addSubview:self.workoutDetailView];
+    self.workoutDetailView.delegate = self;
+    
+    self.workoutDetailView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.workoutDetailView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+    [self.workoutDetailView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.workoutDetailView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+    self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor];
+    self.workoutDetailViewHeightConstraint.active = YES;
+    self.workoutDetailView.alpha = 0;
+    self.workoutDetailView.clipsToBounds = YES;
+}
+
+-(void)setUpIntroView
+{
+    self.introView = [[IntroView alloc] init];
+    [self.view addSubview:self.introView];
+    self.introView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.introView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.introView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.introView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    [self.introView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:320].active = YES;
+    [self.view bringSubviewToFront:self.introView];
+    self.introView.alpha = self.workouts.count ? 0 : 1;
+}
+
+-(void)generateStartButton
+{
+    self.startButtonView = [[StartButtonView alloc] init];
+    [self.view addSubview:self.startButtonView];
+    self.startButtonView.delegate = self;
+    self.startButtonView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.startButtonView.heightAnchor constraintEqualToConstant:60].active = YES;
+    [self.startButtonView.widthAnchor constraintEqualToConstant:60].active = YES;
+    [self.startButtonView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.startButtonView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-10].active = YES;
+}
+
+-(void)generateBlurView
+{
+    self.blurView = [[UIView alloc] init];
+    [self.view addSubview:self.blurView];
+    self.blurView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.blurView.backgroundColor = [UIColor blackColor];
+    
+    [self.blurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.blurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.blurView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    [self.blurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:70].active = YES;
+    
+    self.blurView.clipsToBounds = YES;
+    self.blurView.alpha = 0;
+    self.blurViewDisplayed = NO;
+    self.accessoryAndTimeViewDisplayed = NO;
+    self.generateWorkoutViewDisplayed = NO;
+}
+
+-(void)createWorkoutOnBoardView
+{
+    self.workoutOnBoardView = [[WorkoutOnBoardView alloc] init];
+    self.workoutOnBoardView.delegate = self;
+    self.workoutOnBoardView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.workoutOnBoardView];
+    [self.workoutOnBoardView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+    [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    [self.workoutOnBoardView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor constant:-60].active = YES;
+    self.onBoardViewLeftConstraint = [self.workoutOnBoardView.leftAnchor constraintEqualToAnchor:self.view.rightAnchor];
+    self.onBoardViewLeftConstraint.active = YES;
+}
+
+-(void)createGenerateWorkoutView
+{
+    self.generateWorkoutView = [[GenerateWorkoutView alloc] init];
+    self.generateWorkoutView.delegate = self;
+    [self.view addSubview:self.generateWorkoutView];
+    self.generateWorkoutView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.generateWorkoutView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+    [self.generateWorkoutView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    [self.generateWorkoutView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor constant:-60].active = YES;
+    self.generateWorkoutLeftConstraint = [self.generateWorkoutView.leftAnchor constraintEqualToAnchor:self.view.rightAnchor];
+    self.generateWorkoutLeftConstraint.active = YES;
+    self.generateWorkoutView.alpha = 0;
+}
+
+-(void)createLogoView
+{
+    self.logoView = [[LogoView alloc] init];
+    self.logoView.delegate = self;
+    [self.view addSubview:self.logoView];
+    self.logoView.userInteractionEnabled = NO;
+    self.logoView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.logoView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+    [self.logoView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.logoView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor].active = YES;
+    [self.logoView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+}
+
+
 #pragma mark view lifecycle
 
 - (void)viewDidLoad
@@ -476,6 +503,7 @@
     [self createWorkoutOnBoardView];
     [self createGenerateWorkoutView];
     [self generateStartButton];
+    [self createLogoView];
     [self.view layoutIfNeeded];
     
     self.hasLoadedBefore = YES;

@@ -73,8 +73,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMT-Co-Flx">
                                         <rect key="frame" x="20" y="100" width="560" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qw3-uA-RW3">
-                                                <rect key="frame" x="259" y="10.5" width="42" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qw3-uA-RW3">
+                                                <rect key="frame" x="259" y="11" width="42" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -279,7 +279,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rec-1B-3G7" id="BSE-9P-hF1">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-gQ-Znh" customClass="WorkoutScrollSummaryCellView">
@@ -301,7 +301,7 @@
                                         <rect key="frame" x="0.0" y="139" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5QZ-aM-aPi" id="Y2O-M4-iG5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6y-v5-jy1" customClass="WorkoutTotalsTopCellView">
@@ -325,20 +325,9 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="biN-xh-8A3">
-                                        <rect key="frame" x="285" y="30" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="RtA-EY-e2g"/>
-                                            <constraint firstAttribute="width" secondItem="biN-xh-8A3" secondAttribute="height" multiplier="1:1" id="Xf2-GU-GOx"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="biN-xh-8A3" firstAttribute="centerX" secondItem="7J2-vp-YNH" secondAttribute="centerX" id="34M-1S-sqI"/>
                                     <constraint firstAttribute="height" constant="70" id="CZM-Qo-Tkl"/>
-                                    <constraint firstAttribute="bottom" secondItem="biN-xh-8A3" secondAttribute="bottom" constant="10" id="KpD-b9-4y0"/>
                                 </constraints>
                             </view>
                         </subviews>

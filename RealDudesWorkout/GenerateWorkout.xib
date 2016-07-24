@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateWorkoutView">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="bLW-mR-v4a"/>
-                <outlet property="generatingWorkoutLabel" destination="TZr-mb-z9g" id="MOn-fq-uyB"/>
                 <outlet property="numberOfExcercisesLabel" destination="bGd-nu-Yxt" id="dxH-WU-gWc"/>
                 <outlet property="startButton" destination="Vry-Uo-2zL" id="OI8-2b-G8e"/>
                 <outlet property="workoutDateAndTimeLabel" destination="LKD-jj-lZw" id="hzg-c5-wmt"/>
@@ -68,18 +67,10 @@
                         </label>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Generating workout..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZr-mb-z9g">
-                    <rect key="frame" x="128" y="239" width="165" height="20"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="Xvz-9z-tW9" firstAttribute="centerX" secondItem="Vry-Uo-2zL" secondAttribute="centerX" id="2qC-rv-CCx"/>
                 <constraint firstItem="GK1-y4-z4j" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="91K-qx-2SJ"/>
-                <constraint firstItem="TZr-mb-z9g" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-85" id="LF3-Ph-JEF"/>
-                <constraint firstItem="TZr-mb-z9g" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QGj-yc-oJ2"/>
                 <constraint firstAttribute="bottom" secondItem="Vry-Uo-2zL" secondAttribute="bottom" constant="30" id="cFu-E4-sDE"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="d4o-O2-q5U"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="drP-JI-BMg"/>

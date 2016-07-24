@@ -10,6 +10,7 @@
                 <outlet property="centerView" destination="IOU-TZ-wyL" id="B7b-jv-QTl"/>
                 <outlet property="centerViewHeightConstraint" destination="dfK-cr-wbE" id="Svy-cH-AA8"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="e9I-Rq-Qb6"/>
+                <outlet property="generatingWorkoutLabel" destination="Ezc-hm-Bcs" id="9mG-Wl-Kxm"/>
                 <outlet property="masterStackView" destination="DGK-zP-sG0" id="V19-b6-Yt7"/>
                 <outlet property="stackView1" destination="tsQ-SI-yEh" id="Fs6-67-fXN"/>
                 <outlet property="stackView2" destination="r3e-jT-RN9" id="2mn-hC-E22"/>
@@ -18,15 +19,40 @@
                 <outlet property="stackView5" destination="Kcy-cl-RUU" id="aBN-fU-ZlV"/>
                 <outlet property="stackViewCenterYConstraint" destination="I9n-Vf-jZw" id="IbJ-sj-2jq"/>
                 <outlet property="stackViewTopConstraint" destination="Nfc-pv-X2z" id="xsY-Ss-mwz"/>
+                <outletCollection property="blueViews" destination="67e-dR-dJT" id="cgx-IP-ECK"/>
+                <outletCollection property="blueViews" destination="hnr-Y9-eJw" id="AW5-5l-5IV"/>
+                <outletCollection property="blueViews" destination="87D-OC-7gC" id="yKm-q0-gDT"/>
+                <outletCollection property="blueViews" destination="Bmq-u8-Uyg" id="WvE-Sv-Lv3"/>
+                <outletCollection property="blueViews" destination="pvR-QH-rv8" id="zPg-fS-v4J"/>
+                <outletCollection property="blueViews" destination="6CF-2q-APA" id="Lby-M9-Lhz"/>
+                <outletCollection property="blueViews" destination="Ymi-hb-tAz" id="cmC-FS-H4L"/>
+                <outletCollection property="blueViews" destination="e9G-zR-beh" id="Jez-ow-00V"/>
+                <outletCollection property="blueViews" destination="WOu-O2-Nro" id="a5n-gV-Psg"/>
+                <outletCollection property="blueViews" destination="IOU-TZ-wyL" id="Yrq-ha-iz8"/>
+                <outletCollection property="blueViews" destination="Qc3-6y-FxA" id="yy1-H3-OnN"/>
+                <outletCollection property="blueViews" destination="j9U-lO-M8a" id="m0j-Gd-asj"/>
+                <outletCollection property="blueViews" destination="NO0-BO-vrU" id="eBs-Kd-466"/>
+                <outletCollection property="blueViews" destination="7dt-aL-b51" id="C7H-3I-oi3"/>
+                <outletCollection property="blueViews" destination="zBF-xs-y4J" id="POX-Ix-RHO"/>
+                <outletCollection property="blueViews" destination="YIU-nC-5Vk" id="Tzo-Hl-idQ"/>
+                <outletCollection property="grayViews" destination="wIQ-gt-X4m" id="1hO-Ec-p7L"/>
+                <outletCollection property="grayViews" destination="0xM-27-Co4" id="g9L-Jf-O0Q"/>
+                <outletCollection property="grayViews" destination="Ppv-Td-a8F" id="4BL-6F-EtZ"/>
+                <outletCollection property="grayViews" destination="lxZ-ZT-ZEs" id="vca-sO-qNq"/>
+                <outletCollection property="grayViews" destination="bFI-iW-w2J" id="tlL-V9-C0L"/>
+                <outletCollection property="grayViews" destination="9ha-uE-hEX" id="URQ-Wi-IqK"/>
+                <outletCollection property="grayViews" destination="6nM-qp-qR3" id="sl0-dj-8h5"/>
+                <outletCollection property="grayViews" destination="wYv-UK-U4N" id="vKE-w1-hQL"/>
+                <outletCollection property="grayViews" destination="stL-Dx-Cd8" id="JKP-Rg-uTB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="526" height="528"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DGK-zP-sG0">
-                    <rect key="frame" x="248" y="20" width="30" height="30"/>
+                    <rect key="frame" x="248" y="30" width="30" height="30"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tsQ-SI-yEh">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="6"/>
@@ -287,12 +313,20 @@
                         <constraint firstItem="Ymi-hb-tAz" firstAttribute="height" secondItem="IOU-TZ-wyL" secondAttribute="height" id="yWX-mD-2et"/>
                     </constraints>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Generating workout..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.14999999999999999" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ezc-hm-Bcs">
+                    <rect key="frame" x="248" y="70" width="30" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Ezc-hm-Bcs" firstAttribute="centerX" secondItem="DGK-zP-sG0" secondAttribute="centerX" id="69R-85-RW6"/>
                 <constraint firstItem="DGK-zP-sG0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CJb-Qq-toF"/>
                 <constraint firstItem="DGK-zP-sG0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="I9n-Vf-jZw"/>
-                <constraint firstItem="DGK-zP-sG0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Nfc-pv-X2z"/>
+                <constraint firstItem="DGK-zP-sG0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Nfc-pv-X2z"/>
+                <constraint firstItem="Ezc-hm-Bcs" firstAttribute="width" secondItem="DGK-zP-sG0" secondAttribute="width" id="RDl-hI-BlY"/>
+                <constraint firstItem="Ezc-hm-Bcs" firstAttribute="top" secondItem="DGK-zP-sG0" secondAttribute="bottom" constant="10" id="ZsL-CL-JOO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">

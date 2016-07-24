@@ -20,14 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *workoutDateAndTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutEstimatedTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfExcercisesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *generatingWorkoutLabel;
-
 @property (strong, nonatomic) UIStackView *excercisesStackView;
-
-@property (strong, nonatomic) NSLayoutConstraint *scrollViewCenterXConstraint;
-
-
-
 
 @end
 
@@ -59,38 +52,26 @@
 
 -(void)commonInit
 {
-    
-    
     [[NSBundle mainBundle] loadNibNamed:@"GenerateWorkout" owner:self options:nil];
-    
     [self addSubview:self.contentView];
-    
     self.contentView.frame = self.bounds;
     
     self.startButton.layer.cornerRadius = 15;
-    
     self.excerciseViews = [[NSMutableArray alloc] init];
-    
     [self createScrollView];
-    
     [self createStackView];
-    
     [self setAllLabels];
-    
 }
 
 - (IBAction)startButtonTapped:(id)sender
 {
-    
     [self.delegate startWorkoutTapped];
-    
 }
 
 -(void)setWorkout:(Workout *)workout
 {
     _workout = workout;
     
-    [self.excercisesStackView.widthAnchor constraintEqualToConstant:[workout excercisesInOrder].count * 190 - 10];
     [self generateExcercises];
     [self createLabels];
 }
@@ -109,7 +90,6 @@
     self.workoutDateAndTimeLabel.alpha = 0;
     self.workoutEstimatedTimeLabel.alpha = 0;
     self.numberOfExcercisesLabel.alpha = 0;
-    self.generatingWorkoutLabel.alpha = 1;
     self.startButton.alpha = 0;
     self.startButton.enabled = NO;
 }
@@ -123,7 +103,6 @@
         self.workoutDateAndTimeLabel.alpha = 1;
         self.workoutEstimatedTimeLabel.alpha = 1;
         self.numberOfExcercisesLabel.alpha = 1;
-        self.generatingWorkoutLabel.alpha = 0;
         
     } completion:^(BOOL finished) {
         self.startButton.alpha = 1;
@@ -142,15 +121,14 @@
     [self.excerciseScrollView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor constant:40].active = YES;
     [self.excerciseScrollView.heightAnchor constraintEqualToConstant: 180].active = YES;
     [self.excerciseScrollView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
-    self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor constant:600];
-    self.scrollViewCenterXConstraint.active = YES;
+    [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+   
 }
 
 -(void)createStackView
 {
     self.excercisesStackView = [[UIStackView alloc] init];
     self.excercisesStackView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.excercisesStackView.distribution = UIStackViewDistributionFillEqually;
     [self.excerciseScrollView addSubview:self.excercisesStackView];
     
     [self.excercisesStackView.leftAnchor constraintEqualToAnchor:self.excerciseScrollView.leftAnchor].active = YES;
@@ -160,86 +138,32 @@
     
     [self.excercisesStackView.heightAnchor constraintEqualToAnchor:self.excerciseScrollView.heightAnchor].active = YES;
     self.excercisesStackView.spacing = 5;
-    self.excercisesStackView.distribution = UIStackViewDistributionFillEqually;
 
 }
 
 -(void)generateExcercises
 {
+    UIView *fillerView = [[UIView alloc] init];
+    [self.excercisesStackView addArrangedSubview:fillerView];
+    fillerView.backgroundColor = [UIColor clearColor];
+    [fillerView.heightAnchor constraintEqualToAnchor:self.excerciseScrollView.heightAnchor multiplier:1].active = YES;
+    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:-95].active = YES;
+    
     for (ExcerciseSet *excerciseSet in self.workout.excercisesInOrder)
     {
-        
         GenerateWorkoutExcerciseView *excerciseTotalView = [[GenerateWorkoutExcerciseView alloc] init];
         excerciseTotalView.excerciseSet = excerciseSet;
-        [excerciseTotalView.heightAnchor constraintEqualToConstant:180].active = YES;
-        [excerciseTotalView.widthAnchor constraintEqualToConstant:180].active = YES;
         [self.excercisesStackView addArrangedSubview:excerciseTotalView];
+        [excerciseTotalView.heightAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
+        [excerciseTotalView.widthAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
+
     }
     
     [self layoutIfNeeded];
-    [self animateInExcercices];
-}
-
--(void)animateInExcercices
-{
-    CGFloat length = self.workout.excercisesInOrder.count * 190 - 10;
-    CGPoint offset;
-    offset.x = length - 100;
-    offset.y = 0;
-    CGPoint home;
-    home.x = 0;
-    home.y = 0;
-    
-    self.scrollViewCenterXConstraint.active = NO;
-    self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor];
-    self.scrollViewCenterXConstraint.active = YES;
-    
-    [UIView animateWithDuration:.1 delay:0 options:NO animations:^{
-        [self layoutIfNeeded];
-        
-    } completion:^(BOOL finished) {
-    
-        [UIView animateWithDuration:.1 delay:0 options:NO animations:^{
-    
-            [self.excerciseScrollView setContentOffset:offset animated:NO];
-            [self layoutIfNeeded];
-            
-        } completion:^(BOOL finished) {
-            
-            [UIView animateWithDuration:1 animations:^{
-                
-                [self.excerciseScrollView setContentOffset:home animated:NO];
-                [self layoutIfNeeded];
-                
-            } completion:^(BOOL finished) {
-                
-                [self updateAllLabels];
-            }];
-        }];
-    }];
+    [self updateAllLabels];
     
 }
 
--(void)resetView
-{
-
-    [self stopAllAnimationsInView:self];
-
-    self.scrollViewCenterXConstraint.active = NO;
-    self.scrollViewCenterXConstraint = [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor constant:600];
-    self.scrollViewCenterXConstraint.active = YES;
-    
-    CGPoint home;
-    home.x = 0;
-    home.y = 0;
-    [self.excerciseScrollView setContentOffset:home animated:NO];
-    
-    [self setAllLabels];
-    
-//    [UIView performWithoutAnimation:^{
-//        [self layoutIfNeeded];
-//    }];
-}
 
 -(void)stopAllAnimationsInView:(UIView *)view;
 {

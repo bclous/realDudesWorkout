@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LogoViewDelegate <NSObject>
+
+-(void)animationComplete;
+
+@end
+
 @interface LogoView : UIView
+
+@property (weak, nonatomic) id <LogoViewDelegate> delegate;
+
+-(void)performGenerateWorkoutAnimation;
 
 @end
