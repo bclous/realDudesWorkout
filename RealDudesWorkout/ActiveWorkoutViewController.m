@@ -88,26 +88,7 @@
 {
     self.descriptionViewDisplayed = !self.descriptionViewDisplayed;
     self.exerciseDescriptionView.alpha = self.descriptionViewDisplayed;
-    
 }
-
-- (IBAction)backButtonTapped:(id)sender
-{
-    
-    if (self.restViewIsDisplayed)
-    {
-    
-        [self animateRestViewUp:NO];
-        
-    }
-    else
-    {
-  
-    }
-
-    
-}
-
 
 - (IBAction)cancelborderViewTapped:(id)sender
 {
@@ -133,29 +114,33 @@
     else
     {
         [self exerciseCompleted];
-        [self updateRestViewIndex];
         [self animateRestViewUp:YES];
     }
 }
 - (IBAction)backTapped:(id)sender
 {
     [self updateTimeIntervalStartTimes];
-    [self updateRestViewIndex];
+    [self.restView updateExerciseViewAtIndex:self.currentExcerciseSetIndexValue status:0];
     self.currentExcerciseSetIndexValue--;
-    [self.restView updateScrollViewAnimate:NO];
+    [self.restView updateScrollViewToIndex:self.currentExcerciseSetIndexValue animate:NO];
     [self updateProgressBar];
 }
+
 - (IBAction)skipTapped:(id)sender
 {
     [self recordExerciseDataCompleted:NO];
     [self updateTimeIntervalStartTimes];
-    [self updateRestViewIndex];
+    [self.restView updateExerciseViewAtIndex:self.currentExcerciseSetIndexValue status:1];
     self.currentExcerciseSetIndexValue++;
-    [self.restView updateScrollViewAnimate:NO];
+    //[self.restView updateScrollViewToIndex:self.currentExcerciseSetIndexValue animate:NO];
     [self updateProgressBar];
 }
-- (IBAction)skipAndComeBackTapped:(id)sender {
+
+- (IBAction)skipAndComeBackTapped:(id)sender
+{
+    // have to do this;
 }
+
 - (IBAction)infoTapped:(id)sender
 {
     [self excerciseDescriptionTapped:nil];
@@ -167,6 +152,7 @@
     [self updateProgressBar];
     [self recordExerciseDataCompleted:YES];
     [self updateTimeIntervalStartTimes];
+    [self.restView updateRestViewComponentsForIndex:self.currentExcerciseSetIndexValue];
 }
 
 -(void)restCompleted
@@ -190,6 +176,7 @@
     _currentExcerciseSetIndexValue = currentExcerciseSetIndexValue;
     self.currentExcerciseSet = self.excerciseSets[currentExcerciseSetIndexValue];
     [self updateExcerciseComponents];
+    self.isLastExcercise = currentExcerciseSetIndexValue == self.excerciseSets.count - 1;
     
 }
 
@@ -279,8 +266,15 @@
         {
             [self excerciseDescriptionTapped:nil];
         }
+        if (up)
+        {
+            [self.restView updateForExerciseFinishedAtIndex:self.currentExcerciseSetIndexValue];
+        }
+        else
+        {
+            [self.restView updateScrollViewToIndex:self.currentExcerciseSetIndexValue animate:NO];
+        }
         
-        [self.restView updateScrollViewAnimate:up];
     }];
 }
 

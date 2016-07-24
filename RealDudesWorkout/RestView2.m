@@ -76,7 +76,6 @@
     
     _exerciseViewsArray = [[NSMutableArray alloc] init];
     
-    self.previousIndexOfExerciseJustFinished = -1; // dummy value so zero works;
 }
 - (IBAction)addThirtySecondsButtonTapped:(id)sender
 {
@@ -145,51 +144,41 @@
     }
 }
 
--(void)setIndexOfExcerciseJustFinished:(NSUInteger)indexOfExcerciseJustFinished
-{
-    self.previousIndexOfExerciseJustFinished = self.indexOfExcerciseJustFinished;
-    
-    _indexOfExcerciseJustFinished = indexOfExcerciseJustFinished;
-    
-    self.excerciseSetJustFinished = self.excerciseSets[indexOfExcerciseJustFinished];
-    [self resetTimer];
-    [self resetPicturesAndLabel];
-    [self resetSliderLabel];
-    
-    [self layoutIfNeeded];
 
+-(void)updateRestViewComponentsForIndex:(NSUInteger)index
+{
+    self.indexOfExcerciseJustFinished = index;
+    
+    [self resetTimer];
+    [self resetUpNextLabel];
+    [self resetSliderLabel];
 }
 
-
--(void)updateScrollViewAnimate:(BOOL)animate
+-(void)updateScrollViewToIndex:(NSUInteger)index animate:(BOOL)animate
 {
     CGPoint offset;
     offset.y = 0;
-    offset.x = 130 * self.indexOfExcerciseJustFinished + 130;
+    offset.x = 130 * index;
     
-    BOOL forwards = self.indexOfExcerciseJustFinished >= self.previousIndexOfExerciseJustFinished;
-    CGFloat delay = animate ? .2 : 0;
-    CGFloat duration = animate ? .02 : 0;
-    
-    
-    if (forwards)
-    {
-       [UIView animateWithDuration:duration delay:delay options:0 animations:^{
-           ExcerciseRestView *justFinishedView = self.exerciseViewsArray[self.indexOfExcerciseJustFinished];
-           [justFinishedView adjustFormatFinished:YES];
-       } completion:^(BOOL finished) {
-           [self.exerciseScrollView setContentOffset:offset animated:animate];
-       }];
-    }
-    
-    else
-    {
-        [self.exerciseScrollView setContentOffset:offset animated:animate];
-        ExcerciseRestView *reversed = self.exerciseViewsArray[self.previousIndexOfExerciseJustFinished];
-        [reversed adjustFormatFinished:NO];
-    
-    }
+    [self.exerciseScrollView setContentOffset:offset animated:animate];
+}
 
+-(void)updateForExerciseFinishedAtIndex:(NSUInteger)index
+{
+    CGFloat delay = .2;
+    CGFloat duration = .05;
+    
+    [UIView animateWithDuration:duration delay:delay options:0 animations:^{
+        [self updateExerciseViewAtIndex:index status:2];
+    } completion:^(BOOL finished) {
+        [self updateScrollViewToIndex:index + 1 animate:YES];
+    }];
+}
+
+-(void)updateExerciseViewAtIndex:(NSUInteger)index status:(NSUInteger)status
+{
+     ExcerciseRestView *exerciseView = self.exerciseViewsArray[index];
+    [exerciseView adjustStatus:status];
 }
 
 -(void)resetSliderLabel
@@ -205,42 +194,15 @@
     self.exerciseNameLabel.text = [NSString stringWithFormat:@"%@", self.excerciseSetJustFinished.excercise.name];
 }
 
--(void)resetPicturesAndLabel
+-(void)resetUpNextLabel
 {
-    BOOL isLastExcercise = self.indexOfExcerciseJustFinished == self.excerciseSets.count - 1;
-    BOOL isNextToLastExcercise = self.indexOfExcerciseJustFinished == self.excerciseSets.count - 2;
-    
-    if (isLastExcercise)
+    if (self.indexOfExcerciseJustFinished == self.excerciseSets.count - 1)
     {
-        
-        //need to change these
-//        self.lastExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
-//        self.nextExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
-//        self.afterExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
-        
-        self.nextWorkoutLabel.text = [NSString stringWithFormat:@"you are all done champ"];
-        
+        self.nextWorkoutLabel.text = @"";
     }
-    
-    else if (isNextToLastExcercise)
-    {
-//        self.lastExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
-//        self.nextExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
-//        self.afterExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
-        
-        ExcerciseSet *nextExcerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
-        
-        self.nextWorkoutLabel.text = [NSString stringWithFormat:@"and get ready for %@",nextExcerciseSet.excercise.name];
-    }
-    
     else
     {
-//        self.lastExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished];
-//        self.nextExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
-//        self.afterExcerciseRestView.excerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 2];
-        
         ExcerciseSet *nextExcerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
-        
         self.nextWorkoutLabel.text = [NSString stringWithFormat:@"Up next: %@",nextExcerciseSet.excercise.name];
     }
 }
@@ -250,6 +212,13 @@
     self.restCountdown = self.excerciseSetJustFinished.restTimeAfterInSecondsSuggested;
     self.restStartTime = [[NSDate date] timeIntervalSince1970];
     self.timerLabel.text = [NSString timeInClockForm:self.restCountdown];
+}
+
+-(void)setIndexOfExcerciseJustFinished:(NSUInteger)indexOfExcerciseJustFinished
+{
+    _indexOfExcerciseJustFinished = indexOfExcerciseJustFinished;
+    
+    self.excerciseSetJustFinished = self.excerciseSets[indexOfExcerciseJustFinished];
 }
 
 @end

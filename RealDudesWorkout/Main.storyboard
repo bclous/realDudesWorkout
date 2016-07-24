@@ -207,6 +207,7 @@
                         <outlet property="skipAndComeBackTap" destination="pMX-8e-xVH" id="caU-vu-Guz"/>
                         <outlet property="skipButtonTapGestureRecognizer" destination="ZmD-D4-85u" id="hvX-BQ-Qkt"/>
                         <outlet property="skipTap" destination="qSj-Xt-rcH" id="beC-DR-YkX"/>
+                        <outlet property="workoutTimeLabel" destination="LCc-kZ-e8p" id="lNr-7g-raC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-Go-8jh" userLabel="First Responder" sceneMemberID="firstResponder"/>

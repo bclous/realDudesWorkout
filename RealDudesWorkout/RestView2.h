@@ -16,7 +16,9 @@
 
 -(void)countdown;
 -(void)generateExerciseStackView;
-//-(void)updateScrollView;
--(void)updateScrollViewAnimate:(BOOL)animate;
+-(void)updateScrollViewToIndex:(NSUInteger)index animate:(BOOL)animate;
+-(void)updateForExerciseFinishedAtIndex:(NSUInteger)index;
+-(void)updateExerciseViewAtIndex:(NSUInteger)index status:(NSUInteger)status;
+-(void)updateRestViewComponentsForIndex:(NSUInteger)index;
 
 @end

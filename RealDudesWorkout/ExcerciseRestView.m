@@ -58,7 +58,6 @@
     self.doneView.alpha = 0;
     self.checkImage.alpha = 0;
     
-    
 }
 
 -(void)setExcerciseSet:(ExcerciseSet *)excerciseSet
@@ -69,28 +68,27 @@
 
 }
 
--(void)adjustFormatFinished:(BOOL)finished
+-(void)adjustStatus:(NSUInteger)status;
 {
-    
-    self.doneView.alpha = finished ? .7 : 0;
-    self.checkImage.alpha = finished ? 1 : 0;
-
-}
-
--(void)setIsNext:(BOOL)isNext
-{
-    _isNext = isNext;
-    
-    if (isNext)
+    if (status == 0)
     {
-        self.blueCircle.alpha = 1;
-        
+        self.doneView.alpha = 0;
+        self.checkImage.alpha = 0;
     }
-    
-    else
+    else if (status == 1)
     {
-        self.blueCircle.alpha = 0;
+        self.doneView.alpha = .7;
+        self.checkImage.image = [UIImage imageNamed:@"ic_clear_white"];
+        self.checkImage.alpha = .4;
+    }
+    else if (status == 2)
+    {
+        self.doneView.alpha = .7;
+        self.checkImage.image = [UIImage imageNamed:@"ic_done_white"];
+        self.checkImage.alpha = .4;
     }
 }
+
+
 
 @end
