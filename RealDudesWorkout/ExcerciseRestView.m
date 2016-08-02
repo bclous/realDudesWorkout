@@ -12,7 +12,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIImageView *excerciseImage;
-@property (weak, nonatomic) IBOutlet UIImageView *blueCircle;
+@property (weak, nonatomic) IBOutlet UIView *doneBlackView;
+@property (weak, nonatomic) IBOutlet UIView *doneGreenBlackView;
+
 
 
 
@@ -53,10 +55,12 @@
     
     self.contentView.frame = self.bounds;
     
-    self.blueCircle.alpha = 0;
-    self.doneView.layer.cornerRadius = 56;
+    self.doneView.layer.cornerRadius = 46;
+    self.doneGreenBlackView.layer.cornerRadius = 4;
+    self.doneBlackView.layer.cornerRadius = 8;
     self.doneView.alpha = 0;
-    self.checkImage.alpha = 0;
+    self.doneGreenBlackView.alpha = 0;
+    self.doneBlackView.alpha = 0;
     
 }
 
@@ -73,19 +77,22 @@
     if (status == 0)
     {
         self.doneView.alpha = 0;
-        self.checkImage.alpha = 0;
+        self.doneBlackView.alpha = 0;
+        self.doneGreenBlackView.alpha = 0;
     }
     else if (status == 1)
     {
         self.doneView.alpha = .7;
-        self.checkImage.image = [UIImage imageNamed:@"ic_clear_white"];
-        self.checkImage.alpha = .4;
+        self.doneBlackView.alpha = .7;
+        self.doneGreenBlackView.alpha = 1;
+        self.doneGreenBlackView.backgroundColor = [UIColor redColor];
     }
     else if (status == 2)
     {
         self.doneView.alpha = .7;
-        self.checkImage.image = [UIImage imageNamed:@"ic_done_white"];
-        self.checkImage.alpha = .4;
+        self.doneBlackView.alpha = .7;
+        self.doneGreenBlackView.alpha = 1;
+        self.doneGreenBlackView.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:163.0/255.0 blue:1 alpha:1];
     }
 }
 

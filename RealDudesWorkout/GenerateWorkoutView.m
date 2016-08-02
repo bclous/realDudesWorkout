@@ -56,7 +56,7 @@
     [self addSubview:self.contentView];
     self.contentView.frame = self.bounds;
     
-    self.startButton.layer.cornerRadius = 15;
+    self.startButton.layer.cornerRadius = 20;
     self.excerciseViews = [[NSMutableArray alloc] init];
     [self createScrollView];
     [self createStackView];

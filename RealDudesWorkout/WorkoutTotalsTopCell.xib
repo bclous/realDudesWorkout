@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkoutTotalsTopCellView">
             <connections>
-                <outlet property="blurView" destination="Exa-o0-sMo" id="Du6-1t-zE1"/>
                 <outlet property="circle1" destination="VMs-e2-Oyf" id="qdu-Hf-X44"/>
                 <outlet property="circle2" destination="JIg-PB-MfJ" id="okN-jb-m3v"/>
                 <outlet property="circle3" destination="Bae-90-22a" id="Tuv-nY-fo0"/>
@@ -24,44 +23,26 @@
             <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotGirlWorkout" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-10-2ct">
-                    <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
-                </imageView>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exa-o0-sMo">
-                    <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Blz-ir-JOy">
-                        <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <vibrancyEffect>
-                        <blurEffect style="dark"/>
-                    </vibrancyEffect>
-                </visualEffectView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoM-LH-9tp">
                     <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cCQ-SJ-EAu">
                             <rect key="frame" x="0.0" y="0.0" width="2216" height="130"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-MS-705">
-                                    <rect key="frame" x="0.0" y="0.0" width="554" height="130"/>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-VV-w4u" customClass="MonthlyWorkoutCalendarTopCellView">
-                                    <rect key="frame" x="554" y="0.0" width="554" height="130"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="739" height="130"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBx-zK-gJA" customClass="MonthlyWorkoutCalendarTopCellView">
-                                    <rect key="frame" x="1108" y="0.0" width="554" height="130"/>
+                                    <rect key="frame" x="739" y="0.0" width="739" height="130"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz9-yG-rnT" customClass="WeeklyWorkoutTotalsView">
-                                    <rect key="frame" x="1662" y="0.0" width="554" height="130"/>
+                                    <rect key="frame" x="1478" y="0.0" width="739" height="130"/>
                                 </view>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="xBx-zK-gJA" firstAttribute="height" secondItem="cCQ-SJ-EAu" secondAttribute="height" id="BIc-TI-U7K"/>
                                 <constraint firstItem="Xz9-yG-rnT" firstAttribute="height" secondItem="cCQ-SJ-EAu" secondAttribute="height" id="DSG-4P-TWZ"/>
                                 <constraint firstItem="xz2-VV-w4u" firstAttribute="height" secondItem="cCQ-SJ-EAu" secondAttribute="height" id="Krv-5A-smb"/>
-                                <constraint firstItem="jgp-MS-705" firstAttribute="height" secondItem="cCQ-SJ-EAu" secondAttribute="height" id="xRl-i3-Owy"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -118,26 +99,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Exa-o0-sMo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5xA-2k-xoq"/>
                 <constraint firstItem="EoM-LH-9tp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6bK-jw-CTG"/>
-                <constraint firstItem="Exa-o0-sMo" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="HVl-Jx-ngF"/>
                 <constraint firstItem="EoM-LH-9tp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Iio-Hn-4Ef"/>
-                <constraint firstItem="YjU-10-2ct" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="J7w-Qs-lJu"/>
-                <constraint firstItem="Exa-o0-sMo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="QyH-BT-9XI"/>
                 <constraint firstAttribute="bottom" secondItem="EoM-LH-9tp" secondAttribute="bottom" id="RAw-97-b3b"/>
                 <constraint firstItem="XPM-ne-fVd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TgB-Bq-cYt"/>
-                <constraint firstItem="YjU-10-2ct" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="XMu-VF-IfP"/>
                 <constraint firstAttribute="bottom" secondItem="XPM-ne-fVd" secondAttribute="bottom" constant="8" id="ZJW-DI-vwv"/>
-                <constraint firstItem="YjU-10-2ct" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ghh-c4-vm8"/>
                 <constraint firstAttribute="trailing" secondItem="EoM-LH-9tp" secondAttribute="trailing" id="lSa-0D-EgK"/>
-                <constraint firstItem="YjU-10-2ct" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="r16-UI-wO6"/>
-                <constraint firstItem="Exa-o0-sMo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zCn-Iy-Mvf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="761" y="239"/>
         </view>
     </objects>
-    <resources>
-        <image name="hotGirlWorkout" width="1000" height="500"/>
-    </resources>
 </document>

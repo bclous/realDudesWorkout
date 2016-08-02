@@ -11,5 +11,6 @@
 @interface WorkoutTotalsTopCellView : UIView
 
 -(void)updateDataAndScrollToPage:(NSInteger)page;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

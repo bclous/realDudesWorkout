@@ -27,13 +27,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="663-hl-HQ8">
-                    <rect key="frame" x="21" y="541" width="375" height="30"/>
+                    <rect key="frame" x="21" y="541" width="375" height="40"/>
                     <color key="backgroundColor" red="0.3255296432" green="0.64474971510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="b99-ia-03S"/>
+                        <constraint firstAttribute="height" constant="40" id="b99-ia-03S"/>
                     </constraints>
                     <state key="normal" title="Generate workout">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="startButtonTapped:" destination="-1" eventType="touchUpInside" id="fWf-4C-Vjl"/>
@@ -55,7 +55,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aby-z8-Ig0">
-                                            <rect key="frame" x="304" y="92" width="31" height="60"/>
+                                            <rect key="frame" x="304" y="92" width="30.5" height="60"/>
                                             <gestureRecognizers/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                             <color key="textColor" red="0.27638215649999998" green="0.58690209760000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,7 +75,7 @@
                                             </connections>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFx-AJ-7gS">
-                                            <rect key="frame" x="149" y="74" width="120" height="95"/>
+                                            <rect key="frame" x="149" y="73.5" width="120" height="95.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="AIC-wP-tQI"/>
                                             </constraints>
@@ -173,7 +173,7 @@
                 <constraint firstItem="NOM-Wj-xpb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="IUo-e6-gAK"/>
                 <constraint firstItem="663-hl-HQ8" firstAttribute="top" secondItem="NOM-Wj-xpb" secondAttribute="bottom" constant="20" id="Kvh-0T-u22"/>
                 <constraint firstItem="663-hl-HQ8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lvi-57-bAV"/>
-                <constraint firstAttribute="bottom" secondItem="663-hl-HQ8" secondAttribute="bottom" constant="30" id="QnH-x7-hZ3"/>
+                <constraint firstAttribute="bottom" secondItem="663-hl-HQ8" secondAttribute="bottom" constant="20" id="QnH-x7-hZ3"/>
                 <constraint firstItem="Yne-te-SDB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VaS-bd-09L"/>
                 <constraint firstItem="663-hl-HQ8" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="Vyh-v1-ggS"/>
                 <constraint firstItem="Yne-te-SDB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="ZBC-V3-W6U"/>

@@ -20,6 +20,10 @@
 #import "IntroView.h"
 #import "StartButtonView.h"
 #import "LogoView.h"
+#import "CalendarMonth.h"
+
+#define MIN_CALENDAR_HEIGHT 250;
+#define MAX_CALENDAR_HEIGHT 400;
 
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, WorkoutOnBoardDelegate, GenerateWorkoutViewDelegate,  WorkoutDetailViewDelegate, WorkoutTotalIndividualViewDelegate, StartButtonDelegate, LogoViewDelegate>
@@ -45,6 +49,7 @@
 @property (nonatomic) BOOL blurViewDisplayed;
 @property (nonatomic) BOOL accessoryAndTimeViewDisplayed;
 @property (nonatomic) BOOL generateWorkoutViewDisplayed;
+@property (nonatomic) BOOL logoViewDisplayed;
 
 @property (nonatomic) NSInteger selectedRow;
 
@@ -54,6 +59,7 @@
 @property (strong, nonatomic) IntroView *introView;
 @property (strong, nonatomic) StartButtonView *startButtonView;
 @property (strong, nonatomic) LogoView *logoView;
+@property (strong, nonatomic) WorkoutTotalsTopCellTableViewCell *topCell;
 
 @property (strong, nonatomic) NSLayoutConstraint *onBoardViewLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *generateWorkoutLeftConstraint;
@@ -61,17 +67,37 @@
 @property (nonatomic) BOOL workoutCreated;
 
 @property (nonatomic) BOOL hasLoadedBefore;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarViewTopConstraint;
+@property (weak, nonatomic) IBOutlet CalendarMonth *calendarMonth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarMonthHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
+@property (nonatomic) BOOL calendarViewEnlarged;
+@property (nonatomic) BOOL isUp;
+@property (nonatomic) BOOL ignoreScrolls;
+@property (nonatomic) CGFloat lastOffset;
+@property (nonatomic) CGFloat smallHeight;
+@property (nonatomic) CGFloat bigHeight;
+@property (nonatomic) CGFloat offsetChange;
+@property (nonatomic) CGFloat squareOffset;
+@property (nonatomic) CGFloat bigSmallDiffererence;
+@property (nonatomic) CGFloat testHeaderHeight;
+@property (nonatomic) CGFloat headerHeight;
+@property (nonatomic) BOOL scrollingUpLetGo;
+@property (nonatomic) BOOL isMoving;
+
 
 @end
 
 @implementation HomeViewController
 
-
-
 #pragma mark workout onboard user actions
 
 -(void)startButtonTapped
 {
+    CGPoint home;
+    home.x = 0;
+    home.y = 0;
+    
     if (self.blurViewDisplayed && !self.generateWorkoutViewDisplayed)
     {
         [self hideOnboardingViewsAnimated:YES];
@@ -85,15 +111,16 @@
     else
     {
         [self showOnboardingViewsAnimated:YES workoutSetupFirst:YES];
+        [self.topCell.workoutTotalsTopCellView.scrollView setContentOffset:home];
     }
 }
 
 -(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
 {
+    self.view.userInteractionEnabled = NO;
+    self.startButtonView.alpha = 0;
     [self createNewWorkout:minutes accessories:accessories];
     self.workoutOnBoardView.alpha = 0;
-    
-    self.view.userInteractionEnabled = NO;
     [self.logoView performGenerateWorkoutAnimation];
     
 }
@@ -102,11 +129,11 @@
 {
     self.view.userInteractionEnabled = YES;
     self.generateWorkoutView.alpha = 1;
+    self.startButtonView.alpha = 1;
     self.workoutCreated = YES;
     self.generateWorkoutViewDisplayed = YES;
     self.accessoryAndTimeViewDisplayed = NO;
 }
-
 
 -(void)startWorkoutTapped
 {
@@ -157,8 +184,6 @@
     [self shrinkWorkoutDetailView];
 }
 
-
-
 #pragma mark view animations
 
 -(void)showOnboardingViewsAnimated:(BOOL)animated workoutSetupFirst:(BOOL)setupFirst
@@ -171,7 +196,7 @@
         self.view.userInteractionEnabled = NO;
         
         [UIView animateWithDuration:0.15 animations:^{
-            self.blurView.alpha = 1;
+            self.blurView.alpha = .9;
             self.startButtonView.buttonImage.transform = CGAffineTransformMakeRotation(-M_PI/4);
             self.startButtonView.outLineView.backgroundColor = [UIColor redColor];
         } completion:^(BOOL finished) {
@@ -316,62 +341,153 @@
     [self createNewWorkout:workout.targetTimeInSeconds/60 accessories:workout.availableAccessories];
 }
 
-
-
 #pragma mark tableView methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return section == 0 ? 1 : self.workouts.count;
+    return self.workouts.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 800, 800)];
+    headerView.backgroundColor = [UIColor clearColor];
+    headerView.userInteractionEnabled = NO;
+    return headerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return self.headerHeight;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
 
-    if (indexPath.section == 0)
-    {
-        WorkoutTotalsTopCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topCell"];
-        [cell.workoutTotalsTopCellView updateDataAndScrollToPage:0];
-        return cell;
-    }
-    
-    else
-    {
-        WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
-    
-        cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
-        return cell;
-    }
+    cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.introView.alpha = self.workouts.count ? 0 : 1;
-    return indexPath.section == 0 ? 250 : 110;
+    return 110;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!(indexPath.section == 0))
-    {
-        [self setUpWorkoutDetailView];
-        Workout *workoutChosen = self.workouts[indexPath.row];
-        [self growWorkoutDetailViewWithWorkout:workoutChosen];
-    }
+
+    [self setUpWorkoutDetailView];
+    Workout *workoutChosen = self.workouts[indexPath.row];
+    [self growWorkoutDetailViewWithWorkout:workoutChosen];
+
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.squareOffset == 0 && [self.calendarMonth monthIsSquare])
+    {
+        self.squareOffset = -scrollView.contentOffset.y;
+    }
+    
+    if (self.headerHeight == self.smallHeight)
+    {
+        self.calendarViewTopConstraint.constant = fmin(0, -scrollView.contentOffset.y);
+    }
+    
+    if (!self.ignoreScrolls)
+    {
+        if (self.headerHeight + -scrollView.contentOffset.y > self.bigHeight)
+        {
+            self.calendarMonthHeightConstraint.constant = self.bigHeight;
+        }
+        else if (self.headerHeight +  -scrollView.contentOffset.y < self.smallHeight)
+        {
+            self.calendarMonthHeightConstraint.constant = self.smallHeight;
+            
+            if(self.headerHeight == self.bigHeight)
+            {
+                [self adjustHeaderHeightBig:NO];
+            }
+        }
+        else
+        {
+            self.calendarMonthHeightConstraint.constant = self.headerHeight + -scrollView.contentOffset.y;
+        }
+    }
+}
+
+-(void)adjustHeaderHeightBig:(BOOL)big
+{
+    self.headerHeight = big ? self.bigHeight : self.smallHeight;
+    [self.workoutsTableView reloadData];
+    CGPoint offset;
+    offset.x = 0;
+    offset.y = big ? 0 : self.workoutsTableView.contentOffset.y - (self.bigHeight - self.smallHeight);
+    
+    [self.workoutsTableView setContentOffset:offset animated:big];
+    
+}
+
+
+
+-(void)setSquareOffset:(CGFloat)squareOffset
+{
+    _squareOffset = squareOffset;
+    self.bigHeight = self.smallHeight + 50 + squareOffset;
+   
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"beging");
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+ 
+   if ((self.headerHeight == self.smallHeight && [self.calendarMonth monthIsSquare]) || (self.headerHeight == self.bigHeight && !decelerate))
+   {
+       [self adjustHeaderHeightBig:YES];
+   }
+    
+    if (self.calendarViewTopConstraint.constant == 0)
+    {
+        self.scrollingUpLetGo = YES;
+    }
+    
+}
+
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    if ((self.headerHeight == self.smallHeight && [self.calendarMonth monthIsSquare]) || (self.headerHeight == self.bigHeight))
+    {
+        [self adjustHeaderHeightBig:YES];
+    }
+}
+
+
 
 
 #pragma mark Set up all views
@@ -491,6 +607,14 @@
 {
     [super viewDidLoad];
     
+    self.calendarMonth.monthAdditionToNow = 0;
+    
+    
+    self.smallHeight = 250;
+    self.headerHeight = self.smallHeight;
+    self.bigHeight = 1000;
+
+    
     self.dataStore = [DataStore sharedDataStore];
     [self.dataStore fetchData];
     
@@ -511,6 +635,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.lastOffset = 0;
     [self.workoutsTableView reloadData];
     self.introView.alpha = self.workouts.count ? 0 : 1;
     
@@ -519,6 +644,8 @@
         [self hideOnboardingViewsAnimated:NO];
     }
 }
+
+
 
 
 @end

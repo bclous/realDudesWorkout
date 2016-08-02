@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface CalendarMonth : UIView
 
 @property (nonatomic) NSInteger monthAdditionToNow;
@@ -15,5 +16,6 @@
 -(NSString *)monthFromDate;
 -(NSString *)numberOfWorkoutsLabel;
 -(NSString *)totalTimeLabel;
+-(BOOL)monthIsSquare;
 
 @end

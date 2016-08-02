@@ -230,7 +230,7 @@
            //[self revertToHomeColors];
             
             [UIView animateWithDuration:.2 animations:^{
-                self.generatingWorkoutLabel.text = @"Finished!";
+                self.generatingWorkoutLabel.text = @"";
             } completion:^(BOOL finished) {
                 
                 
@@ -249,5 +249,7 @@
         }];
     }];
 }
+
+
 
 @end

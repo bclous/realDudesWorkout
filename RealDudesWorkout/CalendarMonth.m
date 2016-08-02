@@ -14,9 +14,9 @@
 @interface CalendarMonth ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIView *calendarWrapperView;
-@property (weak, nonatomic) IBOutlet UILabel *yearLabel;
-@property (weak, nonatomic) IBOutlet UILabel *MonthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *dayLabels;
+@property (weak, nonatomic) IBOutlet UIStackView *monthStackView;
 
 @property (strong, nonatomic) NSCalendar *calendar;
 @property (strong, nonatomic) NSDateFormatter *formatter;
@@ -24,8 +24,6 @@
 @property (strong, nonatomic) DataStore *dataStore;
 @property (nonatomic) NSInteger year;
 @property (nonatomic) NSInteger month;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (nonatomic) CGFloat calendarHeight;
 @property (nonatomic) CGFloat calendarWidth;
 @property (nonatomic) CGFloat verticalSpacing;
@@ -64,76 +62,36 @@
 -(void)commonInit
 {
     
-    [[NSBundle mainBundle] loadNibNamed:@"CalendarMonth" owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:@"MonthView" owner:self options:nil];
     
     [self addSubview:self.contentView];
     
-     self.contentView.frame = self.bounds;
+    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView.leftAnchor constraintEqualToAnchor:self.leftAnchor].active = YES;
+    [self.contentView.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
+    [self.contentView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+    [self.contentView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
 
     _dataStore = [DataStore sharedDataStore];
     _calendarDays = [[NSMutableArray alloc] init];
     _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     _formatter = [[NSDateFormatter alloc] init];
     
-    _verticalSpacing = 5;
-    _horizontalSpacing = 20;
-    _daySize = 22;
-    _calendarWidth = self.horizontalSpacing * 6 + self.daySize * 7;
-    _calendarHeight = self.verticalSpacing * 6 + self.daySize * 7;
-    self.heightConstraint.constant = self.calendarHeight;
-    self.widthConstraint.constant = self.calendarWidth;
+    [self addDaysToDaysArray];
 
-    [self addStackViews];
 }
 
--(void)addStackViews
+-(void)addDaysToDaysArray
 {
-    UIStackView *weekOne = [[UIStackView alloc] initWithArrangedSubviews:[self arrayOfDayViews]];
-    UIStackView *weekTwo = [[UIStackView alloc] initWithArrangedSubviews:[self arrayOfDayViews]];
-    UIStackView *weekThree = [[UIStackView alloc] initWithArrangedSubviews:[self arrayOfDayViews]];
-    UIStackView *weekFour = [[UIStackView alloc] initWithArrangedSubviews:[self arrayOfDayViews]];
-    UIStackView *weekFive = [[UIStackView alloc] initWithArrangedSubviews:[self arrayOfDayViews]];
-    UIStackView *weekSix = [[UIStackView alloc] initWithArrangedSubviews:[self arrayOfDayViews]]; 
-    
-    UIStackView *groupedWeeks =[[UIStackView alloc]initWithArrangedSubviews: @[weekOne, weekTwo, weekThree, weekFour, weekFive, weekSix]];
-    
-    groupedWeeks.axis = UILayoutConstraintAxisVertical;
-    
-    for (UIStackView *stackView in [groupedWeeks subviews])
+    for (UIStackView *stackView in [self.monthStackView arrangedSubviews])
     {
-        stackView.spacing = self.horizontalSpacing;
-        stackView.distribution = UIStackViewDistributionFillEqually;
-        stackView.axis = UILayoutConstraintAxisHorizontal;
+        for (CalendarDay *day in [stackView arrangedSubviews])
+        {
+            [self.calendarDays addObject:day];
+        }
     }
-    
-    groupedWeeks.spacing = self.verticalSpacing;
-    groupedWeeks.distribution = UIStackViewDistributionFillEqually;
-    
-    [self.calendarWrapperView addSubview:groupedWeeks];
-    groupedWeeks.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [groupedWeeks.topAnchor constraintEqualToAnchor:self.calendarWrapperView.topAnchor constant:23].active = YES;
-    [groupedWeeks.centerXAnchor constraintEqualToAnchor:self.calendarWrapperView.centerXAnchor].active = YES;
-
 }
 
--(NSArray *)arrayOfDayViews
-{
-    NSMutableArray *dayViews = [[NSMutableArray alloc] init];
-    
-    for (NSUInteger i = 0; i < 7; i++)
-    {
-        CalendarDay *day = [[CalendarDay alloc] init];
-        [day.heightAnchor constraintEqualToConstant:self.daySize].active = YES;
-        [day.widthAnchor constraintEqualToConstant:self.daySize].active = YES;
-        [day roundCornersWithWidth:self.daySize];
-        
-        [dayViews addObject:day];
-        [self.calendarDays addObject:day];
-    }
-    
-    return dayViews;
-}
 
 -(NSInteger)weekdayOffset;
 {
@@ -190,8 +148,8 @@
 {
     _monthAdditionToNow = monthAdditionToNow;
     
-    self.MonthLabel.text = [self monthFromDate];
-    self.yearLabel.text = [self yearFromDate];
+    self.monthLabel.text = [self monthFromDate];
+    //self.yearLabel.text = [self yearFromDate];
     
     [self formatCalendarDays];
 }
@@ -303,7 +261,9 @@
 
 }
 
-
-
+-(BOOL)monthIsSquare
+{
+    return self.monthStackView.frame.size.height >= .85 *self.monthStackView.frame.size.width;
+}
 
 @end

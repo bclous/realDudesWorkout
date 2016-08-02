@@ -73,9 +73,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMT-Co-Flx">
                                         <rect key="frame" x="20" y="100" width="560" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qw3-uA-RW3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qw3-uA-RW3">
                                                 <rect key="frame" x="259" y="11" width="42" height="20"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -143,8 +143,10 @@
                                             <constraint firstAttribute="height" constant="40" id="mwH-lx-ubU"/>
                                         </constraints>
                                     </stackView>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h54-Vk-Zkk">
-                                        <rect key="frame" x="9" y="70" width="519" height="2"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h54-Vk-Zkk">
+                                        <rect key="frame" x="21" y="70" width="507" height="2"/>
+                                        <color key="progressTintColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="trackTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="44:44" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCc-kZ-e8p">
                                         <rect key="frame" x="533" y="64" width="47" height="16"/>
@@ -158,7 +160,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="h54-Vk-Zkk" firstAttribute="leading" secondItem="jMT-Co-Flx" secondAttribute="leading" id="0Tv-iR-CFQ"/>
+                                    <constraint firstItem="h54-Vk-Zkk" firstAttribute="leading" secondItem="jMT-Co-Flx" secondAttribute="leading" constant="1" id="0Tv-iR-CFQ"/>
                                     <constraint firstItem="h54-Vk-Zkk" firstAttribute="centerY" secondItem="LCc-kZ-e8p" secondAttribute="centerY" id="6TY-tB-xk4"/>
                                     <constraint firstAttribute="bottom" secondItem="jMT-Co-Flx" secondAttribute="bottom" constant="20" id="A8h-Za-xRC"/>
                                     <constraint firstItem="LCc-kZ-e8p" firstAttribute="trailing" secondItem="INh-Fl-Pk9" secondAttribute="trailing" id="ACO-yW-oig"/>
@@ -279,7 +281,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rec-1B-3G7" id="BSE-9P-hF1">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-gQ-Znh" customClass="WorkoutScrollSummaryCellView">
@@ -301,7 +303,7 @@
                                         <rect key="frame" x="0.0" y="139" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5QZ-aM-aPi" id="Y2O-M4-iG5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6y-v5-jy1" customClass="WorkoutTotalsTopCellView">
@@ -323,7 +325,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8q-K9-V1O" customClass="CalendarMonth">
+                                <rect key="frame" x="0.0" y="70" width="600" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="k0w-ks-NbT"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH" userLabel="headerBAr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -331,21 +340,28 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="50" id="0yd-Pd-zLO"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="3iN-9Q-ZkR"/>
                             <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="9iu-0w-bOz" secondAttribute="bottom" id="7sL-cV-yh3"/>
+                            <constraint firstItem="b8q-K9-V1O" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" id="DDP-ui-6u3"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="DFA-a4-Knu"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Hsd-k2-NsW"/>
-                            <constraint firstItem="7J2-vp-YNH" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="-20" id="Wsk-aX-QAi"/>
+                            <constraint firstItem="7J2-vp-YNH" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="-20" id="NlN-gl-LiT"/>
+                            <constraint firstItem="b8q-K9-V1O" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="XRu-Av-5Mg"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="gRT-W2-ncf"/>
-                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" id="gUF-ED-COX"/>
+                            <constraint firstItem="b8q-K9-V1O" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="jgI-Yb-vXc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Gj-FQ-4Ak">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wN9-sh-7AI"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarMonth" destination="b8q-K9-V1O" id="JfU-Ya-KkI"/>
+                        <outlet property="calendarMonthHeightConstraint" destination="k0w-ks-NbT" id="SBs-5J-TEa"/>
+                        <outlet property="calendarViewTopConstraint" destination="DDP-ui-6u3" id="bvS-bb-Mfd"/>
+                        <outlet property="tableViewTopConstraint" destination="0yd-Pd-zLO" id="bzv-Wi-ea9"/>
                         <outlet property="workoutsTableView" destination="9iu-0w-bOz" id="FGU-Sh-Pi2"/>
                         <segue destination="NKf-Qy-GjP" kind="presentation" identifier="segueToWorkout" id="FGf-Y7-otV"/>
                     </connections>

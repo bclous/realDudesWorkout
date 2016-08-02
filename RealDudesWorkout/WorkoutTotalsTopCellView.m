@@ -19,8 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *circle3;
 @property (weak, nonatomic) IBOutlet UIView *circle4;
 
-@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet MonthlyWorkoutCalendarTopCellView *firstMonthView;
 @property (weak, nonatomic) IBOutlet MonthlyWorkoutCalendarTopCellView *lastMonthView;
@@ -72,8 +70,6 @@
     self.circle3.layer.cornerRadius =4;
     self.circle4.layer.cornerRadius =4;
     
-    self.blurView.alpha = 0;
-    
     self.scrollView.delegate = self;
     
     self.page = 0;
@@ -119,17 +115,17 @@
     CGFloat widthOfFrame = self.frame.size.width;
     CGFloat offset = self.scrollView.contentOffset.x;
     
-    if (offset > 0)
-    {
-        if (offset / widthOfFrame > 1)
-        {
-            self.blurView.alpha = 1;
-        }
-        else
-        {
-            self.blurView.alpha = offset / widthOfFrame * 1;
-        }
-    }
+//    if (offset > 0)
+//    {
+//        if (offset / widthOfFrame > 1)
+//        {
+//            self.blurView.alpha = .9;
+//        }
+//        else
+//        {
+//            self.blurView.alpha = offset / widthOfFrame * .9;
+//        }
+//    }
     
     self.page = offset / widthOfFrame;
     
@@ -149,15 +145,15 @@
     [self updateBoolsForPage:page];
     [self updateCircleColors];
 
-    if (page == 1.0)
+    if (page == 0.0)
     {
         [self.firstMonthView transitionToStaticView];
     }
-    else if (page == 2.0)
+    else if (page == 1.0)
     {
         [self.lastMonthView transitionToStaticView];
     }
-    else if (page == 3.0)
+    else if (page == 2.0)
     {
         [self.last12MonthsView transitionToStaticView];
     }

@@ -74,7 +74,7 @@
     
     self.contentView.frame = self.bounds;
     
-    self.startButton.layer.cornerRadius = 15;
+    self.startButton.layer.cornerRadius = 20;
     
     self.workoutLength = 30;
     

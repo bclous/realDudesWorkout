@@ -296,9 +296,7 @@
     self.backAvailable = NO;
     self.skipAvailable = YES;
     
-    self.doneButton.layer.cornerRadius = 3;
-    self.skipButton.layer.cornerRadius = 3;
-    self.backButton.layer.cornerRadius = 3;
+    self.doneButton.layer.cornerRadius = 20;
     [self initializeExcerciseTotals];
     
     // set up first excercise and second excercise and set isLastWorkout BOOL

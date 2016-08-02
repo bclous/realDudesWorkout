@@ -7,13 +7,17 @@
 //
 
 #import "CalendarDay.h"
+#import "UIImage+BDC_Image.h"
+#import "UIColor+BDC_Color.h"
 
 @interface CalendarDay ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
-@property (weak, nonatomic) IBOutlet UIView *circleView;
+@property (weak, nonatomic) IBOutlet UIImageView *circleImageView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
+ 
 @end
 
 @implementation CalendarDay
@@ -51,6 +55,8 @@
     
     self.contentView.frame = self.bounds;
     
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    
     
     
 }
@@ -63,19 +69,15 @@
     
 }
 
--(void)roundCornersWithWidth:(CGFloat)width
-{
-    self.circleView.layer.cornerRadius = width / 2;
-}
-
 -(void)setRepresentsRealDay:(BOOL)representsRealDay
 {
     _representsRealDay = representsRealDay;
     
     if (!representsRealDay)
     {
-        self.circleView.backgroundColor = [UIColor clearColor];
         self.dayLabel.text = @"";
+        self.circleImageView.alpha = 0;
+        self.backgroundView.alpha = 0;
     }
 }
 
@@ -85,7 +87,9 @@
     
     if (isFuture)
     {
-        self.circleView.backgroundColor = [UIColor clearColor];
+        self.circleImageView.alpha = .25;
+        self.backgroundView.alpha = 0;
+        self.circleImageView.image = [self.circleImageView.image bdc_tintImageWithColor:[UIColor grayColor]];
     }
 }
 
@@ -95,7 +99,8 @@
     
     if (isToday)
     {
-        self.circleView.layer.cornerRadius = 0;
+        self.backgroundView.alpha = 1;
+        self.circleImageView.alpha = 0;
     }
 }
 
@@ -105,7 +110,10 @@
     
     if (!self.isFuture && !self.isPreDownload)
     {
-        self.circleView.backgroundColor = didWorkout ? [UIColor colorWithRed:60.0/255.0 green:196.0/255.0 blue:94.0/255.0 alpha:1] : [UIColor redColor];
+        self.backgroundView.alpha = 0;
+        self.circleImageView.alpha = 1;
+        self.dayLabel.textColor = [UIColor whiteColor];
+        self.circleImageView.image = didWorkout ? [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_greenColor]] : [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_redColor]];
     }
 }
 
@@ -115,9 +123,8 @@
     
     if (isPreDownload)
     {
-
-        self.circleView.backgroundColor = [UIColor clearColor];
-
+        self.backgroundView.alpha = 0;
+        self.circleImageView.alpha = 0;
     }
 }
 

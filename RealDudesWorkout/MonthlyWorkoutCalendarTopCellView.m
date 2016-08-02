@@ -11,7 +11,6 @@
 @interface MonthlyWorkoutCalendarTopCellView ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *bigLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workoutNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 @property (weak, nonatomic) IBOutlet CalendarMonth *calendarMonth;
@@ -75,22 +74,22 @@
     
     self.calendarMonth.monthAdditionToNow = monthOffset;
     
-    if (monthOffset == 0)
-    {
-        self.bigLabel.text = @"THIS MONTH";
-    }
-    else if (monthOffset == -1)
-    {
-        self.bigLabel.text = @"LAST MONTH";
-    }
-    else if (monthOffset == 1)
-    {
-        self.bigLabel.text = @"NEXT MONTH";
-    }
-    else
-    {
-        self.bigLabel.text = [self.calendarMonth monthFromDate];
-    }
+//    if (monthOffset == 0)
+//    {
+//        self.bigLabel.text = @"THIS MONTH";
+//    }
+//    else if (monthOffset == -1)
+//    {
+//        self.bigLabel.text = @"LAST MONTH";
+//    }
+//    else if (monthOffset == 1)
+//    {
+//        self.bigLabel.text = @"NEXT MONTH";
+//    }
+//    else
+//    {
+//        self.bigLabel.text = [self.calendarMonth monthFromDate];
+//    }
     
     self.workoutNumberLabel.text = [self.calendarMonth numberOfWorkoutsLabel];
     self.totalTimeLabel.text = [self.calendarMonth totalTimeLabel];
@@ -98,8 +97,7 @@
 
 -(void)formatContentShow:(BOOL)show
 {
-    self.bigLabel.alpha = !show;
-    self.calendarMonth.alpha = show;
+//    self.calendarMonth.alpha = show;
     self.workoutNumberLabel.alpha = show;
     self.totalTimeLabel.alpha = show;
 }

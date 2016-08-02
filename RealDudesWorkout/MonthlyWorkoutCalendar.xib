@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthlyWorkoutCalendarTopCellView">
             <connections>
-                <outlet property="bigLabel" destination="fHp-Fi-fau" id="eNz-Ya-lW0"/>
                 <outlet property="calendarMonth" destination="3ng-kD-ObQ" id="i3p-aG-JrV"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="AMT-NY-FEj"/>
                 <outlet property="totalTimeLabel" destination="S8n-bt-fdo" id="Nom-DE-Qdb"/>
@@ -15,48 +14,41 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <rect key="frame" x="0.0" y="0.0" width="430" height="250"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Workouts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgu-eE-bXD">
-                    <rect key="frame" x="53" y="232" width="102" height="12"/>
+                    <rect key="frame" x="80" y="232" width="102" height="12"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1:22 Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8n-bt-fdo">
-                    <rect key="frame" x="239" y="232" width="84" height="12"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:22 Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8n-bt-fdo">
+                    <rect key="frame" x="300" y="232" width="50" height="12"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6T-bk-x0p">
-                    <rect key="frame" x="160" y="234" width="56" height="8"/>
+                    <rect key="frame" x="187" y="234" width="56" height="8"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="56" id="LTF-Hk-h4J"/>
                         <constraint firstAttribute="height" constant="8" id="trA-Cr-yS3"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ng-kD-ObQ" customClass="CalendarMonth">
-                    <rect key="frame" x="51" y="0.0" width="274" height="250"/>
+                    <rect key="frame" x="78" y="0.0" width="274" height="250"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="274" id="hvq-ov-Ft3"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="THIS MONTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-Fi-fau">
-                    <rect key="frame" x="53" y="95" width="270" height="60"/>
-                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="qgu-eE-bXD" firstAttribute="leading" secondItem="3ng-kD-ObQ" secondAttribute="leading" constant="2" id="7Pp-lQ-Qp5"/>
                 <constraint firstItem="3ng-kD-ObQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AXJ-g4-m7L"/>
-                <constraint firstItem="fHp-Fi-fau" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Egk-fq-mvO"/>
                 <constraint firstAttribute="bottom" secondItem="m6T-bk-x0p" secondAttribute="bottom" constant="8" id="EqU-Jq-DSY"/>
                 <constraint firstItem="m6T-bk-x0p" firstAttribute="leading" secondItem="qgu-eE-bXD" secondAttribute="trailing" constant="5" id="Jsw-qU-IFT"/>
-                <constraint firstItem="fHp-Fi-fau" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Khg-SW-Cq1"/>
                 <constraint firstItem="S8n-bt-fdo" firstAttribute="centerY" secondItem="m6T-bk-x0p" secondAttribute="centerY" id="ZCv-Kx-NT8"/>
                 <constraint firstItem="qgu-eE-bXD" firstAttribute="centerY" secondItem="m6T-bk-x0p" secondAttribute="centerY" id="bCY-Mn-CC5"/>
                 <constraint firstItem="m6T-bk-x0p" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fdh-v4-WIh"/>
@@ -65,7 +57,7 @@
                 <constraint firstItem="3ng-kD-ObQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xvH-k0-MYr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-108.5" y="120"/>
+            <point key="canvasLocation" x="-81" y="120"/>
         </view>
     </objects>
 </document>
