@@ -202,7 +202,6 @@
     NSDate *downloadDate = [NSDate dateWithTimeIntervalSince1970:self.dataStore.user.downloadDate];
     NSDateComponents *downloadComponents = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:downloadDate];
     
-
     BOOL yearMatches = components.year == downloadComponents.year;
     BOOL monthMatches = components.month == downloadComponents.month;
     BOOL isPreDownload = (components.year < downloadComponents.year) || (yearMatches && (components.month < downloadComponents.month)) || (yearMatches && monthMatches && (components.day < downloadComponents.day));

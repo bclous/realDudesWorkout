@@ -48,25 +48,15 @@
 
 -(void)commonInit
 {
-    
     [[NSBundle mainBundle] loadNibNamed:@"CalendarDay" owner:self options:nil];
-    
     [self addSubview:self.contentView];
-    
     self.contentView.frame = self.bounds;
-    
-    self.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    
-    
 }
 
 -(void)setDay:(NSUInteger)day
 {
     _day = day;
-    
     self.dayLabel.text = [NSString stringWithFormat:@"%lu", day];
-    
 }
 
 -(void)setRepresentsRealDay:(BOOL)representsRealDay
@@ -87,7 +77,7 @@
     
     if (isFuture)
     {
-        self.circleImageView.alpha = .25;
+        self.circleImageView.alpha = 0;
         self.backgroundView.alpha = 0;
         self.circleImageView.image = [self.circleImageView.image bdc_tintImageWithColor:[UIColor grayColor]];
     }
@@ -99,7 +89,7 @@
     
     if (isToday)
     {
-        self.backgroundView.alpha = 1;
+        self.backgroundView.alpha = 0;
         self.circleImageView.alpha = 0;
     }
 }
@@ -110,10 +100,13 @@
     
     if (!self.isFuture && !self.isPreDownload)
     {
-        self.backgroundView.alpha = 0;
-        self.circleImageView.alpha = 1;
-        self.dayLabel.textColor = [UIColor whiteColor];
+        self.backgroundView.alpha = 1;
+        self.circleImageView.alpha = 0;
+        self.dayLabel.textColor = didWorkout ? [UIColor bdc_greenColor] : [UIColor bdc_redColor];
+        self.backgroundView.layer.borderWidth = 2;
+        self.backgroundView.layer.borderColor = didWorkout ? [[UIColor bdc_greenColor] CGColor] : [[UIColor bdc_redColor] CGColor];
         self.circleImageView.image = didWorkout ? [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_greenColor]] : [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_redColor]];
+        self.backgroundView.backgroundColor = [UIColor clearColor];
     }
 }
 

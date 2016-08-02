@@ -16,7 +16,7 @@
 }
 +(UIColor *)bdc_greenColor
 {
-    return [UIColor colorWithRed:0.0/255.0 green:255.0/255.0 blue:0.0/255.0 alpha:1];
+    return [UIColor colorWithRed:36.0/255.0 green:191.0/255.0 blue:0.0/255.0 alpha:1];
 }
 +(UIColor *)bdc_redColor
 {

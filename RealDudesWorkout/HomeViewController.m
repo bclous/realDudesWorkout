@@ -607,9 +607,6 @@
 {
     [super viewDidLoad];
     
-    self.calendarMonth.monthAdditionToNow = 0;
-    
-    
     self.smallHeight = 250;
     self.headerHeight = self.smallHeight;
     self.bigHeight = 1000;
@@ -617,6 +614,8 @@
     
     self.dataStore = [DataStore sharedDataStore];
     [self.dataStore fetchData];
+    
+    self.calendarMonth.monthAdditionToNow = 0;
     
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     
