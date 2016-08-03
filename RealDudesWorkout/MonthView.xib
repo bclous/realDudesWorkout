@@ -91,7 +91,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="0gk-tA-t4M">
                             <rect key="frame" x="0.0" y="62" width="429" height="59"/>
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwX-rN-XNp" customClass="CalendarDay">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwX-rN-XNp" customClass="CalendarDay">
                                     <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="qwX-rN-XNp" secondAttribute="height" multiplier="1:1" id="Mkz-gO-X7S"/>
@@ -127,7 +127,7 @@
                                         <constraint firstAttribute="width" secondItem="hOr-4B-wb9" secondAttribute="height" multiplier="1:1" id="oNN-QE-s42"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-zY-YsZ" customClass="CalendarDay">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-zY-YsZ" customClass="CalendarDay">
                                     <rect key="frame" x="370" y="0.0" width="59" height="59"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="f6I-zY-YsZ" secondAttribute="height" multiplier="1:1" id="FbA-x7-IQv"/>
@@ -277,7 +277,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C8X-bZ-Utx">
                             <rect key="frame" x="0.0" y="248" width="429" height="59"/>
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQR-RW-HV8" customClass="CalendarDay">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQR-RW-HV8" customClass="CalendarDay">
                                     <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="fQR-RW-HV8" secondAttribute="height" multiplier="1:1" id="fJ1-bG-U4i"/>
@@ -313,7 +313,7 @@
                                         <constraint firstAttribute="width" secondItem="dJk-ll-lbf" secondAttribute="height" multiplier="1:1" id="j9Y-Sx-RPv"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Rv-Rb-oM0" customClass="CalendarDay">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rv-Rb-oM0" customClass="CalendarDay">
                                     <rect key="frame" x="370" y="0.0" width="59" height="59"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="6Rv-Rb-oM0" secondAttribute="height" multiplier="1:1" id="5bv-aW-h0W"/>
@@ -404,7 +404,7 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroll down to enlarge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyR-jg-LZr">
-                    <rect key="frame" x="201" y="581" width="88" height="10"/>
+                    <rect key="frame" x="201" y="581" width="89" height="10"/>
                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -451,34 +451,26 @@
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6 Workouts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jv-rm-kgG">
-                    <rect key="frame" x="30" y="494" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6:45 Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE0-bI-37Y">
-                    <rect key="frame" x="417" y="494" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap date to add outside workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJC-hZ-mEb">
+                    <rect key="frame" x="224" y="438" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="0Jv-rm-kgG" firstAttribute="top" secondItem="sBb-8w-r7Z" secondAttribute="bottom" constant="20" id="3pw-aZ-QW5"/>
                 <constraint firstItem="4eE-VS-FCG" firstAttribute="top" secondItem="wHh-q9-WhS" secondAttribute="bottom" constant="5" id="7gF-cs-PWS"/>
                 <constraint firstItem="R9a-Rj-PpI" firstAttribute="top" secondItem="kLe-jC-Vnb" secondAttribute="bottom" constant="5" id="D3C-jY-8j7"/>
                 <constraint firstItem="Epu-IP-w2Y" firstAttribute="centerX" secondItem="xP1-0d-6S6" secondAttribute="centerX" id="D3J-lx-3dV"/>
+                <constraint firstItem="XJC-hZ-mEb" firstAttribute="centerX" secondItem="NdY-CJ-Wno" secondAttribute="centerX" id="Fr0-n8-jT8"/>
                 <constraint firstAttribute="trailing" secondItem="sBb-8w-r7Z" secondAttribute="trailing" constant="30" id="GVB-x0-2L4"/>
                 <constraint firstItem="dLI-Ss-d11" firstAttribute="top" secondItem="f1Y-tk-bRf" secondAttribute="bottom" constant="5" id="Gwm-i5-wpS"/>
-                <constraint firstItem="0Jv-rm-kgG" firstAttribute="leading" secondItem="RGG-Up-ON3" secondAttribute="leading" constant="2" id="Kao-i0-f5Z"/>
                 <constraint firstItem="f1Y-tk-bRf" firstAttribute="centerX" secondItem="dLI-Ss-d11" secondAttribute="centerX" id="L6K-IK-xHK"/>
                 <constraint firstItem="NdY-CJ-Wno" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="MFr-YN-hCm"/>
-                <constraint firstItem="gE0-bI-37Y" firstAttribute="trailing" secondItem="sBb-8w-r7Z" secondAttribute="trailing" constant="-2" id="Nrj-0g-O2u"/>
                 <constraint firstItem="sBb-8w-r7Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="R9T-PP-yB0"/>
-                <constraint firstItem="gE0-bI-37Y" firstAttribute="top" secondItem="sBb-8w-r7Z" secondAttribute="bottom" constant="20" id="UHl-DU-lhX"/>
                 <constraint firstItem="tyR-jg-LZr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XDL-fM-Qom"/>
+                <constraint firstItem="XJC-hZ-mEb" firstAttribute="top" secondItem="sBb-8w-r7Z" secondAttribute="bottom" constant="10" id="YK3-pu-QPV"/>
                 <constraint firstItem="vii-26-uOC" firstAttribute="top" secondItem="yhV-x0-Y4l" secondAttribute="bottom" constant="5" id="Z7x-G7-cPt"/>
                 <constraint firstItem="4ih-pw-Czi" firstAttribute="centerX" secondItem="Ee8-n1-vpD" secondAttribute="centerX" id="Zya-ep-Q5E"/>
                 <constraint firstItem="NdY-CJ-Wno" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dhA-tb-zRG"/>
