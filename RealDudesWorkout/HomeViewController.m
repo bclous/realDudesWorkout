@@ -401,6 +401,10 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    CGFloat test = [self tableView:self.workoutsTableView heightForHeaderInSection:0];
+    
+    NSLog(@"%f", test);
+    
     if (self.squareOffset == 0 && [self.calendarMonth monthIsSquare])
     {
         self.squareOffset = -scrollView.contentOffset.y;
@@ -408,7 +412,7 @@
     
     if (self.headerHeight == self.smallHeight)
     {
-        self.calendarViewTopConstraint.constant = fmin(0, -scrollView.contentOffset.y);
+        //self.calendarViewTopConstraint.constant = fmin(0, -scrollView.contentOffset.y);
     }
     
     if (!self.ignoreScrolls)
@@ -445,12 +449,10 @@
     
 }
 
-
-
 -(void)setSquareOffset:(CGFloat)squareOffset
 {
     _squareOffset = squareOffset;
-    self.bigHeight = self.smallHeight + 50 + squareOffset;
+    self.bigHeight = self.smallHeight + squareOffset;
    
 }
 
@@ -607,17 +609,13 @@
 {
     [super viewDidLoad];
     
-    self.smallHeight = 250;
-    self.headerHeight = self.smallHeight;
-    self.bigHeight = 1000;
-
-    
     self.dataStore = [DataStore sharedDataStore];
     [self.dataStore fetchData];
-    
-    self.calendarMonth.monthAdditionToNow = 0;
-    
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
+    
+    self.smallHeight = 180;
+    self.headerHeight = self.smallHeight;
+    self.bigHeight = 1000;
     
     [self setUpMainTableView];
     [self setUpWorkoutDetailView];
@@ -629,10 +627,17 @@
     [self createLogoView];
     [self.view layoutIfNeeded];
     
+    [self updateCalendar]; // need to go back and speed this up goodness
+    
     self.hasLoadedBefore = YES;
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)updateCalendar
+{
+    self.calendarMonth.monthAdditionToNow = 0;
+}
+
+-(void)viewWillAppear:(BOOL)animated 
 {
     self.lastOffset = 0;
     [self.workoutsTableView reloadData];

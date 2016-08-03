@@ -15,13 +15,17 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *dayLabels;
 @property (weak, nonatomic) IBOutlet UIStackView *monthStackView;
 
 @property (strong, nonatomic) NSCalendar *calendar;
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSMutableArray *calendarDays;
+@property (strong, nonatomic) NSDateComponents *dayComponents;
+@property (strong, nonatomic) NSDateComponents *todaysComponents;
+@property (strong, nonatomic) NSDateComponents *downloadComponents;
+@property (strong, nonatomic) NSOrderedSet *workoutDates;
 @property (strong, nonatomic) DataStore *dataStore;
+@property (strong, nonatomic) NSDate *downloadDate;
 @property (nonatomic) NSInteger year;
 @property (nonatomic) NSInteger month;
 @property (nonatomic) CGFloat calendarHeight;
@@ -73,9 +77,15 @@
     [self.contentView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
 
     _dataStore = [DataStore sharedDataStore];
+    [self.dataStore fetchData];
     _calendarDays = [[NSMutableArray alloc] init];
     _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     _formatter = [[NSDateFormatter alloc] init];
+    _dayComponents = [[NSDateComponents alloc] init];
+    _todaysComponents = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    _downloadDate = [NSDate dateWithTimeIntervalSince1970:self.dataStore.user.downloadDate];
+    _downloadComponents = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.downloadDate];
+    _workoutDates = [self.dataStore.user orderedSetOfWorkoutDates];
     
     [self addDaysToDaysArray];
 
@@ -113,6 +123,12 @@
     
     self.year = newComponents.year;
     self.month = newComponents.month;
+    self.dayComponents.month = self.month;
+    self.dayComponents.year = self.year;
+    self.dayComponents.hour = 0;
+    self.dayComponents.minute = 0;
+    self.dayComponents.second = 1;
+    
     
     return firstDayOfMonth;
 }
@@ -148,7 +164,7 @@
 {
     _monthAdditionToNow = monthAdditionToNow;
     
-    self.monthLabel.text = [self monthFromDate];
+    self.monthLabel.text = [[self monthFromDate] uppercaseString];
     //self.yearLabel.text = [self yearFromDate];
     
     [self formatCalendarDays];
@@ -179,38 +195,37 @@
         }
         
         index++;
+        
     }
 }
 
 
 -(void)formatDay:(CalendarDay *)day
 {
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    components.year = self.year;
-    components.month = self.month;
-    components.day = day.day;
-    components.hour = 0;
-    components.minute = 0;
-    components.second = 1;
+    self.dayComponents.day = day.day;
     
-    NSDate *calendarDayDate = [self.calendar dateFromComponents:components];
+    NSDate *calendarDayDate = [self.calendar dateFromComponents:self.dayComponents];
+   
+    NSString *dateString = [NSString stringWithFormat:@"%lu%lu%lu", self.dayComponents.month, self.dayComponents.day, self.dayComponents.year];
     
-    NSDateComponents *todaysComponents = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    BOOL yearMatches = self.dayComponents.year == self.downloadComponents.year;
+    BOOL monthMatches = self.dayComponents.month == self.downloadComponents.month;
+    BOOL isPreDownload = (self.dayComponents.year < self.downloadComponents.year) || (yearMatches && (self.dayComponents.month < self.downloadComponents.month)) || (yearMatches && monthMatches && (self.dayComponents.day < self.downloadComponents.day));
     
-    NSString *dateString = [NSString stringWithFormat:@"%lu%lu%lu", components.month, components.day, components.year];
-    
-    NSDate *downloadDate = [NSDate dateWithTimeIntervalSince1970:self.dataStore.user.downloadDate];
-    NSDateComponents *downloadComponents = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:downloadDate];
-    
-    BOOL yearMatches = components.year == downloadComponents.year;
-    BOOL monthMatches = components.month == downloadComponents.month;
-    BOOL isPreDownload = (components.year < downloadComponents.year) || (yearMatches && (components.month < downloadComponents.month)) || (yearMatches && monthMatches && (components.day < downloadComponents.day));
-    
-    day.isPreDownload = isPreDownload;
-    day.isToday = todaysComponents.year == components.year && todaysComponents.month == components.month && todaysComponents.day == components.day;
-    day.isFuture  = calendarDayDate.timeIntervalSinceNow > 0 && !day.isToday;
-    day.didWorkout = [[self.dataStore.user orderedSetOfWorkoutDates] containsObject:dateString];
-    
+    if (isPreDownload)
+    {
+        day.isPreDownload = YES;
+        return;
+    }
+    else if(calendarDayDate.timeIntervalSinceNow > 0 && !day.isToday)
+    {
+        day.isFuture = YES;
+        return;
+    }
+    else {
+        day.isToday = self.todaysComponents.year == self.dayComponents.year && self.todaysComponents.month == self.dayComponents.month && self.todaysComponents.day == self.dayComponents.day;
+        day.didWorkout = [self.workoutDates containsObject:dateString];
+    }
 }
 
 -(NSArray *)workoutsInThisMonth

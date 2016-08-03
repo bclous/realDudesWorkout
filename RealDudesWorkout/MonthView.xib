@@ -14,59 +14,59 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="489" height="595"/>
+            <rect key="frame" x="0.0" y="0.0" width="492" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdY-CJ-Wno">
-                    <rect key="frame" x="224" y="6" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdY-CJ-Wno">
+                    <rect key="frame" x="225" y="8" width="42" height="18.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-8w-r7Z">
-                    <rect key="frame" x="30" y="60" width="429" height="368"/>
+                    <rect key="frame" x="20" y="45" width="452" height="301"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="RGG-Up-ON3">
-                            <rect key="frame" x="0.0" y="0.0" width="429" height="59"/>
+                            <rect key="frame" x="0.0" y="0.0" width="452" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xP1-0d-6S6" customClass="CalendarDay">
-                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="xP1-0d-6S6" secondAttribute="height" multiplier="1:1" id="hhU-Vs-ypz"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-Rj-PpI" customClass="CalendarDay">
-                                    <rect key="frame" x="62" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="68" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="R9a-Rj-PpI" secondAttribute="height" multiplier="1:1" id="vEo-pj-mPq"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vii-26-uOC" customClass="CalendarDay">
-                                    <rect key="frame" x="124" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="135" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="vii-26-uOC" secondAttribute="height" multiplier="1:1" id="nLz-yp-wrf"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyI-Al-9ge" customClass="CalendarDay">
-                                    <rect key="frame" x="185" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="202" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="TyI-Al-9ge" secondAttribute="height" multiplier="1:1" id="Ky5-Pn-YBp"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ee8-n1-vpD" customClass="CalendarDay">
-                                    <rect key="frame" x="247" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="270" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Ee8-n1-vpD" secondAttribute="height" multiplier="1:1" id="k14-ns-ec0"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eE-VS-FCG" customClass="CalendarDay">
-                                    <rect key="frame" x="309" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="337" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4eE-VS-FCG" secondAttribute="height" multiplier="1:1" id="B6c-fn-XRQ"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLI-Ss-d11" customClass="CalendarDay">
-                                    <rect key="frame" x="370" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="405" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="dLI-Ss-d11" secondAttribute="height" multiplier="1:1" id="TIS-aC-oZX"/>
                                     </constraints>
@@ -89,46 +89,46 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="0gk-tA-t4M">
-                            <rect key="frame" x="0.0" y="62" width="429" height="59"/>
+                            <rect key="frame" x="0.0" y="51" width="452" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwX-rN-XNp" customClass="CalendarDay">
-                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="qwX-rN-XNp" secondAttribute="height" multiplier="1:1" id="Mkz-gO-X7S"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="znE-Mr-kay" customClass="CalendarDay">
-                                    <rect key="frame" x="62" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="68" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="znE-Mr-kay" secondAttribute="height" multiplier="1:1" id="bv4-6S-RPM"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hn2-7D-M1y" customClass="CalendarDay">
-                                    <rect key="frame" x="124" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="135" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="hn2-7D-M1y" secondAttribute="height" multiplier="1:1" id="gnz-UF-XYB"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-9G-Ca3" customClass="CalendarDay">
-                                    <rect key="frame" x="185" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="202" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lNG-9G-Ca3" secondAttribute="height" multiplier="1:1" id="3e1-GE-Wif"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAs-sM-cZ5" customClass="CalendarDay">
-                                    <rect key="frame" x="247" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="270" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="RAs-sM-cZ5" secondAttribute="height" multiplier="1:1" id="hAB-aZ-8Ho"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOr-4B-wb9" customClass="CalendarDay">
-                                    <rect key="frame" x="309" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="337" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="hOr-4B-wb9" secondAttribute="height" multiplier="1:1" id="oNN-QE-s42"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-zY-YsZ" customClass="CalendarDay">
-                                    <rect key="frame" x="370" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="405" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="f6I-zY-YsZ" secondAttribute="height" multiplier="1:1" id="FbA-x7-IQv"/>
                                     </constraints>
@@ -151,46 +151,46 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="e9j-ac-Ixr">
-                            <rect key="frame" x="0.0" y="124" width="429" height="59"/>
+                            <rect key="frame" x="0.0" y="102" width="452" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIv-Ll-Oxv" customClass="CalendarDay">
-                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="BIv-Ll-Oxv" secondAttribute="height" multiplier="1:1" id="2xT-oU-Ue9"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbd-Ib-v4H" customClass="CalendarDay">
-                                    <rect key="frame" x="62" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="68" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Kbd-Ib-v4H" secondAttribute="height" multiplier="1:1" id="Q4O-xu-KZ2"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-Ok-Zjr" customClass="CalendarDay">
-                                    <rect key="frame" x="124" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="135" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Nvf-Ok-Zjr" secondAttribute="height" multiplier="1:1" id="zVu-3X-MpB"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5B2-RN-X5Q" customClass="CalendarDay">
-                                    <rect key="frame" x="185" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="202" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="5B2-RN-X5Q" secondAttribute="height" multiplier="1:1" id="Rxd-tn-sgv"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIV-Ag-6cV" customClass="CalendarDay">
-                                    <rect key="frame" x="247" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="270" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mIV-Ag-6cV" secondAttribute="height" multiplier="1:1" id="2mA-ik-pwm"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-ck-X5z" customClass="CalendarDay">
-                                    <rect key="frame" x="309" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="337" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="P9A-ck-X5z" secondAttribute="height" multiplier="1:1" id="R0r-kx-oj8"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9y-R5-FOo" customClass="CalendarDay">
-                                    <rect key="frame" x="370" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="405" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="w9y-R5-FOo" secondAttribute="height" multiplier="1:1" id="lLj-x3-Iyy"/>
                                     </constraints>
@@ -213,46 +213,46 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="kkh-33-KoS">
-                            <rect key="frame" x="0.0" y="186" width="429" height="59"/>
+                            <rect key="frame" x="0.0" y="152" width="452" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZA-e6-RqU" customClass="CalendarDay">
-                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="YZA-e6-RqU" secondAttribute="height" multiplier="1:1" id="V4P-wJ-pcT"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-tV-erK" customClass="CalendarDay">
-                                    <rect key="frame" x="62" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="68" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="9pe-tV-erK" secondAttribute="height" multiplier="1:1" id="4TA-Th-7qr"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlW-xD-nIj" customClass="CalendarDay">
-                                    <rect key="frame" x="124" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="135" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="rlW-xD-nIj" secondAttribute="height" multiplier="1:1" id="K8n-ip-sKE"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYc-BK-60p" customClass="CalendarDay">
-                                    <rect key="frame" x="185" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="202" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="vYc-BK-60p" secondAttribute="height" multiplier="1:1" id="BRu-YG-O9T"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4D-Hd-d4t" customClass="CalendarDay">
-                                    <rect key="frame" x="247" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="270" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="h4D-Hd-d4t" secondAttribute="height" multiplier="1:1" id="JD9-kR-h3z"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnJ-4T-eyC" customClass="CalendarDay">
-                                    <rect key="frame" x="309" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="337" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="YnJ-4T-eyC" secondAttribute="height" multiplier="1:1" id="HLY-a3-F3b"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7x4-OE-VpU" customClass="CalendarDay">
-                                    <rect key="frame" x="370" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="405" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="7x4-OE-VpU" secondAttribute="height" multiplier="1:1" id="6RL-zq-Eog"/>
                                     </constraints>
@@ -275,46 +275,46 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C8X-bZ-Utx">
-                            <rect key="frame" x="0.0" y="248" width="429" height="59"/>
+                            <rect key="frame" x="0.0" y="203" width="452" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQR-RW-HV8" customClass="CalendarDay">
-                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="fQR-RW-HV8" secondAttribute="height" multiplier="1:1" id="fJ1-bG-U4i"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KM-BT-JXi" customClass="CalendarDay">
-                                    <rect key="frame" x="62" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="68" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4KM-BT-JXi" secondAttribute="height" multiplier="1:1" id="XDE-5s-itk"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3u-Qd-pId" customClass="CalendarDay">
-                                    <rect key="frame" x="124" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="135" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Y3u-Qd-pId" secondAttribute="height" multiplier="1:1" id="j6q-Af-6SN"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-oZ-8Mz" customClass="CalendarDay">
-                                    <rect key="frame" x="185" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="202" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lK4-oZ-8Mz" secondAttribute="height" multiplier="1:1" id="Gcb-LN-SfJ"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEq-EI-LQV" customClass="CalendarDay">
-                                    <rect key="frame" x="247" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="270" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="aEq-EI-LQV" secondAttribute="height" multiplier="1:1" id="Nd4-3C-O2s"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJk-ll-lbf" customClass="CalendarDay">
-                                    <rect key="frame" x="309" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="337" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="dJk-ll-lbf" secondAttribute="height" multiplier="1:1" id="j9Y-Sx-RPv"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rv-Rb-oM0" customClass="CalendarDay">
-                                    <rect key="frame" x="370" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="405" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="6Rv-Rb-oM0" secondAttribute="height" multiplier="1:1" id="5bv-aW-h0W"/>
                                     </constraints>
@@ -337,46 +337,46 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Mm-9G-qLg">
-                            <rect key="frame" x="0.0" y="309" width="429" height="59"/>
+                            <rect key="frame" x="0.0" y="254" width="452" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLK-VR-AgU" customClass="CalendarDay">
-                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="JLK-VR-AgU" secondAttribute="height" multiplier="1:1" id="bVu-Kt-9FJ"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6d-Yx-b1z" customClass="CalendarDay">
-                                    <rect key="frame" x="62" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="68" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="N6d-Yx-b1z" secondAttribute="height" multiplier="1:1" id="eor-ye-jQi"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-z3-g2v" customClass="CalendarDay">
-                                    <rect key="frame" x="124" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="135" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="gAw-z3-g2v" secondAttribute="height" multiplier="1:1" id="G8h-82-Bdk"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfb-Va-ljP" customClass="CalendarDay">
-                                    <rect key="frame" x="185" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="202" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="nfb-Va-ljP" secondAttribute="height" multiplier="1:1" id="emv-eU-PAt"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0V-NI-lsA" customClass="CalendarDay">
-                                    <rect key="frame" x="247" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="270" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="j0V-NI-lsA" secondAttribute="height" multiplier="1:1" id="AwT-Cs-kKN"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIj-9n-OGY" customClass="CalendarDay">
-                                    <rect key="frame" x="309" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="337" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="sIj-9n-OGY" secondAttribute="height" multiplier="1:1" id="diO-Ul-C67"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxu-z4-bBG" customClass="CalendarDay">
-                                    <rect key="frame" x="370" y="0.0" width="59" height="59"/>
+                                    <rect key="frame" x="405" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Vxu-z4-bBG" secondAttribute="height" multiplier="1:1" id="fQs-T7-03P"/>
                                     </constraints>
@@ -403,58 +403,46 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="sBb-8w-r7Z" secondAttribute="height" multiplier="7:6" id="afy-DA-EIJ"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroll down to enlarge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyR-jg-LZr">
-                    <rect key="frame" x="201" y="581" width="89" height="10"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epu-IP-w2Y">
-                    <rect key="frame" x="42" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <rect key="frame" x="52" y="26" width="11.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLe-jC-Vnb">
-                    <rect key="frame" x="102" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <rect key="frame" x="115" y="33" width="8.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raJ-jC-be9">
-                    <rect key="frame" x="224" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <rect key="frame" x="236" y="31" width="18.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ih-pw-Czi">
-                    <rect key="frame" x="284" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ih-pw-Czi">
+                    <rect key="frame" x="309" y="24" width="7.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHh-q9-WhS">
-                    <rect key="frame" x="346" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <rect key="frame" x="366" y="31" width="8.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1Y-tk-bRf">
-                    <rect key="frame" x="410" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <rect key="frame" x="423" y="30" width="18.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhV-x0-Y4l">
-                    <rect key="frame" x="160" y="30" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                    <rect key="frame" x="174.5" y="33" width="13" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap date to add outside workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJC-hZ-mEb">
-                    <rect key="frame" x="224" y="438" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -463,30 +451,26 @@
                 <constraint firstItem="4eE-VS-FCG" firstAttribute="top" secondItem="wHh-q9-WhS" secondAttribute="bottom" constant="5" id="7gF-cs-PWS"/>
                 <constraint firstItem="R9a-Rj-PpI" firstAttribute="top" secondItem="kLe-jC-Vnb" secondAttribute="bottom" constant="5" id="D3C-jY-8j7"/>
                 <constraint firstItem="Epu-IP-w2Y" firstAttribute="centerX" secondItem="xP1-0d-6S6" secondAttribute="centerX" id="D3J-lx-3dV"/>
-                <constraint firstItem="XJC-hZ-mEb" firstAttribute="centerX" secondItem="NdY-CJ-Wno" secondAttribute="centerX" id="Fr0-n8-jT8"/>
-                <constraint firstAttribute="trailing" secondItem="sBb-8w-r7Z" secondAttribute="trailing" constant="30" id="GVB-x0-2L4"/>
+                <constraint firstAttribute="trailing" secondItem="sBb-8w-r7Z" secondAttribute="trailing" constant="20" id="GVB-x0-2L4"/>
                 <constraint firstItem="dLI-Ss-d11" firstAttribute="top" secondItem="f1Y-tk-bRf" secondAttribute="bottom" constant="5" id="Gwm-i5-wpS"/>
                 <constraint firstItem="f1Y-tk-bRf" firstAttribute="centerX" secondItem="dLI-Ss-d11" secondAttribute="centerX" id="L6K-IK-xHK"/>
-                <constraint firstItem="NdY-CJ-Wno" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="MFr-YN-hCm"/>
-                <constraint firstItem="sBb-8w-r7Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="R9T-PP-yB0"/>
-                <constraint firstItem="tyR-jg-LZr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XDL-fM-Qom"/>
-                <constraint firstItem="XJC-hZ-mEb" firstAttribute="top" secondItem="sBb-8w-r7Z" secondAttribute="bottom" constant="10" id="YK3-pu-QPV"/>
+                <constraint firstItem="NdY-CJ-Wno" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="MFr-YN-hCm"/>
+                <constraint firstItem="sBb-8w-r7Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="R9T-PP-yB0"/>
                 <constraint firstItem="vii-26-uOC" firstAttribute="top" secondItem="yhV-x0-Y4l" secondAttribute="bottom" constant="5" id="Z7x-G7-cPt"/>
                 <constraint firstItem="4ih-pw-Czi" firstAttribute="centerX" secondItem="Ee8-n1-vpD" secondAttribute="centerX" id="Zya-ep-Q5E"/>
                 <constraint firstItem="NdY-CJ-Wno" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dhA-tb-zRG"/>
                 <constraint firstItem="raJ-jC-be9" firstAttribute="centerX" secondItem="TyI-Al-9ge" secondAttribute="centerX" id="fPg-jk-swN"/>
                 <constraint firstItem="TyI-Al-9ge" firstAttribute="top" secondItem="raJ-jC-be9" secondAttribute="bottom" constant="5" id="gpV-nP-EQU"/>
-                <constraint firstAttribute="bottom" secondItem="tyR-jg-LZr" secondAttribute="bottom" constant="4" id="gqt-c3-6Ac"/>
-                <constraint firstItem="sBb-8w-r7Z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="gz4-Ot-IpV"/>
+                <constraint firstItem="sBb-8w-r7Z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="gz4-Ot-IpV"/>
                 <constraint firstItem="yhV-x0-Y4l" firstAttribute="centerX" secondItem="vii-26-uOC" secondAttribute="centerX" id="i4D-V4-flK"/>
                 <constraint firstItem="wHh-q9-WhS" firstAttribute="centerX" secondItem="4eE-VS-FCG" secondAttribute="centerX" id="jla-7j-g6e"/>
                 <constraint firstItem="Ee8-n1-vpD" firstAttribute="top" secondItem="4ih-pw-Czi" secondAttribute="bottom" constant="5" id="lhD-LL-R1C"/>
                 <constraint firstItem="xP1-0d-6S6" firstAttribute="top" secondItem="Epu-IP-w2Y" secondAttribute="bottom" constant="5" id="okF-bZ-eVz"/>
                 <constraint firstItem="kLe-jC-Vnb" firstAttribute="centerX" secondItem="R9a-Rj-PpI" secondAttribute="centerX" id="xM8-hG-iga"/>
-                <constraint firstAttribute="bottom" secondItem="sBb-8w-r7Z" secondAttribute="bottom" priority="999" constant="20" id="xp7-YO-EUe"/>
+                <constraint firstAttribute="bottom" secondItem="sBb-8w-r7Z" secondAttribute="bottom" priority="999" constant="8" id="xp7-YO-EUe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="246.5" y="457.5"/>
+            <point key="canvasLocation" x="248" y="337"/>
         </view>
     </objects>
 </document>

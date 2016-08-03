@@ -79,7 +79,6 @@
     {
         self.circleImageView.alpha = 0;
         self.backgroundView.alpha = 0;
-        self.circleImageView.image = [self.circleImageView.image bdc_tintImageWithColor:[UIColor grayColor]];
     }
 }
 
@@ -105,7 +104,7 @@
         self.dayLabel.textColor = didWorkout ? [UIColor bdc_greenColor] : [UIColor bdc_redColor];
         self.backgroundView.layer.borderWidth = 2;
         self.backgroundView.layer.borderColor = didWorkout ? [[UIColor bdc_greenColor] CGColor] : [[UIColor bdc_redColor] CGColor];
-        self.circleImageView.image = didWorkout ? [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_greenColor]] : [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_redColor]];
+        //self.circleImageView.image = didWorkout ? [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_greenColor]] : [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_redColor]];
         self.backgroundView.backgroundColor = [UIColor clearColor];
     }
 }

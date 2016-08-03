@@ -326,17 +326,17 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8q-K9-V1O" customClass="CalendarMonth">
-                                <rect key="frame" x="0.0" y="70" width="600" height="250"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="180"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="k0w-ks-NbT"/>
+                                    <constraint firstAttribute="height" constant="180" id="k0w-ks-NbT"/>
                                 </constraints>
                             </view>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH" userLabel="headerBAr">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="CZM-Qo-Tkl"/>
+                                    <constraint firstAttribute="height" constant="64" id="CZM-Qo-Tkl"/>
                                 </constraints>
                             </view>
                         </subviews>
