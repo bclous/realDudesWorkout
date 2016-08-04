@@ -27,7 +27,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjE-nO-nYi">
                     <rect key="frame" x="140" y="141" width="36" height="17"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

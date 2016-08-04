@@ -21,6 +21,7 @@
 #import "StartButtonView.h"
 #import "LogoView.h"
 #import "CalendarMonth.h"
+#import "TableViewHeaderView.h"
 
 #define MIN_CALENDAR_HEIGHT 250;
 #define MAX_CALENDAR_HEIGHT 400;
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *workoutsTableView;
 @property (strong, nonatomic) DataStore *dataStore;
 @property (strong, nonatomic) NSArray *workouts;
+@property (weak, nonatomic) IBOutlet UIView *calendarBlockView;
 
 @property (strong, nonatomic) UIView *blurView;
 
@@ -345,25 +347,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.workouts.count;
+    return section == 0 ? 0 : self.workouts.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 800, 800)];
-    headerView.backgroundColor = [UIColor clearColor];
-    headerView.userInteractionEnabled = NO;
-    return headerView;
+    
+    if (section == 0)
+    {
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 800, 800)];
+        headerView.backgroundColor = [UIColor clearColor];
+        headerView.userInteractionEnabled = NO;
+        return headerView;
+    }
+    else
+    {
+        TableViewHeaderView *headerView = [[TableViewHeaderView alloc] init];
+        return headerView;
+    }
+  
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return self.headerHeight;
+    //return self.headerHeight;
+    
+    return section == 0 ? 290 : 30;
 }
 
 
@@ -401,40 +415,58 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat test = [self tableView:self.workoutsTableView heightForHeaderInSection:0];
     
-    NSLog(@"%f", test);
-    
-    if (self.squareOffset == 0 && [self.calendarMonth monthIsSquare])
+    if (scrollView.contentOffset.y <= 0)
     {
-        self.squareOffset = -scrollView.contentOffset.y;
+        self.calendarBlockView.alpha = 0;
+    }
+    else if ((scrollView.contentOffset.y / 72.5 * .1 + .6) < 0)
+    {
+        self.calendarBlockView.alpha = 0;
+    }
+    else if ((scrollView.contentOffset.y / 72.5 * .1 + .6)  > 1)
+    {
+        self.calendarBlockView.alpha = 1;
+    }
+    else
+    {
+        self.calendarBlockView.alpha = scrollView.contentOffset.y / 72.5 * .1 + .6;
     }
     
-    if (self.headerHeight == self.smallHeight)
-    {
-        //self.calendarViewTopConstraint.constant = fmin(0, -scrollView.contentOffset.y);
-    }
-    
-    if (!self.ignoreScrolls)
-    {
-        if (self.headerHeight + -scrollView.contentOffset.y > self.bigHeight)
-        {
-            self.calendarMonthHeightConstraint.constant = self.bigHeight;
-        }
-        else if (self.headerHeight +  -scrollView.contentOffset.y < self.smallHeight)
-        {
-            self.calendarMonthHeightConstraint.constant = self.smallHeight;
-            
-            if(self.headerHeight == self.bigHeight)
-            {
-                [self adjustHeaderHeightBig:NO];
-            }
-        }
-        else
-        {
-            self.calendarMonthHeightConstraint.constant = self.headerHeight + -scrollView.contentOffset.y;
-        }
-    }
+//    CGFloat test = [self tableView:self.workoutsTableView heightForHeaderInSection:0];
+//    
+//    NSLog(@"%f", test);
+//    
+//    if (self.squareOffset == 0 && [self.calendarMonth monthIsSquare])
+//    {
+//        self.squareOffset = -scrollView.contentOffset.y;
+//    }
+//    
+//    if (self.headerHeight == self.smallHeight)
+//    {
+//        //self.calendarViewTopConstraint.constant = fmin(0, -scrollView.contentOffset.y);
+//    }
+//    
+//    if (!self.ignoreScrolls)
+//    {
+//        if (self.headerHeight + -scrollView.contentOffset.y > self.bigHeight)
+//        {
+//            self.calendarMonthHeightConstraint.constant = self.bigHeight;
+//        }
+//        else if (self.headerHeight +  -scrollView.contentOffset.y < self.smallHeight)
+//        {
+//            self.calendarMonthHeightConstraint.constant = self.smallHeight;
+//            
+//            if(self.headerHeight == self.bigHeight)
+//            {
+//                [self adjustHeaderHeightBig:NO];
+//            }
+//        }
+//        else
+//        {
+//            self.calendarMonthHeightConstraint.constant = self.headerHeight + -scrollView.contentOffset.y;
+//        }
+//    }
 }
 
 -(void)adjustHeaderHeightBig:(BOOL)big
@@ -469,24 +501,24 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
  
-   if ((self.headerHeight == self.smallHeight && [self.calendarMonth monthIsSquare]) || (self.headerHeight == self.bigHeight && !decelerate))
-   {
-       [self adjustHeaderHeightBig:YES];
-   }
-    
-    if (self.calendarViewTopConstraint.constant == 0)
-    {
-        self.scrollingUpLetGo = YES;
-    }
+//   if ((self.headerHeight == self.smallHeight && [self.calendarMonth monthIsSquare]) || (self.headerHeight == self.bigHeight && !decelerate))
+//   {
+//       [self adjustHeaderHeightBig:YES];
+//   }
+//    
+//    if (self.calendarViewTopConstraint.constant == 0)
+//    {
+//        self.scrollingUpLetGo = YES;
+//    }
     
 }
 
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    if ((self.headerHeight == self.smallHeight && [self.calendarMonth monthIsSquare]) || (self.headerHeight == self.bigHeight))
-    {
-        [self adjustHeaderHeightBig:YES];
-    }
+//    if ((self.headerHeight == self.smallHeight && [self.calendarMonth monthIsSquare]) || (self.headerHeight == self.bigHeight))
+//    {
+//        [self adjustHeaderHeightBig:YES];
+//    }
 }
 
 
@@ -608,6 +640,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"Height: %f, width: %f", self.view.frame.size.height, self.view.frame.size.width);
     
     self.dataStore = [DataStore sharedDataStore];
     [self.dataStore fetchData];

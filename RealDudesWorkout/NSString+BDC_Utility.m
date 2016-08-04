@@ -206,6 +206,13 @@
     return [dateFormatter stringFromDate:date];
 }
 
++(NSString *)monthNameFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM"];
+    return [dateFormatter stringFromDate:date];
+}
+
 
 
 @end

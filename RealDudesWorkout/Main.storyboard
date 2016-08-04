@@ -273,8 +273,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V79-mE-7xk" customClass="MonthScrollView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="J65-3t-5Jj"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8q-K9-V1O" customClass="CalendarMonth">
+                                <rect key="frame" x="0.0" y="94" width="600" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="k0w-ks-NbT"/>
+                                </constraints>
+                            </view>
+                            <visualEffectView opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iI-Qc-VCg">
+                                <rect key="frame" x="0.0" y="94" width="600" height="300"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qjC-MB-u0e">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-0w-bOz">
-                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                                <rect key="frame" x="0.0" y="93" width="600" height="507"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="summaryCell" rowHeight="111" id="Rec-1B-3G7" customClass="WorkoutSummaryScrollTableViewCell">
@@ -325,13 +347,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8q-K9-V1O" customClass="CalendarMonth">
-                                <rect key="frame" x="0.0" y="64" width="600" height="180"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="k0w-ks-NbT"/>
-                                </constraints>
-                            </view>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH" userLabel="headerBAr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -342,26 +357,32 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="50" id="0yd-Pd-zLO"/>
+                            <constraint firstItem="2iI-Qc-VCg" firstAttribute="top" secondItem="b8q-K9-V1O" secondAttribute="top" id="222-e3-GC2"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="3iN-9Q-ZkR"/>
+                            <constraint firstItem="2iI-Qc-VCg" firstAttribute="bottom" secondItem="b8q-K9-V1O" secondAttribute="bottom" id="3kU-Cf-Nin"/>
                             <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="9iu-0w-bOz" secondAttribute="bottom" id="7sL-cV-yh3"/>
-                            <constraint firstItem="b8q-K9-V1O" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" id="DDP-ui-6u3"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="DFA-a4-Knu"/>
+                            <constraint firstItem="V79-mE-7xk" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="E9M-4h-148"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Hsd-k2-NsW"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="-20" id="NlN-gl-LiT"/>
                             <constraint firstItem="b8q-K9-V1O" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="XRu-Av-5Mg"/>
+                            <constraint firstItem="2iI-Qc-VCg" firstAttribute="leading" secondItem="b8q-K9-V1O" secondAttribute="leading" id="YWd-w4-2ZU"/>
+                            <constraint firstItem="b8q-K9-V1O" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" id="ZMi-1L-IR6"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="gRT-W2-ncf"/>
+                            <constraint firstItem="V79-mE-7xk" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" id="gmX-Xp-gli"/>
                             <constraint firstItem="b8q-K9-V1O" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="jgI-Yb-vXc"/>
+                            <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" constant="-1" id="ls9-8y-rrI"/>
+                            <constraint firstItem="2iI-Qc-VCg" firstAttribute="trailing" secondItem="b8q-K9-V1O" secondAttribute="trailing" id="oUc-Vs-2JJ"/>
+                            <constraint firstItem="V79-mE-7xk" firstAttribute="centerX" secondItem="iOo-ef-8U7" secondAttribute="centerX" id="pGy-QP-tea"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Gj-FQ-4Ak">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wN9-sh-7AI"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarBlockView" destination="2iI-Qc-VCg" id="wtq-MW-3ht"/>
                         <outlet property="calendarMonth" destination="b8q-K9-V1O" id="JfU-Ya-KkI"/>
                         <outlet property="calendarMonthHeightConstraint" destination="k0w-ks-NbT" id="SBs-5J-TEa"/>
-                        <outlet property="calendarViewTopConstraint" destination="DDP-ui-6u3" id="bvS-bb-Mfd"/>
-                        <outlet property="tableViewTopConstraint" destination="0yd-Pd-zLO" id="bzv-Wi-ea9"/>
                         <outlet property="workoutsTableView" destination="9iu-0w-bOz" id="FGU-Sh-Pi2"/>
                         <segue destination="NKf-Qy-GjP" kind="presentation" identifier="segueToWorkout" id="FGf-Y7-otV"/>
                     </connections>
