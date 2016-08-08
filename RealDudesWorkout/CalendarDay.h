@@ -18,5 +18,6 @@
 @property (nonatomic) BOOL isPreDownload;
 
 -(void)roundCornersWithWidth:(CGFloat)width;
+-(void)resetDay;
 
 @end

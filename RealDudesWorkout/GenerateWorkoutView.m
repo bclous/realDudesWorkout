@@ -118,7 +118,7 @@
     [self addSubview:self.excerciseScrollView];
     self.excerciseScrollView.delegate = self;
     self.excerciseScrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.excerciseScrollView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor constant:40].active = YES;
+    [self.excerciseScrollView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.excerciseScrollView.heightAnchor constraintEqualToConstant: 180].active = YES;
     [self.excerciseScrollView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
     [self.excerciseScrollView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;

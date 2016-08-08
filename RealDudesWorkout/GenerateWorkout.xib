@@ -27,31 +27,31 @@
                         <constraint firstAttribute="height" constant="40" id="ogu-5d-ExL"/>
                     </constraints>
                     <state key="normal" title="Start">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="startButtonTapped:" destination="-1" eventType="touchUpInside" id="JGA-n7-BDE"/>
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GK1-y4-z4j">
-                    <rect key="frame" x="122" y="95" width="179" height="64"/>
+                    <rect key="frame" x="121" y="20" width="175" height="52"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout #27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-D1-6K2">
-                            <rect key="frame" x="0.0" y="0.0" width="179" height="36"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="175" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday, May 25 6:58 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKD-jj-lZw">
-                            <rect key="frame" x="0.0" y="46" width="179" height="18"/>
+                            <rect key="frame" x="0.0" y="34" width="175" height="18"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xvz-9z-tW9">
-                    <rect key="frame" x="119" y="487" width="185" height="41"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xvz-9z-tW9">
+                    <rect key="frame" x="118" y="487" width="185" height="41"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excercises: 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-nu-Yxt">
                             <rect key="frame" x="0.0" y="0.0" width="185" height="18"/>
@@ -71,10 +71,11 @@
             <constraints>
                 <constraint firstItem="Xvz-9z-tW9" firstAttribute="centerX" secondItem="Vry-Uo-2zL" secondAttribute="centerX" id="2qC-rv-CCx"/>
                 <constraint firstItem="GK1-y4-z4j" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="91K-qx-2SJ"/>
+                <constraint firstItem="tCc-D1-6K2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="C3C-Wn-D64"/>
                 <constraint firstAttribute="bottom" secondItem="Vry-Uo-2zL" secondAttribute="bottom" constant="20" id="cFu-E4-sDE"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="d4o-O2-q5U"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="drP-JI-BMg"/>
-                <constraint firstItem="GK1-y4-z4j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="95" id="iJL-Nf-dTL"/>
+                <constraint firstItem="GK1-y4-z4j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="iJL-Nf-dTL"/>
                 <constraint firstItem="Vry-Uo-2zL" firstAttribute="top" secondItem="Xvz-9z-tW9" secondAttribute="bottom" constant="28" id="qWU-PJ-L9L"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

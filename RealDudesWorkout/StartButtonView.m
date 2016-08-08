@@ -7,6 +7,7 @@
 //
 
 #import "StartButtonView.h"
+#import "UIColor+BDC_Color.h"
 
 @interface StartButtonView ()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
@@ -48,10 +49,11 @@
     self.contentView.frame = self.bounds;
     
     self.outLineView.layer.cornerRadius = 20;
-    self.outLineView.layer.masksToBounds = NO;
-    self.outLineView.layer.shadowOffset = CGSizeMake(1, 1);
-    self.outLineView.layer.shadowRadius = 5;
-    self.outLineView.layer.shadowOpacity = 0.35;
+    
+//    self.outLineView.layer.masksToBounds = NO;
+//    self.outLineView.layer.shadowOffset = CGSizeMake(1, 1);
+//    self.outLineView.layer.shadowRadius = 5;
+//    self.outLineView.layer.shadowOpacity = 0.35;
     
 }
 - (IBAction)buttonTapped:(id)sender

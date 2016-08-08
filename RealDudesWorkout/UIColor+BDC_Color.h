@@ -13,6 +13,13 @@
 +(UIColor *)bdc_blueMainColor;
 +(UIColor *)bdc_greenColor;
 +(UIColor *)bdc_redColor;
++(UIColor *)bdc_lightText1;
++(UIColor *)bdc_lightText2;
++(UIColor *)bdc_lightText3;
++(UIColor *)bdc_darkText1;
++(UIColor *)bdc_darkText2;
++(UIColor *)bdc_darkText3;
++(UIColor *)bdc_offblackbackgroundColor;
 
 
 @end

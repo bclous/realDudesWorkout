@@ -7,13 +7,15 @@
 //
 
 #import "WorkoutOnBoardView.h"
+#import "UIImage+BDC_Image.h"
+#import "UIColor+BDC_Color.h"
 
 @interface WorkoutOnBoardView () <AccessoryOnBoardDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UIStackView *minusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *plusLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *plusImage;
+@property (weak, nonatomic) IBOutlet UIImageView *minusImage;
 @property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
 
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory1;
@@ -93,6 +95,9 @@
     self.accessory4.accessory = self.dataStore.availableAccessories[3];
     self.accessory5.accessory = self.dataStore.availableAccessories[4];
     self.accessory6.accessory = self.dataStore.availableAccessories[5];
+    
+    self.plusImage.image = [self.plusImage.image bdc_tintImageWithColor:[UIColor bdc_blueMainColor]];
+    self.minusImage.image = [self.minusImage.image bdc_tintImageWithColor:[UIColor bdc_blueMainColor]];
     
     self.availableAccessories = [[NSMutableArray alloc] init];
     

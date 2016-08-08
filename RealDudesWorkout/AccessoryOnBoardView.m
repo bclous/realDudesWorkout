@@ -98,6 +98,10 @@
     self.accessoryImageView.image = [UIImage imageNamed:accessory.pictureName];
     self.accessoryLabel.text = accessory.name;
     
+    self.pictureChosen = NO;
+    self.blueOutlineImage.alpha = 0;
+    self.accessoryImageView.alpha = .7;
+    
 }
 
 @end

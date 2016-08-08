@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *circleImageView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIView *smallCircleView;
 
  
 @end
@@ -51,6 +52,7 @@
     [[NSBundle mainBundle] loadNibNamed:@"CalendarDay" owner:self options:nil];
     [self addSubview:self.contentView];
     self.contentView.frame = self.bounds;
+    self.smallCircleView.layer.cornerRadius = 16;
 }
 
 -(void)setDay:(NSUInteger)day
@@ -63,11 +65,20 @@
 {
     _representsRealDay = representsRealDay;
     
+    self.backgroundView.backgroundColor = [UIColor clearColor];
+    self.dayLabel.textColor = [UIColor bdc_lightText2];
+    self.backgroundView.layer.borderWidth = 0;
+    
     if (!representsRealDay)
     {
         self.dayLabel.text = @"";
-        self.circleImageView.alpha = 0;
         self.backgroundView.alpha = 0;
+        self.smallCircleView.alpha = 0;
+    }
+    else
+    {
+        self.backgroundView.alpha = 1;
+        self.smallCircleView.alpha = 1;
     }
 }
 
@@ -77,8 +88,10 @@
     
     if (isFuture)
     {
-        self.circleImageView.alpha = 0;
-        self.backgroundView.alpha = 0;
+        
+        self.smallCircleView.alpha = 0;
+//        self.backgroundView.layer.borderColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:.3] CGColor];
+//        self.backgroundView.layer.borderWidth = 1;
     }
 }
 
@@ -88,8 +101,10 @@
     
     if (isToday)
     {
-        self.backgroundView.alpha = 0;
-        self.circleImageView.alpha = 0;
+//        self.backgroundView.layer.borderWidth = 1;
+//        self.backgroundView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        self.smallCircleView.layer.cornerRadius = 0;
+        
     }
 }
 
@@ -99,13 +114,15 @@
     
     if (!self.isFuture && !self.isPreDownload)
     {
-        self.backgroundView.alpha = 1;
-        self.circleImageView.alpha = 0;
-        self.dayLabel.textColor = didWorkout ? [UIColor bdc_greenColor] : [UIColor bdc_redColor];
-        self.backgroundView.layer.borderWidth = 2;
-        self.backgroundView.layer.borderColor = didWorkout ? [[UIColor bdc_greenColor] CGColor] : [[UIColor bdc_redColor] CGColor];
-        //self.circleImageView.image = didWorkout ? [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_greenColor]] : [self.circleImageView.image bdc_tintImageWithColor:[UIColor bdc_redColor]];
-        self.backgroundView.backgroundColor = [UIColor clearColor];
+        self.dayLabel.textColor = [UIColor bdc_lightText3];
+        self.smallCircleView.layer.cornerRadius = 16;
+        self.smallCircleView.alpha = 1;
+        self.smallCircleView.backgroundColor = didWorkout ? [[UIColor bdc_greenColor] colorWithAlphaComponent:.7] : [[UIColor bdc_redColor] colorWithAlphaComponent:.7];
+        //self.dayLabel.textColor = didWorkout ? [UIColor bdc_greenColor] : [UIColor bdc_redColor];
+        //self.backgroundView.backgroundColor = didWorkout ? [[UIColor bdc_greenColor] colorWithAlphaComponent:.5] : [[UIColor bdc_redColor] colorWithAlphaComponent:.5];
+       // self.backgroundView.layer.borderColor = didWorkout ? [[[UIColor bdc_greenColor] colorWithAlphaComponent:.5] CGColor] : [[[UIColor bdc_redColor] colorWithAlphaComponent:.5] CGColor];
+        //self.backgroundView.layer.borderWidth = 1;
+    
     }
 }
 
@@ -115,9 +132,21 @@
     
     if (isPreDownload)
     {
-        self.backgroundView.alpha = 0;
-        self.circleImageView.alpha = 0;
+        
+        self.smallCircleView.alpha = 0;
+//        //self.backgroundView.alpha = 0;
+//        self.dayLabel.textColor = [UIColor bdc_lightText1];
+//        self.backgroundView.layer.borderColor = [[UIColor clearColor] CGColor];
     }
+}
+
+-(void)resetDay
+{
+    self.representsRealDay = NO;
+    self.isFuture = NO;
+    self.isToday = NO;
+    self.isPreDownload = NO;
+    self.didWorkout = NO;
 }
 
 

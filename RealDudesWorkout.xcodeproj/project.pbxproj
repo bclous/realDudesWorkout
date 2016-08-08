@@ -369,6 +369,7 @@
 				AB345D8D1C9260F800604D55 /* ActiveWorkoutViewController.m */,
 				AB19B3C01D349F8D009D54D0 /* IntroView.h */,
 				AB19B3C11D349F8D009D54D0 /* IntroView.m */,
+				ABA9776F1C99D41A00D04639 /* Main.storyboard */,
 				AB19B3BE1D349B49009D54D0 /* IntroView.xib */,
 			);
 			name = "View Controllers";
@@ -411,7 +412,6 @@
 				AB41F2CC1C90FC25009D7E63 /* AppDelegate.h */,
 				AB41F2CD1C90FC25009D7E63 /* AppDelegate.m */,
 				AB3E32FA1D50440000DECC9D /* Catagories */,
-				ABA9776F1C99D41A00D04639 /* Main.storyboard */,
 				AB19B3EF1D3A77C3009D54D0 /* Start Workout Button */,
 				AB19B3EA1D39B4CE009D54D0 /* WorkoutOnBoard */,
 				ABDFCF481D29520800FF3007 /* Calendar */,

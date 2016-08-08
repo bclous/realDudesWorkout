@@ -33,6 +33,8 @@
 @property (nonatomic) CGFloat verticalSpacing;
 @property (nonatomic) CGFloat horizontalSpacing;
 @property (nonatomic) CGFloat daySize;
+@property (nonatomic) NSUInteger firstNonDayIndex;
+@property (nonatomic) NSUInteger weeksToShowForView;
 
 
 @end
@@ -164,7 +166,7 @@
 {
     _monthAdditionToNow = monthAdditionToNow;
     
-    self.monthLabel.text = [[self monthFromDate] uppercaseString];
+    //self.monthLabel.text = [[self monthFromDate] uppercaseString];
     //self.yearLabel.text = [self yearFromDate];
     
     [self formatCalendarDays];
@@ -172,6 +174,8 @@
 
 -(void)formatCalendarDays
 {
+    self.firstNonDayIndex = 0;
+    BOOL foundFirstDay = NO;
     NSUInteger firstIndex = [self weekdayOffset];
     NSUInteger lastIndex = [self lastDayOfMonthInt] - 1 + firstIndex;
     
@@ -184,6 +188,8 @@
         
         if (isDay)
         {
+            foundFirstDay = YES;
+            [day resetDay];
             day.representsRealDay = YES;
             day.day = dayOfMonth;
             [self formatDay:day];
@@ -191,12 +197,22 @@
         }
         else
         {
+            if (self.firstNonDayIndex == 0 && foundFirstDay)
+            {
+                self.firstNonDayIndex = index;
+                self.weeksToShowForView = ((index - 1) / 7) + 1;
+            }
             day.representsRealDay = NO;
         }
         
         index++;
         
     }
+}
+
+-(NSUInteger)weeksToShow
+{
+    return self.weeksToShowForView;
 }
 
 
@@ -223,8 +239,8 @@
         return;
     }
     else {
-        day.isToday = self.todaysComponents.year == self.dayComponents.year && self.todaysComponents.month == self.dayComponents.month && self.todaysComponents.day == self.dayComponents.day;
         day.didWorkout = [self.workoutDates containsObject:dateString];
+        day.isToday = self.todaysComponents.year == self.dayComponents.year && self.todaysComponents.month == self.dayComponents.month && self.todaysComponents.day == self.dayComponents.day;
     }
 }
 
