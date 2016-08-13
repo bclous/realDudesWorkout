@@ -17,6 +17,7 @@
 -(NSString *)totalTimeLabel;
 -(NSUInteger)weeksToShow;
 -(NSArray *)workoutsInThisMonth;
+-(void)updateCalendarMonth;
 -(BOOL)monthIsSquare;
 
 @end

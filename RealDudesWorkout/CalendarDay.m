@@ -68,6 +68,9 @@
     self.backgroundView.backgroundColor = [UIColor clearColor];
     self.dayLabel.textColor = [UIColor bdc_lightText2];
     self.backgroundView.layer.borderWidth = 0;
+    self.smallCircleView.alpha = 0;
+    self.smallCircleView.layer.cornerRadius = 16;
+    self.smallCircleView.layer.borderWidth = 1;
     
     if (!representsRealDay)
     {
@@ -90,6 +93,7 @@
     {
         
         self.smallCircleView.alpha = 0;
+        self.dayLabel.textColor = [UIColor bdc_lightText2];
 //        self.backgroundView.layer.borderColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:.3] CGColor];
 //        self.backgroundView.layer.borderWidth = 1;
     }
@@ -114,14 +118,11 @@
     
     if (!self.isFuture && !self.isPreDownload)
     {
-        self.dayLabel.textColor = [UIColor bdc_lightText3];
-        self.smallCircleView.layer.cornerRadius = 16;
+        self.smallCircleView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.2];
+        self.dayLabel.textColor = didWorkout ? [UIColor bdc_greenColor] : [UIColor bdc_redColor];
         self.smallCircleView.alpha = 1;
-        self.smallCircleView.backgroundColor = didWorkout ? [[UIColor bdc_greenColor] colorWithAlphaComponent:.7] : [[UIColor bdc_redColor] colorWithAlphaComponent:.7];
-        //self.dayLabel.textColor = didWorkout ? [UIColor bdc_greenColor] : [UIColor bdc_redColor];
-        //self.backgroundView.backgroundColor = didWorkout ? [[UIColor bdc_greenColor] colorWithAlphaComponent:.5] : [[UIColor bdc_redColor] colorWithAlphaComponent:.5];
-       // self.backgroundView.layer.borderColor = didWorkout ? [[[UIColor bdc_greenColor] colorWithAlphaComponent:.5] CGColor] : [[[UIColor bdc_redColor] colorWithAlphaComponent:.5] CGColor];
-        //self.backgroundView.layer.borderWidth = 1;
+        
+        self.smallCircleView.layer.borderColor = didWorkout ? [[[UIColor bdc_greenColor] colorWithAlphaComponent:.5] CGColor] : [[[UIColor bdc_redColor] colorWithAlphaComponent:.5] CGColor];
     
     }
 }

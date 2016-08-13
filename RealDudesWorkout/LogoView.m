@@ -112,7 +112,7 @@
     self.centerViewHeightConstraint.active = NO;
     self.stackViewTopConstraint.active = NO;
     self.stackViewCenterYConstraint.active = NO;
-    self.centerViewHeightConstraint = toMiddle ? [self.centerView.heightAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.1] : [self.centerView.heightAnchor constraintEqualToConstant:6];
+    self.centerViewHeightConstraint = toMiddle ? [self.centerView.heightAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.1] : [self.centerView.heightAnchor constraintEqualToConstant:5];
     self.centerViewHeightConstraint.active = YES;
     self.stackViewTopConstraint.active = !toMiddle;
     self.stackViewCenterYConstraint.active = toMiddle;

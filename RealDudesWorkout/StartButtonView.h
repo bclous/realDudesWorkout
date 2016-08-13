@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *buttonImage;
 @property (weak, nonatomic) IBOutlet UIView *outLineView;
 
+-(void)adjustStartButtonToHome:(BOOL)home;
+
 
 @end

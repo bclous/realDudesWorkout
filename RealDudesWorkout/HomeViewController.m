@@ -38,10 +38,6 @@
 @property (strong, nonatomic) NSArray *workouts;
 @property (weak, nonatomic) IBOutlet UIView *calendarBlockView;
 @property (weak, nonatomic) IBOutlet MonthScrollView *monthScrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *addImage;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIImageView *backImage;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (strong, nonatomic) NSLayoutConstraint *blurViewBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *blurViewTopConstraint;
@@ -123,25 +119,17 @@
     //[self showOnboardingViewsAnimated:YES workoutSetupFirst:NO];
     
 }
-- (IBAction)addNewWorkoutButtonTapped:(id)sender {
+-(void)startButtonTapped
+{
+    [self adjustViewsToOnboarding:!self.onboardContainerViewDisplayed animate:YES];
     
-    [self adjustViewsToOnboarding:YES animate:YES];
-    
-}
-- (IBAction)backToHomeButtonTapped:(id)sender {
-    
-    if(self.generateWorkoutViewDisplayed)
+    if (self.generateWorkoutViewDisplayed)
     {
         Workout *lastWorkout = [self.workouts firstObject];
         [self deleteWorkout:lastWorkout];
         self.generateWorkoutView.alpha = 0;
         self.workoutOnBoardView.alpha = 1;
-        
     }
-    [self.workoutOnBoardView resetView];
-    
-    [self adjustViewsToOnboarding:NO animate:YES];
-    [self resetCalendarComponents];
 }
 
 -(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
@@ -165,6 +153,9 @@
 
 -(void)adjustViewsToOnboarding:(BOOL)onboarding animate:(BOOL)animate
 {
+   
+    [self.workoutOnBoardView resetView];
+    [self resetCalendarComponents];
     
     self.onboardContainerViewDisplayed = onboarding;
     self.accessoryAndTimeViewDisplayed = onboarding;
@@ -180,14 +171,10 @@
     
     [UIView animateWithDuration:duration animations:^{
         [self.view layoutIfNeeded];
+        [self.startButtonView adjustStartButtonToHome:!onboarding];
     } completion:^(BOOL finished) {
         self.view.userInteractionEnabled = YES;
-        self.addButton.enabled = !onboarding;
-        self.addImage.alpha = onboarding ? 0 : 0;
-        self.backButton.enabled = onboarding;
-        self.backImage.alpha = onboarding ? 0.6 : 0;
     }];
-    
 }
 
 -(void)deleteWorkoutButtonTapped:(Workout *)workout
@@ -274,6 +261,7 @@
     [self.dataStore fetchData];
     self.workouts = self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     [self.workoutsTableView reloadData];
+    [self.calendarMonth updateCalendarMonth];
     self.introView.alpha = self.workouts.count ? 0 : 1;
 }
 
@@ -396,7 +384,12 @@
     self.calendarMonthHeight = (self.screenWidth - 20)/7 *[self.calendarMonth weeksToShow] + 59;
     self.calendarMonthHeightConstraint.constant = self.calendarMonthHeight;
     self.workouts = [self.calendarMonth workoutsInThisMonth];
+    [self.calendarMonth updateCalendarMonth];
     [self.workoutsTableView reloadData];
+    CGPoint home;
+    home.x = 0;
+    home.y = 0;
+    [self.workoutsTableView setContentOffset:home animated:NO];
     [self bringCalendarMonthToFront:YES];
     [self.monthScrollView moveScrollViewToIndex:12 animate:NO];
     self.calendarBlockView.alpha = 0;
@@ -408,10 +401,12 @@
     {
         [self.view bringSubviewToFront:self.calendarMonth];
         [self.view bringSubviewToFront:self.calendarBlockView];
+        [self.view bringSubviewToFront:self.startButtonView];
     }
     else
     {
         [self.view bringSubviewToFront:self.workoutsTableView];
+        [self.view bringSubviewToFront:self.startButtonView];
     }
 }
 
@@ -466,10 +461,11 @@
     self.workoutOnBoardView.delegate = self;
     self.workoutOnBoardView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.workoutOnBoardView];
-    [self.workoutOnBoardView.centerXAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.centerXAnchor].active = YES;
-    [self.workoutOnBoardView.centerYAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.centerYAnchor].active = YES;
-    [self.workoutOnBoardView.widthAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.widthAnchor].active = YES;
-    [self.workoutOnBoardView.heightAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.heightAnchor].active = YES;
+
+    [self.workoutOnBoardView.leftAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.leftAnchor].active = YES;
+    [self.workoutOnBoardView.rightAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.rightAnchor].active = YES;
+    [self.workoutOnBoardView.topAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.topAnchor].active = YES;
+    [self.workoutOnBoardView.bottomAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.bottomAnchor constant:-51].active = YES;
 }
 
 -(void)createGenerateWorkoutView
@@ -478,10 +474,10 @@
     self.generateWorkoutView.delegate = self;
     [self.view addSubview:self.generateWorkoutView];
     self.generateWorkoutView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.generateWorkoutView.centerXAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.centerXAnchor].active = YES;
-    [self.generateWorkoutView.centerYAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.centerYAnchor].active = YES;
-    [self.generateWorkoutView.widthAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.widthAnchor].active = YES;
-    [self.generateWorkoutView.heightAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.heightAnchor].active = YES;
+    [self.generateWorkoutView.leftAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.leftAnchor].active = YES;
+    [self.generateWorkoutView.rightAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.rightAnchor].active = YES;
+    [self.generateWorkoutView.topAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.topAnchor].active = YES;
+    [self.generateWorkoutView.bottomAnchor constraintEqualToAnchor:self.workoutOnboardContainerView.bottomAnchor constant:-51].active = YES;
     
     self.generateWorkoutView.alpha = 0;
 }
@@ -499,14 +495,26 @@
     [self.logoView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
 }
 
+-(void)createStartButtonView
+{
+    self.startButtonView = [[StartButtonView alloc] init];
+    self.startButtonView.delegate = self;
+    [self.view addSubview:self.startButtonView];
+    self.startButtonView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.startButtonView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.startButtonView.widthAnchor constraintEqualToConstant:32].active = YES;
+    [self.startButtonView.heightAnchor constraintEqualToAnchor:self.startButtonView.widthAnchor].active = YES;
+    [self.startButtonView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-15].active = YES;
+    [self.view bringSubviewToFront:self.startButtonView];
+    
+}
+
 
 #pragma mark view lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.addImage.image bdc_tintImageWithColor:[UIColor bdc_blueMainColor]];
     
     self.dataStore = [DataStore sharedDataStore];
     [self.dataStore fetchData];
@@ -519,6 +527,7 @@
     [self createGenerateWorkoutView];
     [self createLogoView];
     self.monthScrollView.delegate = self;
+    [self createStartButtonView];
   
     self.screenWidth = self.view.frame.size.width;
     [self resetCalendarComponents];

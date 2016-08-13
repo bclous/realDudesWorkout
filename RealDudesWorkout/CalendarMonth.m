@@ -296,4 +296,12 @@
     return self.monthStackView.frame.size.height >= .85 *self.monthStackView.frame.size.width;
 }
 
+-(void)updateCalendarMonth
+{
+    self.workoutDates = [self.dataStore.user orderedSetOfWorkoutDates];
+    [self formatCalendarDays];
+}
+
+
+
 @end

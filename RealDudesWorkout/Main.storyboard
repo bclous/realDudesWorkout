@@ -352,49 +352,9 @@
                             </visualEffectView>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J2-vp-YNH" userLabel="headerBAr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_directions_run_white" translatesAutoresizingMaskIntoConstraints="NO" id="0Im-2N-P7r">
-                                        <rect key="frame" x="565" y="32" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="F5K-gC-kvW"/>
-                                            <constraint firstAttribute="height" constant="25" id="b64-Jy-0C2"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAJ-ic-iKT">
-                                        <rect key="frame" x="555" y="22" width="45" height="45"/>
-                                        <connections>
-                                            <action selector="addNewWorkoutButtonTapped:" destination="suK-I8-nVv" eventType="touchUpInside" id="nEX-eZ-KU4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTA-fo-gWI">
-                                        <rect key="frame" x="0.0" y="20" width="52" height="52"/>
-                                        <connections>
-                                            <action selector="backToHomeButtonTapped:" destination="suK-I8-nVv" eventType="touchUpInside" id="Ag4-L0-eD5"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_clear_white" translatesAutoresizingMaskIntoConstraints="NO" id="p7J-Wl-eAg">
-                                        <rect key="frame" x="10" y="30" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="QEH-j7-1JG"/>
-                                            <constraint firstAttribute="width" constant="32" id="mwl-uX-eF4"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="p7J-Wl-eAg" firstAttribute="centerY" secondItem="RAJ-ic-iKT" secondAttribute="centerY" id="2xz-49-zfj"/>
                                     <constraint firstAttribute="height" constant="64" id="CZM-Qo-Tkl"/>
-                                    <constraint firstItem="p7J-Wl-eAg" firstAttribute="leading" secondItem="7J2-vp-YNH" secondAttribute="leading" constant="10" id="JzF-fb-BTG"/>
-                                    <constraint firstItem="0Im-2N-P7r" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="top" constant="32" id="SVj-7k-oVO"/>
-                                    <constraint firstItem="zTA-fo-gWI" firstAttribute="centerX" secondItem="p7J-Wl-eAg" secondAttribute="centerX" id="c8b-Da-F5b"/>
-                                    <constraint firstItem="zTA-fo-gWI" firstAttribute="width" secondItem="p7J-Wl-eAg" secondAttribute="width" constant="20" id="d4c-mz-Ki2"/>
-                                    <constraint firstItem="zTA-fo-gWI" firstAttribute="centerY" secondItem="p7J-Wl-eAg" secondAttribute="centerY" id="dSJ-my-Dc0"/>
-                                    <constraint firstItem="RAJ-ic-iKT" firstAttribute="centerX" secondItem="0Im-2N-P7r" secondAttribute="centerX" id="hod-aQ-e1V"/>
-                                    <constraint firstItem="RAJ-ic-iKT" firstAttribute="centerY" secondItem="0Im-2N-P7r" secondAttribute="centerY" id="kcy-M0-oM7"/>
-                                    <constraint firstItem="RAJ-ic-iKT" firstAttribute="width" secondItem="0Im-2N-P7r" secondAttribute="width" constant="20" id="nD6-E1-Tku"/>
-                                    <constraint firstItem="RAJ-ic-iKT" firstAttribute="height" secondItem="0Im-2N-P7r" secondAttribute="height" constant="20" id="pUf-Pb-hsg"/>
-                                    <constraint firstItem="zTA-fo-gWI" firstAttribute="height" secondItem="p7J-Wl-eAg" secondAttribute="height" constant="20" id="vbh-GQ-G51"/>
-                                    <constraint firstAttribute="trailing" secondItem="0Im-2N-P7r" secondAttribute="trailing" constant="10" id="yrw-om-B0z"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -427,10 +387,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wN9-sh-7AI"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="RAJ-ic-iKT" id="yg8-bp-TNv"/>
-                        <outlet property="addImage" destination="0Im-2N-P7r" id="lmb-9S-GRL"/>
-                        <outlet property="backButton" destination="zTA-fo-gWI" id="kWD-Ap-HCR"/>
-                        <outlet property="backImage" destination="p7J-Wl-eAg" id="aij-4v-kVV"/>
                         <outlet property="calendarBlockView" destination="2iI-Qc-VCg" id="wtq-MW-3ht"/>
                         <outlet property="calendarMonth" destination="b8q-K9-V1O" id="JfU-Ya-KkI"/>
                         <outlet property="calendarMonthHeightConstraint" destination="k0w-ks-NbT" id="SBs-5J-TEa"/>
@@ -468,8 +424,6 @@
         <image name="cancel" width="357" height="357"/>
         <image name="ic_chevron_left_white" width="24" height="24"/>
         <image name="ic_chevron_right_white" width="24" height="24"/>
-        <image name="ic_clear_white" width="24" height="24"/>
-        <image name="ic_directions_run_white" width="24" height="24"/>
         <image name="ic_info_outline_white" width="24" height="24"/>
         <image name="ic_refresh_white" width="24" height="24"/>
         <image name="logo2" width="716" height="714"/>
