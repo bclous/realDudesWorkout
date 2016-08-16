@@ -12,5 +12,7 @@
 @interface GenerateWorkoutExcerciseView : UIView
 
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
+@property (weak, nonatomic) IBOutlet UILabel *excerciseNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *excerciseImageView;
 
 @end

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="66" height="61"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LK-M0-wam">
+                <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LK-M0-wam">
                     <rect key="frame" x="15" y="13" width="36" height="36"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_add_white" translatesAutoresizingMaskIntoConstraints="NO" id="Hcc-I6-1nd">

@@ -10,7 +10,7 @@
 
 @interface WeeklyWorkoutTotalsView : UIView
 
--(void)transitionToScrollingView;
--(void)transitionToStaticView;
+-(void)setAllMonthsToHeightZero;
+-(void)setAllMonthsToAdjustedHeight;
 -(void)formatView;
 @end

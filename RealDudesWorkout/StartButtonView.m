@@ -50,10 +50,10 @@
     
     self.outLineView.layer.cornerRadius = 18;
     
-    self.outLineView.layer.masksToBounds = NO;
-    self.outLineView.layer.shadowOffset = CGSizeMake(1, 1);
-    self.outLineView.layer.shadowRadius = 3;
-    self.outLineView.layer.shadowOpacity = 0.2;
+//    self.outLineView.layer.masksToBounds = NO;
+//    self.outLineView.layer.shadowOffset = CGSizeMake(1, 1);
+//    self.outLineView.layer.shadowRadius = 3;
+//    self.outLineView.layer.shadowOpacity = 0.2;
     
 }
 - (IBAction)buttonTapped:(id)sender

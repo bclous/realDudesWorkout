@@ -25,6 +25,10 @@
 #import "MonthScrollView.h"
 #import "UIImage+BDC_Image.h"
 #import "UIColor+BDC_Color.h"
+#import "Last12Months.h"
+#import "PreDownloadTableViewCell.h"
+#import "AfterFirstWorkoutCell.h"
+
 
 #define MIN_CALENDAR_HEIGHT 250;
 #define MAX_CALENDAR_HEIGHT 400;
@@ -66,6 +70,7 @@
 @property (strong, nonatomic) LogoView *logoView;
 @property (strong, nonatomic) WorkoutTotalsTopCellTableViewCell *topCell;
 @property (weak, nonatomic) IBOutlet UIView *mainContainerView;
+@property (weak, nonatomic) IBOutlet Last12Months *last12MonthsView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainContainerViewRightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *onboardContainerViewLeftConstraint;
@@ -274,7 +279,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return section == 0 ? 0 : self.workouts.count;
+    switch (section) {
+        case 0:
+            return 0;
+        case 1:
+            if (self.workouts.count == 0)
+            {
+                return 1;
+            }
+            else if (self.workouts.count == 1 && self.calendarMonth.monthAdditionToNow == 0)
+            {
+                return 2;
+            }
+            else
+            {
+                return self.workouts.count;
+            }
+        default:
+            return 0;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -308,13 +331,40 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
-
-    cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor clearColor];
-    return cell;
-
+    if (self.workouts.count == 0)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"TableViewCells" bundle:nil] forCellReuseIdentifier:@"preDownloadCell"];
+        PreDownloadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"preDownloadCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.monthAdditionToNow = self.calendarMonth.monthAdditionToNow;
+        return cell;
+    }
+    else if (self.workouts.count == 1 && self.calendarMonth.monthAdditionToNow == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
+            cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor clearColor];
+            return cell;
+        }
+        else
+        {
+            [tableView registerNib:[UINib nibWithNibName:@"AfterFirstWorkoutCell" bundle:nil] forCellReuseIdentifier:@"afterFirstWorkoutCell"];
+            AfterFirstWorkoutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"afterFirstWorkoutCell"];
+            return cell;
+            
+        }
+    }
+    else
+    {
+         WorkoutSummaryScrollTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
+        cell.workoutScrollSummaryView.workout = self.workouts[indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -326,11 +376,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    [self setUpWorkoutDetailView];
-    Workout *workoutChosen = self.workouts[indexPath.row];
-    [self growWorkoutDetailViewWithWorkout:workoutChosen];
-
+    if (self.workouts.count > 0 && !(self.workouts.count == 0 && self.calendarMonth.monthAdditionToNow == 0 && indexPath.row == 1))
+    {
+        [self setUpWorkoutDetailView];
+        Workout *workoutChosen = self.workouts[indexPath.row];
+        [self growWorkoutDetailViewWithWorkout:workoutChosen];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -370,12 +421,33 @@
 
 -(void)newIndexChosen:(NSUInteger)index
 {
-    self.calendarMonth.monthAdditionToNow = index - 12;
-    self.calendarMonthHeight = (self.screenWidth - 20)/7 *[self.calendarMonth weeksToShow] + 59;
-    self.calendarMonthHeightConstraint.constant = self.calendarMonthHeight;
-    self.workouts = [self.calendarMonth workoutsInThisMonth];
-    [self.workoutsTableView reloadData];
-    [self bringCalendarMonthToFront:YES];
+    self.calendarBlockView.alpha = 0;
+    
+    if (index == 13)
+    {
+        self.calendarMonthHeight = self.view.frame.size.height;
+        self.calendarMonth.alpha = 0;
+        [self.workoutsTableView reloadData];
+        self.last12MonthsView.alpha = 1;
+        [self.last12MonthsView updateViewToOn:YES animate:YES];
+        [self.view bringSubviewToFront:self.last12MonthsView];
+        [self.view bringSubviewToFront:self.startButtonView];
+        
+    }
+    else
+    {
+        self.last12MonthsView.alpha = 0;
+        [self.last12MonthsView updateViewToOn:NO animate:NO];
+        self.calendarMonth.alpha = 1;
+        self.calendarMonth.monthAdditionToNow = index - 12;
+        self.calendarMonthHeight = (self.screenWidth - 20)/7 *[self.calendarMonth weeksToShow] + 59;
+        self.calendarMonthHeightConstraint.constant = self.calendarMonthHeight;
+        self.workouts = [self.calendarMonth workoutsInThisMonth];
+        [self.workoutsTableView reloadData];
+        [self bringCalendarMonthToFront:YES];
+    }
+    
+
 }
 
 -(void)resetCalendarComponents
@@ -442,7 +514,7 @@
     self.workoutOnboardContainerView = [[UIView alloc] init];
     [self.view addSubview:self.workoutOnboardContainerView];
     self.workoutOnboardContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.workoutOnboardContainerView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.9];
+    self.workoutOnboardContainerView.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.9];
     
     [self.workoutOnboardContainerView.leftAnchor constraintEqualToAnchor:self.mainContainerView.rightAnchor].active = YES;
     [self.workoutOnboardContainerView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
@@ -506,8 +578,9 @@
     [self.startButtonView.heightAnchor constraintEqualToAnchor:self.startButtonView.widthAnchor].active = YES;
     [self.startButtonView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-15].active = YES;
     [self.view bringSubviewToFront:self.startButtonView];
-    
 }
+
+
 
 
 #pragma mark view lifecycle
@@ -519,6 +592,7 @@
     self.dataStore = [DataStore sharedDataStore];
     [self.dataStore fetchData];
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
+    [self.last12MonthsView generateExercises];
     
     [self setUpMainTableView];
     [self setUpWorkoutDetailView];

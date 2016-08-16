@@ -276,14 +276,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-Dk-yBG" userLabel="mainViewContainerView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzQ-ai-LpN" customClass="Last12Months">
+                                <rect key="frame" x="0.0" y="104" width="600" height="496"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V79-mE-7xk" customClass="MonthScrollView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="35"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="J65-3t-5Jj"/>
+                                    <constraint firstAttribute="height" constant="40" id="J65-3t-5Jj"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-0w-bOz">
-                                <rect key="frame" x="0.0" y="98" width="600" height="502"/>
+                                <rect key="frame" x="0.0" y="103" width="600" height="497"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="summaryCell" rowHeight="111" id="Rec-1B-3G7" customClass="WorkoutSummaryScrollTableViewCell">
@@ -335,14 +338,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8q-K9-V1O" customClass="CalendarMonth">
-                                <rect key="frame" x="0.0" y="99" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="104" width="600" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="k0w-ks-NbT"/>
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iI-Qc-VCg">
-                                <rect key="frame" x="0.0" y="99" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="104" width="600" height="300"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qjC-MB-u0e">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,7 +361,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2iI-Qc-VCg" firstAttribute="top" secondItem="b8q-K9-V1O" secondAttribute="top" id="222-e3-GC2"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="width" secondItem="gDN-Dk-yBG" secondAttribute="width" id="3g2-t8-j41"/>
@@ -366,17 +369,21 @@
                             <constraint firstItem="2iI-Qc-VCg" firstAttribute="bottom" secondItem="b8q-K9-V1O" secondAttribute="bottom" id="3kU-Cf-Nin"/>
                             <constraint firstItem="V79-mE-7xk" firstAttribute="width" secondItem="gDN-Dk-yBG" secondAttribute="width" id="9Hm-UX-jOm"/>
                             <constraint firstItem="f8a-xt-3TH" firstAttribute="top" secondItem="gDN-Dk-yBG" secondAttribute="bottom" id="DAf-wf-8QW"/>
+                            <constraint firstItem="BzQ-ai-LpN" firstAttribute="trailing" secondItem="gDN-Dk-yBG" secondAttribute="trailing" id="DcO-Xf-rNd"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="bottom" secondItem="gDN-Dk-yBG" secondAttribute="bottom" id="DrC-dn-Hc4"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="Hsd-k2-NsW"/>
+                            <constraint firstItem="BzQ-ai-LpN" firstAttribute="bottom" secondItem="gDN-Dk-yBG" secondAttribute="bottom" id="Hvp-Te-vzv"/>
                             <constraint firstItem="7J2-vp-YNH" firstAttribute="top" secondItem="y9O-XO-X03" secondAttribute="bottom" constant="-20" id="NlN-gl-LiT"/>
+                            <constraint firstItem="BzQ-ai-LpN" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" id="S7k-1n-Fd1"/>
                             <constraint firstItem="V79-mE-7xk" firstAttribute="centerX" secondItem="gDN-Dk-yBG" secondAttribute="centerX" id="TkJ-YS-4f1"/>
+                            <constraint firstItem="BzQ-ai-LpN" firstAttribute="leading" secondItem="gDN-Dk-yBG" secondAttribute="leading" id="Wla-sv-sjQ"/>
                             <constraint firstItem="gDN-Dk-yBG" firstAttribute="top" secondItem="7J2-vp-YNH" secondAttribute="bottom" id="Xd2-Gg-2lb"/>
                             <constraint firstItem="2iI-Qc-VCg" firstAttribute="leading" secondItem="b8q-K9-V1O" secondAttribute="leading" id="YWd-w4-2ZU"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="centerX" secondItem="gDN-Dk-yBG" secondAttribute="centerX" id="ZAV-zH-luC"/>
                             <constraint firstItem="b8q-K9-V1O" firstAttribute="centerX" secondItem="gDN-Dk-yBG" secondAttribute="centerX" id="aUU-ib-kWN"/>
                             <constraint firstItem="b8q-K9-V1O" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" id="afT-g2-RWn"/>
                             <constraint firstItem="gDN-Dk-yBG" firstAttribute="width" secondItem="iOo-ef-8U7" secondAttribute="width" id="czX-Ud-Tme"/>
-                            <constraint firstItem="gDN-Dk-yBG" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" constant="-35" id="dT6-ce-qxW"/>
+                            <constraint firstItem="gDN-Dk-yBG" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" constant="-40" id="dT6-ce-qxW"/>
                             <constraint firstItem="9iu-0w-bOz" firstAttribute="top" secondItem="V79-mE-7xk" secondAttribute="bottom" constant="-1" id="dfa-mB-AJe"/>
                             <constraint firstAttribute="trailing" secondItem="gDN-Dk-yBG" secondAttribute="trailing" id="iuJ-BS-rnz"/>
                             <constraint firstItem="2iI-Qc-VCg" firstAttribute="trailing" secondItem="b8q-K9-V1O" secondAttribute="trailing" id="oUc-Vs-2JJ"/>
@@ -390,6 +397,7 @@
                         <outlet property="calendarBlockView" destination="2iI-Qc-VCg" id="wtq-MW-3ht"/>
                         <outlet property="calendarMonth" destination="b8q-K9-V1O" id="JfU-Ya-KkI"/>
                         <outlet property="calendarMonthHeightConstraint" destination="k0w-ks-NbT" id="SBs-5J-TEa"/>
+                        <outlet property="last12MonthsView" destination="BzQ-ai-LpN" id="7Tw-qw-Yse"/>
                         <outlet property="mainContainerView" destination="gDN-Dk-yBG" id="El1-1A-Qqt"/>
                         <outlet property="mainContainerViewRightConstraint" destination="iuJ-BS-rnz" id="X1v-uO-RbD"/>
                         <outlet property="monthScrollView" destination="V79-mE-7xk" id="Lzf-6V-0pH"/>

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableViewHeaderView">
@@ -16,20 +17,31 @@
             <subviews>
                 <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RrQ-cu-eur">
                     <rect key="frame" x="0.0" y="1" width="586" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_arrow_drop_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="EPg-be-Q8b">
+                            <rect key="frame" x="327" y="4" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="EPg-be-Q8b" secondAttribute="height" multiplier="1:1" id="vha-Be-fT2"/>
+                                <constraint firstAttribute="height" constant="20" id="w6O-RX-hMj"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Workouts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDi-qK-v4C">
-                    <rect key="frame" x="264" y="8" width="60" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WORKOUTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDi-qK-v4C">
+                    <rect key="frame" x="259" y="10" width="67" height="13"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <constraints>
+                <constraint firstItem="EPg-be-Q8b" firstAttribute="leading" secondItem="NDi-qK-v4C" secondAttribute="trailing" constant="-2" id="4tF-IY-sCc"/>
                 <constraint firstAttribute="trailing" secondItem="RrQ-cu-eur" secondAttribute="trailing" id="HgL-YO-iFk"/>
-                <constraint firstItem="NDi-qK-v4C" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lrp-T3-bit"/>
+                <constraint firstItem="NDi-qK-v4C" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-3" id="Lrp-T3-bit"/>
                 <constraint firstAttribute="bottom" secondItem="RrQ-cu-eur" secondAttribute="bottom" id="XiZ-LN-Kil"/>
+                <constraint firstItem="EPg-be-Q8b" firstAttribute="centerY" secondItem="NDi-qK-v4C" secondAttribute="centerY" id="Y2V-bX-PyC"/>
                 <constraint firstItem="NDi-qK-v4C" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fHY-e3-EBT"/>
                 <constraint firstItem="RrQ-cu-eur" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="r9f-0z-36S"/>
                 <constraint firstItem="RrQ-cu-eur" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wrB-u8-IC0"/>
@@ -38,4 +50,7 @@
             <point key="canvasLocation" x="399" y="206.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_arrow_drop_down_white" width="24" height="24"/>
+    </resources>
 </document>

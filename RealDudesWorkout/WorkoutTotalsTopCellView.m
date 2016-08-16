@@ -81,9 +81,9 @@
     _onPage3 = NO;
     _onPage4 = NO;
     
-    [self.firstMonthView transitionToScrollingView];
-    [self.lastMonthView transitionToScrollingView];
-    [self.last12MonthsView transitionToScrollingView];
+    //[self.firstMonthView transitionToScrollingView];
+   //[self.lastMonthView transitionToScrollingView];
+    //[self.last12MonthsView transitionToScrollingView];
 }
 
 -(void)updateDataAndScrollToPage:(NSInteger)page
@@ -107,7 +107,7 @@
     }
     else if (self.onPage4)
     {
-        [self.last12MonthsView transitionToScrollingView];
+        //[self.last12MonthsView transitionToScrollingView];
     }
     
     [self turnOnPageBoolsOff];
@@ -155,7 +155,7 @@
     }
     else if (page == 2.0)
     {
-        [self.last12MonthsView transitionToStaticView];
+        //[self.last12MonthsView transitionToStaticView];
     }
 }
 

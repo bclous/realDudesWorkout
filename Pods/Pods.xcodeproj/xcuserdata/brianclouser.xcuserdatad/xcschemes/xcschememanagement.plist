@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DRCircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FontAwesomeKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5DF21164C6E1DC7DEE4CA35AD0FD7B25</key>
+		<key>1ABA1364F52B400F9AB0D9C1C909F3B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>603D97D1E505271586ECA243357F4A09</key>
+		<key>233B529E4F6EE6E3DF4E23BAFD26903D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C68FF4E81B6E18D8B6538381E336D0BB</key>
+		<key>427A37506097E1AB6AB790C381E6E443</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7C7D5BE80D9A225BF88F0CA731F4383</key>
+		<key>4539B52F122CD417323BF04E83B61154</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9F1B3A3281633797F27632DF12DBFC6</key>
+		<key>8BE9D4B6FF6D92923152CB0534F2BB94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ABB278FF649B1A363989E4BEDA486AF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -60,6 +60,9 @@
     
     _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     _components = [self.calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    self.components.year = 0;
+    self.components.day = 0;
+    self.components.hour = 0;
     
     [self generateMonthLabels];
     [self.panView addGestureRecognizer:self.monthScrollView.panGestureRecognizer];
@@ -74,26 +77,28 @@
 
 -(void)generateMonthLabels
 {
+    
+    
     NSInteger i = -12;
     for (UILabel *label in [self.monthNameStackView arrangedSubviews])
     {
-        
         if (i == -12)
         {
             label.text = @"";
         }
         else if (i == 1)
         {
-            label.text = @"Last 12 Mths";
+            label.text = @"LAST 12 MTHS";
         }
         else
         {
             self.components.month = i;
             NSDate *date = [self.calendar dateByAddingComponents:self.components toDate:[NSDate date] options:0];
-            label.text = [NSString monthNameFromDate:date];
+            label.text = [[NSString monthNameFromDate:date] uppercaseString];
         }
         
         label.textColor = [UIColor darkGrayColor];
+        label.font = [UIFont boldSystemFontOfSize:11];
         i++;
     }
 }
@@ -113,14 +118,10 @@
     last.x = self.scrollViewWidth * 12;
     last.y = 0;
     
-    if (self.currentIndex == 13)
+    if (scrollView.contentOffset.x > last.x)
     {
-        if (scrollView.contentOffset.x > last.x)
-        {
-            [self.monthScrollView setContentOffset:last animated:NO];
-        }
+        [self.monthScrollView setContentOffset:last animated:NO];
     }
-   
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -130,12 +131,24 @@
     [self moveScrollViewToIndex:chosenMonth animate:NO];
 }
 
-
-#pragma mark ib actions
-
-- (IBAction)forwardOrBackTapped:(id)sender {
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    CGPoint point = [[touches anyObject] locationInView:self.panView];
+    NSLog(@"X: %f, Y: %f", point.x, point.y);
     
-    NSInteger adjustment = ((UIButton *)sender).tag == 0 ? -1 : 1;
+    BOOL forwardTouch = point.x > self.panView.frame.size.width / 3 * 2;
+    BOOL backTouch = point.x < self.panView.frame.size.width / 3;
+    
+    if (forwardTouch || backTouch)
+    {
+        [self scrollViewSideTouchedForward:forwardTouch];
+    }
+}
+
+-(void)scrollViewSideTouchedForward:(BOOL)forward
+{
+
+    NSInteger adjustment = forward ? 1 : -1;
     
     if (self.currentIndex == 0 && adjustment == -1)
     {
@@ -151,6 +164,8 @@
         [self moveScrollViewToIndex:self.currentIndex + adjustment animate:YES];
     }
 }
+
+#pragma mark ib actions
 
 -(void)moveScrollViewToIndex:(NSUInteger)index animate:(BOOL)animate
 {

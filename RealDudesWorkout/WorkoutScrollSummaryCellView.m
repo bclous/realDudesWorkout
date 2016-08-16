@@ -8,6 +8,7 @@
 
 #import "WorkoutScrollSummaryCellView.h"
 #import "ExcerciseTotalView.h"
+#import "UIColor+BDC_Color.h"
 
 @interface WorkoutScrollSummaryCellView ()
 
@@ -57,6 +58,8 @@
     self.contentView.frame = self.bounds;
     
     self.dateContainerCircleView.layer.cornerRadius = 25;
+    self.dateContainerCircleView.layer.borderWidth = 2;
+    self.dateContainerCircleView.layer.borderColor = [[UIColor bdc_offblackbackgroundColor] CGColor];
     [self bringSubviewToFront:self.monthLabel];
 }
 

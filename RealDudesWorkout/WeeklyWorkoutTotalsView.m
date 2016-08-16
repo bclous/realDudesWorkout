@@ -13,8 +13,7 @@
 @interface WeeklyWorkoutTotalsView ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *totalWorkoutsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+
 @property (weak, nonatomic) IBOutlet UIStackView *monthStackView;
 @property (weak, nonatomic) IBOutlet UIStackView *monthLabelsStackView;
 @property (weak, nonatomic) IBOutlet UILabel *month12Label;
@@ -95,7 +94,7 @@
     _maxWorkouts = 0;
     
     [self formatView];
-    [self setAllMonthsToHeightZeroAnimated:NO];
+    [self setAllMonthsToHeightZero];
 }
 
 -(void)formatView
@@ -162,32 +161,19 @@
         label.text = self.monthStrings[month];
         month--;
     }
-    
-    self.totalWorkoutsLabel.text = self.totalWorkouts == 1 ? @"1 Workout" : [NSString stringWithFormat:@"%lu Workouts", self.totalWorkouts];
-    self.totalTimeLabel.text = [NSString timeInSentenceForm:self.totalTime includSecondsAlways:NO includeSecondsWhenUnderOneHour:YES abbreviate:YES];
-    
-    
 }
 
--(void)setAllMonthsToHeightZeroAnimated:(BOOL)animated
+-(void)setAllMonthsToHeightZero
 {
     for (NSLayoutConstraint *constraint in self.monthHeightConstraints)
     {
         constraint.constant = 3;
     }
     
-    if (!animated)
-    {
-        [self layoutIfNeeded];
-        return;
-    }
-    
-    [UIView animateWithDuration:.2 animations:^{
-        [self layoutIfNeeded];
-    }];
+    [self layoutIfNeeded];
 }
 
--(void)setAllMonthsToAdjustedHeight:(BOOL)animated
+-(void)setAllMonthsToAdjustedHeight
 {
     CGFloat interval = self.maxWorkouts == 0? 147.0 : 147.0 / self.maxWorkouts;
     
@@ -209,28 +195,7 @@
         constraint.constant = constraint.constant < 3 ? 3 : constraint.constant;
     }
     
-    if (!animated)
-    {
-        [self layoutIfNeeded];
-    }
-    
-    [UIView animateWithDuration:.3 animations:^{
-        [self layoutIfNeeded];
-    }];
-}
-
--(void)transitionToScrollingView
-{
-    [self formatGraphContentShow:NO];
-    [self setAllMonthsToHeightZeroAnimated:NO];
-}
--(void)transitionToStaticView
-{
-    [UIView animateWithDuration:.2 delay:.2 options:0 animations:^{
-        [self formatGraphContentShow:YES];
-    } completion:^(BOOL finished) {
-        [self setAllMonthsToAdjustedHeight:YES];
-    }];
+    [self layoutIfNeeded];
 }
 
 -(void)formatGraphContentShow:(BOOL)show
@@ -249,8 +214,6 @@
     self.month10Label.alpha = show;
     self.month11Label.alpha = show;
     self.month12Label.alpha = show;
-    self.totalWorkoutsLabel.alpha = show;
-    self.totalTimeLabel.alpha = show;
     self.graphBottomLineView.alpha = show;
     self.last12MonthsBigLabel.alpha = !show;
 }

@@ -150,7 +150,6 @@
     
     NSArray *excercisePictureNames = [self arrayOfPictureNamesGivenDictionary:dictionary arrayOfNames:excerciseNamesInOrder];
     
-    
     return excercisePictureNames;
     
     

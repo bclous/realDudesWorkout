@@ -11,8 +11,7 @@
 @interface GenerateWorkoutExcerciseView ()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *excerciseNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *excerciseImageView;
+
 
 
 

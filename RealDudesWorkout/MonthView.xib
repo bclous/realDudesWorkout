@@ -12,7 +12,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view alpha="0.90000000000000002" contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="499" height="442"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -439,7 +439,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <constraints>
                 <constraint firstItem="4eE-VS-FCG" firstAttribute="top" secondItem="wHh-q9-WhS" secondAttribute="bottom" constant="5" id="7gF-cs-PWS"/>
                 <constraint firstItem="R9a-Rj-PpI" firstAttribute="top" secondItem="kLe-jC-Vnb" secondAttribute="bottom" constant="5" id="D3C-jY-8j7"/>

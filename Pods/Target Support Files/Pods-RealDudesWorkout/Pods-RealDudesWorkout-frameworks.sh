@@ -82,3 +82,18 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-RealDudesWorkout/APParallaxHeader.framework"
+  install_framework "Pods-RealDudesWorkout/CWStatusBarNotification.framework"
+  install_framework "Pods-RealDudesWorkout/DRCircularProgress.framework"
+  install_framework "Pods-RealDudesWorkout/FontAwesomeKit.framework"
+  install_framework "Pods-RealDudesWorkout/SWTableViewCell.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-RealDudesWorkout/APParallaxHeader.framework"
+  install_framework "Pods-RealDudesWorkout/CWStatusBarNotification.framework"
+  install_framework "Pods-RealDudesWorkout/DRCircularProgress.framework"
+  install_framework "Pods-RealDudesWorkout/FontAwesomeKit.framework"
+  install_framework "Pods-RealDudesWorkout/SWTableViewCell.framework"
+fi

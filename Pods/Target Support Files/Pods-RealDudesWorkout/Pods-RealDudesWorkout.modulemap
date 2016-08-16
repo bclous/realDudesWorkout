@@ -1,0 +1,6 @@
+framework module Pods_RealDudesWorkout {
+  umbrella header "Pods-RealDudesWorkout-umbrella.h"
+
+  export *
+  module * { export * }
+}

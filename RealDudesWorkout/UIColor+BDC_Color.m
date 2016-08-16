@@ -32,7 +32,11 @@
 }
 +(UIColor *)bdc_lightText3
 {
-    return [[UIColor whiteColor] colorWithAlphaComponent:.5];
+    return [[UIColor whiteColor] colorWithAlphaComponent:.6];
+}
++(UIColor *)bdc_lightText4
+{
+    return [[UIColor whiteColor] colorWithAlphaComponent:.25];
 }
 +(UIColor *)bdc_darkText1
 {

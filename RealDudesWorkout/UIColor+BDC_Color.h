@@ -16,6 +16,7 @@
 +(UIColor *)bdc_lightText1;
 +(UIColor *)bdc_lightText2;
 +(UIColor *)bdc_lightText3;
++(UIColor *)bdc_lightText4;
 +(UIColor *)bdc_darkText1;
 +(UIColor *)bdc_darkText2;
 +(UIColor *)bdc_darkText3;
