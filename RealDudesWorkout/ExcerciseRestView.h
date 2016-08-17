@@ -9,12 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "ExcerciseSet.h"
 
+@protocol ExcerciseRestViewDelegate <NSObject>
+
+-(void)exerciseTappedAtIndex:(NSUInteger)index;
+
+@end
+
 @interface ExcerciseRestView : UIView
 
+@property (weak, nonatomic) id <ExcerciseRestViewDelegate>delegate;
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
 @property (nonatomic) BOOL isNext;
 @property (weak, nonatomic) IBOutlet UIView *doneView;
-@property (weak, nonatomic) IBOutlet UIImageView *checkImage;
+@property (nonatomic) NSUInteger status;
+@property (nonatomic) NSUInteger index;
+
 
 
 -(void)adjustStatus:(NSUInteger)status;

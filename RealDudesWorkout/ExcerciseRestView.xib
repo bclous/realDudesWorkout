@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExcerciseRestView">
             <connections>
+                <outlet property="blueCircleView" destination="F3i-cW-jTv" id="he4-ub-X7M"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="4d6-eT-oxx"/>
                 <outlet property="doneBlackView" destination="7DD-Pc-wsv" id="SWc-id-qz2"/>
                 <outlet property="doneGreenBlackView" destination="fDU-na-xmm" id="vie-U9-RnF"/>
@@ -19,35 +20,42 @@
             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="blueCircle2 2" translatesAutoresizingMaskIntoConstraints="NO" id="F3i-cW-jTv">
+                    <rect key="frame" x="7" y="7" width="106" height="108"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="7iA-gU-Efj">
                     <rect key="frame" x="7" y="7" width="106" height="106"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crunch" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-hW-OLf">
                     <rect key="frame" x="26" y="26" width="69" height="69"/>
                 </imageView>
-                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Zl-DRn">
+                <view userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Zl-DRn">
                     <rect key="frame" x="7" y="7" width="106" height="106"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DD-Pc-wsv">
-                    <rect key="frame" x="104" y="52" width="16" height="16"/>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DD-Pc-wsv">
+                    <rect key="frame" x="110" y="55" width="10" height="12"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="KHW-rz-Aj3"/>
-                        <constraint firstAttribute="width" constant="16" id="xdX-DK-b5I"/>
+                        <constraint firstAttribute="height" constant="12" id="KHW-rz-Aj3"/>
+                        <constraint firstAttribute="width" constant="12" id="xdX-DK-b5I"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDU-na-xmm">
-                    <rect key="frame" x="108" y="56" width="8" height="8"/>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDU-na-xmm">
+                    <rect key="frame" x="113" y="58" width="5" height="6"/>
                     <color key="backgroundColor" red="0.23575880690000001" green="0.76854967949999997" blue="0.36895652499999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="8" id="EQH-hN-zSd"/>
-                        <constraint firstAttribute="width" constant="8" id="Ivf-sg-Sbk"/>
+                        <constraint firstAttribute="height" constant="6" id="EQH-hN-zSd"/>
+                        <constraint firstAttribute="width" constant="6" id="Ivf-sg-Sbk"/>
                     </constraints>
                 </view>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="F3i-cW-jTv" firstAttribute="height" secondItem="7iA-gU-Efj" secondAttribute="height" constant="6" id="0dg-Qe-R68"/>
+                <constraint firstItem="F3i-cW-jTv" firstAttribute="centerY" secondItem="7iA-gU-Efj" secondAttribute="centerY" id="22d-tA-fPz"/>
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2z9-x3-cqD"/>
+                <constraint firstItem="F3i-cW-jTv" firstAttribute="centerX" secondItem="7iA-gU-Efj" secondAttribute="centerX" id="4rY-fZ-4TI"/>
                 <constraint firstItem="tjO-Zl-DRn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BJ8-9J-U4C"/>
                 <constraint firstItem="tjO-Zl-DRn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-14" id="DBc-Cg-BiQ"/>
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-14" id="Hri-2T-2fg"/>
@@ -61,14 +69,24 @@
                 <constraint firstItem="7iA-gU-Efj" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" constant="-14" id="kFD-9t-Qaj"/>
                 <constraint firstItem="fDU-na-xmm" firstAttribute="centerX" secondItem="7DD-Pc-wsv" secondAttribute="centerX" id="q2c-av-p0L"/>
                 <constraint firstItem="7DD-Pc-wsv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qA7-Pt-dvq"/>
+                <constraint firstItem="F3i-cW-jTv" firstAttribute="width" secondItem="7iA-gU-Efj" secondAttribute="width" constant="6" id="rkU-nU-Gcd"/>
                 <constraint firstItem="yKW-hW-OLf" firstAttribute="centerY" secondItem="7iA-gU-Efj" secondAttribute="centerY" id="vmj-JS-crW"/>
                 <constraint firstItem="yKW-hW-OLf" firstAttribute="height" secondItem="7iA-gU-Efj" secondAttribute="height" multiplier="0.65" id="wtF-cu-lId"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="lQP-El-g0K" appends="YES" id="LCa-eI-IVE"/>
+            </connections>
             <point key="canvasLocation" x="134" y="194"/>
         </view>
+        <tapGestureRecognizer id="lQP-El-g0K">
+            <connections>
+                <action selector="exerciseTapped:" destination="-1" id="G8A-e8-XUh"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="blueCircle2 2" width="256" height="256"/>
         <image name="circle" width="300" height="300"/>
         <image name="crunch" width="300" height="300"/>
     </resources>

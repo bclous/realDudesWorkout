@@ -19,9 +19,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nextWorkoutLabel;
-@property (weak, nonatomic) IBOutlet UIStackView *exerciseStackView;
-@property (weak, nonatomic) IBOutlet UIScrollView *exerciseScrollView;
+
 
 @property (strong, nonatomic) ExcerciseSet *excerciseSetJustFinished;
 @property (strong, nonatomic) NSMutableArray *exerciseViewsArray;
@@ -72,9 +70,6 @@
     [self addSubview:self.contentView];
     self.contentView.frame = self.bounds;
     
-    //self.nextExcerciseRestView.isNext = YES;
-    
-    _exerciseViewsArray = [[NSMutableArray alloc] init];
     
 }
 - (IBAction)addThirtySecondsButtonTapped:(id)sender
@@ -120,30 +115,7 @@
     
     self.excerciseSets = [workout excercisesInOrder];
     
-    [self generateExerciseStackView];
-    
 }
-
--(void)generateExerciseStackView
-{
-    
-    UIView *fillerView = [[UIView alloc] init];
-    [self.exerciseStackView addArrangedSubview:fillerView];
-    [fillerView.heightAnchor constraintEqualToAnchor:self.exerciseStackView.heightAnchor].active = YES;
-    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:-70].active = YES;
-    fillerView.backgroundColor = [UIColor clearColor];
-    
-    for (ExcerciseSet *excerciseSet in self.excerciseSets)
-    {
-        ExcerciseRestView *excerciseView = [[ExcerciseRestView alloc] init];
-        excerciseView.excerciseSet = excerciseSet;
-        [self.exerciseStackView addArrangedSubview:excerciseView];
-        [excerciseView.heightAnchor constraintEqualToAnchor:self.exerciseStackView.heightAnchor].active = YES;
-        [excerciseView.widthAnchor constraintEqualToAnchor:self.exerciseStackView.heightAnchor].active = YES;
-        [self.exerciseViewsArray addObject:excerciseView];
-    }
-}
-
 
 -(void)updateRestViewComponentsForIndex:(NSUInteger)index
 {
@@ -152,33 +124,6 @@
     [self resetTimer];
     [self resetUpNextLabel];
     [self resetSliderLabel];
-}
-
--(void)updateScrollViewToIndex:(NSUInteger)index animate:(BOOL)animate
-{
-    CGPoint offset;
-    offset.y = 0;
-    offset.x = 130 * index;
-    
-    [self.exerciseScrollView setContentOffset:offset animated:animate];
-}
-
--(void)updateForExerciseFinishedAtIndex:(NSUInteger)index
-{
-    CGFloat delay = .2;
-    CGFloat duration = .05;
-    
-    [UIView animateWithDuration:duration delay:delay options:0 animations:^{
-        [self updateExerciseViewAtIndex:index status:2];
-    } completion:^(BOOL finished) {
-        [self updateScrollViewToIndex:index + 1 animate:YES];
-    }];
-}
-
--(void)updateExerciseViewAtIndex:(NSUInteger)index status:(NSUInteger)status
-{
-     ExcerciseRestView *exerciseView = self.exerciseViewsArray[index];
-    [exerciseView adjustStatus:status];
 }
 
 -(void)resetSliderLabel
