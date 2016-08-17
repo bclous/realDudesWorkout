@@ -50,6 +50,8 @@
 @property (nonatomic) BOOL restViewIsDisplayed;
 @property (nonatomic) BOOL isLastExcercise;
 @property (nonatomic) BOOL isNextToLastExcercise;
+@property (nonatomic) BOOL differentExericiseChosenInRestView;
+@property (nonatomic) NSUInteger indexChosenFromRestView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *exerciseScrollView;
 @property (strong, nonatomic) UIStackView *exerciseStackView;
@@ -116,6 +118,7 @@
 {
     //[self updateProgressBar];
     [self recordExerciseDataCompleted:YES];
+    self.restView.indexOfExerciseUpNext = [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue];
     [self updateTimeIntervalStartTimes];
     [self.restView updateRestViewComponentsForIndex:self.currentExcerciseSetIndexValue];
 }
@@ -124,8 +127,8 @@
 {
     [self recordRestData];
     [self updateTimeIntervalStartTimes];
-    self.currentExcerciseSetIndexValue = [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue];
-  
+    self.currentExcerciseSetIndexValue = self.differentExericiseChosenInRestView ? self.indexChosenFromRestView : [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue];
+    self.differentExericiseChosenInRestView = NO;
 }
 
 -(void)workoutFinished
@@ -152,7 +155,19 @@
 
 -(void)exerciseTappedAtIndex:(NSUInteger)index
 {
-    [self updateCurrentIndexWithNewIndex:index];
+    if (self.restViewIsDisplayed)
+    {
+        self.differentExericiseChosenInRestView = YES;
+        self.indexChosenFromRestView = index;
+        [self updateIndex:index fromOldIndex:[self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue]];
+        self.restView.indexOfExerciseUpNext = index;
+        
+    }
+    else
+    {
+        [self updateIndex:index fromOldIndex:self.currentExcerciseSetIndexValue];
+        self.currentExcerciseSetIndexValue = index;
+    }
 }
 
 
@@ -229,8 +244,7 @@
                          } completion:^(BOOL finished) {
                              // nada
                          }];
-                         
-                         
+                    
                          if (self.descriptionViewDisplayed)
                          {
                              [self excerciseDescriptionTapped:nil];
@@ -252,17 +266,17 @@
     [UIView animateWithDuration:duration delay:delay options:0 animations:^{
         [self updateExerciseViewAtIndex:index status:2];
     } completion:^(BOOL finished) {
-        [self updateScrollViewToIndex:index + 1 animate:YES];
+        [self updateScrollViewToIndex:[self indexOfNextExerciseNotCompletedAfterIndex:index] animate:YES];
         
     }];
 }
 
--(void)updateCurrentIndexWithNewIndex:(NSUInteger)index;
+-(void)updateIndex:(NSUInteger)index fromOldIndex:(NSUInteger)oldIndex
 {
-    ((ExcerciseRestView *)self.exerciseViewsArray[self.currentExcerciseSetIndexValue]).status = 0;
+    ((ExcerciseRestView *)self.exerciseViewsArray[oldIndex]).status = 0;
     [self updateScrollViewToIndex:index animate:YES];
     ((ExcerciseRestView *)self.exerciseViewsArray[index]).status = 1;
-    self.currentExcerciseSetIndexValue = index;
+   
 }
 
 -(void)updateScrollViewToIndex:(NSUInteger)index animate:(BOOL)animate
@@ -278,9 +292,9 @@
 {
     ExcerciseRestView *exerciseView = self.exerciseViewsArray[index];
     exerciseView.status = status;
-    if (self.exerciseViewsArray[index + 1])
+    if (self.exerciseViewsArray[[self indexOfNextExerciseNotCompletedAfterIndex:index]] != 0)
     {
-        ExcerciseRestView *exerciseView = self.exerciseViewsArray[index+1];
+        ExcerciseRestView *exerciseView = self.exerciseViewsArray[[self indexOfNextExerciseNotCompletedAfterIndex:index]];
         exerciseView.status = 1;
     }
     

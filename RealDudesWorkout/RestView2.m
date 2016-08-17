@@ -35,6 +35,7 @@
 
 @property (nonatomic) NSTimeInterval restStartTime;
 
+
 @end
 
 @implementation RestView2
@@ -122,7 +123,6 @@
     self.indexOfExcerciseJustFinished = index;
     
     [self resetTimer];
-    [self resetUpNextLabel];
     [self resetSliderLabel];
 }
 
@@ -139,17 +139,12 @@
     self.exerciseNameLabel.text = [NSString stringWithFormat:@"%@", self.excerciseSetJustFinished.excercise.name];
 }
 
--(void)resetUpNextLabel
+-(void)setIndexOfExerciseUpNext:(NSUInteger)indexOfExerciseUpNext
 {
-    if (self.indexOfExcerciseJustFinished == self.excerciseSets.count - 1)
-    {
-        self.nextWorkoutLabel.text = @"";
-    }
-    else
-    {
-        ExcerciseSet *nextExcerciseSet = self.excerciseSets[self.indexOfExcerciseJustFinished + 1];
-        self.nextWorkoutLabel.text = [NSString stringWithFormat:@"Up next: %@",nextExcerciseSet.excercise.name];
-    }
+    _indexOfExerciseUpNext = indexOfExerciseUpNext;
+    
+    ExcerciseSet *nextExcerciseSet = self.excerciseSets[indexOfExerciseUpNext];
+    self.nextWorkoutLabel.text = [NSString stringWithFormat:@"Up next: %@",nextExcerciseSet.excercise.name];
 }
 
 -(void)resetTimer

@@ -14,9 +14,11 @@
 @property (strong, nonatomic) Workout *workout;
 @property (nonatomic) NSUInteger indexOfExcerciseJustFinished;
 @property (weak, nonatomic) IBOutlet UILabel *nextWorkoutLabel;
+@property (nonatomic) NSUInteger indexOfExerciseUpNext;
 
 -(void)countdown;
 -(void)generateExerciseStackView;
 -(void)updateRestViewComponentsForIndex:(NSUInteger)index;
+
 
 @end
