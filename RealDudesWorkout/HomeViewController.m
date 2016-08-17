@@ -61,6 +61,7 @@
 
 @property (nonatomic) NSInteger selectedRow;
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) UIView *workoutOnboardContainerView;
 @property (strong, nonatomic) WorkoutOnBoardView *workoutOnBoardView;
 @property (strong, nonatomic) GenerateWorkoutView *generateWorkoutView;
@@ -69,6 +70,7 @@
 @property (strong, nonatomic) StartButtonView *startButtonView;
 @property (strong, nonatomic) LogoView *logoView;
 @property (strong, nonatomic) WorkoutTotalsTopCellTableViewCell *topCell;
+@property (strong, nonatomic) UIVisualEffectView *blurCoverView;
 @property (weak, nonatomic) IBOutlet UIView *mainContainerView;
 @property (weak, nonatomic) IBOutlet Last12Months *last12MonthsView;
 
@@ -126,15 +128,13 @@
 }
 -(void)startButtonTapped
 {
-    [self adjustViewsToOnboarding:!self.onboardContainerViewDisplayed animate:YES];
-    
     if (self.generateWorkoutViewDisplayed)
     {
         Workout *lastWorkout = [self.workouts firstObject];
         [self deleteWorkout:lastWorkout];
-        self.generateWorkoutView.alpha = 0;
-        self.workoutOnBoardView.alpha = 1;
     }
+    
+    [self adjustViewsToOnboarding:!self.onboardContainerViewDisplayed animate:YES];
 }
 
 -(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
@@ -159,26 +159,35 @@
 -(void)adjustViewsToOnboarding:(BOOL)onboarding animate:(BOOL)animate
 {
    
+    self.blurCoverView.alpha = 1;
     [self.workoutOnBoardView resetView];
-    [self resetCalendarComponents];
     
     self.onboardContainerViewDisplayed = onboarding;
     self.accessoryAndTimeViewDisplayed = onboarding;
     self.generateWorkoutViewDisplayed = NO;
     
-    self.mainContainerViewRightConstraint.active = NO;
-    self.mainContainerViewRightConstraint = onboarding ? [self.mainContainerView.rightAnchor constraintEqualToAnchor:self.view.leftAnchor] : [self.mainContainerView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor];
-    self.mainContainerViewRightConstraint.active = YES;
+    self.onboardContainerViewLeftConstraint.active = NO;
+    self.onboardContainerViewLeftConstraint = onboarding ? [self.workoutOnboardContainerView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor] : [self.workoutOnboardContainerView.leftAnchor constraintEqualToAnchor:self.view.rightAnchor];
+    self.onboardContainerViewLeftConstraint.active = YES;
     
     self.view.userInteractionEnabled = NO;
     
-    CGFloat duration = animate ? .2 : 0;
+    CGFloat duration = animate ? .17 : 0;
     
     [UIView animateWithDuration:duration animations:^{
         [self.view layoutIfNeeded];
         [self.startButtonView adjustStartButtonToHome:!onboarding];
     } completion:^(BOOL finished) {
-        self.view.userInteractionEnabled = YES;
+        
+        CGFloat animateOutDuration = (onboarding || !animate) ? 0 : .2;
+        
+        [UIView animateWithDuration:animateOutDuration animations:^{
+            self.blurCoverView.alpha = onboarding ? 1 : 0;
+        } completion:^(BOOL finished) {
+            self.view.userInteractionEnabled = YES;
+            self.workoutOnBoardView.alpha = 1;
+            self.generateWorkoutView.alpha = 0;
+        }];
     }];
 }
 
@@ -221,7 +230,7 @@
     self.workoutDetailView.workout = workout;
     [self.view bringSubviewToFront:self.workoutDetailView];
     
-    [UIView animateWithDuration:.2 animations:^{
+    [UIView animateWithDuration:.15 animations:^{
         self.workoutDetailView.alpha = 1;
         self.workoutDetailViewHeightConstraint.active = NO;
         self.workoutDetailViewHeightConstraint = [self.workoutDetailView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor];
@@ -395,11 +404,11 @@
     if (scrollView.contentOffset.y <= 0)
     {
         self.calendarBlockView.alpha = 0;
-        [self bringCalendarMonthToFront:YES];
+        [self adjustViewsCalendarInFront:YES];
     }
     else
     {
-        [self bringCalendarMonthToFront:NO];
+        [self adjustViewsCalendarInFront:NO];
         
         if ((scrollView.contentOffset.y / 41.43 * .1 + .3) < 0)
         {
@@ -430,8 +439,6 @@
         [self.workoutsTableView reloadData];
         self.last12MonthsView.alpha = 1;
         [self.last12MonthsView updateViewToOn:YES animate:YES];
-        [self.view bringSubviewToFront:self.last12MonthsView];
-        [self.view bringSubviewToFront:self.startButtonView];
         
     }
     else
@@ -444,10 +451,8 @@
         self.calendarMonthHeightConstraint.constant = self.calendarMonthHeight;
         self.workouts = [self.calendarMonth workoutsInThisMonth];
         [self.workoutsTableView reloadData];
-        [self bringCalendarMonthToFront:YES];
+        [self adjustViewsCalendarInFront:YES];
     }
-    
-
 }
 
 -(void)resetCalendarComponents
@@ -462,24 +467,9 @@
     home.x = 0;
     home.y = 0;
     [self.workoutsTableView setContentOffset:home animated:NO];
-    [self bringCalendarMonthToFront:YES];
+    [self adjustViewsCalendarInFront:YES];
     [self.monthScrollView moveScrollViewToIndex:12 animate:NO];
     self.calendarBlockView.alpha = 0;
-}
-
--(void)bringCalendarMonthToFront:(BOOL)front
-{
-    if (front)
-    {
-        [self.view bringSubviewToFront:self.calendarMonth];
-        [self.view bringSubviewToFront:self.calendarBlockView];
-        [self.view bringSubviewToFront:self.startButtonView];
-    }
-    else
-    {
-        [self.view bringSubviewToFront:self.workoutsTableView];
-        [self.view bringSubviewToFront:self.startButtonView];
-    }
 }
 
 
@@ -509,14 +499,28 @@
     self.workoutDetailView.clipsToBounds = YES;
 }
 
+-(void)generateBlurCoverView
+{
+    self.blurCoverView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+    [self.view addSubview:self.blurCoverView];
+    self.blurCoverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.4];
+    self.blurCoverView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.blurCoverView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.blurCoverView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.blurCoverView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    [self.blurCoverView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    self.blurCoverView.alpha = 0;
+}
+
 -(void)generateOnboardingContainerView
 {
     self.workoutOnboardContainerView = [[UIView alloc] init];
     [self.view addSubview:self.workoutOnboardContainerView];
     self.workoutOnboardContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.workoutOnboardContainerView.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.9];
+    self.workoutOnboardContainerView.backgroundColor = [UIColor clearColor];
     
-    [self.workoutOnboardContainerView.leftAnchor constraintEqualToAnchor:self.mainContainerView.rightAnchor].active = YES;
+    self.onboardContainerViewLeftConstraint = [self.workoutOnboardContainerView.leftAnchor constraintEqualToAnchor:self.view.rightAnchor];
+    self.onboardContainerViewLeftConstraint.active = YES;
     [self.workoutOnboardContainerView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
     [self.workoutOnboardContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
     [self.workoutOnboardContainerView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:64].active = YES;
@@ -580,7 +584,27 @@
     [self.view bringSubviewToFront:self.startButtonView];
 }
 
-
+-(void)adjustViewsCalendarInFront:(BOOL)front
+{
+    [self.view bringSubviewToFront:self.calendarMonth];
+    [self.view bringSubviewToFront:self.calendarBlockView];
+    [self.view bringSubviewToFront:self.workoutsTableView];
+    if (front)
+    {
+        [self.view bringSubviewToFront:self.calendarMonth];
+        [self.view bringSubviewToFront:self.calendarBlockView];
+    }
+    [self.view bringSubviewToFront:self.last12MonthsView];
+    [self.view bringSubviewToFront:self.monthScrollView];
+    [self.view bringSubviewToFront:self.headerView];
+    [self.view bringSubviewToFront:self.logoView];
+    [self.view bringSubviewToFront:self.blurCoverView];
+    [self.view bringSubviewToFront:self.workoutOnboardContainerView];
+    [self.view bringSubviewToFront:self.workoutOnBoardView];
+    [self.view bringSubviewToFront:self.generateWorkoutView];
+    [self.view bringSubviewToFront:self.startButtonView];
+    [self.view bringSubviewToFront:self.workoutDetailView];
+}
 
 
 #pragma mark view lifecycle
@@ -596,6 +620,7 @@
     
     [self setUpMainTableView];
     [self setUpWorkoutDetailView];
+    [self generateBlurCoverView];
     [self generateOnboardingContainerView];
     [self createWorkoutOnBoardView];
     [self createGenerateWorkoutView];
@@ -619,7 +644,8 @@
 -(void)viewWillAppear:(BOOL)animated 
 {
    
-     [self resetCalendarComponents];
+    [self resetCalendarComponents];
+    [self.last12MonthsView updateViewForWorkouts];
     
     self.introView.alpha = self.workouts.count ? 0 : 1;
     

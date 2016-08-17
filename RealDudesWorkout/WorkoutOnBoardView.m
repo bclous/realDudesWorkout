@@ -163,6 +163,7 @@
     
     self.workoutLength = 30;
     [self updateMinutesLabel];
+
 }
 
 @end

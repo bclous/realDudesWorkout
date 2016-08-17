@@ -22,8 +22,8 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_add_white" translatesAutoresizingMaskIntoConstraints="NO" id="Hcc-I6-1nd">
                             <rect key="frame" x="2" y="4" width="30" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="NWd-0X-oLc"/>
-                                <constraint firstAttribute="height" constant="25" id="Q7T-sa-GyZ"/>
+                                <constraint firstAttribute="width" constant="20" id="NWd-0X-oLc"/>
+                                <constraint firstAttribute="height" constant="20" id="Q7T-sa-GyZ"/>
                             </constraints>
                         </imageView>
                     </subviews>

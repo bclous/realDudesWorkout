@@ -397,6 +397,7 @@
                         <outlet property="calendarBlockView" destination="2iI-Qc-VCg" id="wtq-MW-3ht"/>
                         <outlet property="calendarMonth" destination="b8q-K9-V1O" id="JfU-Ya-KkI"/>
                         <outlet property="calendarMonthHeightConstraint" destination="k0w-ks-NbT" id="SBs-5J-TEa"/>
+                        <outlet property="headerView" destination="7J2-vp-YNH" id="dTK-0L-g45"/>
                         <outlet property="last12MonthsView" destination="BzQ-ai-LpN" id="7Tw-qw-Yse"/>
                         <outlet property="mainContainerView" destination="gDN-Dk-yBG" id="El1-1A-Qqt"/>
                         <outlet property="mainContainerViewRightConstraint" destination="iuJ-BS-rnz" id="X1v-uO-RbD"/>

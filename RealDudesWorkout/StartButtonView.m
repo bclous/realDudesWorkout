@@ -50,10 +50,10 @@
     
     self.outLineView.layer.cornerRadius = 18;
     
-//    self.outLineView.layer.masksToBounds = NO;
-//    self.outLineView.layer.shadowOffset = CGSizeMake(1, 1);
-//    self.outLineView.layer.shadowRadius = 3;
-//    self.outLineView.layer.shadowOpacity = 0.2;
+    self.outLineView.layer.masksToBounds = NO;
+    self.outLineView.layer.shadowOffset = CGSizeMake(1, 1);
+    self.outLineView.layer.shadowRadius = 3;
+    self.outLineView.layer.shadowOpacity = 0.2;
     
 }
 - (IBAction)buttonTapped:(id)sender
@@ -63,7 +63,7 @@
 
 -(void)adjustStartButtonToHome:(BOOL)home
 {
-    self.outLineView.backgroundColor = home ? [UIColor blackColor] : [UIColor bdc_redColor];
+    self.outLineView.backgroundColor = home ? [[UIColor blackColor] colorWithAlphaComponent:.65] : [UIColor bdc_redColor];
     self.buttonImage.transform = home ? CGAffineTransformMakeRotation(0) : CGAffineTransformMakeRotation(-M_PI/4);
 }
 

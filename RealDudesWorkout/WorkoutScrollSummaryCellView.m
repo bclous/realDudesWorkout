@@ -58,8 +58,8 @@
     self.contentView.frame = self.bounds;
     
     self.dateContainerCircleView.layer.cornerRadius = 25;
-    self.dateContainerCircleView.layer.borderWidth = 2;
-    self.dateContainerCircleView.layer.borderColor = [[UIColor bdc_offblackbackgroundColor] CGColor];
+//    self.dateContainerCircleView.layer.borderWidth = 2;
+//    self.dateContainerCircleView.layer.borderColor = [[UIColor bdc_offblackbackgroundColor] CGColor];
     [self bringSubviewToFront:self.monthLabel];
 }
 

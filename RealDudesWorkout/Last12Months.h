@@ -12,4 +12,5 @@
 
 -(void)updateViewToOn:(BOOL)on animate:(BOOL)animate;
 -(void)generateExercises;
+-(void)updateViewForWorkouts;
 @end

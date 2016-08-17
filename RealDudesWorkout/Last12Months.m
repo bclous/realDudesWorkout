@@ -118,13 +118,16 @@
     NSUInteger index = 0;
     for (NSString *string in self.exerciseImageNames)
     {
-        GenerateWorkoutExcerciseView *excerciseTotalView = [[GenerateWorkoutExcerciseView alloc] init];
-        excerciseTotalView.excerciseNameLabel.text = self.exerciseNameAndQuantities[index];
-        excerciseTotalView.excerciseImageView.image = [UIImage imageNamed:self.exerciseImageNames[index]];
-        [self.excercisesStackView addArrangedSubview:excerciseTotalView];
-        [excerciseTotalView.heightAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
-        [excerciseTotalView.widthAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
-        
+        NSString *firstNumber = [string substringToIndex:0];
+        if (![firstNumber isEqualToString:@"0"])
+        {
+            GenerateWorkoutExcerciseView *excerciseTotalView = [[GenerateWorkoutExcerciseView alloc] init];
+            excerciseTotalView.excerciseNameLabel.text = self.exerciseNameAndQuantities[index];
+            excerciseTotalView.excerciseImageView.image = [UIImage imageNamed:self.exerciseImageNames[index]];
+            [self.excercisesStackView addArrangedSubview:excerciseTotalView];
+            [excerciseTotalView.heightAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
+            [excerciseTotalView.widthAnchor constraintEqualToAnchor:self.excercisesStackView.heightAnchor].active = YES;
+        }
         index++;
         
     }
@@ -146,6 +149,20 @@
             [self.monthlyGraphView setAllMonthsToHeightZero];
         }
     }];
+}
+
+-(void)updateViewForWorkouts
+{
+    [self.datastore fetchData];
+    self.workoutsInLast12Months = [self.datastore.user workoutsLast365Days];
+    [self formatView];
+    self.exerciseImageNames = [self.datastore.user excercisePictureNamesSortedGivenWorkouts:self.workoutsInLast12Months];
+    self.exerciseNameAndQuantities = [self.datastore.user excerciseNameAndQuantitySortedGivenWorkouts:self.workoutsInLast12Months];
+    [self.excercisesStackView removeFromSuperview];
+    [self createStackView];
+    [self generateExercises];
+    [self.monthlyGraphView formatView];
+    
 }
 
 
