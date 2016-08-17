@@ -204,6 +204,8 @@
         
         [self shrinkWorkoutDetailView];
         [self deleteWorkout:workout];
+        [self.last12MonthsView updateViewForWorkouts];
+        
         
     }];
     
