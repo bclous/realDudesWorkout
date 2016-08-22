@@ -72,7 +72,6 @@
   
     [self createStackView];
     [self formatView];
-
 }
 
 -(void)formatView
@@ -92,8 +91,6 @@
     self.rightChevronImage.hidden = noWorkouts;
     self.exerciseScrollView.hidden = noWorkouts;
     self.noWorkoutsLabel.textColor = [UIColor bdc_lightText4];
-   
-    
 }
 
 
@@ -108,7 +105,6 @@
     [self.excercisesStackView.bottomAnchor constraintEqualToAnchor:self.exerciseScrollView.bottomAnchor].active = YES;
     [self.excercisesStackView.heightAnchor constraintEqualToAnchor:self.exerciseScrollView.heightAnchor].active = YES;
     self.excercisesStackView.spacing = 2;
-    
 }
 
 -(void)generateExercises
@@ -117,7 +113,7 @@
     [self.excercisesStackView addArrangedSubview:fillerView];
     fillerView.backgroundColor = [UIColor clearColor];
     [fillerView.heightAnchor constraintEqualToAnchor:self.exerciseScrollView.heightAnchor multiplier:1].active = YES;
-    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:(-self.exerciseScrollView.frame.size.height / 2) + 5].active = YES;
+    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:(-self.exerciseScrollView.frame.size.height / 2) + 4].active = YES;
 
     NSUInteger index = 0;
     for (NSString *string in self.exerciseNameAndQuantities)
@@ -135,6 +131,13 @@
         index++;
         
     }
+    
+    UIView *fillerView2 = [[UIView alloc] init];
+    [self.excercisesStackView addArrangedSubview:fillerView2];
+    fillerView2.backgroundColor = [UIColor clearColor];
+    [fillerView2.heightAnchor constraintEqualToAnchor:self.exerciseScrollView.heightAnchor multiplier:1].active = YES;
+    [fillerView2.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:(-self.exerciseScrollView.frame.size.height / 2) + 4].active = YES;
+
     [self layoutIfNeeded];
 }
 
