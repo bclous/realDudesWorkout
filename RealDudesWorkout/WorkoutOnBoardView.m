@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *plusImage;
 @property (weak, nonatomic) IBOutlet UIImageView *minusImage;
 @property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *accessoriesLabel;
 
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory1;
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory2;
@@ -24,11 +25,12 @@
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory4;
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory5;
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory6;
+@property (weak, nonatomic) IBOutlet UILabel *minutesWordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 
 @property (strong, nonatomic) NSMutableArray *availableAccessories;
-
 @property (nonatomic) NSUInteger workoutLength;
-
 @property (strong, nonatomic) DataStore *dataStore;
 
 
@@ -65,22 +67,18 @@
    
     
     self.dataStore = [DataStore sharedDataStore];
-    
-     NSLog(@"adding accessories, currently %lu available", self.dataStore.availableAccessories.count);
-    
-    
-    
     [[NSBundle mainBundle] loadNibNamed:@"WorkoutOnBoard" owner:self options:nil];
-    
     [self addSubview:self.contentView];
     
     self.contentView.frame = self.bounds;
-    
     self.startButton.layer.cornerRadius = 20;
-    
     self.workoutLength = 30;
     
     [self updateMinutesLabel];
+    self.minutesLabel.textColor = [UIColor bdc_lightText3];
+    self.minutesWordLabel.textColor = [UIColor bdc_lightText3];
+    self.titleLabel.textColor = [UIColor bdc_lightText1];
+    self.accessoriesLabel.textColor = [UIColor bdc_lightText1];
     
     self.accessory1.delegate = self;
     self.accessory2.delegate = self;
@@ -100,46 +98,34 @@
     self.minusImage.image = [self.minusImage.image bdc_tintImageWithColor:[UIColor bdc_blueMainColor]];
     
     self.availableAccessories = [[NSMutableArray alloc] init];
-    
-    
 }
 
 - (IBAction)startButtonTapped:(id)sender
 {
     [self.delegate generateWorkoutTapped:self.workoutLength accessories:self.availableAccessories];
-    
-     NSLog(@"adding accessories, currently %lu available", self.dataStore.availableAccessories.count);
 }
 - (IBAction)minusMinutesTapped:(id)sender
 {
-    
     if (self.workoutLength > 10)
     {
         self.workoutLength = self.workoutLength - 10;
         
         [self updateMinutesLabel];
     }
-    
-    
 }
 - (IBAction)plusMinutesTapped:(id)sender
 {
-    
     if (self.workoutLength < 60)
     {
         self.workoutLength = self.workoutLength + 10;
         
         [self updateMinutesLabel];
     }
-    
-    
 }
 
 -(void)updateMinutesLabel
 {
-    
     self.minutesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.workoutLength];
-    
 }
 
 -(void)accessoryChosen:(Accessory *)accessory
@@ -163,7 +149,6 @@
     
     self.workoutLength = 30;
     [self updateMinutesLabel];
-
 }
 
 @end

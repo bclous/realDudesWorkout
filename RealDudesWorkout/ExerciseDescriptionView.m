@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextView *exerciseDescriptionTextField;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseNameLabel;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 
 
 
@@ -53,12 +54,7 @@
     [self addSubview:self.contentView];
     
     self.contentView.frame = self.bounds;
-    
-    
 }
-
-
-
 
 -(void)setExcerciseSet:(ExcerciseSet *)excerciseSet
 {

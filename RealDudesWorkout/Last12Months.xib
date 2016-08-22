@@ -32,12 +32,12 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybW-s3-jbc">
                     <rect key="frame" x="0.0" y="344" width="344" height="149"/>
                 </scrollView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total Workouts: 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoV-I3-U6h">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TOTAL WORKOUTS: 36" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoV-I3-U6h">
                     <rect key="frame" x="84" y="30" width="176" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="d1D-1T-Xth"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -72,7 +72,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No workouts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-KB-8y9">
-                    <rect key="frame" x="151" y="321" width="42" height="21"/>
+                    <rect key="frame" x="125" y="252" width="96" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -80,8 +80,8 @@
             </subviews>
             <constraints>
                 <constraint firstItem="ybW-s3-jbc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2yE-T4-sDV"/>
-                <constraint firstItem="ybW-s3-jbc" firstAttribute="top" secondItem="S39-Il-eXd" secondAttribute="bottom" constant="20" id="3l1-Gu-4nf"/>
-                <constraint firstItem="S39-Il-eXd" firstAttribute="top" secondItem="XKe-m8-kld" secondAttribute="bottom" constant="60" id="7kv-Oj-Zz3"/>
+                <constraint firstItem="ybW-s3-jbc" firstAttribute="top" secondItem="S39-Il-eXd" secondAttribute="bottom" constant="10" id="3l1-Gu-4nf"/>
+                <constraint firstItem="S39-Il-eXd" firstAttribute="top" secondItem="XKe-m8-kld" secondAttribute="bottom" constant="70" id="7kv-Oj-Zz3"/>
                 <constraint firstItem="XKe-m8-kld" firstAttribute="top" secondItem="MMM-ng-ytu" secondAttribute="bottom" id="EAT-Pe-HXs"/>
                 <constraint firstItem="Lxn-eV-rs4" firstAttribute="height" secondItem="S39-Il-eXd" secondAttribute="height" constant="-2" id="Jt8-g0-dBX"/>
                 <constraint firstItem="Lxn-eV-rs4" firstAttribute="centerY" secondItem="S39-Il-eXd" secondAttribute="centerY" constant="1" id="Onb-gc-tl4"/>

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExerciseDescriptionView">
             <connections>
+                <outlet property="blurView" destination="rx4-xT-VHt" id="KZC-vO-tM9"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Mf0-4i-77K"/>
                 <outlet property="exerciseDescriptionTextField" destination="a5q-fB-SRX" id="bec-St-0dQ"/>
                 <outlet property="exerciseNameLabel" destination="YJd-up-8eT" id="cfh-M3-DU4"/>

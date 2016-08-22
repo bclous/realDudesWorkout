@@ -7,6 +7,7 @@
 //
 
 #import "ExcerciseView.h"
+#import "UIColor+BDC_Color.h"
 
 @interface ExcerciseView ()
 
@@ -54,8 +55,8 @@
     [self addSubview:self.excerciseView];
     
     self.excerciseView.frame = self.bounds;
-    
-    
+    self.numberOfRepsLabel.textColor = [UIColor bdc_darkText1];
+    self.excerciseNameLabel.textColor = [UIColor bdc_darkText1];
 }
 
 -(void)changeBackgroundColor

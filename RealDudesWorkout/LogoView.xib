@@ -10,7 +10,6 @@
                 <outlet property="centerView" destination="IOU-TZ-wyL" id="B7b-jv-QTl"/>
                 <outlet property="centerViewHeightConstraint" destination="dfK-cr-wbE" id="Svy-cH-AA8"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="e9I-Rq-Qb6"/>
-                <outlet property="generatingWorkoutLabel" destination="Ezc-hm-Bcs" id="9mG-Wl-Kxm"/>
                 <outlet property="masterStackView" destination="DGK-zP-sG0" id="V19-b6-Yt7"/>
                 <outlet property="stackView1" destination="tsQ-SI-yEh" id="Fs6-67-fXN"/>
                 <outlet property="stackView2" destination="r3e-jT-RN9" id="2mn-hC-E22"/>
@@ -313,20 +312,11 @@
                         <constraint firstItem="Ymi-hb-tAz" firstAttribute="height" secondItem="IOU-TZ-wyL" secondAttribute="height" id="yWX-mD-2et"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Generating workout..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.14999999999999999" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ezc-hm-Bcs">
-                    <rect key="frame" x="248" y="70" width="30" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <constraints>
-                <constraint firstItem="Ezc-hm-Bcs" firstAttribute="centerX" secondItem="DGK-zP-sG0" secondAttribute="centerX" id="69R-85-RW6"/>
                 <constraint firstItem="DGK-zP-sG0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CJb-Qq-toF"/>
                 <constraint firstItem="DGK-zP-sG0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="I9n-Vf-jZw"/>
                 <constraint firstItem="DGK-zP-sG0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Nfc-pv-X2z"/>
-                <constraint firstItem="Ezc-hm-Bcs" firstAttribute="width" secondItem="DGK-zP-sG0" secondAttribute="width" id="RDl-hI-BlY"/>
-                <constraint firstItem="Ezc-hm-Bcs" firstAttribute="top" secondItem="DGK-zP-sG0" secondAttribute="bottom" constant="10" id="ZsL-CL-JOO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">

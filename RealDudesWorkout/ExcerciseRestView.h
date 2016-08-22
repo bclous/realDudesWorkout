@@ -12,6 +12,7 @@
 @protocol ExcerciseRestViewDelegate <NSObject>
 
 -(void)exerciseTappedAtIndex:(NSUInteger)index;
+-(NSUInteger)currentIndex;
 
 @end
 
@@ -21,11 +22,8 @@
 @property (strong, nonatomic) ExcerciseSet *excerciseSet;
 @property (nonatomic) BOOL isNext;
 @property (weak, nonatomic) IBOutlet UIView *doneView;
-@property (nonatomic) NSUInteger status;
 @property (nonatomic) NSUInteger index;
 
-
-
--(void)adjustStatus:(NSUInteger)status;
+-(void)formatExerciseView;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AccessoryOnBoardView.h"
+#import "UIColor+BDC_Color.h"
 
 @interface  AccessoryOnBoardView ()
 
@@ -51,42 +52,30 @@
 {
     
     [[NSBundle mainBundle] loadNibNamed:@"AccessoryOnBoard" owner:self options:nil];
-    
     [self addSubview:self.contentView];
-    
     self.contentView.frame = self.bounds;
     
     self.pictureChosen = NO;
-    
     self.blueOutlineImage.alpha = 0;
-    
-    self.blueOutlineImage.alpha = 0;
-    self.accessoryImageView.alpha = .7;
-    
-    
-    
-    
+    self.accessoryLabel.textColor = [UIColor bdc_lightText3];
 }
 - (IBAction)pictureTapped:(id)sender
 {
-
     if (self.pictureChosen)
     {
         self.blueOutlineImage.alpha = 0;
-        self.accessoryImageView.alpha = .7;
         self.pictureChosen = NO;
-        
+        self.accessoryLabel.textColor = [UIColor bdc_lightText3];
         [self.delegate accessoryUnchosen:self.accessory];
     }
     else
     {
       self.blueOutlineImage.alpha = 1;
-        self.accessoryImageView.alpha = 1;
         self.circleImage.alpha = 1;
         self.pictureChosen = YES;
+        self.accessoryLabel.textColor = [UIColor bdc_lightText1];
         
         [self.delegate accessoryChosen:self.accessory];
-
     }
 }
 
@@ -97,6 +86,7 @@
     
     self.accessoryImageView.image = [UIImage imageNamed:accessory.pictureName];
     self.accessoryLabel.text = accessory.name;
+     self.accessoryLabel.textColor = [UIColor bdc_lightText3];
     
     self.pictureChosen = NO;
     self.blueOutlineImage.alpha = 0;

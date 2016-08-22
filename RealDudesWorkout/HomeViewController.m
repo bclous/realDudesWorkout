@@ -142,7 +142,8 @@
     self.view.userInteractionEnabled = NO;
     [self createNewWorkout:minutes accessories:accessories];
     self.workoutOnBoardView.alpha = 0;
-    [self.logoView performGenerateWorkoutAnimation];
+    //[self.logoView performGenerateWorkoutAnimation];
+    [self animationComplete];
     
 }
 
@@ -161,6 +162,7 @@
    
     self.blurCoverView.alpha = 1;
     [self.workoutOnBoardView resetView];
+    [self.generateWorkoutView resetView];
     
     self.onboardContainerViewDisplayed = onboarding;
     self.accessoryAndTimeViewDisplayed = onboarding;
@@ -190,6 +192,8 @@
         }];
     }];
 }
+
+
 
 -(void)deleteWorkoutButtonTapped:(Workout *)workout
 {
@@ -505,7 +509,7 @@
 {
     self.blurCoverView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
     [self.view addSubview:self.blurCoverView];
-    self.blurCoverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.4];
+    self.blurCoverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5];
     self.blurCoverView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.blurCoverView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.blurCoverView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;

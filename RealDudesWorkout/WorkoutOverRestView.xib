@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkoutOverRestView">
+            <connections>
+                <outlet property="blueImage" destination="jfv-HI-pKS" id="wzy-DT-J3L"/>
+                <outlet property="blueWidthConstraint" destination="bTB-fZ-66h" id="GLp-ce-8Rb"/>
+                <outlet property="bottomText" destination="7o0-kM-scm" id="XwC-r4-YNi"/>
+                <outlet property="checkMarkImage" destination="TrA-W7-iOo" id="imY-1o-pJX"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="ccy-dA-Xfc"/>
+                <outlet property="workoutFinishedLabel" destination="O9o-bH-pRE" id="3AV-ag-Qa2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're all done. Make sure you stretch and give that cutie on the treadmill a nice smile.  See you tomorrow." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o0-kM-scm">
+                    <rect key="frame" x="0.0" y="366" width="600" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfv-HI-pKS">
+                    <rect key="frame" x="300" y="198" width="0.0" height="146"/>
+                    <color key="backgroundColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" id="bTB-fZ-66h"/>
+                        <constraint firstAttribute="height" constant="146" id="yPv-m1-Pfs"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMarkBox2" translatesAutoresizingMaskIntoConstraints="NO" id="TrA-W7-iOo">
+                    <rect key="frame" x="225" y="196" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="4ra-kw-I9V"/>
+                        <constraint firstAttribute="width" constant="150" id="brS-9n-hxu"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WORKOUT FINISHED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9o-bH-pRE">
+                    <rect key="frame" x="279" y="114" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="jfv-HI-pKS" firstAttribute="centerX" secondItem="TrA-W7-iOo" secondAttribute="centerX" id="34G-Xy-GdL"/>
+                <constraint firstItem="7o0-kM-scm" firstAttribute="top" secondItem="TrA-W7-iOo" secondAttribute="bottom" constant="20" id="Jtw-L2-jbV"/>
+                <constraint firstItem="O9o-bH-pRE" firstAttribute="centerX" secondItem="TrA-W7-iOo" secondAttribute="centerX" id="JzG-sz-P4I"/>
+                <constraint firstItem="TrA-W7-iOo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-29" id="RY1-NA-GUn"/>
+                <constraint firstItem="jfv-HI-pKS" firstAttribute="centerY" secondItem="TrA-W7-iOo" secondAttribute="centerY" id="Xpb-vp-ASd"/>
+                <constraint firstItem="7o0-kM-scm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZIZ-R1-Eeg"/>
+                <constraint firstItem="TrA-W7-iOo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aYL-8v-Khe"/>
+                <constraint firstItem="TrA-W7-iOo" firstAttribute="top" secondItem="O9o-bH-pRE" secondAttribute="bottom" constant="20" id="g7d-ka-aiu"/>
+                <constraint firstItem="7o0-kM-scm" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="qwN-9Q-TMp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="checkMarkBox2" width="128" height="128"/>
+    </resources>
+</document>

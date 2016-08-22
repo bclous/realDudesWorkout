@@ -78,6 +78,9 @@
 -(void)formatView
 {
     BOOL noWorkouts = self.workoutsInLast12Months.count == 0;
+    self.totalWorkoutsLabel.textColor = [UIColor bdc_lightText1];
+    self.goalLabel.textColor = [UIColor bdc_lightText1];
+    self.exerciseTotalsLabel.textColor = [UIColor bdc_lightText1];
     
     self.noWorkoutsLabel.hidden = !noWorkouts;
     self.totalWorkoutsLabel.hidden = noWorkouts;
@@ -113,7 +116,7 @@
     [self.excercisesStackView addArrangedSubview:fillerView];
     fillerView.backgroundColor = [UIColor clearColor];
     [fillerView.heightAnchor constraintEqualToAnchor:self.exerciseScrollView.heightAnchor multiplier:1].active = YES;
-    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:-self.exerciseScrollView.frame.size.height / 2].active = YES;
+    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:(-self.exerciseScrollView.frame.size.height / 2) + 2].active = YES;
 
     NSUInteger index = 0;
     for (NSString *string in self.exerciseImageNames)
@@ -138,6 +141,9 @@
 -(void)updateViewToOn:(BOOL)on animate:(BOOL)animate
 {
     CGFloat duration = animate ? .2 : 0;
+    CGPoint home;
+    home.x = 0;
+    home.y = 0;
     [UIView animateWithDuration:duration animations:^{
         
         if(on)
@@ -147,6 +153,7 @@
         else
         {
             [self.monthlyGraphView setAllMonthsToHeightZero];
+            [self.exerciseScrollView setContentOffset:home animated:NO];
         }
     }];
 }

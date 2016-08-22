@@ -21,4 +21,6 @@
 @property (strong, nonatomic) NSMutableArray *excerciseViews;
 @property (weak, nonatomic) id <GenerateWorkoutViewDelegate> delegate;
 
+-(void)resetView;
+
 @end

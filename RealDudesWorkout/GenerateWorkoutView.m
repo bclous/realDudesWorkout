@@ -9,6 +9,7 @@
 #import "GenerateWorkoutView.h"
 #import "ExcerciseTotalView.h"
 #import "GenerateWorkoutExcerciseView.h"
+#import "UIColor+BDC_Color.h"
 
 
 @interface GenerateWorkoutView () <UIScrollViewDelegate>
@@ -78,10 +79,18 @@
 
 -(void)createLabels
 {
-    self.workoutNameLabel.text = self.workout.name;
+    self.workoutNameLabel.text = [self.workout.name uppercaseString];
     self.workoutDateAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", [self.workout longDateString], [self.workout workoutStartTime] ];
     self.workoutEstimatedTimeLabel.text = [NSString stringWithFormat:@"Estimated time: %lld minutes", self.workout.targetTimeInSeconds / 60];
     self.numberOfExcercisesLabel.text = [NSString stringWithFormat:@"Excercises: %lu", self.workout.excercisesInOrder.count];
+    
+    self.workoutNameLabel.textColor = [UIColor bdc_lightText1];
+    self.workoutDateAndTimeLabel.textColor = [UIColor bdc_lightText1];
+    self.workoutEstimatedTimeLabel.textColor = [UIColor bdc_lightText1];
+    self.numberOfExcercisesLabel.textColor = [UIColor bdc_lightText1];
+    
+    
+    
 }
 
 -(void)setAllLabels
@@ -162,6 +171,22 @@
     [self layoutIfNeeded];
     [self updateAllLabels];
     
+}
+
+-(void)resetView
+{
+    NSArray *subviews = [self.excercisesStackView subviews];
+    
+    for (UIView *view in subviews)
+    {
+        [view removeFromSuperview];
+    }
+    
+    CGPoint home;
+    home.x = 0;
+    home.y = 0;
+    
+    [self.excerciseScrollView setContentOffset:home];
 }
 
 

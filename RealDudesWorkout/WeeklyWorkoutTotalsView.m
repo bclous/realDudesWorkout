@@ -9,6 +9,7 @@
 #import "WeeklyWorkoutTotalsView.h"
 #import "DataStore.h"
 #import "NSString+BDC_Utility.h"
+#import "UIColor+BDC_Color.h"
 
 @interface WeeklyWorkoutTotalsView ()
 
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *month2Label;
 @property (weak, nonatomic) IBOutlet UILabel *month1Label;
 @property (weak, nonatomic) IBOutlet UIView *graphBottomLineView;
+@property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *workoutTotalLabels;
 
 @property (strong, nonatomic) NSMutableArray *workoutTotals;
 @property (strong, nonatomic) NSMutableArray *monthStrings;
@@ -154,11 +156,27 @@
     self.month11Label.text = [NSString stringWithFormat:@"%lu",[self.workoutTotals[10] integerValue]];
     self.month12Label.text = [NSString stringWithFormat:@"%lu",[self.workoutTotals[11] integerValue]];
     
+    for (UILabel *label in self.workoutTotalLabels)
+    {
+        label.font = [UIFont boldSystemFontOfSize:8];
+        
+        if ([label.text isEqualToString:@"0"])
+        {
+            label.textColor = [UIColor bdc_lightText4];
+        }
+        else
+        {
+            label.textColor = [UIColor bdc_lightText1];
+        }
+    }
+    
     
     NSUInteger month = 11;
     for (UILabel *label in [self.monthLabelsStackView arrangedSubviews])
     {
-        label.text = self.monthStrings[month];
+        label.text = [self.monthStrings[month] uppercaseString];
+        label.font = [UIFont boldSystemFontOfSize:8];
+        label.textColor = [UIColor bdc_lightText3];
         month--;
     }
 }

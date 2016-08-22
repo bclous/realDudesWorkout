@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarDay">
             <connections>
                 <outlet property="backgroundView" destination="EE4-va-CW6" id="1vN-bF-eAT"/>
+                <outlet property="blueCircle" destination="IrQ-fQ-B0j" id="pYf-uN-m5S"/>
                 <outlet property="circleImageView" destination="DwR-nY-ClJ" id="atf-0X-8QW"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="8l2-Ds-1gS"/>
                 <outlet property="dayLabel" destination="BjE-nO-nYi" id="nqw-tv-VMz"/>
@@ -26,11 +27,23 @@
                     <rect key="frame" x="-1" y="1" width="316" height="297"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bH1-nP-umM">
-                    <rect key="frame" x="142" y="133" width="32" height="32"/>
+                    <rect key="frame" x="140" y="134.5" width="36" height="36"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IrQ-fQ-B0j">
+                            <rect key="frame" x="15.5" y="25" width="5" height="5"/>
+                            <color key="backgroundColor" red="0.32549019610000002" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="3f6-Zb-PEX"/>
+                                <constraint firstAttribute="width" constant="5" id="lBV-LD-c5D"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="32" id="4MB-4Q-L47"/>
-                        <constraint firstAttribute="height" constant="32" id="g9f-2l-Lzg"/>
+                        <constraint firstAttribute="width" constant="36" id="4MB-4Q-L47"/>
+                        <constraint firstItem="IrQ-fQ-B0j" firstAttribute="centerX" secondItem="bH1-nP-umM" secondAttribute="centerX" id="EIf-L1-xbC"/>
+                        <constraint firstAttribute="bottom" secondItem="IrQ-fQ-B0j" secondAttribute="bottom" constant="6" id="LzC-bF-f6Y"/>
+                        <constraint firstAttribute="height" constant="36" id="g9f-2l-Lzg"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjE-nO-nYi">
@@ -43,7 +56,7 @@
             <constraints>
                 <constraint firstItem="DwR-nY-ClJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="14s-x6-s8D"/>
                 <constraint firstItem="BjE-nO-nYi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ba1-dH-K0d"/>
-                <constraint firstItem="bH1-nP-umM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Chb-Ny-SES"/>
+                <constraint firstItem="bH1-nP-umM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="4" id="Chb-Ny-SES"/>
                 <constraint firstItem="EE4-va-CW6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="E40-bm-SA3"/>
                 <constraint firstItem="DwR-nY-ClJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="H4P-C9-GkB"/>
                 <constraint firstItem="EE4-va-CW6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IX1-Fx-0w3"/>

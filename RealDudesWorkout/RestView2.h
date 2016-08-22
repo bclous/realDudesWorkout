@@ -8,16 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "Workout.h"
+#import "WorkoutOverRestView.h"
+
+@protocol RestViewDelegate <NSObject>
+
+-(void)restIsOver;
+
+@end
 
 @interface RestView2 : UIView
 
 @property (strong, nonatomic) Workout *workout;
+@property (weak, nonatomic) id <RestViewDelegate> delegate;
 @property (nonatomic) NSUInteger indexOfExcerciseJustFinished;
-@property (weak, nonatomic) IBOutlet UILabel *nextWorkoutLabel;
 @property (nonatomic) NSUInteger indexOfExerciseUpNext;
+@property (nonatomic) BOOL workoutOver;
+@property (weak, nonatomic) IBOutlet WorkoutOverRestView *workoutOverView;
 
 -(void)countdown;
--(void)generateExerciseStackView;
 -(void)updateRestViewComponentsForIndex:(NSUInteger)index;
 
 

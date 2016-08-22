@@ -13,23 +13,24 @@
 #import "ExcerciseView.h"
 #import "ExerciseDescriptionView.h"
 #import "NSString+BDC_Utility.h"
+#import "UIColor+BDC_Color.h"
 #import "SkipExerciseView.h"
 #import "ExcerciseRestView.h"
 
 
-@interface ActiveWorkoutViewController () <ExerciseDescriptionDelegate, ExcerciseRestViewDelegate>
+@interface ActiveWorkoutViewController () <ExerciseDescriptionDelegate, ExcerciseRestViewDelegate, RestViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *workoutTimeLabel;
 @property (weak, nonatomic) IBOutlet ExcerciseView *excerciseView;
 @property (weak, nonatomic) IBOutlet UIView *footerBackgroundView;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (weak, nonatomic) IBOutlet UIView *doneButton;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *skipButtonTapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doneButtonTapGestureRecognizer;
 @property (weak, nonatomic) IBOutlet UIView *navBar;
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *backButtonTapGestureRecognizer;
-
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UILabel *upNextLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSArray *excerciseSets;
@@ -57,10 +58,13 @@
 @property (strong, nonatomic) UIStackView *exerciseStackView;
 
 @property (strong, nonatomic) RestView2 *restView;
-
-@property (strong, nonatomic) UIView *restBlurView;
+@property (strong, nonatomic) NSLayoutConstraint *restViewOffLeftConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *restViewOnConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *restViewOffRightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *restBlurViewTopConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *restBlurViewBottomConstraint;
+
+@property (strong, nonatomic) UIVisualEffectView *restBlurView;
+
 
 @property (strong, nonatomic) ExerciseDescriptionView *exerciseDescriptionView;
 @property (nonatomic) BOOL descriptionViewDisplayed;
@@ -86,49 +90,123 @@
 
 - (IBAction)cancelborderViewTapped:(id)sender
 {
-    self.workout.timeInSeconds = self.currentTimeInterval - self.totalWorkoutBaseTimeInterval;
-    self.workout.isFinished = YES;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSString *alertTitle = [NSString stringWithFormat:@"End Workout"];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                   message:@"Are you sure?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self workoutFinished];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:deleteAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)finishButtonTapped:(id)sender
 {
-   
-    if (self.restViewIsDisplayed && !self.isLastExcercise)
+    if (self.restViewIsDisplayed && !self.restView.workoutOver)
     {
+       
         [self restCompleted];
-        [self animateRestViewUp:NO];
+        [self updateExcerciseComponents];
+        self.view.userInteractionEnabled = NO;
+        self.upNextLabel.alpha = 0;
+        [UIView animateWithDuration:.2 animations:^{
+            [self adjustRestViewUp:NO];
+        } completion:^(BOOL finished) {
+            [self changeButtonTitle];
+            self.view.userInteractionEnabled = YES;
+        }];
     }
-    else if (self.restViewIsDisplayed && self.isLastExcercise)
+    else if (!self.restViewIsDisplayed && self.isLastExcercise)
+    {
+        self.restView.workoutOver = self.isLastExcercise;
+        [self exerciseCompleted];
+        self.currentExcerciseSetIndexValue = self.excerciseSets.count;
+        self.restView.workoutOver = YES;
+        self.upNextLabel.alpha = 0;
+        self.view.userInteractionEnabled = NO;
+        [UIView animateWithDuration:.2 animations:^{
+            [self adjustRestViewUp:YES];
+        } completion:^(BOOL finished) {
+            self.upNextLabel.alpha = 0;
+            [self updateProgressView];
+            [self changeButtonTitle];
+            [self updateExerciseViews];
+            [self.restView.workoutOverView adjustBlueCircleOn:YES animate:YES];
+            self.view.userInteractionEnabled = YES;
+        }];
+        
+    }
+    else if (self.restViewIsDisplayed && self.restView.workoutOver)
     {
         [self workoutFinished];
-        self.workout.isFinishedSuccessfully = YES;
-        [self.dataStore saveContext];
         [self dismissViewControllerAnimated:YES completion:nil];
+        [self.restView.workoutOverView adjustBlueCircleOn:NO animate:NO];
     }
     else
     {
         [self exerciseCompleted];
-        [self animateRestViewUp:YES];
+        [self advanceToNextExercise];
+        self.view.userInteractionEnabled = NO;
+        [UIView animateWithDuration:.2 animations:^{
+            [self adjustRestViewUp:YES];
+        } completion:^(BOOL finished) {
+            self.upNextLabel.alpha = 1;
+            [self updateProgressView];
+            [self changeButtonTitle];
+            [self updateExerciseViews];
+            [self updateScrollViewToIndex:self.currentExcerciseSetIndexValue animate:YES];
+            self.view.userInteractionEnabled = YES;
+        }];
     }
 }
 
+-(void)restIsOver
+{
+    [self restCompleted];
+    [self updateExcerciseComponents];
+    self.view.userInteractionEnabled = NO;
+    self.upNextLabel.alpha = 0;
+    [UIView animateWithDuration:.2 animations:^{
+        [self adjustRestViewUp:NO];
+    } completion:^(BOOL finished) {
+        [self changeButtonTitle];
+        self.view.userInteractionEnabled = YES;
+    }];
+}
 
 -(void)exerciseCompleted
 {
-    //[self updateProgressBar];
     [self recordExerciseDataCompleted:YES];
-    self.restView.indexOfExerciseUpNext = [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue];
     [self updateTimeIntervalStartTimes];
     [self.restView updateRestViewComponentsForIndex:self.currentExcerciseSetIndexValue];
 }
+
+-(void)advanceToNextExercise
+{
+    if (!self.isLastExcercise)
+    {
+        self.currentExcerciseSetIndexValue = [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue];
+    }
+}
+
 
 -(void)restCompleted
 {
     [self recordRestData];
     [self updateTimeIntervalStartTimes];
-    self.currentExcerciseSetIndexValue = self.differentExericiseChosenInRestView ? self.indexChosenFromRestView : [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue];
-    self.differentExericiseChosenInRestView = NO;
 }
 
 -(void)workoutFinished
@@ -142,10 +220,34 @@
 -(void)setCurrentExcerciseSetIndexValue:(NSUInteger)currentExcerciseSetIndexValue
 {
     _currentExcerciseSetIndexValue = currentExcerciseSetIndexValue;
-    self.currentExcerciseSet = self.excerciseSets[currentExcerciseSetIndexValue];
-    [self updateExcerciseComponents];
-    self.isLastExcercise = currentExcerciseSetIndexValue == self.excerciseSets.count - 1;
+    self.currentExcerciseSet = currentExcerciseSetIndexValue < self.excerciseSets.count ?  self.excerciseSets[currentExcerciseSetIndexValue] : [self.excerciseSets lastObject];
+    self.isLastExcercise = [self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue] == 0;
+    NSLog(@"%lu",[self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue]);
+    self.upNextLabel.text = [NSString stringWithFormat:@"Up next: %@",self.currentExcerciseSet.excercise.name];
+
+}
+
+-(void)updateProgressView
+{
     
+   CGFloat completed = 0;
+    for (ExcerciseSet *set in self.excerciseSets)
+    {
+        if (set.isComplete)
+        {
+            completed++;
+        }
+    }
+    
+    self.progressView.progress = completed / self.excerciseSets.count;
+}
+
+-(void)updateExerciseViews
+{
+    for (ExcerciseRestView *restView in self.exerciseViewsArray)
+    {
+        [restView formatExerciseView];
+    }
 }
 
 -(void)updateRestViewIndex
@@ -155,21 +257,73 @@
 
 -(void)exerciseTappedAtIndex:(NSUInteger)index
 {
-    if (self.restViewIsDisplayed)
+   
+    if (self.isLastExcercise && self.restViewIsDisplayed)
     {
-        self.differentExericiseChosenInRestView = YES;
-        self.indexChosenFromRestView = index;
-        [self updateIndex:index fromOldIndex:[self indexOfNextExerciseNotCompletedAfterIndex:self.currentExcerciseSetIndexValue]];
-        self.restView.indexOfExerciseUpNext = index;
-        
+        [self presentAlertViewController];
     }
     else
     {
-        [self updateIndex:index fromOldIndex:self.currentExcerciseSetIndexValue];
         self.currentExcerciseSetIndexValue = index;
+        [self updateExerciseViews];
+        [self updateScrollViewToIndex:index animate:YES];
+        if (!self.restViewIsDisplayed)
+        {
+            [self updateExcerciseComponents];
+        }
     }
 }
 
+-(void)presentAlertViewController
+{
+    NSString *alertTitle = [NSString stringWithFormat:@"Go Back"];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                   message:@"Do you want to complete the exercises you skipped?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        self.currentExcerciseSetIndexValue = 0;
+        [self advanceToNextExercise];
+        [self restCompleted];
+        [self updateExcerciseComponents];
+        self.view.userInteractionEnabled = NO;
+        [UIView animateWithDuration:.2 animations:^{
+            [self adjustRestViewUp:NO];
+        } completion:^(BOOL finished) {
+            [self updateExerciseViews];
+            [self updateScrollViewToIndex:self.currentExcerciseSetIndexValue animate:YES];
+            [self changeButtonTitle];
+            self.restView.workoutOver = NO;
+            [self.restView.workoutOverView adjustBlueCircleOn:NO animate:NO];
+            self.view.userInteractionEnabled = YES;
+        }];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:deleteAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(NSUInteger)currentIndex
+{
+    return self.currentExcerciseSetIndexValue;
+}
+
+-(void)adjustRestViewUp:(BOOL)up
+{
+    self.restBlurViewTopConstraint.active = NO;
+    self.restBlurViewTopConstraint = up ? [self.restBlurView.topAnchor constraintEqualToAnchor:self.headerView.bottomAnchor constant:-1] : [self.restBlurView.topAnchor constraintEqualToAnchor:self.footerView.bottomAnchor];
+    self.restBlurViewTopConstraint.active = YES;
+    self.restViewIsDisplayed = up;
+    [self.view layoutIfNeeded];
+}
 
 
 #pragma mark update exercise methods
@@ -207,77 +361,21 @@
 {
     if (self.restViewIsDisplayed)
     {
-        self.buttonLabel.text = @"Done";
+        self.buttonLabel.text = @"Let's go";
     }
-    else if (self.isLastExcercise)
+    else if (self.isLastExcercise && self.restViewIsDisplayed)
     {
         self.buttonLabel.text = @"Workout Finished";
     }
     else
     {
-        self.buttonLabel.text = @"Let's go";
+        self.buttonLabel.text = @"Done";
     }
 }
 
 
 
 #pragma mark View animations
-
--(void)animateRestViewUp:(BOOL)up
-{
-    self.restView.nextWorkoutLabel.alpha = 0;
-    self.view.userInteractionEnabled = NO;
-    self.restBlurViewTopConstraint.active = NO;
-    self.restBlurViewTopConstraint = up ? [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:70] : [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
-    self.restBlurViewTopConstraint.active = YES;
-    [self updateScrollViewToIndex:self.currentExcerciseSetIndexValue animate:YES];
-    
-    [UIView animateWithDuration:.2
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     } completion:^(BOOL finished) {
-                         [self changeButtonTitle];
-                         self.restViewIsDisplayed = up;
-                         
-                         [UIView animateWithDuration:0 delay:.4 options:0 animations:^{
-                             self.restView.nextWorkoutLabel.alpha = up;
-                         } completion:^(BOOL finished) {
-                             // nada
-                         }];
-                    
-                         if (self.descriptionViewDisplayed)
-                         {
-                             [self excerciseDescriptionTapped:nil];
-                         }
-                         if (up)
-                         {
-                             [self updateForExerciseFinishedAtIndex:self.currentExcerciseSetIndexValue];
-                         }
-                         
-                         self.view.userInteractionEnabled = YES;
-                     }];
-}
-
--(void)updateForExerciseFinishedAtIndex:(NSUInteger)index
-{
-    CGFloat delay = .2;
-    CGFloat duration = .05;
-    
-    [UIView animateWithDuration:duration delay:delay options:0 animations:^{
-        [self updateExerciseViewAtIndex:index status:2];
-    } completion:^(BOOL finished) {
-        [self updateScrollViewToIndex:[self indexOfNextExerciseNotCompletedAfterIndex:index] animate:YES];
-        
-    }];
-}
-
--(void)updateIndex:(NSUInteger)index fromOldIndex:(NSUInteger)oldIndex
-{
-    ((ExcerciseRestView *)self.exerciseViewsArray[oldIndex]).status = 0;
-    [self updateScrollViewToIndex:index animate:YES];
-    ((ExcerciseRestView *)self.exerciseViewsArray[index]).status = 1;
-   
-}
 
 -(void)updateScrollViewToIndex:(NSUInteger)index animate:(BOOL)animate
 {
@@ -286,18 +384,6 @@
     offset.x = 74 * index;
     
     [self.exerciseScrollView setContentOffset:offset animated:animate];
-}
-
--(void)updateExerciseViewAtIndex:(NSUInteger)index status:(NSUInteger)status
-{
-    ExcerciseRestView *exerciseView = self.exerciseViewsArray[index];
-    exerciseView.status = status;
-    if (self.exerciseViewsArray[[self indexOfNextExerciseNotCompletedAfterIndex:index]] != 0)
-    {
-        ExcerciseRestView *exerciseView = self.exerciseViewsArray[[self indexOfNextExerciseNotCompletedAfterIndex:index]];
-        exerciseView.status = 1;
-    }
-    
 }
 
 -(NSUInteger)indexOfNextExerciseNotCompletedAfterIndex:(NSUInteger)index
@@ -311,7 +397,9 @@
         }
     }
     
+    self.isLastExcercise = YES;
     return 0;
+   
 }
 
 
@@ -326,9 +414,11 @@
 {
     
     self.currentExcerciseSetIndexValue = 0;
+    self.workoutTimeLabel.textColor = [UIColor bdc_lightText1];
     self.excerciseView.alpha = 1;
     self.restView.alpha = 0;
     self.restViewIsDisplayed = NO;
+    [self updateProgressView];
     
     self.doneButton.layer.cornerRadius = 20;
     [self initializeExcerciseTotals];
@@ -403,23 +493,24 @@
 -(void)createRestView
 {
     
-    self.restBlurView = [[UIView alloc] init];
+    self.restBlurView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];;
+    self.restBlurView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.3];
     [self.view addSubview:self.restBlurView];
     self.restBlurView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.restBlurView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.9];
     [self.restBlurView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.restBlurView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
-    [self.restBlurView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor constant:-210].active = YES;
-    self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+    [self.restBlurView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor constant:-203].active = YES;
+    self.restBlurViewTopConstraint = [self.restBlurView.topAnchor constraintEqualToAnchor:self.footerView.topAnchor];
     self.restBlurViewTopConstraint.active = YES;
-    
+
     self.restView = [[RestView2 alloc] init];
-    [self.restBlurView addSubview:self.restView];
+    [self.view addSubview:self.restView];
     self.restView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.restView.leftAnchor constraintEqualToAnchor:self.restBlurView.leftAnchor].active = YES;
-    [self.restView.rightAnchor constraintEqualToAnchor:self.restBlurView.rightAnchor].active = YES;
-    [self.restView.topAnchor constraintEqualToAnchor:self.restBlurView.topAnchor].active = YES;
-    [self.restView.bottomAnchor constraintEqualToAnchor:self.restBlurView.bottomAnchor].active = YES;
+    [self.restView.widthAnchor constraintEqualToAnchor:self.restBlurView.widthAnchor].active = YES;
+    [self.restView.heightAnchor constraintEqualToAnchor:self.restBlurView.heightAnchor].active = YES;
+    [self.restView.centerYAnchor constraintEqualToAnchor:self.restBlurView.centerYAnchor].active = YES;
+    [self.restView.centerXAnchor constraintEqualToAnchor:self.restBlurView.centerXAnchor].active = YES;
+    self.restView.delegate = self;
     
     self.restView.workout = self.workout;
     self.restView.indexOfExcerciseJustFinished = 0;
@@ -457,6 +548,7 @@
         ExcerciseRestView *excerciseView = [[ExcerciseRestView alloc] init];
         excerciseView.excerciseSet = excerciseSet;
         excerciseView.index = index;
+        [excerciseView formatExerciseView];
         excerciseView.delegate = self;
         [self.exerciseStackView addArrangedSubview:excerciseView];
         [excerciseView.heightAnchor constraintEqualToAnchor:self.exerciseStackView.heightAnchor].active = YES;
@@ -464,10 +556,6 @@
         [self.exerciseViewsArray addObject:excerciseView];
         index++;
     }
-    
-    ((ExcerciseRestView *)self.exerciseViewsArray[0]).status = 1;
-    
-    
 }
 
 

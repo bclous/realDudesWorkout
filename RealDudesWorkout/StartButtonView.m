@@ -63,7 +63,8 @@
 
 -(void)adjustStartButtonToHome:(BOOL)home
 {
-    self.outLineView.backgroundColor = home ? [[UIColor blackColor] colorWithAlphaComponent:.65] : [UIColor bdc_redColor];
+    self.outLineView.backgroundColor = home ? [UIColor blackColor] : [UIColor bdc_redColor];
+    self.outLineView.alpha = home ? .7 : 1;
     self.buttonImage.transform = home ? CGAffineTransformMakeRotation(0) : CGAffineTransformMakeRotation(-M_PI/4);
 }
 

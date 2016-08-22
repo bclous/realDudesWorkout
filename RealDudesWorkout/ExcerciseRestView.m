@@ -62,8 +62,7 @@
     self.doneView.alpha = 0;
     self.doneGreenBlackView.alpha = 0;
     self.doneBlackView.alpha = 0;
-    self.status = 0;
-    
+    [self formatExerciseView];
 }
 
 -(void)setExcerciseSet:(ExcerciseSet *)excerciseSet
@@ -71,35 +70,37 @@
     _excerciseSet = excerciseSet;
     
     self.excerciseImage.image = [UIImage imageNamed:excerciseSet.excercise.pictureName];
-
 }
 
--(void)setStatus:(NSUInteger)status
+-(void)formatExerciseView
 {
-    _status = status;
+    BOOL isCurrentExercise = self.index == [self.delegate currentIndex];
+    BOOL isComplete = self.excerciseSet.isComplete;
     
-    if (status == 0)
-    {
-        self.doneView.alpha = 0;
-        self.doneBlackView.alpha = 0;
-        self.doneGreenBlackView.alpha = 0;
-        self.blueCircleView.alpha = 0;
-    }
-    else if (status == 1)
+    if(isCurrentExercise)
     {
         self.doneView.alpha = .0;
         self.doneBlackView.alpha = .0;
         self.doneGreenBlackView.alpha = 0;
         self.blueCircleView.alpha = 1;
     }
-    else if (status == 2)
+    else if (isComplete)
     {
         self.doneView.alpha = .7;
+        //self.doneBlackView.alpha = 1;
+        //self.doneGreenBlackView.alpha = 1;
+        self.blueCircleView.alpha = 0;
+        //self.doneGreenBlackView.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:163.0/255.0 blue:1 alpha:1];
+        self.userInteractionEnabled = NO;
+    }
+    else
+    {
+        self.doneView.alpha = 0;
         self.doneBlackView.alpha = 0;
         self.doneGreenBlackView.alpha = 0;
         self.blueCircleView.alpha = 0;
-        self.doneGreenBlackView.backgroundColor = [UIColor colorWithRed:83.0/255.0 green:163.0/255.0 blue:1 alpha:1];
     }
+    
 }
 
 - (IBAction)exerciseTapped:(id)sender {
