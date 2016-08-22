@@ -81,6 +81,7 @@
     self.totalWorkoutsLabel.textColor = [UIColor bdc_lightText1];
     self.goalLabel.textColor = [UIColor bdc_lightText1];
     self.exerciseTotalsLabel.textColor = [UIColor bdc_lightText1];
+    self.totalWorkoutsLabel.text = [NSString stringWithFormat:@"TOTAL WORKOUTS: %lu", [self.datastore.user workoutsLast365Days].count];
     
     self.noWorkoutsLabel.hidden = !noWorkouts;
     self.totalWorkoutsLabel.hidden = noWorkouts;
@@ -116,12 +117,12 @@
     [self.excercisesStackView addArrangedSubview:fillerView];
     fillerView.backgroundColor = [UIColor clearColor];
     [fillerView.heightAnchor constraintEqualToAnchor:self.exerciseScrollView.heightAnchor multiplier:1].active = YES;
-    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:(-self.exerciseScrollView.frame.size.height / 2) + 2].active = YES;
+    [fillerView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:.5 constant:(-self.exerciseScrollView.frame.size.height / 2) + 5].active = YES;
 
     NSUInteger index = 0;
-    for (NSString *string in self.exerciseImageNames)
+    for (NSString *string in self.exerciseNameAndQuantities)
     {
-        NSString *firstNumber = [string substringToIndex:0];
+        NSString *firstNumber = [string substringToIndex:1];
         if (![firstNumber isEqualToString:@"0"])
         {
             GenerateWorkoutExcerciseView *excerciseTotalView = [[GenerateWorkoutExcerciseView alloc] init];
