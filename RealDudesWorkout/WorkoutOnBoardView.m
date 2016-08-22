@@ -75,7 +75,7 @@
     self.workoutLength = 30;
     
     [self updateMinutesLabel];
-    self.minutesLabel.textColor = [UIColor bdc_lightText3];
+    self.minutesLabel.textColor = [UIColor bdc_lightText1];
     self.minutesWordLabel.textColor = [UIColor bdc_lightText3];
     self.titleLabel.textColor = [UIColor bdc_lightText1];
     self.accessoriesLabel.textColor = [UIColor bdc_lightText1];

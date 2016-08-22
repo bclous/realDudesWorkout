@@ -135,6 +135,7 @@
         [self exerciseCompleted];
         self.currentExcerciseSetIndexValue = self.excerciseSets.count;
         self.restView.workoutOver = YES;
+        [self.totalWorkoutTimer invalidate];
         self.upNextLabel.alpha = 0;
         self.view.userInteractionEnabled = NO;
         [UIView animateWithDuration:.2 animations:^{
@@ -298,6 +299,7 @@
             self.restView.workoutOver = NO;
             [self.restView.workoutOverView adjustBlueCircleOn:NO animate:NO];
             self.view.userInteractionEnabled = YES;
+            [self restartTimer];
         }];
     }];
     
@@ -359,7 +361,7 @@
 
 -(void)changeButtonTitle
 {
-    if (self.restViewIsDisplayed)
+    if (self.restViewIsDisplayed && !self.isLastExcercise)
     {
         self.buttonLabel.text = @"Let's go";
     }
@@ -372,7 +374,6 @@
         self.buttonLabel.text = @"Done";
     }
 }
-
 
 
 #pragma mark View animations
@@ -564,11 +565,19 @@
 -(void)setUpTimer
 {
     _totalWorkoutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    self.totalWorkoutTimer.tolerance = 0.1;
     _totalWorkoutBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
     _individualExcerciseBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
     _restBaseTimeInterval = [[NSDate date] timeIntervalSince1970];
     _currentTimeInterval = [[NSDate date] timeIntervalSince1970];
     [self.totalWorkoutTimer fire];
+}
+
+-(void)restartTimer
+{
+    self.totalWorkoutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    [self.totalWorkoutTimer fire];
+    
 }
 
 -(void)countdown

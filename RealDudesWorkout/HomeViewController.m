@@ -437,12 +437,16 @@
 -(void)newIndexChosen:(NSUInteger)index
 {
     self.calendarBlockView.alpha = 0;
+    CGPoint home;
+    home.x = 0;
+    home.y = 0;
     
     if (index == 13)
     {
         self.calendarMonthHeight = self.view.frame.size.height;
         self.calendarMonth.alpha = 0;
         [self.workoutsTableView reloadData];
+        [self.workoutsTableView setContentOffset:home animated:NO];
         self.last12MonthsView.alpha = 1;
         [self.last12MonthsView updateViewToOn:YES animate:YES];
         
