@@ -69,9 +69,10 @@
     self.blueCircle.layer.cornerRadius = 2.5;
     self.dayLabel.textColor = [UIColor bdc_lightText4];
     self.backgroundView.layer.borderWidth = 0;
-    self.smallCircleView.alpha = 0;
     self.smallCircleView.layer.cornerRadius = 18;
      self.blueCircle.alpha = 0;
+    self.smallCircleView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.1];
+    self.smallCircleView.alpha = 0;
     
     if (!representsRealDay)
     {
@@ -106,19 +107,8 @@
 {
     _isToday = isToday;
     
-    if (isToday)
-    {
-        //self.backgroundView.layer.borderWidth = 1;
-        //self.backgroundView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-        //self.smallCircleView.layer.borderColor = [[UIColor bdc_lightText3] CGColor];
-       // self.smallCircleView.layer.borderWidth = 2;
-        self.dayLabel.textColor = [UIColor bdc_lightText1];
-        self.smallCircleView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.1];
-    }
-    else
-    {
-        self.smallCircleView.layer.borderWidth = 0;
-    }
+    self.smallCircleView.backgroundColor = isToday ? [[UIColor whiteColor] colorWithAlphaComponent:.05] : [UIColor clearColor];
+
 }
 
 -(void)setDidWorkout:(BOOL)didWorkout
