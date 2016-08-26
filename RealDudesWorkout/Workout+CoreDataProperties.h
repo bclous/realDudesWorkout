@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 6/6/16.
+//  Created by Brian Clouser on 8/25/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -11,7 +11,10 @@
 
 #import "Workout.h"
 #import "User.h"
+#import "Circuit.h"
 #import "Accessory.h"
+#import "User.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,23 +28,23 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int64_t targetTimeInSeconds;
 @property (nonatomic) int64_t timeInSeconds;
 @property (nonatomic) int64_t workoutNumber;
+@property (nullable, nonatomic, retain) NSSet<Accessory *> *availableAccessories;
 @property (nullable, nonatomic, retain) NSSet<Circuit *> *circuits;
 @property (nullable, nonatomic, retain) User *user;
-@property (nullable, nonatomic, retain) NSSet<Accessory *> *availableAccessories;
 
 @end
 
 @interface Workout (CoreDataGeneratedAccessors)
 
-- (void)addCircuitsObject:(Circuit *)value;
-- (void)removeCircuitsObject:(Circuit *)value;
-- (void)addCircuits:(NSSet<Circuit *> *)values;
-- (void)removeCircuits:(NSSet<Circuit *> *)values;
-
 - (void)addAvailableAccessoriesObject:(Accessory *)value;
 - (void)removeAvailableAccessoriesObject:(Accessory *)value;
 - (void)addAvailableAccessories:(NSSet<Accessory *> *)values;
 - (void)removeAvailableAccessories:(NSSet<Accessory *> *)values;
+
+- (void)addCircuitsObject:(Circuit *)value;
+- (void)removeCircuitsObject:(Circuit *)value;
+- (void)addCircuits:(NSSet<Circuit *> *)values;
+- (void)removeCircuits:(NSSet<Circuit *> *)values;
 
 @end
 

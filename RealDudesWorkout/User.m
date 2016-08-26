@@ -7,8 +7,6 @@
 //
 
 #import "User.h"
-#import "Workout.h"
-
 
 
 @implementation User
@@ -36,7 +34,6 @@
     
     NSSortDescriptor *dateSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date"
                                                                          ascending:YES];
-    
     NSArray *workoutsInOrderFIFO = [workoutsNotInOrder sortedArrayUsingDescriptors:@[dateSortDescriptor]];
     
     return workoutsInOrderFIFO;
@@ -203,11 +200,6 @@
     
     NSArray *allWorkouts = [self orderedWorkoutsLIFO];
     
-    
-//    NSPredicate *workoutsSinceIntervalPredicate = [NSPredicate predicateWithFormat:@"date > %f",window];
-//    
-//    NSArray *workoutsSinceInterval = [allWorkouts filteredArrayUsingPredicate:workoutsSinceIntervalPredicate];
-    
     NSMutableArray *workoutsSinceInterval = [[NSMutableArray alloc] init];
     
     for (Workout *workout in allWorkouts)
@@ -308,9 +300,6 @@
     return hoursInSeconds + minutesInSeconds + secondsInSeconds;
     
 }
-
-
-
 
 
 -(NSDictionary *)dictionaryOfExcercisesWithQuantityGivenWorkouts:(NSArray *)workouts
@@ -426,12 +415,94 @@
     
 }
 
+-(Workout *)generateWorkoutWithTime:(NSInteger)time level:(NSInteger)level availableAccessories:(NSArray *)accessories
+{
+    
+    return nil;
+}
+
+-(Circuit *)generateCircuitWithTime:(NSInteger)time level:(NSInteger)level availableExercises:(NSArray *)exercises availableAccessories:(NSArray *)accessories
+{
+    return nil;
+}
+
+-(ExcerciseSet *)generateExcerciseSetWithExcercise:(Excercise *)excercise level:(NSInteger)level isLast:(BOOL)isLast;
+{
+    DataStore *store = [DataStore sharedDataStore];
+    
+    ExcerciseSet *excerciseSet1 =  [NSEntityDescription insertNewObjectForEntityForName:@"ExcerciseSet" inManagedObjectContext:store.managedObjectContext];
+    
+    excerciseSet1.excerciseSetIndexNumberInCicuit = 0;
+    excerciseSet1.isComplete = NO;
+    excerciseSet1.name = @"Excercise 1";
+    excerciseSet1.numberofRepsActual = 0;
+    
+    if(excercise.isReps)
+    {
+        excerciseSet1.timeInSecondsSuggested = 0;
+        if (level == 1)
+        {
+            excerciseSet1.numberOfRepsSuggested = excercise.repsLevel1;
+        }
+        else if (level == 2)
+        {
+            excerciseSet1.numberOfRepsSuggested = excercise.repsLevel2;
+        }
+        else
+        {
+             excerciseSet1.numberOfRepsSuggested = excercise.repsLevel3;
+        }
+    }
+    else
+    {
+        excerciseSet1.numberOfRepsSuggested = 0;
+        
+        if (level == 1)
+        {
+            excerciseSet1.timeInSecondsSuggested = excercise.timeLevel1;
+        }
+        else if (level == 2)
+        {
+            excerciseSet1.timeInSecondsSuggested = excercise.timeLevel2;
+        }
+        else
+        {
+            excerciseSet1.timeInSecondsSuggested = excercise.timeLevel3;
+        }
+    }
+    
+    excerciseSet1.restTimeAfterInSecondsActual = 0;
+    excerciseSet1.restTimeAfterInSecondsSuggested = isLast ? 90 : 30;
+    excerciseSet1.timeInSecondsActual = 0;
+  
+    return excerciseSet1;
+}
 
 
 
-
-
-
+-(NSArray *)availableExercisesFromCategory:(NSString *)category availableAccessories:(NSArray *)accessories
+{
+    DataStore *dataStore = [DataStore sharedDataStore];
+    
+    NSPredicate *exercisesInCategory = [NSPredicate predicateWithFormat:@"category = %@",category];
+    
+    NSArray *excerciseArray = [dataStore.availableExcercises filteredArrayUsingPredicate:exercisesInCategory];
+    NSMutableArray *excerciseMutable = [excerciseArray mutableCopy];
+    
+    for (Excercise *excercise in excerciseMutable)
+    {
+        for (Accessory *accessory in excercise.accessories)
+        {
+            if (![accessories containsObject:accessory])
+            {
+                [excerciseMutable removeObject:excercise];
+                break;
+            }
+        }
+    }
+    
+    return excerciseMutable;
+}
 
 
 #pragma generating workouts space

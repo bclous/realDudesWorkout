@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.m
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 7/11/16.
+//  Created by Brian Clouser on 8/25/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,10 +16,10 @@
 @dynamic backLevel;
 @dynamic chestLevel;
 @dynamic coreLevel;
+@dynamic downloadDate;
 @dynamic flexLevel;
 @dynamic legsLevel;
 @dynamic name;
-@dynamic downloadDate;
 @dynamic workouts;
 
 @end

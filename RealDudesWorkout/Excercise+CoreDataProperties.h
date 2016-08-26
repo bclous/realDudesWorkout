@@ -2,7 +2,7 @@
 //  Excercise+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 5/27/16.
+//  Created by Brian Clouser on 8/25/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,6 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *excerciseDescription;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *pictureName;
+@property (nonatomic) BOOL isReps;
+@property (nonatomic) int64_t repsLevel1;
+@property (nonatomic) int64_t repsLevel2;
+@property (nonatomic) int64_t repsLevel3;
+@property (nonatomic) int64_t timeLevel1;
+@property (nonatomic) int64_t timeLevel2;
+@property (nonatomic) int64_t timeLevel3;
+@property (nonatomic) NSTimeInterval isPriority;
 @property (nullable, nonatomic, retain) NSSet<Accessory *> *accessories;
 @property (nullable, nonatomic, retain) NSSet<ExcerciseSet *> *excerciseSet;
 

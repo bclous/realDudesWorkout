@@ -2,7 +2,7 @@
 //  Accessory+CoreDataProperties.h
 //  RealDudesWorkout
 //
-//  Created by Brian Clouser on 5/27/16.
+//  Created by Brian Clouser on 8/25/16.
 //  Copyright © 2016 The Qwiz LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,8 +10,8 @@
 //
 
 #import "Accessory.h"
-#import "Excercise.h"
 #import "Workout.h"
+#import "Excercise.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
