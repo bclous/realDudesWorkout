@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Excercise.h"
-#import <User.h>
 #import "User.h"
 
 

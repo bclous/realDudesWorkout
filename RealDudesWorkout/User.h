@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "NSString+BDC_Utility.h"
-#import "DataStore.h"
-#import "Workout.h"
 
 @class Workout;
 
