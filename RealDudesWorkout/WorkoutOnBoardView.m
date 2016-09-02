@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet AccessoryOnBoardView *accessory6;
 @property (weak, nonatomic) IBOutlet UILabel *minutesWordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *levelSegmentControl;
 
 
 @property (strong, nonatomic) NSMutableArray *availableAccessories;
@@ -98,11 +99,24 @@
     self.minusImage.image = [self.minusImage.image bdc_tintImageWithColor:[UIColor bdc_blueMainColor]];
     
     self.availableAccessories = [[NSMutableArray alloc] init];
+    [self.levelSegmentControl setTitle:@"Normal" forSegmentAtIndex:0];
+    [self.levelSegmentControl setTitle:@"Tough" forSegmentAtIndex:1];
+    [self.levelSegmentControl setTitle:@"Crazy" forSegmentAtIndex:2];
+    self.levelSegmentControl.selectedSegmentIndex = 1;
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIFont systemFontOfSize:14], NSFontAttributeName,
+                                [UIColor bdc_lightText1], NSForegroundColorAttributeName,
+                                nil];
+    [self.levelSegmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [self.levelSegmentControl setTitleTextAttributes:attributes forState:UIControlStateSelected];
+    self.levelSegmentControl.tintColor = [UIColor bdc_lightText4];
+    
 }
 
 - (IBAction)startButtonTapped:(id)sender
 {
-    [self.delegate generateWorkoutTapped:self.workoutLength accessories:self.availableAccessories];
+    [self.delegate generateWorkoutTapped:self.workoutLength accessories:self.availableAccessories level:self.levelSegmentControl.selectedSegmentIndex + 1];
 }
 - (IBAction)minusMinutesTapped:(id)sender
 {
@@ -149,6 +163,7 @@
     
     self.workoutLength = 30;
     [self updateMinutesLabel];
+    self.levelSegmentControl.selectedSegmentIndex = 1;
 }
 
 @end

@@ -56,6 +56,7 @@
 		AB56C75B1D664AD5007F0675 /* WorkoutOverRestView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB56C75A1D664AD5007F0675 /* WorkoutOverRestView.m */; };
 		AB81848B1D4D09A8003F5659 /* MonthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB81848A1D4D09A8003F5659 /* MonthView.xib */; };
 		AB92E7D01CB2A98700199034 /* TotalsFrontPageCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92E7CF1CB2A98700199034 /* TotalsFrontPageCellView.m */; };
+		AB9782C61D772A7600B48D39 /* WorkoutGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9782C51D772A7600B48D39 /* WorkoutGenerator.m */; };
 		ABA977701C99D41A00D04639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA9776F1C99D41A00D04639 /* Main.storyboard */; };
 		ABA977B11C9CA7BB00D04639 /* Circuit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA977AA1C9CA7BB00D04639 /* Circuit+CoreDataProperties.m */; };
 		ABA977B21C9CA7BB00D04639 /* Circuit.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA977AC1C9CA7BB00D04639 /* Circuit.m */; };
@@ -183,6 +184,8 @@
 		AB81848A1D4D09A8003F5659 /* MonthView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthView.xib; sourceTree = "<group>"; };
 		AB92E7CE1CB2A98700199034 /* TotalsFrontPageCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalsFrontPageCellView.h; sourceTree = "<group>"; };
 		AB92E7CF1CB2A98700199034 /* TotalsFrontPageCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalsFrontPageCellView.m; sourceTree = "<group>"; };
+		AB9782C41D772A7600B48D39 /* WorkoutGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutGenerator.h; sourceTree = "<group>"; };
+		AB9782C51D772A7600B48D39 /* WorkoutGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutGenerator.m; sourceTree = "<group>"; };
 		ABA9776F1C99D41A00D04639 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ABA977A91C9CA7BB00D04639 /* Circuit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Circuit+CoreDataProperties.h"; sourceTree = "<group>"; };
 		ABA977AA1C9CA7BB00D04639 /* Circuit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Circuit+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				AB19B3C11D349F8D009D54D0 /* IntroView.m */,
 				ABA9776F1C99D41A00D04639 /* Main.storyboard */,
 				AB19B3BE1D349B49009D54D0 /* IntroView.xib */,
+				AB9782C41D772A7600B48D39 /* WorkoutGenerator.h */,
+				AB9782C51D772A7600B48D39 /* WorkoutGenerator.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 				AB41F2EC1C90FE33009D7E63 /* Excercise.m in Sources */,
 				AB2A39151CEA315F005DD03A /* ExcerciseTotalView.m in Sources */,
 				AB56C7501D628B03007F0675 /* AfterFirstWorkoutCell.m in Sources */,
+				AB9782C61D772A7600B48D39 /* WorkoutGenerator.m in Sources */,
 				ABCE80061D060E6E00E93339 /* WorkoutTotalIndividualView.m in Sources */,
 				ABDFCF471D20E4CB00FF3007 /* WeeklyWorkoutTotalsView.m in Sources */,
 				ABCE7FFC1CF73FBF00E93339 /* WorkoutDetailView.m in Sources */,

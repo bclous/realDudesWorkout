@@ -11,7 +11,7 @@
 
 @protocol WorkoutOnBoardDelegate <NSObject>
 
--(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories;
+-(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories level:(NSInteger)level;
 
 @end
 

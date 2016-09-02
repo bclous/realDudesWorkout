@@ -28,6 +28,7 @@
 #import "Last12Months.h"
 #import "PreDownloadTableViewCell.h"
 #import "AfterFirstWorkoutCell.h"
+#import "WorkoutGenerator.h"
 
 
 #define MIN_CALENDAR_HEIGHT 250;
@@ -42,6 +43,7 @@
 @property (strong, nonatomic) NSArray *workouts;
 @property (weak, nonatomic) IBOutlet UIView *calendarBlockView;
 @property (weak, nonatomic) IBOutlet MonthScrollView *monthScrollView;
+@property (strong, nonatomic) WorkoutGenerator *workoutGenerator;
 
 @property (strong, nonatomic) NSLayoutConstraint *blurViewBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *blurViewTopConstraint;
@@ -137,10 +139,10 @@
     [self adjustViewsToOnboarding:!self.onboardContainerViewDisplayed animate:YES];
 }
 
--(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories
+-(void)generateWorkoutTapped:(NSInteger)minutes accessories:(NSMutableArray *)accessories level:(NSInteger)level
 {
     self.view.userInteractionEnabled = NO;
-    [self createNewWorkout:minutes accessories:accessories];
+    [self createNewWorkout:minutes accessories:accessories level:level];
     self.workoutOnBoardView.alpha = 0;
     //[self.logoView performGenerateWorkoutAnimation];
     [self animationComplete];
@@ -264,13 +266,12 @@
 #pragma mark helper methods
 
 
--(void)createNewWorkout:(NSInteger)minutes accessories:(NSMutableArray *)accessories
+-(void)createNewWorkout:(NSInteger)minutes accessories:(NSMutableArray *)accessories level:(NSUInteger)level
 {
-    [self.dataStore.user generateNewWorkout];
+    Workout *newWorkout = [self.workoutGenerator generateWorkoutWithTime:minutes level:level availableAccessories:accessories];
+    [self.dataStore.user addWorkoutsObject:newWorkout];
     [self.dataStore fetchData];
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
-    
-    Workout *newWorkout = [self.workouts firstObject];
     newWorkout.targetTimeInSeconds = minutes * 60;
     self.generateWorkoutView.workout = newWorkout;
 }
@@ -287,7 +288,7 @@
 
 -(void)replicateWorkout:(Workout *)workout
 {
-    [self createNewWorkout:workout.targetTimeInSeconds/60 accessories:workout.availableAccessories];
+    [self createNewWorkout:workout.targetTimeInSeconds/60 accessories:workout.availableAccessories level:workout.level];
 }
 
 #pragma mark tableView and scroll view methods
@@ -627,6 +628,7 @@
     [self.dataStore fetchData];
     self.workouts = [self.dataStore.user orderedWorkoutsLIFO];
     [self.last12MonthsView generateExercises];
+    self.workoutGenerator = [[WorkoutGenerator alloc] init];
     
     [self setUpMainTableView];
     [self setUpWorkoutDetailView];

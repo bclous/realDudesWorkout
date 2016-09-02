@@ -421,7 +421,7 @@
     return nil;
 }
 
--(Circuit *)generateCircuitWithTime:(NSInteger)time level:(NSInteger)level availableExercises:(NSArray *)exercises availableAccessories:(NSArray *)accessories
+-(Circuit *)generateCircuitWithLevel:(NSInteger)level availableExercises:(NSArray *)exercises availableAccessories:(NSArray *)accessories
 {
     return nil;
 }

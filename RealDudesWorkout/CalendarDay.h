@@ -16,7 +16,7 @@
 @property (nonatomic) BOOL isToday;
 @property (nonatomic) BOOL didWorkout;
 @property (nonatomic) BOOL isPreDownload;
-@property (weak, nonatomic) IBOutlet UIView *blueCircle;
+
 
 -(void)resetDay;
 
